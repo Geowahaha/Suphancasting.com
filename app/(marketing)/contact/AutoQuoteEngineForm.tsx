@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import type { Locale } from "@/lib/i18n-shared";
 
 type MaterialOption = {
   id: string;
@@ -11,7 +12,7 @@ type MaterialOption = {
 };
 
 type Props = {
-  locale: "th" | "en" | "zh";
+  locale: Locale;
   materials: MaterialOption[];
 };
 

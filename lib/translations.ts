@@ -859,6 +859,23 @@ export const translations = {
 } as const;
 
 export function t(locale: Locale) {
-  return translations[locale];
+  switch (locale) {
+    case "th":
+      return translations.th;
+    case "en":
+    case "ja":
+    case "ko":
+    case "de":
+    case "es":
+    case "fr":
+    case "ru":
+    case "vi":
+    case "ar":
+      return translations.en;
+    case "zh":
+      return translations.zh;
+    default:
+      return translations.th;
+  }
 }
 
