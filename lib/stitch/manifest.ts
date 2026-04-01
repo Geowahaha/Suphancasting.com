@@ -67,7 +67,8 @@ export const STITCH_ROUTE_SLUGS = {
   about: "location-facilities",
   services: "sand-casting-primary-service-detail",
   portfolio: "product-portfolio-gallery",
-  contact: "home-contact-updated",
+  contact: "services-contact-updated",
+  rfq: "project-inquiry-updated-standards",
   blog: "tools-resources-hub",
   promotions: "sand-casting-advantages-thai-primary",
 } as const;

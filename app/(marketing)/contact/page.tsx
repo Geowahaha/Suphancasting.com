@@ -5,9 +5,9 @@ import { STITCH_ROUTE_SLUGS } from "@/lib/stitch/manifest";
 
 export const metadata: Metadata = {
   title: `Contact | ${siteConfig.fullName}`,
-  description: "Contact Suphan Casting (Stitch design preview).",
+  description: "Contact and support page (Stitch design).",
 };
 
 export default function ContactPage() {
-  return <StitchFrame slug={STITCH_ROUTE_SLUGS.contact} title="Contact" />;
+  return <StitchFrame slug={STITCH_ROUTE_SLUGS.contact} title="Contact and support" />;
 }

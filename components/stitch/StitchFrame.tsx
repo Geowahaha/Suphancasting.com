@@ -11,7 +11,7 @@ export function StitchFrame({
     <iframe
       title={title ?? slug}
       src={`/stitch/${slug}/index.html`}
-      className={`block w-full border-0 bg-[#0a0a0a] [min-height:calc(100dvh-3.75rem)] ${className}`}
+      className={`block w-full border-0 bg-[#0a0a0a] min-h-dvh ${className}`}
     />
   );
 }

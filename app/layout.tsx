@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Sans_Thai, Space_Grotesk, Work_Sans } from "next/font/google";
 import "./globals.css";
-import { SiteHeader } from "@/components/site/SiteHeader";
-import { SiteFooter } from "@/components/site/SiteFooter";
 import { buildOrganizationJsonLd } from "@/lib/seo/structuredData";
 import { siteConfig } from "@/lib/seo/site";
 
@@ -69,9 +67,7 @@ export default function RootLayout({
     >
       <body className="forge-surface flex min-h-full flex-col">
         <Providers>
-          <SiteHeader />
-          <main className="flex-1 pb-20 md:pb-0">{children}</main>
-          <SiteFooter />
+          <main className="flex-1">{children}</main>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(org) }}
