@@ -27,7 +27,7 @@ export async function submitRFQAction(formData: FormData) {
   });
 
   if (!parsed.success) {
-    redirect("/contact?error=invalid-rfq-input");
+    redirect("/rfq?error=invalid-rfq-input");
   }
 
   const company = await findOrCreateCompany({
@@ -48,7 +48,7 @@ export async function submitRFQAction(formData: FormData) {
     select: { id: true },
   });
 
-  redirect(`/contact?quoteId=${encodeURIComponent(quote.id)}&mode=rfq`);
+  redirect(`/rfq?quoteId=${encodeURIComponent(quote.id)}&mode=rfq`);
 }
 
 const QuoteEstimateSchema = QuoteBaseSchema.extend({
@@ -73,7 +73,7 @@ export async function runAiQuoteGeneratorAction(
   });
 
   if (!parsed.success) {
-    redirect("/contact?error=invalid-ai-quote-input");
+    redirect("/rfq?error=invalid-ai-quote-input");
   }
 
   const company = await findOrCreateCompany({
@@ -92,7 +92,7 @@ export async function runAiQuoteGeneratorAction(
   });
 
   redirect(
-    `/contact?quoteId=${encodeURIComponent(result.quoteId)}&mode=ai`,
+    `/rfq?quoteId=${encodeURIComponent(result.quoteId)}&mode=ai`,
   );
 }
 

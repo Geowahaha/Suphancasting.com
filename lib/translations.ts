@@ -17,6 +17,11 @@ export const translations = {
       dashboard: "แดชบอร์ด",
       portfolio: "ผลงาน",
       contactUs: "ติดต่อเรา",
+      allDesigns: "ดีไซน์ทั้งหมด",
+    },
+    designsIndex: {
+      title: "หน้า Stitch ทั้งหมด",
+      sub: "เข้าชมโปรโตไทป์ UI ที่ส่งออกจาก Stitch — แต่ละลิงก์เปิดเป็นหน้าเต็ม",
     },
     footer: {
       tagline: "โรงหล่อเหล็ก / ชิ้นส่วนหล่อ OEM",
@@ -301,6 +306,11 @@ export const translations = {
       dashboard: "Dashboard",
       portfolio: "Work",
       contactUs: "Contact",
+      allDesigns: "All designs",
+    },
+    designsIndex: {
+      title: "Stitch design library",
+      sub: "Browse every exported UI prototype. Each opens full-screen in the site chrome.",
     },
     footer: {
       tagline: "Steel casting / OEM casting parts",
@@ -585,6 +595,11 @@ export const translations = {
       dashboard: "仪表盘",
       portfolio: "作品",
       contactUs: "联系我们",
+      allDesigns: "全部设计",
+    },
+    designsIndex: {
+      title: "设计稿目录",
+      sub: "浏览全部 Stitch 导出页面，每个链接以全站框架内全屏预览打开。",
     },
     footer: {
       tagline: "钢铸件 / OEM 铸造零件",

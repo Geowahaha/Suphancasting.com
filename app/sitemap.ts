@@ -1,5 +1,4 @@
-import { prisma } from "@/lib/db/prisma";
-import { staticBlogPosts } from "@/lib/content/blog";
+import { STITCH_PAGES } from "@/lib/stitch/manifest";
 
 function safeBaseUrl() {
   const url = process.env.NEXT_PUBLIC_SITE_URL ?? "https://suphancasting.com";
@@ -8,35 +7,27 @@ function safeBaseUrl() {
 
 export default async function sitemap() {
   const baseUrl = safeBaseUrl();
+  const now = new Date().toISOString();
 
   const staticRoutes = [
-    { url: `${baseUrl}/`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/products`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/promotions`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/about`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/contact`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/blog`, lastModified: new Date().toISOString() },
-  ];
-
-  const blogRoutes = staticBlogPosts.map((p) => ({
-    url: `${baseUrl}/blog/${p.slug}`,
-    lastModified: p.publishedAt ? new Date(p.publishedAt).toISOString() : new Date().toISOString(),
+    "/",
+    "/designs",
+    "/services",
+    "/rfq",
+    "/products",
+    "/promotions",
+    "/about",
+    "/contact",
+    "/blog",
+  ].map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: now,
   }));
 
-  let productRoutes: Array<{ url: string; lastModified: string }> = [];
-  try {
-    const products = await prisma.products.findMany({
-      select: { slug: true, updatedAt: true, createdAt: true },
-      take: 500,
-    });
-    productRoutes = products.map((p) => ({
-      url: `${baseUrl}/products/${p.slug}`,
-      lastModified: (p.updatedAt ?? p.createdAt).toISOString(),
-    }));
-  } catch {
-    productRoutes = [];
-  }
+  const designRoutes = STITCH_PAGES.map((p) => ({
+    url: `${baseUrl}/designs/${p.slug}`,
+    lastModified: now,
+  }));
 
-  return [...staticRoutes, ...blogRoutes, ...productRoutes];
+  return [...staticRoutes, ...designRoutes];
 }
-

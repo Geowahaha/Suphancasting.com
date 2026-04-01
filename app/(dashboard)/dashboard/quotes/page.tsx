@@ -69,7 +69,7 @@ export default async function DashboardQuotesPage() {
               </div>
             </div>
             <Link
-              href="/contact"
+              href="/rfq"
               className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 transition-colors"
             >
               {tr.dashboardQuotes.newRfq}

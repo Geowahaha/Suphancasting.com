@@ -16,7 +16,7 @@ export async function SiteFooter() {
   const year = new Date().getFullYear();
 
   const mapSrc =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495243.60195576795!2d99.8055694734375!3d14.474495800000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e3952f1e670415%3A0x1019234480e0900!2sSuphan%20Buri%2C%20Thailand!5e0!3m2!1sen!2sus!4v1710412345678!5m2!1sen!2sus";
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3865.3213722401542!2d100.17816574475148!3d14.350804150392461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e241004452e5a9%3A0xb32b522a55c34948!2sSuphan%20casting%20Co.%2Cltd.!5e0!3m2!1sen!2sus!4v1775020729048!5m2!1sen!2sus";
 
   return (
     <>
@@ -52,10 +52,26 @@ export async function SiteFooter() {
                 </li>
                 <li>
                   <Link
-                    href={withLang("/about", locale)}
+                    href={withLang("/designs", locale)}
+                    className="font-forge-headline text-xs tracking-wider text-[#2e4e4e] transition-opacity hover:text-[#ffb5a0]"
+                  >
+                    {tr.nav.allDesigns}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={withLang("/services", locale)}
                     className="font-forge-headline text-xs tracking-wider text-[#2e4e4e] transition-opacity hover:text-[#ffb5a0]"
                   >
                     {hm.flServices}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={withLang("/about", locale)}
+                    className="font-forge-headline text-xs tracking-wider text-[#2e4e4e] transition-opacity hover:text-[#ffb5a0]"
+                  >
+                    {tr.nav.about}
                   </Link>
                 </li>
                 <li>
@@ -123,15 +139,14 @@ export async function SiteFooter() {
             <h5 className="font-forge-headline text-xs font-bold uppercase tracking-wider text-[#ffb5a0]">
               {hm.footerLocation}
             </h5>
-            <div className="h-32 w-full overflow-hidden rounded border border-[#5d4038]/30 grayscale invert brightness-50 contrast-125">
+            <div className="h-56 w-full overflow-hidden rounded border border-[#5d4038]/30 sm:h-64 md:h-[280px]">
               <iframe
-                title="Map"
+                title="Suphan casting Co., Ltd. on Google Maps"
                 src={mapSrc}
-                width="100%"
-                height="100%"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="border-0"
+                allowFullScreen
+                className="h-full min-h-[200px] w-full border-0"
               />
             </div>
             <p className="font-forge-headline text-[10px] leading-tight tracking-wider text-[#2e4e4e]">
@@ -174,7 +189,7 @@ export async function SiteFooter() {
           </span>
         </Link>
         <Link
-          href={withLang("/contact#quote-tool", locale)}
+          href={withLang("/rfq#quote-tool", locale)}
           className="flex flex-col items-center justify-center text-[#2e4e4e]"
         >
           <span className="text-lg" aria-hidden>

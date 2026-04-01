@@ -36,9 +36,10 @@ export async function SiteHeader() {
 
   const nav = [
     { href: "/", label: tr.nav.home },
-    { href: "/about#services", label: tr.nav.services },
+    { href: "/designs", label: tr.nav.allDesigns },
+    { href: "/services", label: tr.nav.services },
     { href: "/products", label: tr.nav.portfolio },
-    { href: "/about#company", label: tr.nav.about },
+    { href: "/about", label: tr.nav.about },
     { href: "/contact", label: tr.nav.contactUs },
   ];
 
@@ -73,14 +74,14 @@ export async function SiteHeader() {
         <div className="ml-auto flex items-center gap-2 sm:gap-4">
           <LanguageSwitcher current={locale} variant="forge" />
           <Link
-            href={withLang("/products", locale)}
+            href={withLang("/designs", locale)}
             className="hidden rounded-md p-2 text-[#c4b5ab] transition-colors hover:bg-white/5 hover:text-[#ff5625] sm:inline-flex"
-            aria-label="Search products"
+            aria-label={tr.nav.allDesigns}
           >
             <SearchIcon className="h-5 w-5" />
           </Link>
           <Link
-            href={withLang("/contact#quote-tool", locale)}
+            href={withLang("/rfq#quote-tool", locale)}
             className="font-forge-headline shrink-0 rounded bg-[#ff5625] px-3 py-2 text-[10px] font-bold uppercase tracking-tight text-white shadow-md shadow-[#ff5625]/20 transition hover:bg-[#e04d20] sm:px-5 sm:text-xs sm:tracking-tighter"
           >
             {tr.nav.getQuote}
