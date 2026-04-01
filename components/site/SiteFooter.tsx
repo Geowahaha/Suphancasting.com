@@ -52,14 +52,6 @@ export async function SiteFooter() {
                 </li>
                 <li>
                   <Link
-                    href={withLang("/designs", locale)}
-                    className="font-forge-headline text-xs tracking-wider text-[#2e4e4e] transition-opacity hover:text-[#ffb5a0]"
-                  >
-                    {tr.nav.allDesigns}
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     href={withLang("/services", locale)}
                     className="font-forge-headline text-xs tracking-wider text-[#2e4e4e] transition-opacity hover:text-[#ffb5a0]"
                   >

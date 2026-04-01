@@ -36,7 +36,6 @@ export async function SiteHeader() {
 
   const nav = [
     { href: "/", label: tr.nav.home },
-    { href: "/designs", label: tr.nav.allDesigns },
     { href: "/services", label: tr.nav.services },
     { href: "/products", label: tr.nav.portfolio },
     { href: "/about", label: tr.nav.about },
@@ -74,9 +73,9 @@ export async function SiteHeader() {
         <div className="ml-auto flex items-center gap-2 sm:gap-4">
           <LanguageSwitcher current={locale} variant="forge" />
           <Link
-            href={withLang("/designs", locale)}
+            href={withLang("/products", locale)}
             className="hidden rounded-md p-2 text-[#c4b5ab] transition-colors hover:bg-white/5 hover:text-[#ff5625] sm:inline-flex"
-            aria-label={tr.nav.allDesigns}
+            aria-label={tr.nav.portfolio}
           >
             <SearchIcon className="h-5 w-5" />
           </Link>
