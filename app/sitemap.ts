@@ -12,6 +12,7 @@ export default async function sitemap() {
   const staticRoutes = [
     { url: `${baseUrl}/`, lastModified: new Date().toISOString() },
     { url: `${baseUrl}/products`, lastModified: new Date().toISOString() },
+    { url: `${baseUrl}/promotions`, lastModified: new Date().toISOString() },
     { url: `${baseUrl}/about`, lastModified: new Date().toISOString() },
     { url: `${baseUrl}/contact`, lastModified: new Date().toISOString() },
     { url: `${baseUrl}/blog`, lastModified: new Date().toISOString() },

@@ -40,6 +40,12 @@ enum UserRole {
   CUSTOMER
 }
 
+enum MediaApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 model Users {
   id            String          @id @default(uuid()) @db.Uuid
   clerkUserId   String          @unique
@@ -53,6 +59,7 @@ model Users {
   aiRequests    AI_Requests[]
   uploadedFiles Uploaded_Files[]
   costAuditLogs CostAuditLogs[]
+  approvedMedia MediaAssets[]
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
 
@@ -323,5 +330,39 @@ model Uploaded_Files {
   @@index([quoteId])
   @@index([aiRequestId])
   @@map("Uploaded_Files")
+}
+
+model MediaAssets {
+  id            String   @id @default(uuid()) @db.Uuid
+  sourceType    String
+  mediaType     String
+  title         String
+  description   String?
+  mediaUrl      String
+  thumbnailUrl  String?
+  sourcePageUrl String   @unique
+  sourceName    String?
+  license       String?
+  author        String?
+  tags          Json?
+  hotScore      Float    @default(0)
+  approvalStatus MediaApprovalStatus @default(PENDING)
+  approvedAt    DateTime?
+  approvedByUserId String? @db.Uuid
+  rejectReason  String?
+  viewCount     Int      @default(0)
+  manualBoost   Float    @default(0)
+  publishedAt   DateTime?
+  importedAt    DateTime @default(now())
+  isActive      Boolean  @default(true)
+
+  approvedBy    Users?   @relation(fields: [approvedByUserId], references: [id])
+
+  @@index([sourceType])
+  @@index([mediaType])
+  @@index([approvalStatus])
+  @@index([hotScore])
+  @@index([importedAt])
+  @@map("MediaAssets")
 }
 

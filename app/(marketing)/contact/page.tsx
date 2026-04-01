@@ -45,7 +45,7 @@ export default async function ContactPage({
   }
 
   return (
-    <div className="metal-bg">
+    <div className="forge-surface min-h-full">
       <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="mb-8 flex flex-col gap-3">
           <div className="text-xs font-semibold tracking-widest text-muted-2 uppercase">
@@ -171,7 +171,7 @@ export default async function ContactPage({
           </Card>
         </div>
 
-        <Card className="mt-8">
+        <Card className="mt-8" id="quote-tool">
           <CardHeader>
             <div className="text-lg font-semibold">
               {isThai

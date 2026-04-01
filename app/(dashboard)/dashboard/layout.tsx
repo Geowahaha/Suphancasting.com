@@ -16,7 +16,7 @@ export default async function DashboardLayout({
   const tr = t(locale);
 
   return (
-    <div className="metal-bg">
+    <div className="forge-surface min-h-full">
       <Container className="py-8">
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -51,6 +51,12 @@ export default async function DashboardLayout({
               className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 transition-colors"
             >
               {tr.dashboard.costing}
+            </Link>
+            <Link
+              href="/dashboard/media"
+              className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 transition-colors"
+            >
+              {tr.dashboard.media}
             </Link>
           </nav>
         </div>

@@ -44,7 +44,7 @@ export default async function BlogPostPage({
     `/blog/${post.slug}`;
 
   return (
-    <div className="metal-bg">
+    <div className="forge-surface min-h-full">
       <Container className="py-10">
         <div className="mb-8">
           <Badge variant="default">{tr.blogDetail.hub}</Badge>

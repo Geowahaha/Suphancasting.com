@@ -2,57 +2,200 @@ import Link from "next/link";
 import { getRequestLocale } from "@/lib/i18n";
 import { t } from "@/lib/translations";
 
+function withLang(href: string, locale: string) {
+  const [path, hash] = href.split("#");
+  const q = path.includes("?") ? "&" : "?";
+  const withQ = `${path}${q}lang=${locale}`;
+  return hash ? `${withQ}#${hash}` : withQ;
+}
+
 export async function SiteFooter() {
   const locale = await getRequestLocale();
   const tr = t(locale);
-  const links = [
-    { href: "/products", label: tr.nav.products },
-    { href: "/about", label: tr.nav.about },
-    { href: "/contact", label: tr.nav.contact },
-    { href: "/blog", label: tr.nav.blog },
-    { href: "/dashboard", label: tr.nav.portal },
-  ];
+  const hm = tr.homeMaster;
   const year = new Date().getFullYear();
+
+  const mapSrc =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495243.60195576795!2d99.8055694734375!3d14.474495800000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e3952f1e670415%3A0x1019234480e0900!2sSuphan%20Buri%2C%20Thailand!5e0!3m2!1sen!2sus!4v1710412345678!5m2!1sen!2sus";
+
   return (
-    <footer className="border-t border-white/10 bg-[#0a0a0a]/60">
-      <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-          <div>
-            <div className="flex items-center gap-3 font-mono">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+    <>
+      <footer className="w-full bg-[#0e0e0e] px-8 py-12 pb-28 md:pb-12">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-4">
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="rounded-sm bg-[#FF4500] px-2 py-1 font-forge-headline text-xl font-black leading-none text-white">
                 SC
+              </div>
+              <span className="font-forge-headline text-xl font-bold uppercase text-[#ff5625]">
+                Suphan Casting
               </span>
+            </div>
+            <p className="max-w-xs font-forge-headline text-xs leading-relaxed tracking-wider text-[#2e4e4e]">
+              {hm.footerBlurb}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8">
+            <div>
+              <h5 className="mb-6 font-forge-headline text-xs font-bold uppercase tracking-wider text-[#ffb5a0]">
+                {hm.footerQuick}
+              </h5>
+              <ul className="space-y-3">
+                <li>
+                  <Link
+                    href={withLang("/", locale)}
+                    className="font-forge-headline text-xs tracking-wider text-[#2e4e4e] transition-opacity hover:text-[#ffb5a0]"
+                  >
+                    {hm.flHome}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={withLang("/about", locale)}
+                    className="font-forge-headline text-xs tracking-wider text-[#2e4e4e] transition-opacity hover:text-[#ffb5a0]"
+                  >
+                    {hm.flServices}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={withLang("/products", locale)}
+                    className="font-forge-headline text-xs tracking-wider text-[#2e4e4e] transition-opacity hover:text-[#ffb5a0]"
+                  >
+                    {hm.flPortfolio}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={withLang("/dashboard", locale)}
+                    className="font-forge-headline text-xs tracking-wider text-[#2e4e4e] transition-opacity hover:text-[#ffb5a0]"
+                  >
+                    {hm.flAdmin}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="mb-6 font-forge-headline text-xs font-bold uppercase tracking-wider text-[#ffb5a0]">
+                {hm.footerLegal}
+              </h5>
+              <ul className="space-y-3">
+                <li>
+                  <span className="cursor-not-allowed font-forge-headline text-xs tracking-wider text-[#2e4e4e] opacity-70">
+                    {hm.flPrivacy}
+                  </span>
+                </li>
+                <li>
+                  <span className="cursor-not-allowed font-forge-headline text-xs tracking-wider text-[#2e4e4e] opacity-70">
+                    {hm.flTerms}
+                  </span>
+                </li>
+                <li>
+                  <span className="cursor-not-allowed font-forge-headline text-xs tracking-wider text-[#2e4e4e] opacity-70">
+                    {hm.flIso}
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <h5 className="font-forge-headline text-xs font-bold uppercase tracking-wider text-[#ffb5a0]">
+              {hm.footerContact}
+            </h5>
+            <div className="space-y-4 text-xs font-forge-headline tracking-wider text-[#2e4e4e]">
+              <div>{hm.contactName}</div>
               <div>
-                <div className="text-sm font-semibold">Suphancasting.com</div>
-                <div className="text-xs text-muted-2">
-                  {tr.footer.tagline}
-                </div>
+                <a href="tel:0986362356" className="hover:text-[#ffb5a0]">
+                  098 636 2356
+                </a>
+              </div>
+              <div>
+                <a href="mailto:cnwmax@gmail.com" className="hover:text-[#ffb5a0]">
+                  cnwmax@gmail.com
+                </a>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-sm text-muted hover:text-foreground transition-colors"
-              >
-                {l.label}
-              </Link>
-            ))}
+
+          <div className="space-y-6">
+            <h5 className="font-forge-headline text-xs font-bold uppercase tracking-wider text-[#ffb5a0]">
+              {hm.footerLocation}
+            </h5>
+            <div className="h-32 w-full overflow-hidden rounded border border-[#5d4038]/30 grayscale invert brightness-50 contrast-125">
+              <iframe
+                title="Map"
+                src={mapSrc}
+                width="100%"
+                height="100%"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="border-0"
+              />
+            </div>
+            <p className="font-forge-headline text-[10px] leading-tight tracking-wider text-[#2e4e4e]">
+              {hm.locationLine}
+            </p>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-2 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-xs text-muted-2">
-            © {year} Suphancasting. {tr.footer.rights}
-          </div>
-          <div className="text-xs text-muted-2">
-            {tr.footer.built}
-          </div>
+        <div className="mx-auto mt-16 max-w-7xl border-t border-[#5d4038]/15 pt-8 text-center">
+          <p className="font-forge-headline text-xs tracking-wider text-[#2e4e4e]">
+            © {year} Suphan Casting Industrial. {tr.footer.rights}
+          </p>
         </div>
-      </div>
-    </footer>
+      </footer>
+
+      <nav
+        className="fixed bottom-0 left-0 z-50 flex w-full justify-around border-t border-[#5d4038]/15 bg-[#0e0e0e]/80 px-4 py-3 shadow-[0_-10px_30px_rgba(0,0,0,0.8)] backdrop-blur-lg md:hidden"
+        aria-label="Mobile"
+      >
+        <Link
+          href={withLang("/", locale)}
+          className="flex flex-col items-center justify-center text-[#ff5625]"
+        >
+          <span className="text-lg" aria-hidden>
+            ⌂
+          </span>
+          <span className="font-forge-headline text-[10px] font-bold uppercase tracking-tighter">
+            {hm.mobileHome}
+          </span>
+        </Link>
+        <Link
+          href={withLang("/products", locale)}
+          className="flex flex-col items-center justify-center text-[#2e4e4e]"
+        >
+          <span className="text-lg" aria-hidden>
+            ⚙
+          </span>
+          <span className="font-forge-headline text-[10px] font-bold uppercase tracking-tighter">
+            {hm.mobileProducts}
+          </span>
+        </Link>
+        <Link
+          href={withLang("/contact#quote-tool", locale)}
+          className="flex flex-col items-center justify-center text-[#2e4e4e]"
+        >
+          <span className="text-lg" aria-hidden>
+            ✎
+          </span>
+          <span className="font-forge-headline text-[10px] font-bold uppercase tracking-tighter">
+            {hm.mobileTools}
+          </span>
+        </Link>
+        <Link
+          href={withLang("/dashboard", locale)}
+          className="flex flex-col items-center justify-center text-[#2e4e4e]"
+        >
+          <span className="text-lg" aria-hidden>
+            ⚙
+          </span>
+          <span className="font-forge-headline text-[10px] font-bold uppercase tracking-tighter">
+            {hm.mobileAdmin}
+          </span>
+        </Link>
+      </nav>
+    </>
   );
 }
-

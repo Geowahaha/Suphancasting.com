@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { getRequestLocale } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n-shared";
 import { t } from "@/lib/translations";
+import { getProductImageSrc } from "@/lib/media/productImages";
 
 export async function generateMetadata({
   params,
@@ -157,19 +158,23 @@ export default async function ProductDetailPage({
     `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://suphancasting.com"}` +
     `/products/${product.slug}`;
   const faq = getStaticFaq(locale, product.name, product.category.name);
+  const productImageSrc = await getProductImageSrc({
+    slug: product.slug,
+    name: product.name,
+  });
 
   const productLd = buildProductJsonLd({
     name: product.name,
     description: product.seoDescription ?? product.description ?? undefined,
     sku: product.sku,
     url: productUrl,
-    imageUrl: null,
+    imageUrl: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://suphancasting.com"}${productImageSrc}`,
   });
 
   const faqLd = buildFAQJsonLd({ mainEntity: faq.map((f) => ({ q: f.q, a: f.a })) });
 
   return (
-    <div className="metal-bg">
+    <div className="forge-surface min-h-full">
       <Container className="py-10">
         <div className="mb-8">
           <div className="flex flex-wrap items-center gap-2">
@@ -182,6 +187,16 @@ export default async function ProductDetailPage({
           <p className="mt-3 text-muted max-w-3xl">
             {product.seoDescription ?? product.description ?? tr.productDetail.noDesc}
           </p>
+          <div className="mt-5 max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <div className="aspect-[16/9] w-full">
+              <img
+                src={productImageSrc}
+                alt={product.name}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">

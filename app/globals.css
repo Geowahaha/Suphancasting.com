@@ -27,15 +27,39 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
-    Arial, sans-serif;
+  font-family: var(--font-noto-thai), var(--font-work-sans), var(--font-geist-sans), system-ui,
+    -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
 }
 
-/* Metallic industrial background */
-.metal-bg {
-  background-image: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.10), transparent 45%),
-    radial-gradient(circle at 90% 30%, rgba(255,255,255,0.08), transparent 55%),
-    linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+/* Master prototype (Stitch) — editorial industrial */
+.forge-surface {
+  background-color: #131313;
+  color: #e5e2e1;
+}
+
+.editorial-title {
+  font-family: var(--font-space-grotesk), var(--font-noto-thai), system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.forge-glass-panel {
+  background: rgba(53, 53, 52, 0.6);
+  backdrop-filter: blur(20px);
+}
+
+.text-glow-soft {
+  text-shadow: 0 0 15px rgba(255, 181, 160, 0.3);
+}
+
+.font-forge-headline {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+.font-forge-body {
+  font-family: var(--font-noto-thai), var(--font-work-sans), system-ui, sans-serif;
 }
 
 .text-muted {
