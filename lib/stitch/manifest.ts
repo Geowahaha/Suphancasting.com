@@ -11,6 +11,7 @@ function titleFromSlug(slug: string): string {
 const SLUGS = [
   "admin",
   "contact-technical-support",
+  "suphancasting-ai-home",
   "home-contact-updated",
   "home-footer-with-contact-map",
   "home-footer-with-social-media-map",
@@ -63,7 +64,7 @@ export function isStitchSlug(slug: string): boolean {
 
 /** Marketing routes → primary Stitch export slugs */
 export const STITCH_ROUTE_SLUGS = {
-  home: "suphancasting-home-expertise-focus",
+  home: "suphancasting-ai-home",
   about: "location-facilities",
   services: "sand-casting-primary-service-detail",
   portfolio: "product-portfolio-gallery",
