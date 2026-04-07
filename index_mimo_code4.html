@@ -571,7 +571,7 @@ body{background-color:#131313;color:#e5e2e1;font-family:'Noto Sans Thai','Work S
         <option value="die_casting">Die Casting</option>
         <option value="factory_tour">Factory Tour</option>
       </select>
-      <button onclick="runAgent('video_script')" class="w-full bg-primary hover:bg-primary-container text-white font-bold py-3 rounded uppercase tracking-widest font-headline text-xs transition-all">Generate Video Script</button>
+      <button onclick="runAgent('videoscript')" class="w-full bg-primary hover:bg-primary-container text-white font-bold py-3 rounded uppercase tracking-widest font-headline text-xs transition-all">Generate Video Script</button>
       <div id="videoScriptResult" class="mt-3 bg-surface-container-highest rounded p-3 text-[11px] text-on-surface-variant font-mono max-h-48 overflow-y-auto hidden"></div>
     </div>
     
@@ -798,7 +798,7 @@ async function testAI() {
   resultDiv.textContent = 'Testing AI connection...';
   addLog('Testing AI connection...');
   try {
-    const res = await fetch('/api/multi-agent/video_script', {
+    const res = await fetch('/api/multi-agent/videoscript', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ topic: 'test' })
@@ -819,12 +819,12 @@ async function testAI() {
 
 async function runAgent(type) {
   const resultIds = {
-    'video_script': 'videoScriptResult',
+    'videoscript': 'videoScriptResult',
     'blog_post': 'blogPostResult',
     'image_prompt': 'imagePromptResult'
   };
   const topicIds = {
-    'video_script': 'videoTopic',
+    'videoscript': 'videoTopic',
     'blog_post': 'blogTopic',
     'image_prompt': 'imageTopic'
   };
@@ -845,7 +845,7 @@ async function runAgent(type) {
     });
     const data = await res.json();
     if (data.success) {
-      const content = type === 'video_script' ? data.script : type === 'blog_post' ? data.content : data.prompt;
+      const content = type === 'videoscript' ? data.script : type === 'blog_post' ? data.content : data.prompt;
       resultDiv.textContent = content.substring(0, 500) + (content.length > 500 ? '...' : '');
       addLog(`${type}: SUCCESS - Generated ${content.length} chars`);
     } else {
