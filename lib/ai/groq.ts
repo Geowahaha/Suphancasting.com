@@ -22,7 +22,7 @@ export interface GroqResponse {
 }
 
 export async function callGroq(req: GroqRequest): Promise<GroqResponse> {
-  const apiKey = process.env.GROQ_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY || (process.env as Record<string, string | undefined>).Groq_api_key;
   
   if (!apiKey) {
     throw new Error('GROQ_API_KEY is not configured');
