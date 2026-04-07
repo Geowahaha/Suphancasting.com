@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
     const body = await request.json();
     const topic = body.topic || 'sand_casting';
-    const model = body.model || 'llama-3.1-70b-versatile';
+    const model = body.model || 'llama-3.3-70b-versatile';
     const prompt = TOPIC_SCRIPTS[topic] || TOPIC_SCRIPTS.sand_casting;
 
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {

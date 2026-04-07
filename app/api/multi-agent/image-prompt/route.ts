@@ -27,7 +27,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const topic = body.topic || 'casting_process';
-    const model = body.model || 'llama-3.1-70b-versatile';
+    const model = body.model || 'llama-3.3-70b-versatile';
     const maxTokens = body.maxTokens || 1024;
 
     const prompt = IMAGE_TOPICS[topic] || IMAGE_TOPICS.casting_process;
