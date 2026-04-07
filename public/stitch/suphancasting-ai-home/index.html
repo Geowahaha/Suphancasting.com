@@ -774,7 +774,7 @@ async function checkAIStatus() {
   badge.textContent = 'Checking...';
   badge.className = 'px-3 py-1 bg-surface-container-highest rounded-full text-[10px] font-bold uppercase tracking-wider text-outline-variant';
   try {
-    const res = await fetch('/api/multi-agent/status');
+    const res = await fetch('/api/multi-agent/ai-status');
     const data = await res.json();
     if (data.success) {
       badge.textContent = 'Connected';

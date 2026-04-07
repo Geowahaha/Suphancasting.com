@@ -1,21 +1,27 @@
 import { NextResponse } from 'next/server';
-import { callGroq } from '@/lib/ai/groq';
 
-const IMAGE_SYSTEM_PROMPT = `You are a professional image prompt generator for Suphancasting, a precision metal casting factory in Thailand (since 1988).
-Generate detailed prompts for AI image generators (Midjourney, DALL-E, Stable Diffusion) about metal casting.
-Include:
-- Subject description
-- Style (photorealistic, industrial photography)
-- Lighting details
-- Composition notes
-Format as JSON with fields: prompt, negativePrompt, style, aspectRatio, keywords`;
+const IMAGE_SYSTEM_PROMPT = `You are an image prompt generator for Suphancasting metal casting factory. Generate detailed prompts for AI image generators about metal casting.`;
 
-const IMAGE_TOPICS = {
-  casting_process: 'Generate an image prompt showing the metal casting process - molten metal being poured into a mold.',
-  finished_parts: 'Create a prompt for high-quality finished metal casting parts with precise details.',
-  factory_equipment: 'Generate a prompt for industrial foundry equipment - furnaces, cranes, and casting machinery.',
-  quality_inspection: 'Create a prompt showing quality control inspection of metal castings in a modern lab setting.'
+const IMAGE_TOPICS: Record<string, string> = {
+  casting_process: 'Generate an image prompt showing metal casting process.',
+  finished_parts: 'Create a prompt for high quality finished metal casting parts.',
+  factory_equipment: 'Generate a prompt for industrial foundry equipment.',
+  quality_inspection: 'Create a prompt showing quality control inspection.'
 };
+
+async function callGroq(model: string, messages: Array<{ role: string; content: string }>, max_tokens: number) {
+  const apiKey = process.env.GROQ_API_KEY;
+  if (!apiKey) throw new Error('GROQ_API_KEY not found');
+  
+  const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model, messages, max_tokens }),
+  });
+  
+  if (!response.ok) throw new Error(`Groq error: ${response.status}`);
+  return response.json();
+}
 
 export async function POST(request: Request) {
   try {
@@ -24,30 +30,20 @@ export async function POST(request: Request) {
     const model = body.model || 'llama-3.1-70b-versatile';
     const maxTokens = body.maxTokens || 1024;
 
-    const prompt = IMAGE_TOPICS[topic as keyof typeof IMAGE_TOPICS] || IMAGE_TOPICS.casting_process;
+    const prompt = IMAGE_TOPICS[topic] || IMAGE_TOPICS.casting_process;
 
-    const response = await callGroq({
-      model,
-      messages: [
-        { role: 'system', content: IMAGE_SYSTEM_PROMPT },
-        { role: 'user', content: prompt }
-      ],
-      max_tokens: maxTokens,
-    });
-
-    const prompt_text = response.choices[0]?.message?.content || 'No prompt generated';
+    const response = await callGroq(model, [
+      { role: 'system', content: IMAGE_SYSTEM_PROMPT },
+      { role: 'user', content: prompt }
+    ], maxTokens);
 
     return NextResponse.json({
       success: true,
-      prompt: prompt_text,
+      prompt: response.choices?.[0]?.message?.content || 'No prompt generated',
       model: response.model,
-      usage: response.usage,
     });
   } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    return NextResponse.json({
-      success: false,
-      error: message,
-    }, { status: 500 });
+    return NextResponse.json({ success: false, error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
   }
+}
 }
