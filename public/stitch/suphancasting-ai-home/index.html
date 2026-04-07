@@ -4,11 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Suphancasting — Professional OEM Casting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Work+Sans:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<style>
-.tailwind{all:initial;position:fixed;pointer-events:none;z-index:999999;top:0;left:0;right:0;height:2px;background:#ff5625;transform:scaleX(0);transform-origin:left}</style>
-<script>var _csp=document.currentScript?document.currentScript:document.querySelector('.tailwind');var tailwind=document.createElement('script');tailwind.src='https://cdn.tailwindcss.com?plugins=forms,container-queries';tailwind.defer=true;_csp.parentNode.insertBefore(tailwind,_csp.nextSibling);</script>
 <script>
 tailwind.config={
   darkMode:"class",theme:{extend:{
@@ -43,7 +41,7 @@ tailwind.config={
     "body":["Work Sans","Noto Sans Thai","sans-serif"]
   },
   borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"}
- }}}
+}}}
 </script>
 <style>
 body{background-color:#131313;color:#e5e2e1;font-family:'Noto Sans Thai','Work Sans',sans-serif}
@@ -325,6 +323,29 @@ body{background-color:#131313;color:#e5e2e1;font-family:'Noto Sans Thai','Work S
           <span class="text-[10px] px-2 py-1 border border-outline-variant/30 rounded text-outline-variant font-headline uppercase">GIF/Video</span>
         </div>
       </div>
+    </div>
+    <div class="glass-panel p-8 rounded-lg border border-outline-variant/20">
+      <h3 class="font-headline text-lg font-bold uppercase tracking-wider mb-6 text-center" data-i="arch_t">Agent Architecture</h3>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+        <div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant/30 min-w-[140px]">
+          <span class="material-symbols-outlined text-primary text-2xl mb-2 block">smart_toy</span>
+          <p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="arch_o">Orchestrator</p>
+          <p class="text-[10px] text-outline-variant mt-1" data-i="arch_od">จัดสรรงาน</p>
+        </div>
+        <span class="material-symbols-outlined text-outline-variant text-2xl hidden md:block">arrow_forward</span>
+        <div class="flex flex-col gap-3">
+          <div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 flex items-center gap-3"><span class="material-symbols-outlined text-primary text-lg">videocam</span><p class="font-headline text-xs uppercase tracking-wider" data-i="arch_v">Video Agent</p></div>
+          <div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-lg">edit_note</span><p class="font-headline text-xs uppercase tracking-wider" data-i="arch_c">Content Agent</p></div>
+          <div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 flex items-center gap-3"><span class="material-symbols-outlined text-tertiary text-lg">photo_library</span><p class="font-headline text-xs uppercase tracking-wider" data-i="arch_g">Gallery Agent</p></div>
+        </div>
+        <span class="material-symbols-outlined text-outline-variant text-2xl hidden md:block">arrow_forward</span>
+        <div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant/30 min-w-[140px]">
+          <span class="material-symbols-outlined text-primary text-2xl mb-2 block">language</span>
+          <p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="arch_w">Web Output</p>
+          <p class="text-[10px] text-outline-variant mt-1" data-i="arch_wd">YouTube + หน้าเว็บ</p>
+        </div>
+      </div>
+      <p class="text-center text-[11px] text-outline-variant mt-6 noto-sans-thai" data-i="arch_r">อ้างอิงสถาปัตยกรรมจาก: <a href="https://github.com/Geowahaha/open-multi-agent" target="_blank" rel="noopener" class="text-primary hover:underline">github.com/Geowahaha/open-multi-agent</a></p>
     </div>
   </div>
 </section>
@@ -612,7 +633,7 @@ body{background-color:#131313;color:#e5e2e1;font-family:'Noto Sans Thai','Work S
         <div>
           <label class="font-headline text-[10px] uppercase tracking-widest text-outline-variant block mb-1">Groq Model</label>
           <select id="groqModel" class="w-full bg-surface-container-highest border border-outline-variant/30 rounded px-3 py-2 text-on-surface text-xs focus:border-primary outline-none">
-            <option value="llama-3.1-70b-versatile">Llama 3.1 70B (Fast)</option>
+            <option value="llama-3.3-70b-versatile">Llama 3.3 70B (Fast)</option>
             <option value="mixtral-8x7b-32768">Mixtral 8x7B</option>
             <option value="llama-3.1-8b-instant">Llama 3.1 8B (Budget)</option>
           </select>
