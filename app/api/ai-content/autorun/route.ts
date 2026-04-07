@@ -180,17 +180,22 @@ export async function POST(request: Request) {
 }
 
 export async function GET(request: Request) {
+  console.log('Auto-run endpoint called');
   const { searchParams } = new URL(request.url);
   const secret = searchParams.get('secret');
+
+  console.log('Secret:', secret ? 'provided' : 'not provided');
 
   // Simple security check
   if (secret !== 'suphan-ai-auto-run-2026') {
     return NextResponse.json({
       success: false,
-      error: 'Unauthorized'
+      error: 'Unauthorized - check secret key'
     }, { status: 401 });
   }
 
+  console.log('Starting auto-run...');
+  
   // Trigger auto-run via POST
   return POST(request);
 }
