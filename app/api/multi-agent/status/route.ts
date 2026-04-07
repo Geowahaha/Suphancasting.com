@@ -7,6 +7,9 @@ export async function GET() {
       return NextResponse.json({ success: false, error: 'API key not found' }, { status: 500 });
     }
 
+    console.log('Testing Groq API...');
+    console.log('API Key length:', apiKey.length);
+
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -20,8 +23,11 @@ export async function GET() {
       }),
     });
 
+    console.log('Response status:', response.status);
+
     if (!response.ok) {
       const errorData = await response.text();
+      console.log('Error response:', errorData);
       return NextResponse.json({ 
         success: false, 
         error: `Groq API error: ${response.status}`,
@@ -34,10 +40,10 @@ export async function GET() {
       success: true, 
       status: 'connected',
       model: data.model,
-      response: data.choices?.[0]?.message?.content
     });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Unknown error';
+    console.log('Catch error:', message);
     return NextResponse.json({ success: false, error: message }, { status: 500 });
   }
 }
