@@ -1,13 +1,27 @@
 import { NextResponse } from 'next/server';
+import { callGroq } from '@/lib/ai/groq';
 
 export async function GET() {
-  return NextResponse.json({
-    success: true,
-    status: 'testing',
-    message: 'API is working',
-    envCheck: {
-      GROQ_API_KEY: !!process.env.GROQ_API_KEY,
-      GROQ_MODEL: process.env.GROQ_MODEL || 'not set',
-    }
-  });
+  try {
+    const response = await callGroq({
+      model: 'llama-3.1-70b-versatile',
+      messages: [{ role: 'user', content: 'Reply with exactly: "OK"' }],
+      max_tokens: 10,
+    });
+
+    return NextResponse.json({
+      success: true,
+      status: 'connected',
+      model: response.model,
+      usage: response.usage,
+    });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Groq API Error:', message);
+    return NextResponse.json({
+      success: false,
+      status: 'error',
+      error: message,
+    }, { status: 500 });
+  }
 }
