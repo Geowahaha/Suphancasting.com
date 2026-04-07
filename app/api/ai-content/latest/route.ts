@@ -4,51 +4,66 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://wqhnngaygjeclqujtrkc.supabase.co';
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
+if (!supabaseKey) {
+  console.error('NEXT_PUBLIC_SUPABASE_ANON_KEY is not set');
+}
+
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function GET() {
   try {
-    const { data: blog, error: blogError } = await supabase
+    let blog = null, image = null, video = null;
+    let blogError = null, imageError = null, videoError = null;
+
+    const blogResult = await supabase
       .from('ai_content')
       .select('*')
       .eq('type', 'blog-post')
       .eq('published', true)
       .order('created_at', { ascending: false })
-      .limit(1)
-      .single();
+      .limit(1);
+    
+    if (blogResult.data && blogResult.data.length > 0) {
+      blog = blogResult.data[0];
+    }
+    blogError = blogResult.error;
 
-    const { data: image, error: imageError } = await supabase
+    const imageResult = await supabase
       .from('ai_content')
       .select('*')
       .eq('type', 'image-prompt')
       .eq('published', true)
       .order('created_at', { ascending: false })
-      .limit(1)
-      .single();
+      .limit(1);
+    
+    if (imageResult.data && imageResult.data.length > 0) {
+      image = imageResult.data[0];
+    }
+    imageError = imageResult.error;
 
-    const { data: video, error: videoError } = await supabase
+    const videoResult = await supabase
       .from('ai_content')
       .select('*')
       .eq('type', 'video-script')
       .eq('published', true)
       .order('created_at', { ascending: false })
-      .limit(1)
-      .single();
+      .limit(1);
+    
+    if (videoResult.data && videoResult.data.length > 0) {
+      video = videoResult.data[0];
+    }
+    videoError = videoResult.error;
 
-    if (blogError && imageError && videoError) {
-      console.error('All queries failed:', { blogError, imageError, videoError });
-      return NextResponse.json({
-        success: false,
-        error: 'Failed to fetch content'
-      }, { status: 500 });
+    if (blogError || imageError || videoError) {
+      console.error('Query errors:', { blogError, imageError, videoError });
     }
 
     return NextResponse.json({
       success: true,
       latest: {
-        blogPost: blog || null,
-        imagePrompt: image || null,
-        videoScript: video || null
+        blogPost: blog,
+        imagePrompt: image,
+        videoScript: video
       }
     });
   } catch (error) {
