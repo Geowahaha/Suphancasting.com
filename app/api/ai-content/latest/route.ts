@@ -19,7 +19,6 @@ export async function GET() {
       .from('ai_content')
       .select('*')
       .eq('type', 'blog-post')
-      .eq('published', true)
       .order('created_at', { ascending: false })
       .limit(1);
     
@@ -32,7 +31,6 @@ export async function GET() {
       .from('ai_content')
       .select('*')
       .eq('type', 'image-prompt')
-      .eq('published', true)
       .order('created_at', { ascending: false })
       .limit(1);
     
@@ -45,7 +43,6 @@ export async function GET() {
       .from('ai_content')
       .select('*')
       .eq('type', 'video-script')
-      .eq('published', true)
       .order('created_at', { ascending: false })
       .limit(1);
     
