@@ -350,6 +350,71 @@ body{background-color:#131313;color:#e5e2e1;font-family:'Noto Sans Thai','Work S
   </div>
 </section>
 
+<!-- AI GENERATED CONTENT (Auto-Updated) -->
+<section class="py-16 bg-surface-container-lowest" id="ai-content">
+  <div class="max-w-screen-2xl mx-auto px-8">
+    <div class="mb-8 flex items-center justify-between">
+      <div>
+        <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai">// AI Generated</p>
+        <h2 class="editorial-title text-3xl md:text-4xl text-on-surface">เนื้อหาล่าสุด <span class="text-primary italic">จาก AI</span></h2>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="pulse-dot"></div>
+        <span class="text-[10px] text-outline-variant font-headline">อัปเดตอัตโนมัติ</span>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Latest Blog Post -->
+      <div class="bg-surface-container-low rounded-lg p-6 border border-outline-variant/20">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-secondary text-xl">edit_note</span>
+          <h3 class="font-headline text-sm font-bold uppercase tracking-wider text-secondary">Blog Post ล่าสุด</h3>
+        </div>
+        <div id="latestBlogContent" class="hidden">
+          <!-- Content will be injected by JavaScript -->
+        </div>
+        <div id="latestBlogPlaceholder">
+          <p class="text-[11px] text-outline-variant italic">ยังไม่มีเนื้อหา... คลิก ⚙️ เพื่อสร้าง</p>
+        </div>
+      </div>
+      
+      <!-- Latest Image Prompt -->
+      <div class="bg-surface-container-low rounded-lg p-6 border border-outline-variant/20">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-tertiary text-xl">photo_library</span>
+          <h3 class="font-headline text-sm font-bold uppercase tracking-wider text-tertiary">Image Prompt ล่าสุด</h3>
+        </div>
+        <div id="latestImageContent" class="hidden">
+          <!-- Content will be injected by JavaScript -->
+        </div>
+        <div id="latestImagePlaceholder">
+          <p class="text-[11px] text-outline-variant italic">ยังไม่มีเนื้อหา... คลิก ⚙️ เพื่อสร้าง</p>
+        </div>
+      </div>
+      
+      <!-- Latest Video Script -->
+      <div class="bg-surface-container-low rounded-lg p-6 border border-outline-variant/20">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-xl">videocam</span>
+          <h3 class="font-headline text-sm font-bold uppercase tracking-wider text-primary">Video Script ล่าสุด</h3>
+        </div>
+        <div id="latestVideoContent" class="hidden">
+          <!-- Content will be injected by JavaScript -->
+        </div>
+        <div id="latestVideoPlaceholder">
+          <p class="text-[11px] text-outline-variant italic">ยังไม่มีเนื้อหา... คลิก ⚙️ เพื่อสร้าง</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-6 glass-panel p-3 rounded-lg border border-outline-variant/20 flex items-center gap-3">
+      <div class="pulse-dot"></div>
+      <p class="text-[11px] text-on-surface-variant noto-sans-thai">เนื้อหาถูกสร้างโดย AI Agent และจะแสดงที่นี่อัตโนมัติ — เปิดใช้งาน Auto-Save ในแผงควบคุม admin</p>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section class="py-24 bg-surface relative overflow-hidden" id="services">
   <div class="px-8 mb-16 flex justify-between items-end max-w-screen-2xl mx-auto">
@@ -626,6 +691,21 @@ body{background-color:#131313;color:#e5e2e1;font-family:'Noto Sans Thai','Work S
       </div>
     </div>
     
+    <!-- Auto Save Settings -->
+    <div class="bg-surface-container-low rounded-lg p-4 mb-4 border border-primary-container/50">
+      <h4 class="font-headline text-sm font-bold uppercase tracking-wider text-primary mb-3">Auto-Save & Display</h4>
+      <div class="space-y-3">
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" id="autoSaveToggle" checked class="w-5 h-5 accent-primary">
+          <span class="font-headline text-xs text-on-surface">Auto-save generated content</span>
+        </label>
+        <div class="bg-surface-container-highest rounded p-2">
+          <p id="contentCount" class="text-[10px] text-on-surface-variant font-mono">Blog: 0 | Images: 0 | Scripts: 0</p>
+        </div>
+        <button onclick="updateContentDisplay()" class="w-full bg-surface-container-highest hover:bg-surface-bright text-on-surface font-bold py-2 rounded uppercase tracking-widest font-headline text-xs transition-all">Refresh Display</button>
+      </div>
+    </div>
+    
     <!-- Groq API Config -->
     <div class="bg-surface-container-low rounded-lg p-4 mb-4 border border-outline-variant/20">
       <h4 class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface mb-3">API Configuration</h4>
@@ -817,6 +897,89 @@ async function testAI() {
   }
 }
 
+// ===== LOCAL STORAGE CONTENT MANAGEMENT =====
+const CONTENT_KEY = 'suphan_ai_content';
+
+function loadContent() {
+  const stored = localStorage.getItem(CONTENT_KEY);
+  return stored ? JSON.parse(stored) : { blogPosts: [], imagePrompts: [], videoScripts: [] };
+}
+
+function saveContent(content) {
+  localStorage.setItem(CONTENT_KEY, JSON.stringify(content));
+  updateContentDisplay();
+  addLog('Content auto-saved to localStorage');
+}
+
+function addContentItem(type, topic, content, model) {
+  const data = loadContent();
+  const item = {
+    id: Date.now(),
+    type,
+    topic,
+    content,
+    model,
+    createdAt: new Date().toISOString(),
+    published: true
+  };
+  
+  if (type === 'blog-post') {
+    data.blogPosts.unshift(item);
+    if (data.blogPosts.length > 10) data.blogPosts.pop();
+  } else if (type === 'image-prompt') {
+    data.imagePrompts.unshift(item);
+    if (data.imagePrompts.length > 10) data.imagePrompts.pop();
+  } else if (type === 'videoscript') {
+    data.videoScripts.unshift(item);
+    if (data.videoScripts.length > 10) data.videoScripts.pop();
+  }
+  
+  saveContent(data);
+  return item;
+}
+
+function updateContentDisplay() {
+  const data = loadContent();
+  
+  // Update blog section
+  const blogSection = document.getElementById('latestBlogContent');
+  if (blogSection && data.blogPosts.length > 0) {
+    const latest = data.blogPosts[0];
+    blogSection.innerHTML = `<p class="text-xs text-on-surface-variant">${latest.content.substring(0, 300)}...</p>
+      <p class="text-[10px] text-outline mt-2">Topic: ${latest.topic} | ${new Date(latest.createdAt).toLocaleDateString()}</p>`;
+    blogSection.classList.remove('hidden');
+  }
+  
+  // Update image section
+  const imageSection = document.getElementById('latestImageContent');
+  if (imageSection && data.imagePrompts.length > 0) {
+    const latest = data.imagePrompts[0];
+    imageSection.innerHTML = `<p class="text-xs text-on-surface-variant font-mono">${latest.content.substring(0, 300)}...</p>
+      <p class="text-[10px] text-outline mt-2">Topic: ${latest.topic} | ${new Date(latest.createdAt).toLocaleDateString()}</p>`;
+    imageSection.classList.remove('hidden');
+  }
+  
+  // Update video section
+  const videoSection = document.getElementById('latestVideoContent');
+  if (videoSection && data.videoScripts.length > 0) {
+    const latest = data.videoScripts[0];
+    videoSection.innerHTML = `<p class="text-xs text-on-surface-variant">${latest.content.substring(0, 300)}...</p>
+      <p class="text-[10px] text-outline mt-2">Topic: ${latest.topic} | ${new Date(latest.createdAt).toLocaleDateString()}</p>`;
+    videoSection.classList.remove('hidden');
+  }
+  
+  // Update content count in admin panel
+  const contentCount = document.getElementById('contentCount');
+  if (contentCount) {
+    contentCount.textContent = `Blog: ${data.blogPosts.length} | Images: ${data.imagePrompts.length} | Scripts: ${data.videoScripts.length}`;
+  }
+}
+
+// Initialize content display on page load
+document.addEventListener('DOMContentLoaded', function() {
+  updateContentDisplay();
+});
+
 async function runAgent(type) {
   const resultIds = {
     'videoscript': 'videoScriptResult',
@@ -832,6 +995,7 @@ async function runAgent(type) {
   const topic = document.getElementById(topicIds[type]).value;
   const model = document.getElementById('groqModel').value;
   const maxTokens = parseInt(document.getElementById('maxTokens').value) || 1024;
+  const autoSave = document.getElementById('autoSaveToggle')?.checked || false;
   
   resultDiv.classList.remove('hidden');
   resultDiv.textContent = 'Generating...';
@@ -848,6 +1012,12 @@ async function runAgent(type) {
       const content = type === 'videoscript' ? data.script : type === 'blog-post' ? data.content : data.prompt;
       resultDiv.textContent = content.substring(0, 500) + (content.length > 500 ? '...' : '');
       addLog(`${type}: SUCCESS - Generated ${content.length} chars`);
+      
+      // Auto-save if enabled
+      if (autoSave) {
+        addContentItem(type, topic, content, model);
+        addLog(`Auto-saved ${type} to localStorage`);
+      }
     } else {
       resultDiv.textContent = 'ERROR: ' + data.error;
       addLog(`${type}: FAILED - ` + data.error);
