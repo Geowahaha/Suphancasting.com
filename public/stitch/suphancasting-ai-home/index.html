@@ -697,12 +697,12 @@ body{background-color:#131313;color:#e5e2e1;font-family:'Noto Sans Thai','Work S
       <div class="space-y-3">
         <label class="flex items-center gap-3 cursor-pointer">
           <input type="checkbox" id="autoSaveToggle" checked class="w-5 h-5 accent-primary">
-          <span class="font-headline text-xs text-on-surface">Auto-save generated content</span>
+          <span class="font-headline text-xs text-on-surface">Auto-save to Supabase</span>
         </label>
         <div class="bg-surface-container-highest rounded p-2">
-          <p id="contentCount" class="text-[10px] text-on-surface-variant font-mono">Blog: 0 | Images: 0 | Scripts: 0</p>
+          <p id="contentCount" class="text-[10px] text-on-surface-variant font-mono">Loading from Supabase...</p>
         </div>
-        <button onclick="updateContentDisplay()" class="w-full bg-surface-container-highest hover:bg-surface-bright text-on-surface font-bold py-2 rounded uppercase tracking-widest font-headline text-xs transition-all">Refresh Display</button>
+        <button onclick="loadFromSupabase()" class="w-full bg-surface-container-highest hover:bg-surface-bright text-on-surface font-bold py-2 rounded uppercase tracking-widest font-headline text-xs transition-all">Refresh from Supabase</button>
       </div>
     </div>
     
@@ -897,87 +897,100 @@ async function testAI() {
   }
 }
 
-// ===== LOCAL STORAGE CONTENT MANAGEMENT =====
-const CONTENT_KEY = 'suphan_ai_content';
-
-function loadContent() {
-  const stored = localStorage.getItem(CONTENT_KEY);
-  return stored ? JSON.parse(stored) : { blogPosts: [], imagePrompts: [], videoScripts: [] };
-}
-
-function saveContent(content) {
-  localStorage.setItem(CONTENT_KEY, JSON.stringify(content));
-  updateContentDisplay();
-  addLog('Content auto-saved to localStorage');
-}
-
-function addContentItem(type, topic, content, model) {
-  const data = loadContent();
-  const item = {
-    id: Date.now(),
-    type,
-    topic,
-    content,
-    model,
-    createdAt: new Date().toISOString(),
-    published: true
-  };
-  
-  if (type === 'blog-post') {
-    data.blogPosts.unshift(item);
-    if (data.blogPosts.length > 10) data.blogPosts.pop();
-  } else if (type === 'image-prompt') {
-    data.imagePrompts.unshift(item);
-    if (data.imagePrompts.length > 10) data.imagePrompts.pop();
-  } else if (type === 'videoscript') {
-    data.videoScripts.unshift(item);
-    if (data.videoScripts.length > 10) data.videoScripts.pop();
+// ===== SUPABASE CONTENT MANAGEMENT =====
+async function saveToSupabase(type, topic, content, model) {
+  try {
+    const res = await fetch('/api/ai-content/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type, topic, content, model })
+    });
+    const data = await res.json();
+    if (data.success) {
+      addLog(`Saved to Supabase: ${data.id}`);
+      return true;
+    } else {
+      addLog(`Supabase save failed: ${data.error}`);
+      return false;
+    }
+  } catch (e) {
+    addLog(`Supabase error: ${e.message}`);
+    return false;
   }
-  
-  saveContent(data);
-  return item;
 }
 
-function updateContentDisplay() {
-  const data = loadContent();
-  
+async function loadFromSupabase() {
+  try {
+    const res = await fetch('/api/ai-content/latest');
+    const data = await res.json();
+    if (data.success) {
+      updateContentDisplayFromSupabase(data.latest);
+      updateContentCountFromSupabase(data.latest);
+    }
+  } catch (e) {
+    console.error('Failed to load from Supabase:', e);
+  }
+}
+
+function updateContentDisplayFromSupabase(latest) {
   // Update blog section
   const blogSection = document.getElementById('latestBlogContent');
-  if (blogSection && data.blogPosts.length > 0) {
-    const latest = data.blogPosts[0];
-    blogSection.innerHTML = `<p class="text-xs text-on-surface-variant">${latest.content.substring(0, 300)}...</p>
-      <p class="text-[10px] text-outline mt-2">Topic: ${latest.topic} | ${new Date(latest.createdAt).toLocaleDateString()}</p>`;
+  const blogPlaceholder = document.getElementById('latestBlogPlaceholder');
+  if (blogSection && latest.blogPost) {
+    blogSection.innerHTML = `<p class="text-xs text-on-surface-variant">${latest.blogPost.content.substring(0, 300)}...</p>
+      <p class="text-[10px] text-outline mt-2">Topic: ${latest.blogPost.topic} | ${new Date(latest.blogPost.created_at).toLocaleDateString()}</p>`;
     blogSection.classList.remove('hidden');
+    if (blogPlaceholder) blogPlaceholder.classList.add('hidden');
   }
   
   // Update image section
   const imageSection = document.getElementById('latestImageContent');
-  if (imageSection && data.imagePrompts.length > 0) {
-    const latest = data.imagePrompts[0];
-    imageSection.innerHTML = `<p class="text-xs text-on-surface-variant font-mono">${latest.content.substring(0, 300)}...</p>
-      <p class="text-[10px] text-outline mt-2">Topic: ${latest.topic} | ${new Date(latest.createdAt).toLocaleDateString()}</p>`;
+  const imagePlaceholder = document.getElementById('latestImagePlaceholder');
+  if (imageSection && latest.imagePrompt) {
+    imageSection.innerHTML = `<p class="text-xs text-on-surface-variant font-mono">${latest.imagePrompt.content.substring(0, 300)}...</p>
+      <p class="text-[10px] text-outline mt-2">Topic: ${latest.imagePrompt.topic} | ${new Date(latest.imagePrompt.created_at).toLocaleDateString()}</p>`;
     imageSection.classList.remove('hidden');
+    if (imagePlaceholder) imagePlaceholder.classList.add('hidden');
   }
   
   // Update video section
   const videoSection = document.getElementById('latestVideoContent');
-  if (videoSection && data.videoScripts.length > 0) {
-    const latest = data.videoScripts[0];
-    videoSection.innerHTML = `<p class="text-xs text-on-surface-variant">${latest.content.substring(0, 300)}...</p>
-      <p class="text-[10px] text-outline mt-2">Topic: ${latest.topic} | ${new Date(latest.createdAt).toLocaleDateString()}</p>`;
+  const videoPlaceholder = document.getElementById('latestVideoPlaceholder');
+  if (videoSection && latest.videoScript) {
+    videoSection.innerHTML = `<p class="text-xs text-on-surface-variant">${latest.videoScript.content.substring(0, 300)}...</p>
+      <p class="text-[10px] text-outline mt-2">Topic: ${latest.videoScript.topic} | ${new Date(latest.videoScript.created_at).toLocaleDateString()}</p>`;
     videoSection.classList.remove('hidden');
+    if (videoPlaceholder) videoPlaceholder.classList.add('hidden');
   }
-  
-  // Update content count in admin panel
-  const contentCount = document.getElementById('contentCount');
-  if (contentCount) {
-    contentCount.textContent = `Blog: ${data.blogPosts.length} | Images: ${data.imagePrompts.length} | Scripts: ${data.videoScripts.length}`;
+}
+
+async function updateContentCountFromSupabase(latest) {
+  try {
+    const res = await fetch('/api/ai-content/list?limit=100');
+    const data = await res.json();
+    if (data.success) {
+      const blog = data.data.filter(d => d.type === 'blog-post').length;
+      const image = data.data.filter(d => d.type === 'image-prompt').length;
+      const video = data.data.filter(d => d.type === 'video-script').length;
+      const contentCount = document.getElementById('contentCount');
+      if (contentCount) {
+        contentCount.textContent = `Blog: ${blog} | Images: ${image} | Scripts: ${video} (Supabase)`;
+      }
+    }
+  } catch (e) {
+    console.error('Failed to update count:', e);
   }
+}
+
+function legacyLocalStorageUpdate() {
+  // For backward compatibility, also save to localStorage
+  const data = { blogPosts: [], imagePrompts: [], videoScripts: [] };
+  localStorage.setItem('suphan_ai_content', JSON.stringify(data));
 }
 
 // Initialize content display on page load
 document.addEventListener('DOMContentLoaded', function() {
-  updateContentDisplay();
+  loadFromSupabase();
 });
 
 async function runAgent(type) {
@@ -1013,10 +1026,13 @@ async function runAgent(type) {
       resultDiv.textContent = content.substring(0, 500) + (content.length > 500 ? '...' : '');
       addLog(`${type}: SUCCESS - Generated ${content.length} chars`);
       
-      // Auto-save if enabled
+      // Auto-save to Supabase if enabled
       if (autoSave) {
-        addContentItem(type, topic, content, model);
-        addLog(`Auto-saved ${type} to localStorage`);
+        const saved = await saveToSupabase(type, topic, content, model);
+        if (saved) {
+          // Refresh display
+          await loadFromSupabase();
+        }
       }
     } else {
       resultDiv.textContent = 'ERROR: ' + data.error;

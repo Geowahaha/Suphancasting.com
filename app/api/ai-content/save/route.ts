@@ -1,17 +1,10 @@
 import { NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
 
-interface ContentItem {
-  id: string;
-  type: 'blog-post' | 'image-prompt' | 'video-script';
-  topic: string;
-  content: string;
-  model: string;
-  createdAt: string;
-  metadata?: Record<string, unknown>;
-}
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://wqhnngaygjeclqujtrkc.supabase.co';
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-const contentStore = new Map<string, ContentItem>();
-const contentByType = new Map<string, ContentItem[]>();
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 export async function POST(request: Request) {
   try {
@@ -22,33 +15,32 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: 'Missing type or content' }, { status: 400 });
     }
 
-    const id = `${type}-${Date.now()}`;
-    const item: ContentItem = {
-      id,
-      type,
-      topic: topic || 'general',
-      content,
-      model: model || 'llama-3.3-70b-versatile',
-      createdAt: new Date().toISOString(),
-      metadata
-    };
+    const { data, error } = await supabase
+      .from('ai_content')
+      .insert([{
+        type,
+        topic: topic || 'general',
+        content,
+        model: model || 'llama-3.3-70b-versatile',
+        metadata,
+        published: true
+      }])
+      .select()
+      .single();
 
-    contentStore.set(id, item);
-
-    if (!contentByType.has(type)) {
-      contentByType.set(type, []);
+    if (error) {
+      console.error('Supabase error:', error);
+      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
-    const typeList = contentByType.get(type)!;
-    typeList.unshift(item);
-    if (typeList.length > 50) typeList.pop();
 
     return NextResponse.json({
       success: true,
-      id,
-      message: `${type} saved successfully`,
-      createdAt: item.createdAt
+      id: data.id,
+      message: `${type} saved to Supabase`,
+      createdAt: data.created_at
     });
   } catch (error) {
+    console.error('Error:', error);
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'
@@ -59,15 +51,7 @@ export async function POST(request: Request) {
 export async function GET() {
   return NextResponse.json({
     success: true,
-    message: 'Use POST to save content',
-    usage: {
-      method: 'POST',
-      body: {
-        type: 'blog-post | image-prompt | video-script',
-        topic: 'topic-name',
-        content: 'the generated content',
-        model: 'model-name'
-      }
-    }
+    message: 'Use POST to save content to Supabase',
+    supabaseUrl
   });
 }
