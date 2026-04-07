@@ -31,6 +31,11 @@ async function callGroq(model: string, messages: Array<{ role: string; content: 
 
 export async function POST(request: Request) {
   try {
+    const apiKey = process.env.GROQ_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json({ success: false, error: 'GROQ_API_KEY not found' }, { status: 500 });
+    }
+
     const body = await request.json();
     const topic = body.topic || 'sand_casting';
     const model = body.model || 'llama-3.1-70b-versatile';
