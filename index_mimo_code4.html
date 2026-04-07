@@ -587,7 +587,7 @@ body{background-color:#131313;color:#e5e2e1;font-family:'Noto Sans Thai','Work S
         <option value="die_casting">Die Casting Applications</option>
         <option value="quality_control">Quality Control Process</option>
       </select>
-      <button onclick="runAgent('blog_post')" class="w-full bg-secondary hover:bg-secondary-container text-on-secondary font-bold py-3 rounded uppercase tracking-widest font-headline text-xs transition-all">Generate Blog Post</button>
+      <button onclick="runAgent('blogpost')" class="w-full bg-secondary hover:bg-secondary-container text-on-secondary font-bold py-3 rounded uppercase tracking-widest font-headline text-xs transition-all">Generate Blog Post</button>
       <div id="blogPostResult" class="mt-3 bg-surface-container-highest rounded p-3 text-[11px] text-on-surface-variant font-mono max-h-48 overflow-y-auto hidden"></div>
     </div>
     
@@ -603,7 +603,7 @@ body{background-color:#131313;color:#e5e2e1;font-family:'Noto Sans Thai','Work S
         <option value="factory_equipment">Factory Equipment</option>
         <option value="quality_inspection">Quality Inspection</option>
       </select>
-      <button onclick="runAgent('image_prompt')" class="w-full bg-tertiary hover:bg-tertiary-container text-on-tertiary font-bold py-3 rounded uppercase tracking-widest font-headline text-xs transition-all">Generate Image Prompt</button>
+      <button onclick="runAgent('imageprompt')" class="w-full bg-tertiary hover:bg-tertiary-container text-on-tertiary font-bold py-3 rounded uppercase tracking-widest font-headline text-xs transition-all">Generate Image Prompt</button>
       <div id="imagePromptResult" class="mt-3 bg-surface-container-highest rounded p-3 text-[11px] text-on-surface-variant font-mono max-h-48 overflow-y-auto hidden"></div>
     </div>
     
@@ -820,13 +820,13 @@ async function testAI() {
 async function runAgent(type) {
   const resultIds = {
     'videoscript': 'videoScriptResult',
-    'blog_post': 'blogPostResult',
-    'image_prompt': 'imagePromptResult'
+    'blogpost': 'blogPostResult',
+    'imageprompt': 'imagePromptResult'
   };
   const topicIds = {
     'videoscript': 'videoTopic',
-    'blog_post': 'blogTopic',
-    'image_prompt': 'imageTopic'
+    'blogpost': 'blogTopic',
+    'imageprompt': 'imageTopic'
   };
   const resultDiv = document.getElementById(resultIds[type]);
   const topic = document.getElementById(topicIds[type]).value;
@@ -845,7 +845,7 @@ async function runAgent(type) {
     });
     const data = await res.json();
     if (data.success) {
-      const content = type === 'videoscript' ? data.script : type === 'blog_post' ? data.content : data.prompt;
+      const content = type === 'videoscript' ? data.script : type === 'blogpost' ? data.content : data.prompt;
       resultDiv.textContent = content.substring(0, 500) + (content.length > 500 ? '...' : '');
       addLog(`${type}: SUCCESS - Generated ${content.length} chars`);
     } else {
