@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suphancasting — Professional OEM Casting</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ========== RESET & ROOT ========== */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-surface: #1a1a1a;
+  --bg-elevated: #222222;
+  --accent-molten: #e8622c;
+  --accent-gold: #d4a853;
+  --accent-steel: #8a9bae;
+  --text-primary: #f2efe8;
+  --text-secondary: #a8a29e;
+  --text-muted: #6b6560;
+  --border: rgba(255,255,255,0.06);
+  --glow: rgba(232, 98, 44, 0.15);
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Noto Sans Thai', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; font-family: inherit; }
+
+/* ========== GRAIN OVERLAY ========== */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ========== NAVIGATION ========== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 3rem;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.4s ease;
+}
+
+.nav.scrolled {
+  background: rgba(10,10,10,0.95);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+}
+
+.nav-logo-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--accent-molten), var(--accent-gold));
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--bg-primary);
+  transform: rotate(-3deg);
+}
+
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+}
+
+.nav-logo-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-links a:hover { color: var(--accent-molten); }
+
+/* Language Selector */
+.lang-selector {
+  position: relative;
+}
+
+.lang-btn {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  border-color: var(--accent-molten);
+  color: var(--text-primary);
+}
+
+.lang-btn .arrow {
+  transition: transform 0.3s ease;
+  font-size: 0.6rem;
+}
+
+.lang-btn.active .arrow { transform: rotate(180deg); }
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-width: 180px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.lang-dropdown.open {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+
+.lang-option {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 18px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.lang-option:hover {
+  background: rgba(232,98,44,0.08);
+  color: var(--text-primary);
+}
+
+.lang-option.active {
+  color: var(--accent-molten);
+  background: rgba(232,98,44,0.05);
+}
+
+.lang-flag {
+  font-size: 1.1rem;
+}
+
+/* Mobile Menu */
+.mobile-toggle {
+  display: none;
+  flex-direction: column; gap: 5px;
+  background: none;
+  padding: 8px;
+}
+
+.mobile-toggle span {
+  width: 24px; height: 2px;
+  background: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 6rem 4rem 4rem 5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent-molten);
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 12px;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--accent-molten);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title .highlight {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent-molten);
+  display: block;
+}
+
+.hero-title .solid {
+  color: var(--text-primary);
+  display: block;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 420px;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.hero-stats {
+  display: flex; gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.stat-item {
+  position: relative;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--accent-gold);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.hero-cta {
+  display: flex; gap: 1rem;
+}
+
+.btn-primary {
+  padding: 14px 36px;
+  background: linear-gradient(135deg, var(--accent-molten), #c44e1a);
+  color: white;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-primary:hover::after { opacity: 1; }
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(232,98,44,0.3);
+}
+
+.btn-outline {
+  padding: 14px 36px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all 0.4s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+/* Hero Visual */
+.hero-visual {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-visual-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(232,98,44,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(212,168,83,0.08) 0%, transparent 40%),
+    var(--bg-secondary);
+}
+
+.hero-image-grid {
+  position: absolute; inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  padding: 72px 2px 2px 2px;
+}
+
+.hero-img-cell {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+
+.hero-img-cell::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(10,10,10,0.8));
+}
+
+.hero-img-cell .placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.hero-img-cell:nth-child(1) {
+  background: linear-gradient(135deg, #1a1208, #2a1a0a);
+}
+.hero-img-cell:nth-child(2) {
+  background: linear-gradient(135deg, #0a1520, #0f1f2e);
+}
+.hero-img-cell:nth-child(3) {
+  background: linear-gradient(135deg, #1a0a0a, #2e1515);
+}
+.hero-img-cell:nth-child(4) {
+  background: linear-gradient(135deg, #0a1a12, #0f2e1f);
+}
+
+/* Floating elements */
+.hero-float {
+  position: absolute;
+  border: 1px solid rgba(232,98,44,0.15);
+  border-radius: 50%;
+  animation: floatPulse 6s ease-in-out infinite;
+}
+
+.hero-float:nth-child(1) {
+  width: 300px; height: 300px;
+  top: 10%; right: 10%;
+  animation-delay: 0s;
+}
+
+.hero-float:nth-child(2) {
+  width: 200px; height: 200px;
+  bottom: 20%; left: 10%;
+  animation-delay: 2s;
+  border-color: rgba(212,168,83,0.1);
+}
+
+@keyframes floatPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+/* ========== MARQUEE SECTION ========== */
+.marquee-section {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.2rem 0;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.marquee-item {
+  display: flex; align-items: center; gap: 2rem;
+  padding: 0 2rem;
+  white-space: nowrap;
+}
+
+.marquee-item span {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.marquee-dot {
+  width: 4px; height: 4px;
+  background: var(--accent-molten);
+  border-radius: 50%;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ========== SERVICES SECTION ========== */
+.section {
+  padding: 8rem 5rem;
+}
+
+.section-header {
+  margin-bottom: 4rem;
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 12px;
+}
+
+.section-tag::before {
+  content: '';
+  width: 30px; height: 1px;
+  background: var(--accent-gold);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.section-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin-top: 1rem;
+  font-weight: 300;
+}
+
+/* Service Cards */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2.5rem;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-molten), var(--accent-gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232,98,44,0.2);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.service-number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--bg-elevated);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  transition: color 0.5s ease;
+}
+
+.service-card:hover .service-number {
+  color: rgba(232,98,44,0.15);
+}
+
+.service-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+
+.service-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.service-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.service-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ========== PROCESS SECTION ========== */
+.process-section {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.process-step {
+  padding: 3rem 2.5rem;
+  border-right: 1px solid var(--border);
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.process-step:last-child { border-right: none; }
+
+.process-step:hover {
+  background: rgba(232,98,44,0.03);
+}
+
+.process-step-num {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: var(--bg-elevated);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  transition: color 0.5s ease;
+}
+
+.process-step:hover .process-step-num {
+  color: rgba(232,98,44,0.12);
+}
+
+.process-step-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+
+.process-step-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ========== SHOWCASE / GALLERY ========== */
+.showcase-section {
+  padding: 0;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 300px 300px;
+  gap: 2px;
+}
+
+.showcase-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+
+.showcase-item:nth-child(1) {
+  grid-row: 1 / 3;
+  background: linear-gradient(135deg, #1a1208, #2a1a0a, #1a0f05);
+}
+
+.showcase-item:nth-child(2) {
+  background: linear-gradient(135deg, #0a1520, #0f1f2e);
+}
+
+.showcase-item:nth-child(3) {
+  background: linear-gradient(135deg, #1a0a0a, #2e1515);
+}
+
+.showcase-item:nth-child(4) {
+  background: linear-gradient(135deg, #0a1a12, #0f2e1f);
+}
+
+.showcase-item:nth-child(5) {
+  background: linear-gradient(135deg, #1a1a0a, #2e2e15);
+}
+
+.showcase-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(10,10,10,0.9));
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.showcase-item:hover .showcase-overlay { opacity: 1; }
+
+.showcase-item-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-molten);
+  margin-bottom: 0.5rem;
+}
+
+.showcase-item-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.showcase-placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px;
+}
+
+.showcase-placeholder .icon {
+  font-size: 2rem;
+  opacity: 0.2;
+}
+
+.showcase-placeholder .label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ========== MATERIALS SECTION ========== */
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.material-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.material-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
+.material-icon {
+  width: 48px; height: 48px;
+  margin: 0 auto 1rem;
+  background: var(--bg-elevated);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+
+.material-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.material-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ========== CLIENTS / TRUST SECTION ========== */
+.trust-section {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.trust-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  opacity: 0.3;
+  margin-top: 3rem;
+}
+
+.trust-logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  transition: opacity 0.3s ease;
+}
+
+.trust-logo:hover { opacity: 0.8; }
+
+/* ========== CONTACT SECTION ========== */
+.contact-section {
+  position: relative;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-info {
+  padding-right: 2rem;
+}
+
+.contact-info-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-info-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.contact-info-value {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.contact-info-value a {
+  transition: color 0.3s ease;
+}
+
+.contact-info-value a:hover { color: var(--accent-molten); }
+
+.contact-form {
+  display: flex; flex-direction: column; gap: 1.2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex; flex-direction: column; gap: 6px;
+}
+
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--accent-molten);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6560' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.form-submit {
+  padding: 16px 40px;
+  background: linear-gradient(135deg, var(--accent-molten), #c44e1a);
+  color: white;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: all 0.4s ease;
+  align-self: flex-start;
+}
+
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(232,98,44,0.3);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  display: flex; align-items: center; gap: 1rem;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex; gap: 2rem;
+}
+
+.footer-links a {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover { color: var(--text-primary); }
+
+/* ========== ANIMATIONS ========== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-visual { height: 50vh; }
+  .hero-content { padding: 8rem 3rem 3rem; }
+  .section { padding: 5rem 3rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+  .process-step { border-bottom: 1px solid var(--border); }
+  .materials-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .showcase-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .showcase-item:nth-child(1) { grid-row: auto; }
+  .nav { padding: 0 2rem; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: flex; }
+  .hero-content { padding: 7rem 2rem 3rem; }
+  .hero-stats { gap: 2rem; flex-wrap: wrap; }
+  .hero-cta { flex-direction: column; }
+  .section { padding: 4rem 2rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+  .materials-grid { grid-template-columns: 1fr; }
+  .showcase-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+  .trust-logos { gap: 2rem; }
+}
+
+/* ========== MOBILE NAV ========== */
+.mobile-nav {
+  position: fixed; inset: 0;
+  background: rgba(10,10,10,0.98);
+  z-index: 999;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 2rem;
+  opacity: 0; visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.mobile-nav.open {
+  opacity: 1; visibility: visible;
+}
+
+.mobile-nav a {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.mobile-nav a:hover { color: var(--accent-molten); }
+
+.mobile-nav-close {
+  position: absolute; top: 1.5rem; right: 2rem;
+  background: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+/* ========== SCROLL PROGRESS ========== */
+.scroll-progress {
+  position: fixed; top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-molten), var(--accent-gold));
+  z-index: 1001;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo">
+    <div class="nav-logo-icon">S</div>
+    <div>
+      <div class="nav-logo-text">SUPHANCASTING</div>
+      <div class="nav-logo-sub">Professional OEM Casting</div>
+    </div>
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services" data-i18n="nav_services">บริการ</a></li>
+    <li><a href="#process" data-i18n="nav_process">กระบวนการ</a></li>
+    <li><a href="#materials" data-i18n="nav_materials">วัสดุ</a></li>
+    <li><a href="#showcase" data-i18n="nav_showcase">ผลงาน</a></li>
+    <li><a href="#contact" data-i18n="nav_contact">ติดต่อ</a></li>
+  </ul>
+
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">
+        <span class="lang-flag" id="currentFlag">🇹🇭</span>
+        <span id="currentLang">ไทย</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <div class="lang-option active" onclick="setLang('th','🇹🇭','ไทย')">
+          <span class="lang-flag">🇹🇭</span> ไทย
+        </div>
+        <div class="lang-option" onclick="setLang('en','🇺🇸','English')">
+          <span class="lang-flag">🇺🇸</span> English
+        </div>
+        <div class="lang-option" onclick="setLang('ja','🇯🇵','日本語')">
+          <span class="lang-flag">🇯🇵</span> 日本語
+        </div>
+        <div class="lang-option" onclick="setLang('zh','🇨🇳','中文')">
+          <span class="lang-flag">🇨🇳</span> 中文
+        </div>
+        <div class="lang-option" onclick="setLang('ko','🇰🇷','한국어')">
+          <span class="lang-flag">🇰🇷</span> 한국어
+        </div>
+        <div class="lang-option" onclick="setLang('de','🇩🇪','Deutsch')">
+          <span class="lang-flag">🇩🇪</span> Deutsch
+        </div>
+        <div class="lang-option" onclick="setLang('es','🇪🇸','Español')">
+          <span class="lang-flag">🇪🇸</span> Español
+        </div>
+        <div class="lang-option" onclick="setLang('ar','🇸🇦','العربية')">
+          <span class="lang-flag">🇸🇦</span> العربية
+        </div>
+      </div>
+    </div>
+
+    <button class="mobile-toggle" id="mobileToggle" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="toggleMobile()">✕</button>
+  <a href="#services" onclick="toggleMobile()" data-i18n="nav_services">บริการ</a>
+  <a href="#process" onclick="toggleMobile()" data-i18n="nav_process">กระบวนการ</a>
+  <a href="#materials" onclick="toggleMobile()" data-i18n="nav_materials">วัสดุ</a>
+  <a href="#showcase" onclick="toggleMobile()" data-i18n="nav_showcase">ผลงาน</a>
+  <a href="#contact" onclick="toggleMobile()" data-i18n="nav_contact">ติดต่อ</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-tag fade-up" data-i18n="hero_tag">OEM Metal Casting Solutions</div>
+    <h1 class="hero-title fade-up stagger-1">
+      <span class="highlight" data-i18n="hero_title_1">หลอมเหล็ก</span>
+      <span class="solid" data-i18n="hero_title_2">สู่ทุกรูปทรง</span>
+      <span class="solid" data-i18n="hero_title_3">ที่คุณจินตนาการ</span>
+    </h1>
+    <p class="hero-desc fade-up stagger-2" data-i18n="hero_desc">
+      โรงงานหลอมเหล็กคุณภาพสูง รับผลิตชิ้นส่วน OEM ทุกประเภท ด้วยเทคโนโลยีทันสมัย
+      มาตรฐานสากล และทีมวิศวกรผู้เชี่ยวชาญกว่า 20 ปี
+    </p>
+    <div class="hero-stats fade-up stagger-3">
+      <div class="stat-item">
+        <div class="stat-number">20+</div>
+        <div class="stat-label" data-i18n="stat_years">ปีประสบการณ์</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label" data-i18n="stat_clients">ลูกค้าทั่วโลก</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">10K+</div>
+        <div class="stat-label" data-i18n="stat_parts">ชิ้นส่วนที่ผลิต</div>
+      </div>
+    </div>
+    <div class="hero-cta fade-up stagger-4">
+      <a href="#contact" class="btn-primary" data-i18n="hero_cta1">ขอใบเสนอราคา</a>
+      <a href="#services" class="btn-outline" data-i18n="hero_cta2">ดูบริการทั้งหมด</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-bg"></div>
+    <div class="hero-float"></div>
+    <div class="hero-float"></div>
+    <div class="hero-image-grid">
+      <div class="hero-img-cell">
+        <div class="placeholder">
+          <span data-i18n="img_casting">รูป: กระบวนการหล่อ</span>
+        </div>
+      </div>
+      <div class="hero-img-cell">
+        <div class="placeholder">
+          <span data-i18n="img_product">รูป: ชิ้นส่วนเหล็ก</span>
+        </div>
+      </div>
+      <div class="hero-img-cell">
+        <div class="placeholder">
+          <span data-i18n="img_furnace">รูป: เตาหลอม</span>
+        </div>
+      </div>
+      <div class="hero-img-cell">
+        <div class="placeholder">
+          <span data-i18n="img_quality">รูป: ตรวจสอบคุณภาพ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">
+      <span>SAND CASTING</span><div class="marquee-dot"></div>
+      <span>INVESTMENT CASTING</span><div class="marquee-dot"></div>
+      <span>DIE CASTING</span><div class="marquee-dot"></div>
+      <span>CNC MACHINING</span><div class="marquee-dot"></div>
+      <span>HEAT TREATMENT</span><div class="marquee-dot"></div>
+      <span>SURFACE FINISHING</span><div class="marquee-dot"></div>
+      <span>QUALITY INSPECTION</span><div class="marquee-dot"></div>
+      <span>OEM MANUFACTURING</span><div class="marquee-dot"></div>
+    </div>
+    <div class="marquee-item">
+      <span>SAND CASTING</span><div class="marquee-dot"></div>
+      <span>INVESTMENT CASTING</span><div class="marquee-dot"></div>
+      <span>DIE CASTING</span><div class="marquee-dot"></div>
+      <span>CNC MACHINING</span><div class="marquee-dot"></div>
+      <span>HEAT TREATMENT</span><div class="marquee-dot"></div>
+      <span>SURFACE FINISHING</span><div class="marquee-dot"></div>
+      <span>QUALITY INSPECTION</span><div class="marquee-dot"></div>
+      <span>OEM MANUFACTURING</span><div class="marquee-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section class="section" id="services">
+  <div class="section-header fade-up">
+    <div class="section-tag" data-i18n="services_tag">What We Do</div>
+    <h2 class="section-title" data-i18n="services_title">บริการของเรา</h2>
+    <p class="section-desc" data-i18n="services_desc">
+      ครบวงจรตั้งแต่การออกแบบแม่พิมพ์ ไปจนถึงชิ้นส่วนสำเร็จรูปพร้อมส่ง
+    </p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up stagger-1">
+      <div class="service-number">01</div>
+      <div class="service-name" data-i18n="s1_name">Sand Casting</div>
+      <p class="service-desc" data-i18n="s1_desc">
+        หล่อทรายสำหรับชิ้นส่วนขนาดใหญ่ รองรับน้ำหนักได้หลายตัน เหมาะสำหรับชิ้นส่วนเครื่องจักรกลหนัก
+      </p>
+      <div class="service-tags">
+        <span class="service-tag">Iron</span>
+        <span class="service-tag">Steel</span>
+        <span class="service-tag">Bronze</span>
+      </div>
+    </div>
+    <div class="service-card fade-up stagger-2">
+      <div class="service-number">02</div>
+      <div class="service-name" data-i18n="s2_name">Investment Casting</div>
+      <p class="service-desc" data-i18n="s2_desc">
+        หล่อขี้ผึ้งหาย ความแม่นยำสูง ผิวงานละเอียด เหมาะสำหรับชิ้นส่วนที่ต้องการความซับซ้อน
+      </p>
+      <div class="service-tags">
+        <span class="service-tag">Stainless</span>
+        <span class="service-tag">Alloy</span>
+        <span class="service-tag">Precision</span>
+      </div>
+    </div>
+    <div class="service-card fade-up stagger-3">
+      <div class="service-number">03</div>
+      <div class="service-name" data-i18n="s3_name">Die Casting</div>
+      <p class="service-desc" data-i18n="s3_desc">
+        หล่อแม่พิมพ์ถาวร ผลิตจำนวนมากได้อย่างรวดเร็ว คุ้มค่าสำหรับการผลิตปริมาณสูง
+      </p>
+      <div class="service-tags">
+        <span class="service-tag">Aluminum</span>
+        <span class="service-tag">Zinc</span>
+        <span class="service-tag">High Volume</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="section process-section" id="process">
+  <div class="section-header fade-up">
+    <div class="section-tag" data-i18n="process_tag">How We Work</div>
+    <h2 class="section-title" data-i18n="process_title">กระบวนการผลิต</h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-step fade-up stagger-1">
+      <div class="process-step-num">01</div>
+      <div class="process-step-title" data-i18n="p1_title">ออกแบบ & ให้คำปรึกษา</div>
+      <p class="process-step-desc" data-i18n="p1_desc">
+        วิเคราะห์ความต้องการ ออกแบบชิ้นส่วน และเลือกวัสดุที่เหมาะสมที่สุด
+      </p>
+    </div>
+    <div class="process-step fade-up stagger-2">
+      <div class="process-step-num">02</div>
+      <div class="process-step-title" data-i18n="p2_title">สร้างแม่พิมพ์</div>
+      <p class="process-step-desc" data-i18n="p2_desc">
+        ผลิตแม่พิมพ์ด้วยความแม่นยำสูง รองรับการออกแบบที่ซับซ้อน
+      </p>
+    </div>
+    <div class="process-step fade-up stagger-3">
+      <div class="process-step-num">03</div>
+      <div class="process-step-title" data-i18n="p3_title">หลอม & หล่อ</div>
+      <p class="process-step-desc" data-i18n="p3_desc">
+        ควบคุมอุณหภูมิและองค์ประกอบโลหะอย่างแม่นยำตามมาตรฐานสากล
+      </p>
+    </div>
+    <div class="process-step fade-up stagger-4">
+      <div class="process-step-num">04</div>
+      <div class="process-step-title" data-i18n="p4_title">ตรวจสอบ & ส่งมอบ</div>
+      <p class="process-step-desc" data-i18n="p4_desc">
+        ตรวจสอบคุณภาพทุกชิ้นด้วยเครื่องมือ CMM ก่อนจัดส่งถึงมือลูกค้า
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SHOWCASE ===== -->
+<section class="showcase-section" id="showcase">
+  <div class="showcase-grid">
+    <div class="showcase-item">
+      <div class="showcase-placeholder">
+        <div class="icon">⚙️</div>
+        <div class="label" data-i18n="show1">ชิ้นส่วนเครื่องจักร</div>
+      </div>
+      <div class="showcase-overlay">
+        <div class="showcase-item-label" data-i18n="show1_cat">Industrial</div>
+        <div class="showcase-item-name" data-i18n="show1_name">Machine Components</div>
+      </div>
+    </div>
+    <div class="showcase-item">
+      <div class="showcase-placeholder">
+        <div class="icon">🔧</div>
+        <div class="label" data-i18n="show2">ข้อต่อท่อ</div>
+      </div>
+      <div class="showcase-overlay">
+        <div class="showcase-item-label" data-i18n="show2_cat">Pipe Fittings</div>
+        <div class="showcase-item-name" data-i18n="show2_name">Valve Bodies</div>
+      </div>
+    </div>
+    <div class="showcase-item">
+      <div class="showcase-placeholder">
+        <div class="icon">🏭</div>
+        <div class="label" data-i18n="show3">ชิ้นส่วนยานยนต์</div>
+      </div>
+      <div class="showcase-overlay">
+        <div class="showcase-item-label" data-i18n="show3_cat">Automotive</div>
+        <div class="showcase-item-name" data-i18n="show3_name">Brake Components</div>
+      </div>
+    </div>
+    <div class="showcase-item">
+      <div class="showcase-placeholder">
+        <div class="icon">⚡</div>
+        <div class="label" data-i18n="show4">ชิ้นส่วนพลังงาน</div>
+      </div>
+      <div class="showcase-overlay">
+        <div class="showcase-item-label" data-i18n="show4_cat">Energy</div>
+        <div class="showcase-item-name" data-i18n="show4_name">Turbine Parts</div>
+      </div>
+    </div>
+    <div class="showcase-item">
+      <div class="showcase-placeholder">
+        <div class="icon">🏗️</div>
+        <div class="label" data-i18n="show5">ชิ้นส่วนก่อสร้าง</div>
+      </div>
+      <div class="showcase-overlay">
+        <div class="showcase-item-label" data-i18n="show5_cat">Construction</div>
+        <div class="showcase-item-name" data-i18n="show5_name">Structural Parts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MATERIALS ===== -->
+<section class="section" id="materials">
+  <div class="section-header fade-up">
+    <div class="section-tag" data-i18n="mat_tag">Materials</div>
+    <h2 class="section-title" data-i18n="mat_title">วัสดุที่เราใช้</h2>
+  </div>
+  <div class="materials-grid">
+    <div class="material-card fade-up stagger-1">
+      <div class="material-icon">🔩</div>
+      <div class="material-name">Cast Iron</div>
+      <p class="material-desc" data-i18n="mat1">เหล็กหล่อ ทนทาน ราคาคุ้มค่า เหมาะสำหรับชิ้นส่วนหนัก</p>
+    </div>
+    <div class="material-card fade-up stagger-2">
+      <div class="material-icon">⛓️</div>
+      <div class="material-name">Carbon Steel</div>
+      <p class="material-desc" data-i18n="mat2">เหล็กกล้าคาร์บอน แข็งแรงสูง ใช้ในงานโครงสร้างและเครื่องจักร</p>
+    </div>
+    <div class="material-card fade-up stagger-3">
+      <div class="material-icon">🪙</div>
+      <div class="material-name">Stainless Steel</div>
+      <p class="material-desc" data-i18n="mat3">สแตนเลส ทนการกัดกร่อน เหมาะสำหรับอุตสาหกรรมอาหารและเคมี</p>
+    </div>
+    <div class="material-card fade-up stagger-4">
+      <div class="material-icon">✨</div>
+      <div class="material-name">Alloy Steel</div>
+      <p class="material-desc" data-i18n="mat4">เหล็กผสม คุณสมบัติพิเศษตามการใช้งาน ทนความร้อนสูง</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST ===== -->
+<section class="section trust-section">
+  <div class="section-header fade-up" style="text-align:center;">
+    <div class="section-tag" style="justify-content:center;" data-i18n="trust_tag">Trusted Worldwide</div>
+    <h2 class="section-title" data-i18n="trust_title">ได้รับความไว้วางใจจากทั่วโลก</h2>
+  </div>
+  <div class="trust-logos fade-up">
+    <div class="trust-logo">MITSUBISHI</div>
+    <div class="trust-logo">SIEMENS</div>
+    <div class="trust-logo">CATERPILLAR</div>
+    <div class="trust-logo">BOSCH</div>
+    <div class="trust-logo">ABB</div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section contact-section" id="contact">
+  <div class="section-header fade-up">
+    <div class="section-tag" data-i18n="contact_tag">Get In Touch</div>
+    <h2 class="section-title" data-i18n="contact_title">ติดต่อเรา</h2>
+    <p class="section-desc" data-i18n="contact_desc">
+      ส่งแบบชิ้นส่วนหรือความต้องการของคุณ ทีมวิศวกรจะตอบกลับภายใน 24 ชั่วโมง
+    </p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info fade-up">
+      <div class="contact-info-item">
+        <div class="contact-info-label" data-i18n="ci_email">อีเมล</div>
+        <div class="contact-info-value">
+          <a href="mailto:info@suphancasting.com">info@suphancasting.com</a>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-label" data-i18n="ci_phone">โทรศัพท์</div>
+        <div class="contact-info-value">
+          <a href="tel:+66XXXXXXXXX">+66 XX-XXX-XXXX</a>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-label" data-i18n="ci_address">ที่อยู่</div>
+        <div class="contact-info-value" data-i18n="ci_address_val">
+          จังหวัดสมุทรปราการ ประเทศไทย
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-label" data-i18n="ci_hours">เวลาทำการ</div>
+        <div class="contact-info-value" data-i18n="ci_hours_val">
+          จันทร์ - เสาร์: 08:00 - 17:00
+        </div>
+      </div>
+    </div>
+    <form class="contact-form fade-up stagger-2" onsubmit="event.preventDefault(); alert('ขอบคุณที่ติดต่อเรา! / Thank you for contacting us!');">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_name">ชื่อ-นามสกุล</label>
+          <input type="text" class="form-input" placeholder="ชื่อของคุณ" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_company">บริษัท</label>
+          <input type="text" class="form-input" placeholder="ชื่อบริษัท">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_email">อีเมล</label>
+          <input type="email" class="form-input" placeholder="email@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_phone">โทรศัพท์</label>
+          <input type="tel" class="form-input" placeholder="+66 XX-XXX-XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_service">บริการที่สนใจ</label>
+        <select class="form-select">
+          <option value="" data-i18n="form_select_default">เลือกบริการ</option>
+          <option data-i18n="form_opt1">Sand Casting - หล่อทราย</option>
+          <option data-i18n="form_opt2">Investment Casting - หล่อขี้ผึ้ง</option>
+          <option data-i18n="form_opt3">Die Casting - หล่อแม่พิมพ์</option>
+          <option data-i18n="form_opt4">CNC Machining - กลึง CNC</option>
+          <option data-i18n="form_opt5">อื่นๆ</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_message">รายละเอียด</label>
+        <textarea class="form-textarea" placeholder="รายละเอียดชิ้นส่วนที่ต้องการ วัสดุ ขนาด จำนวน..." data-i18n-placeholder="form_msg_ph"></textarea>
+      </div>
+      <button type="submit" class="form-submit" data-i18n="form_submit">ส่งข้อความ</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-left">
+    <div class="footer-logo">SUPHANCASTING</div>
+    <div class="footer-copy">© 2025 Suphancasting Co., Ltd. All rights reserved.</div>
+  </div>
+  <div class="footer-links">
+    <a href="#" data-i18n="footer_privacy">นโยบายความเป็นส่วนตัว</a>
+    <a href="#" data-i18n="footer_terms">เงื่อนไขการใช้งาน</a>
+    <a href="#" data-i18n="footer_sitemap">แผนผังเว็บไซต์</a>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ===== LANGUAGE SYSTEM =====
+const translations = {
+  th: {
+    nav_services: 'บริการ', nav_process: 'กระบวนการ', nav_materials: 'วัสดุ',
+    nav_showcase: 'ผลงาน', nav_contact: 'ติดต่อ',
+    hero_tag: 'OEM Metal Casting Solutions',
+    hero_title_1: 'หลอมเหล็ก', hero_title_2: 'สู่ทุกรูปทรง', hero_title_3: 'ที่คุณจินตนาการ',
+    hero_desc: 'โรงงานหลอมเหล็กคุณภาพสูง รับผลิตชิ้นส่วน OEM ทุกประเภท ด้วยเทคโนโลยีทันสมัย มาตรฐานสากล และทีมวิศกรผู้เชี่ยวชาญกว่า 20 ปี',
+    stat_years: 'ปีประสบการณ์', stat_clients: 'ลูกค้าทั่วโลก', stat_parts: 'ชิ้นส่วนที่ผลิต',
+    hero_cta1: 'ขอใบเสนอราคา', hero_cta2: 'ดูบริการทั้งหมด',
+    services_tag: 'What We Do', services_title: 'บริการของเรา',
+    services_desc: 'ครบวงจรตั้งแต่การออกแบบแม่พิมพ์ ไปจนถึงชิ้นส่วนสำเร็จรูปพร้อมส่ง',
+    s1_name: 'Sand Casting', s1_desc: 'หล่อทรายสำหรับชิ้นส่วนขนาดใหญ่ รองรับน้ำหนักได้หลายตัน',
+    s2_name: 'Investment Casting', s2_desc: 'หล่อขี้ผึ้งหาย ความแม่นยำสูง ผิวงานละเอียด',
+    s3_name: 'Die Casting', s3_desc: 'หล่อแม่พิมพ์ถาวร ผลิตจำนวนมากได้อย่างรวดเร็ว',
+    process_tag: 'How We Work', process_title: 'กระบวนการผลิต',
+    p1_title: 'ออกแบบ & ให้คำปรึกษา', p1_desc: 'วิเคราะห์ความต้องการ ออกแบบชิ้นส่วน และเลือกวัสดุที่เหมาะสม',
+    p2_title: 'สร้างแม่พิมพ์', p2_desc: 'ผลิตแม่พิมพ์ด้วยความแม่นยำสูง',
+    p3_title: 'หลอม & หล่อ', p3_desc: 'ควบคุมอุณหภูมิและองค์ประกอบโลหะอย่างแม่นยำ',
+    p4_title: 'ตรวจสอบ & ส่งมอบ', p4_desc: 'ตรวจสอบคุณภาพทุกชิ้นด้วยเครื่องมือ CMM',
+    mat_tag: 'Materials', mat_title: 'วัสดุที่เราใช้',
+    mat1: 'เหล็กหล่อ ทนทาน ราคาคุ้มค่า', mat2: 'เหล็กกล้าคาร์บอน แข็งแรงสูง',
+    mat3: 'สแตนเลส ทนการกัดกร่อน', mat4: 'เหล็กผสม คุณสมบัติพิเศษ',
+    trust_tag: 'Trusted Worldwide', trust_title: 'ได้รับความไว้วางใจจากทั่วโลก',
+    contact_tag: 'Get In Touch', contact_title: 'ติดต่อเรา',
+    contact_desc: 'ส่งแบบชิ้นส่วนหรือความต้องการของคุณ ทีมวิศวกรจะตอบกลับภายใน 24 ชั่วโมง',
+    ci_email: 'อีเมล', ci_phone: 'โทรศัพท์', ci_address: 'ที่อยู่',
+    ci_address_val: 'จังหวัดสมุทรปราการ ประเทศไทย',
+    ci_hours: 'เวลาทำการ', ci_hours_val: 'จันทร์ - เสาร์: 08:00 - 17:00',
+    form_name: 'ชื่อ-นามสกุล', form_company: 'บริษัท', form_email: 'อีเมล',
+    form_phone: 'โทรศัพท์', form_service: 'บริการที่สนใจ',
+    form_select_default: 'เลือกบริการ',
+    form_opt1: 'Sand Casting - หล่อทราย', form_opt2: 'Investment Casting - หล่อขี้ผึ้ง',
+    form_opt3: 'Die Casting - หล่อแม่พิมพ์', form_opt4: 'CNC Machining - กลึง CNC',
+    form_opt5: 'อื่นๆ',
+    form_message: 'รายละเอียด', form_submit: 'ส่งข้อความ',
+    footer_privacy: 'นโยบายความเป็นส่วนตัว', footer_terms: 'เงื่อนไขการใช้งาน',
+    footer_sitemap: 'แผนผังเว็บไซต์',
+    img_casting: 'รูป: กระบวนการหล่อ', img_product: 'รูป: ชิ้นส่วนเหล็ก',
+    img_furnace: 'รูป: เตาหลอม', img_quality: 'รูป: ตรวจสอบคุณภาพ',
+    show1: 'ชิ้นส่วนเครื่องจักร', show1_cat: 'Industrial', show1_name: 'Machine Components',
+    show2: 'ข้อต่อท่อ', show2_cat: 'Pipe Fittings', show2_name: 'Valve Bodies',
+    show3: 'ชิ้นส่วนยานยนต์', show3_cat: 'Automotive', show3_name: 'Brake Components',
+    show4: 'ชิ้นส่วนพลังงาน', show4_cat: 'Energy', show4_name: 'Turbine Parts',
+    show5: 'ชิ้นส่วนก่อสร้าง', show5_cat: 'Construction', show5_name: 'Structural Parts'
+  },
+  en: {
+    nav_services: 'Services', nav_process: 'Process', nav_materials: 'Materials',
+    nav_showcase: 'Portfolio', nav_contact: 'Contact',
+    hero_tag: 'OEM Metal Casting Solutions',
+    hero_title_1: 'Molten Metal', hero_title_2: 'Shaped Into', hero_title_3: 'Your Vision',
+    hero_desc: 'Premium steel foundry delivering OEM cast parts with cutting-edge technology, international standards, and 20+ years of engineering expertise.',
+    stat_years: 'Years Experience', stat_clients: 'Global Clients', stat_parts: 'Parts Produced',
+    hero_cta1: 'Request Quote', hero_cta2: 'View All Services',
+    services_tag: 'What We Do', services_title: 'Our Services',
+    services_desc: 'End-to-end solutions from mold design to finished parts ready for delivery',
+    s1_name: 'Sand Casting', s1_desc: 'Large-scale sand casting for heavy-duty components, supporting multi-ton weights',
+    s2_name: 'Investment Casting', s2_desc: 'Lost-wax precision casting with superior surface finish for complex geometries',
+    s3_name: 'Die Casting', s3_desc: 'Permanent mold casting for high-volume production with rapid turnaround',
+    process_tag: 'How We Work', process_title: 'Our Process',
+    p1_title: 'Design & Consultation', p1_desc: 'Analyze requirements, design components, and select optimal materials',
+    p2_title: 'Mold Creation', p2_desc: 'High-precision mold manufacturing supporting complex designs',
+    p3_title: 'Melting & Casting', p3_desc: 'Precise temperature and alloy composition control per international standards',
+    p4_title: 'Inspection & Delivery', p4_desc: 'Every piece inspected with CMM equipment before shipping to clients',
+    mat_tag: 'Materials', mat_title: 'Materials We Use',
+    mat1: 'Durable cast iron, cost-effective for heavy components',
+    mat2: 'High-strength carbon steel for structural and machinery applications',
+    mat3: 'Corrosion-resistant stainless steel for food and chemical industries',
+    mat4: 'Specialty alloy steel with custom properties, high heat resistance',
+    trust_tag: 'Trusted Worldwide', trust_title: 'Trusted by Industry Leaders',
+    contact_tag: 'Get In Touch', contact_title: 'Contact Us',
+    contact_desc: 'Submit your part drawings or requirements. Our engineering team responds within 24 hours.',
+    ci_email: 'Email', ci_phone: 'Phone', ci_address: 'Address',
+    ci_address_val: 'Samut Prakan Province, Thailand',
+    ci_hours: 'Business Hours', ci_hours_val: 'Mon - Sat: 08:00 - 17:00',
+    form_name: 'Full Name', form_company: 'Company', form_email: 'Email',
+    form_phone: 'Phone', form_service: 'Service Interest',
+    form_select_default: 'Select a service',
+    form_opt1: 'Sand Casting', form_opt2: 'Investment Casting',
+    form_opt3: 'Die Casting', form_opt4: 'CNC Machining',
+    form_opt5: 'Other',
+    form_message: 'Details', form_submit: 'Send Message',
+    footer_privacy: 'Privacy Policy', footer_terms: 'Terms of Service',
+    footer_sitemap: 'Sitemap',
+    img_casting: 'Photo: Casting Process', img_product: 'Photo: Steel Parts',
+    img_furnace: 'Photo: Furnace', img_quality: 'Photo: Quality Control',
+    show1: 'Machine Components', show1_cat: 'Industrial', show1_name: 'Machine Components',
+    show2: 'Pipe Fittings', show2_cat: 'Pipe Fittings', show2_name: 'Valve Bodies',
+    show3: 'Automotive Parts', show3_cat: 'Automotive', show3_name: 'Brake Components',
+    show4: 'Energy Components', show4_cat: 'Energy', show4_name: 'Turbine Parts',
+    show5: 'Construction Parts', show5_cat: 'Construction', show5_name: 'Structural Parts'
+  },
+  ja: {
+    nav_services: 'サービス', nav_process: '工程', nav_materials: '素材',
+    nav_showcase: '実績', nav_contact: 'お問い合わせ',
+    hero_tag: 'OEM金属鋳造ソリューション',
+    hero_title_1: '溶融金属', hero_title_2: 'あなたの', hero_title_3: 'ビジョンへ形に',
+    hero_desc: '最先端技術、国際基準、20年以上のエンジニアリング専門知識を持つ高品質鋳鋼所。',
+    stat_years: '年の実績', stat_clients: '世界のお客様', stat_parts: '生産部品数',
+    hero_cta1: '見積もり依頼', hero_cta2: '全サービスを見る',
+    services_tag: 'What We Do', services_title: '当社のサービス',
+    services_desc: '金型設計から完成部品までのワンストップソリューション',
+    s1_name: '砂型鋳造', s1_desc: '大型部品向け砂型鋳造、数トンの重量に対応',
+    s2_name: 'ロストワックス鋳造', s2_desc: '高精度ロストワックス鋳造、複雑形状に対応',
+    s3_name: 'ダイカスト', s3_desc: '大量生産向け永久鋳型鋳造',
+    process_tag: 'How We Work', process_title: '製造工程',
+    p1_title: '設計・コンサルティング', p1_desc: 'ニーズ分析、部品設計、最適素材選定',
+    p2_title: '金型製作', p2_desc: '高精度金型製造、複雑設計に対応',
+    p3_title: '溶解・鋳造', p3_desc: '国際基準に準拠した温度・合金組成管理',
+    p4_title: '検査・納品', p4_desc: 'CMM機器による全数検査後に出荷',
+    mat_tag: 'Materials', mat_title: '使用素材',
+    mat1: '耐久性に優れた鋳鉄、大型部品に最適', mat2: '高強度炭素鋼、構造・機械用途',
+    mat3: '耐食ステンレス鋼、食品・化学産業向け', mat4: '特殊合金鋼、耐熱性に優れる',
+    trust_tag: 'Trusted Worldwide', trust_title: '世界中の信頼',
+    contact_tag: 'Get In Touch', contact_title: 'お問い合わせ',
+    contact_desc: '部品図面やご要望をお送りください。24時間以内にエンジニアチームが回答します。',
+    ci_email: 'メール', ci_phone: '電話', ci_address: '住所',
+    ci_address_val: 'サムットプラーカーン県、タイ',
+    ci_hours: '営業時間', ci_hours_val: '月曜〜土曜: 08:00 - 17:00',
+    form_name: '氏名', form_company: '会社名', form_email: 'メール',
+    form_phone: '電話', form_service: 'ご興味のあるサービス',
+    form_select_default: 'サービスを選択',
+    form_opt1: '砂型鋳造', form_opt2: 'ロストワックス鋳造',
+    form_opt3: 'ダイカスト', form_opt4: 'CNC加工',
+    form_opt5: 'その他',
+    form_message: '詳細', form_submit: '送信',
+    footer_privacy: 'プライバシーポリシー', footer_terms: '利用規約',
+    footer_sitemap: 'サイトマップ',
+    img_casting: '鋳造工程', img_product: '鋼部品', img_furnace: '溶解炉', img_quality: '品質管理',
+    show1: '機械部品', show1_cat: '産業', show1_name: '機械部品',
+    show2: '配管部品', show2_cat: '配管', show2_name: 'バルブ本体',
+    show3: '自動車部品', show3_cat: '自動車', show3_name: 'ブレーキ部品',
+    show4: 'エネルギー部品', show4_cat: 'エネルギー', show4_name: 'タービン部品',
+    show5: '建設部品', show5_cat: '建設', show5_name: '構造部品'
+  },
+  zh: {
+    nav_services: '服务', nav_process: '流程', nav_materials: '材料',
+    nav_showcase: '案例', nav_contact: '联系我们',
+    hero_tag: 'OEM金属铸造解决方案',
+    hero_title_1: '熔融金属', hero_title_2: '铸就', hero_title_3: '您的愿景',
+    hero_desc: '高品质铸钢厂，以尖端技术、国际标准和20多年工程专业知识提供OEM铸件。',
+    stat_years: '年经验', stat_clients: '全球客户', stat_parts: '已生产零件',
+    hero_cta1: '询价', hero_cta2: '查看所有服务',
+    services_tag: 'What We Do', services_title: '我们的服务',
+    services_desc: '从模具设计到成品交付的一站式解决方案',
+    s1_name: '砂型铸造', s1_desc: '大型砂型铸造，承重可达数吨',
+    s2_name: '熔模铸造', s2_desc: '失蜡精密铸造，表面光洁度高',
+    s3_name: '压铸', s3_desc: '永久模具铸造，适合大批量生产',
+    process_tag: 'How We Work', process_title: '生产流程',
+    p1_title: '设计与咨询', p1_desc: '分析需求、设计零件、选择最佳材料',
+    p2_title: '模具制作', p2_desc: '高精度模具制造，支持复杂设计',
+    p3_title: '熔炼与铸造', p3_desc: '精确控制温度和合金成分',
+    p4_title: '检测与交付', p4_desc: '使用CMM设备逐件检测后发货',
+    mat_tag: 'Materials', mat_title: '使用材料',
+    mat1: '耐用铸铁，重型零件的理想选择', mat2: '高强度碳钢，用于结构和机械',
+    mat3: '耐腐蚀不锈钢，适合食品和化工行业', mat4: '特种合金钢，耐高温',
+    trust_tag: 'Trusted Worldwide', trust_title: '全球信赖',
+    contact_tag: 'Get In Touch', contact_title: '联系我们',
+    contact_desc: '提交您的零件图纸或需求，工程团队将在24小时内回复。',
+    ci_email: '邮箱', ci_phone: '电话', ci_address: '地址',
+    ci_address_val: '泰国北榄府',
+    ci_hours: '营业时间', ci_hours_val: '周一至周六: 08:00 - 17:00',
+    form_name: '姓名', form_company: '公司', form_email: '邮箱',
+    form_phone: '电话', form_service: '感兴趣的服务',
+    form_select_default: '选择服务',
+    form_opt1: '砂型铸造', form_opt2: '熔模铸造',
+    form_opt3: '压铸', form_opt4: 'CNC加工',
+    form_opt5: '其他',
+    form_message: '详情', form_submit: '发送',
+    footer_privacy: '隐私政策', footer_terms: '服务条款',
+    footer_sitemap: '网站地图',
+    img_casting: '铸造工艺', img_product: '钢零件', img_furnace: '熔炉', img_quality: '质量控制',
+    show1: '机械零件', show1_cat: '工业', show1_name: '机械零件',
+    show2: '管件', show2_cat: '管件', show2_name: '阀体',
+    show3: '汽车零件', show3_cat: '汽车', show3_name: '制动零件',
+    show4: '能源零件', show4_cat: '能源', show4_name: '涡轮零件',
+    show5: '建筑零件', show5_cat: '建筑', show5_name: '结构零件'
+  },
+  ko: {
+    nav_services: '서비스', nav_process: '공정', nav_materials: '소재',
+    nav_showcase: '포트폴리오', nav_contact: '문의',
+    hero_tag: 'OEM 금속 주조 솔루션',
+    hero_title_1: '용융 금속', hero_title_2: '당신의 비전을', hero_title_3: '형상으로',
+    hero_desc: '첨단 기술, 국제 표준, 20년 이상의 엔지니어링 전문성을 갖춘 프리미엄 주강소.',
+    stat_years: '년 경험', stat_clients: '글로벌 고객', stat_parts: '생산 부품 수',
+    hero_cta1: '견적 요청', hero_cta2: '모든 서비스 보기',
+    services_tag: 'What We Do', services_title: '서비스',
+    services_desc: '금형 설계부터 완제품 납품까지 원스톱 솔루션',
+    s1_name: '사형 주조', s1_desc: '대형 부품을 위한 사형 주조, 수톤 중량 지원',
+    s2_name: '정밀 주조', s2_desc: '고정밀 로스트왁스 주조, 복잡한 형상 지원',
+    s3_name: '다이캐스팅', s3_desc: '대량 생산용 영구 금형 주조',
+    process_tag: 'How We Work', process_title: '생산 공정',
+    p1_title: '설계 및 상담', p1_desc: '요구사항 분석, 부품 설계, 최적 소재 선정',
+    p2_title: '금형 제작', p2_desc: '고정밀 금형 제조, 복잡한 설계 지원',
+    p3_title: '용해 및 주조', p3_desc: '국제 표준에 따른 온도 및 합금 조성 제어',
+    p4_title: '검사 및 납품', p4_desc: 'CMM 장비로 전수 검사 후 출하',
+    mat_tag: 'Materials', mat_title: '사용 소재',
+    mat1: '내구성 있는 주철, 대형 부품에 적합', mat2: '고강도 탄소강, 구조 및 기계용',
+    mat3: '내식성 스테인리스강, 식품 및 화학 산업용', mat4: '특수 합금강, 고내열성',
+    trust_tag: 'Trusted Worldwide', trust_title: '전 세계의 신뢰',
+    contact_tag: 'Get In Touch', contact_title: '문의하기',
+    contact_desc: '부품 도면 또는 요구사항을 제출하세요. 엔지니어링팀이 24시간 이내에 답변드립니다.',
+    ci_email: '이메일', ci_phone: '전화', ci_address: '주소',
+    ci_address_val: '태국 사뭇프라칸 주',
+    ci_hours: '영업시간', ci_hours_val: '월~토: 08:00 - 17:00',
+    form_name: '성명', form_company: '회사', form_email: '이메일',
+    form_phone: '전화', form_service: '관심 서비스',
+    form_select_default: '서비스 선택',
+    form_opt1: '사형 주조', form_opt2: '정밀 주조',
+    form_opt3: '다이캐스팅', form_opt4: 'CNC 가공',
+    form_opt5: '기타',
+    form_message: '상세 내용', form_submit: '보내기',
+    footer_privacy: '개인정보 처리방침', footer_terms: '이용약관',
+    footer_sitemap: '사이트맵',
+    img_casting: '주조 공정', img_product: '강철 부품', img_furnace: '용광로', img_quality: '품질 관리',
+    show1: '기계 부품', show1_cat: '산업', show1_name: '기계 부품',
+    show2: '배관 부품', show2_cat: '배관', show2_name: '밸브 바디',
+    show3: '자동차 부품', show3_cat: '자동차', show3_name: '브레이크 부품',
+    show4: '에너지 부품', show4_cat: '에너지', show4_name: '터빈 부품',
+    show5: '건설 부품', show5_cat: '건설', show5_name: '구조 부품'
+  },
+  de: {
+    nav_services: 'Dienstleistungen', nav_process: 'Prozess', nav_materials: 'Materialien',
+    nav_showcase: 'Referenzen', nav_contact: 'Kontakt',
+    hero_tag: 'OEM-Metallgusslösungen',
+    hero_title_1: 'Geschmolzenes Metall', hero_title_2: 'Geformt nach', hero_title_3: 'Ihrer Vision',
+    hero_desc: 'Premium-Stahlgießerei mit modernster Technologie, internationalen Standards und über 20 Jahren Ingenieursexpertise.',
+    stat_years: 'Jahre Erfahrung', stat_clients: 'Globale Kunden', stat_parts: 'Produzierte Teile',
+    hero_cta1: 'Angebot anfordern', hero_cta2: 'Alle Dienstleistungen',
+    services_tag: 'What We Do', services_title: 'Unsere Dienstleistungen',
+    services_desc: 'Komplettlösungen von der Formgestaltung bis zum fertigen Bauteil',
+    s1_name: 'Sandguss', s1_desc: 'Großvolumiger Sandguss für schwere Komponenten',
+    s2_name: 'Feinguss', s2_desc: 'Wachsausschmelzverfahren mit hoher Präzision',
+    s3_name: 'Druckguss', s3_desc: 'Dauerformguss für die Massenproduktion',
+    process_tag: 'How We Work', process_title: 'Unser Prozess',
+    p1_title: 'Design & Beratung', p1_desc: 'Anforderungsanalyse, Teiledesign, Materialauswahl',
+    p2_title: 'Formenbau', p2_desc: 'Hochpräziser Formenbau für komplexe Designs',
+    p3_title: 'Schmelzen & Gießen', p3_desc: 'Präzise Temperatur- und Legierungskontrolle',
+    p4_title: 'Prüfung & Lieferung', p4_desc: 'CMM-geprüft vor dem Versand',
+    mat_tag: 'Materials', mat_title: 'Unsere Materialien',
+    mat1: 'Langlebiges Gusseisen für schwere Bauteile', mat2: 'Hochfester Kohlenstoffstahl',
+    mat3: 'Korrosionsbeständiger Edelstahl', mat4: 'Speziallegierungsstahl, hitzebeständig',
+    trust_tag: 'Trusted Worldwide', trust_title: 'Weltweit vertraut',
+    contact_tag: 'Get In Touch', contact_title: 'Kontaktieren Sie uns',
+    contact_desc: 'Senden Sie Ihre Zeichnungen. Antwort innerhalb von 24 Stunden.',
+    ci_email: 'E-Mail', ci_phone: 'Telefon', ci_address: 'Adresse',
+    ci_address_val: 'Provinz Samut Prakan, Thailand',
+    ci_hours: 'Geschäftszeiten', ci_hours_val: 'Mo - Sa: 08:00 - 17:00',
+    form_name: 'Vollständiger Name', form_company: 'Unternehmen', form_email: 'E-Mail',
+    form_phone: 'Telefon', form_service: 'Service-Interesse',
+    form_select_default: 'Service auswählen',
+    form_opt1: 'Sandguss', form_opt2: 'Feinguss',
+    form_opt3: 'Druckguss', form_opt4: 'CNC-Bearbeitung',
+    form_opt5: 'Sonstiges',
+    form_message: 'Details', form_submit: 'Nachricht senden',
+    footer_privacy: 'Datenschutz', footer_terms: 'AGB',
+    footer_sitemap: 'Sitemap',
+    img_casting: 'Gießprozess', img_product: 'Stahlteile', img_furnace: 'Schmelzofen', img_quality: 'Qualitätskontrolle',
+    show1: 'Maschinenteile', show1_cat: 'Industrie', show1_name: 'Maschinenteile',
+    show2: 'Rohrleitungsteile', show2_cat: 'Fittings', show2_name: 'Ventilkörper',
+    show3: 'Automobilteile', show3_cat: 'Automotive', show3_name: 'Bremsteile',
+    show4: 'Energieteile', show4_cat: 'Energie', show4_name: 'Turbinenteile',
+    show5: 'Bauteile', show5_cat: 'Bauwesen', show5_name: 'Strukturteile'
+  },
+  es: {
+    nav_services: 'Servicios', nav_process: 'Proceso', nav_materials: 'Materiales',
+    nav_showcase: 'Portafolio', nav_contact: 'Contacto',
+    hero_tag: 'Soluciones de Fundición OEM',
+    hero_title_1: 'Metal Fundido', hero_title_2: 'Moldeado en', hero_title_3: 'Tu Visión',
+    hero_desc: 'Fundición de acero premium con tecnología de vanguardia, estándares internacionales y más de 20 años de experiencia.',
+    stat_years: 'Años de experiencia', stat_clients: 'Clientes globales', stat_parts: 'Piezas producidas',
+    hero_cta1: 'Solicitar cotización', hero_cta2: 'Ver todos los servicios',
+    services_tag: 'What We Do', services_title: 'Nuestros Servicios',
+    services_desc: 'Soluciones integrales desde el diseño de moldes hasta piezas terminadas',
+    s1_name: 'Fundición en Arena', s1_desc: 'Fundición en arena para componentes grandes, soporta varias toneladas',
+    s2_name: 'Fundición de Inversión', s2_desc: 'Fundición a la cera perdida de alta precisión',
+    s3_name: 'Fundición a Presión', s3_desc: 'Fundición de molde permanente para producción en masa',
+    process_tag: 'How We Work', process_title: 'Nuestro Proceso',
+    p1_title: 'Diseño y Consultoría', p1_desc: 'Análisis de requisitos, diseño de piezas, selección de materiales',
+    p2_title: 'Creación de Moldes', p2_desc: 'Fabricación de moldes de alta precisión',
+    p3_title: 'Fundición', p3_desc: 'Control preciso de temperatura y composición de aleación',
+    p4_title: 'Inspección y Entrega', p4_desc: 'Inspección con equipo CMM antes del envío',
+    mat_tag: 'Materials', mat_title: 'Materiales que Usamos',
+    mat1: 'Hierro fundido duradero para piezas pesadas', mat2: 'Acero al carbono de alta resistencia',
+    mat3: 'Acero inoxidable resistente a la corrosión', mat4: 'Acero aleado especial, alta resistencia al calor',
+    trust_tag: 'Trusted Worldwide', trust_title: 'Confianza Global',
+    contact_tag: 'Get In Touch', contact_title: 'Contáctenos',
+    contact_desc: 'Envíe sus planos o requisitos. Respuesta en 24 horas.',
+    ci_email: 'Correo', ci_phone: 'Teléfono', ci_address: 'Dirección',
+    ci_address_val: 'Provincia de Samut Prakan, Tailandia',
+    ci_hours: 'Horario', ci_hours_val: 'Lun - Sáb: 08:00 - 17:00',
+    form_name: 'Nombre completo', form_company: 'Empresa', form_email: 'Correo',
+    form_phone: 'Teléfono', form_service: 'Servicio de interés',
+    form_select_default: 'Seleccionar servicio',
+    form_opt1: 'Fundición en arena', form_opt2: 'Fundición de inversión',
+    form_opt3: 'Fundición a presión', form_opt4: 'Mecanizado CNC',
+    form_opt5: 'Otro',
+    form_message: 'Detalles', form_submit: 'Enviar',
+    footer_privacy: 'Privacidad', footer_terms: 'Términos',
+    footer_sitemap: 'Mapa del sitio',
+    img_casting: 'Proceso de fundición', img_product: 'Piezas de acero', img_furnace: 'Horno', img_quality: 'Control de calidad',
+    show1: 'Piezas de máquina', show1_cat: 'Industrial', show1_name: 'Piezas de máquina',
+    show2: 'Tuberías', show2_cat: 'Tuberías', show2_name: 'Cuerpos de válvula',
+    show3: 'Piezas automotrices', show3_cat: 'Automotriz', show3_name: 'Componentes de freno',
+    show4: 'Piezas de energía', show4_cat: 'Energía', show4_name: 'Piezas de turbina',
+    show5: 'Piezas de construcción', show5_cat: 'Construcción', show5_name: 'Piezas estructurales'
+  },
+  ar: {
+    nav_services: 'الخدمات', nav_process: 'العملية', nav_materials: 'المواد',
+    nav_showcase: 'أعمالنا', nav_contact: 'اتصل بنا',
+    hero_tag: 'حلول الصب المعدني OEM',
+    hero_title_1: 'معدن منصهر', hero_title_2: 'مشكّل وفق', hero_title_3: 'رؤيتك',
+    hero_desc: 'مسبك فولاذ متميز بتقنية متقدمة ومعايير دولية وخبرة هندسية تزيد عن 20 عامًا.',
+    stat_years: 'سنوات خبرة', stat_clients: 'عملاء عالميون', stat_parts: 'قطع منتجة',
+    hero_cta1: 'طلب عرض سعر', hero_cta2: 'عرض جميع الخدمات',
+    services_tag: 'What We Do', services_title: 'خدماتنا',
+    services_desc: 'حلول متكاملة من تصميم القالب إلى القطع الجاهزة',
+    s1_name: 'الصب بالرمل', s1_desc: 'صب رمل للقطع كبيرة الحجم تتحمل عدة أطنان',
+    s2_name: 'صب الشمع المفقود', s2_desc: 'صب دقيق بتقنية الشمع المفقود',
+    s3_name: 'الصب بالقوالب', s3_desc: 'صب بالقوالب الدائمة للإنتاج الضخم',
+    process_tag: 'How We Work', process_title: 'عملية الإنتاج',
+    p1_title: 'التصميم والاستشارة', p1_desc: 'تحليل المتطلبات وتصميم القطع واختيار المواد',
+    p2_title: 'صناعة القوالب', p2_desc: 'تصنيع قوالب عالية الدقة',
+    p3_title: 'الصهر والصب', p3_desc: 'تحكم دقيق في درجة الحرارة وتركيب السبائك',
+    p4_title: 'الفحص والتسليم', p4_desc: 'فحص كل قطعة بأجهزة CMM قبل الشحن',
+    mat_tag: 'Materials', mat_title: 'المواد التي نستخدمها',
+    mat1: 'حديد صب متين للقطع الثقيلة', mat2: 'فولاذ كربوني عالي المتانة',
+    mat3: 'فولاذ مقاوم للتآكل', mat4: 'فولاذ سبائك خاص مقاوم للحرارة العالية',
+    trust_tag: 'Trusted Worldwide', trust_title: 'موثوق عالميًا',
+    contact_tag: 'Get In Touch', contact_title: 'اتصل بنا',
+    contact_desc: 'أرسل رسوماتك أو متطلباتك. يرد فريق الهندسة خلال 24 ساعة.',
+    ci_email: 'البريد الإلكتروني', ci_phone: 'الهاتف', ci_address: 'العنوان',
+    ci_address_val: 'محافظة ساموت براكان، تايلاند',
+    ci_hours: 'ساعات العمل', ci_hours_val: 'الإثنين - السبت: 08:00 - 17:00',
+    form_name: 'الاسم الكامل', form_company: 'الشركة', form_email: 'البريد الإلكتروني',
+    form_phone: 'الهاتف', form_service: 'الخدمة المطلوبة',
+    form_select_default: 'اختر خدمة',
+    form_opt1: 'صب رمل', form_opt2: 'صب شمع مفقود',
+    form_opt3: 'صب قوالب', form_opt4: ' تصنيع CNC',
+    form_opt5: 'أخرى',
+    form_message: 'التفاصيل', form_submit: 'إرسال',
+    footer_privacy: 'سياسة الخصوصية', footer_terms: 'الشروط والأحكام',
+    footer_sitemap: 'خريطة الموقع',
+    img_casting: 'عملية الصب', img_product: 'قطع فولاذية', img_furnace: 'فرن الصهر', img_quality: 'مراقبة الجودة',
+    show1: 'قطع الآلات', show1_cat: 'صناعي', show1_name: 'قطع الآلات',
+    show2: 'تركيبات الأنابيب', show2_cat: 'أنابيب', show2_name: 'هيكل الصمامات',
+    show3: 'قطع السيارات', show3_cat: 'سيارات', show3_name: 'مكونات الفرامل',
+    show4: 'قطع الطاقة', show4_cat: 'طاقة', show4_name: 'قطع التوربينات',
+    show5: 'قطع البناء', show5_cat: 'بناء', show5_name: 'قطع إنشائية'
+  }
+};
+
+let currentLang = 'th';
+
+function toggleLang() {
+  const dropdown = document.getElementById('langDropdown');
+  const btn = document.getElementById('langBtn');
+  dropdown.classList.toggle('open');
+  btn.classList.toggle('active');
+}
+
+function setLang(lang, flag, label) {
+  currentLang = lang;
+  document.getElementById('currentFlag').textContent = flag;
+  document.getElementById('currentLang').textContent = label;
+
+  // Update active state
+  document.querySelectorAll('.lang-option').forEach(opt => opt.classList.remove('active'));
+  event.target.closest('.lang-option').classList.add('active');
+
+  // Apply translations
+  const t = translations[lang];
+  if (t) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key]) {
+        el.textContent = t[key];
+      }
+    });
+  }
+
+  // Set RTL for Arabic
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+  // Close dropdown
+  document.getElementById('langDropdown').classList.remove('open');
+  document.getElementById('langBtn').classList.remove('active');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.lang-selector')) {
+    document.getElementById('langDropdown').classList.remove('open');
+    document.getElementById('langBtn').classList.remove('active');
+  }
+});
+
+// ===== MOBILE NAV =====
+function toggleMobile() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+
+// ===== SCROLL EFFECTS =====
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+
+  // Scroll progress
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  document.getElementById('scrollProgress').style.width = progress + '%';
+});
+
+// ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+});
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ===== SMOOTH SCROLL FOR NAV LINKS =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

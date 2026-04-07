@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suphancasting — Professional OEM Casting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Work+Sans:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "inverse-on-surface": "#313030",
+        "surface-container-lowest": "#0e0e0e",
+        "on-primary-fixed": "#3b0900",
+        "inverse-surface": "#e5e2e1",
+        "secondary": "#abcdcd",
+        "secondary-fixed-dim": "#abcdcd",
+        "on-secondary": "#143535",
+        "on-primary-container": "#541100",
+        "primary-container": "#ff5625",
+        "surface-dim": "#131313",
+        "on-secondary-fixed-variant": "#2c4c4c",
+        "surface-container-low": "#1c1b1b",
+        "error": "#ffb4ab",
+        "on-surface-variant": "#e7bdb2",
+        "on-primary": "#601400",
+        "background": "#131313",
+        "on-tertiary-container": "#002a53",
+        "primary": "#ffb5a0",
+        "on-error": "#690005",
+        "tertiary": "#a5c8ff",
+        "surface-tint": "#ffb5a0",
+        "secondary-container": "#2e4e4e",
+        "on-tertiary-fixed": "#001c3a",
+        "on-primary-fixed-variant": "#872000",
+        "on-surface": "#e5e2e1",
+        "primary-fixed-dim": "#ffb5a0",
+        "surface-bright": "#3a3939",
+        "on-tertiary-fixed-variant": "#004785",
+        "tertiary-fixed-dim": "#a5c8ff",
+        "on-background": "#e5e2e1",
+        "surface-container-highest": "#353534",
+        "tertiary-fixed": "#d4e3ff",
+        "primary-fixed": "#ffdbd1",
+        "outline": "#ad887e",
+        "error-container": "#93000a",
+        "inverse-primary": "#b12d00",
+        "surface-variant": "#353534",
+        "surface-container": "#201f1f",
+        "tertiary-container": "#2592ff",
+        "on-error-container": "#ffdad6",
+        "on-secondary-container": "#9dbfbe",
+        "surface": "#131313",
+        "on-secondary-fixed": "#002020",
+        "secondary-fixed": "#c6e9e9",
+        "outline-variant": "#5d4038",
+        "on-tertiary": "#00315e",
+        "surface-container-high": "#2a2a2a"
+      },
+      fontFamily: {
+        "headline": ["Space Grotesk", "Noto Sans Thai", "sans-serif"],
+        "body": ["Work Sans", "Noto Sans Thai", "sans-serif"],
+        "label": ["Work Sans", "Noto Sans Thai", "sans-serif"]
+      },
+      borderRadius: {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+    },
+  },
+}
+</script>
+<style>
+body {
+  background-color: #131313;
+  color: #e5e2e1;
+  font-family: 'Noto Sans Thai', 'Work Sans', sans-serif;
+}
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.glass-panel {
+  background: rgba(53, 53, 52, 0.6);
+  backdrop-filter: blur(20px);
+}
+.glow-effect:active {
+  box-shadow: 0 0 20px rgba(255, 86, 37, 0.6);
+}
+.editorial-title {
+  font-family: 'Space Grotesk', 'Noto Sans Thai', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.text-glow {
+  text-shadow: 0 0 15px rgba(255, 181, 160, 0.3);
+}
+.noto-sans-thai {
+  font-family: 'Noto Sans Thai', sans-serif;
+}
+.lang-dropdown-btn {
+  background-color: #161616;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #a8a29e;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.lang-dropdown-btn:hover {
+  border-color: rgba(255,255,255,0.12);
+  color: #ffffff;
+}
+.lang-dropdown-panel {
+  background-color: #1e1e1e;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  min-width: 180px;
+}
+.lang-option {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  font-size: 13px;
+}
+.lang-option:hover {
+  background-color: rgba(232, 98, 44, 0.1);
+}
+.lang-option.selected {
+  color: #e8622c;
+  font-weight: 700;
+}
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+</style>
+</head>
+<body class="selection:bg-primary-container selection:text-white overflow-x-hidden">
+
+<!-- ===== TOP NAVIGATION BAR ===== -->
+<nav class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl shadow-2xl shadow-black/50">
+  <div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+    <a class="flex items-center gap-3" href="#">
+      <div class="bg-[#FF4500] text-white font-black px-2 py-1 leading-none text-xl rounded-sm font-['Space_Grotesk'] shadow-[0_0_10px_rgba(255,69,0,0.5)]">SC</div>
+      <span class="text-2xl font-black tracking-tighter text-[#ff5625] uppercase font-['Space_Grotesk']">SUPHAN CASTING</span>
+    </a>
+    <div class="hidden md:flex gap-8 items-center">
+      <a class="font-headline uppercase tracking-widest text-sm text-[#ff5625] border-b-2 border-[#ff5625] pb-1" href="#">หน้าหลัก</a>
+      <a class="font-headline uppercase tracking-widest text-sm text-on-surface-variant hover:text-[#ffb5a0] transition-colors" href="#services">บริการ</a>
+      <a class="font-headline uppercase tracking-widest text-sm text-on-surface-variant hover:text-[#ffb5a0] transition-colors" href="#gallery">ผลิตภัณฑ์</a>
+      <a class="font-headline uppercase tracking-widest text-sm text-on-surface-variant hover:text-[#ffb5a0] transition-colors" href="#materials">แหล่งข้อมูล</a>
+      <a class="font-headline uppercase tracking-widest text-sm text-on-surface-variant hover:text-[#ffb5a0] transition-colors" href="#contact">แอดมิน</a>
+      <div class="flex items-center gap-6">
+        <div class="relative group">
+          <button class="lang-dropdown-btn px-[14px] py-[7px] flex items-center gap-2 text-xs uppercase tracking-tight">
+            <span class="noto-sans-thai" id="langDisplay">🇹🇭 ไทย</span>
+            <span class="material-symbols-outlined text-[14px]">expand_more</span>
+          </button>
+          <div class="absolute right-0 top-full mt-2 lang-dropdown-panel opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60] overflow-hidden">
+            <div class="py-2 grid grid-cols-1">
+              <div class="lang-option selected noto-sans-thai" onclick="setLang('🇹🇭 ไทย',this)"><span>🇹🇭</span> <span>ไทย</span></div>
+              <div class="lang-option" onclick="setLang('🇺🇸 English',this)"><span>🇺🇸</span> <span>English</span></div>
+              <div class="lang-option noto-sans-thai" onclick="setLang('🇯🇵 日本語',this)"><span>🇯🇵</span> <span>日本語</span></div>
+              <div class="lang-option noto-sans-thai" onclick="setLang('🇨🇳 中文',this)"><span>🇨🇳</span> <span>中文</span></div>
+              <div class="lang-option noto-sans-thai" onclick="setLang('🇰🇷 한국어',this)"><span>🇰🇷</span> <span>한국어</span></div>
+              <div class="lang-option" onclick="setLang('🇩🇪 Deutsch',this)"><span>🇩🇪</span> <span>Deutsch</span></div>
+              <div class="lang-option" onclick="setLang('🇪🇸 Español',this)"><span>🇪🇸</span> <span>Español</span></div>
+              <div class="lang-option" onclick="setLang('🇸🇦 العربية',this)"><span>🇸🇦</span> <span>العربية</span></div>
+            </div>
+          </div>
+        </div>
+        <a class="bg-primary-container text-on-primary-container font-bold px-6 py-2 rounded uppercase tracking-tighter hover:bg-primary transition-all scale-95 active:scale-90 font-headline" href="#contact">ขอใบเสนอราคา</a>
+      </div>
+    </div>
+    <div class="md:hidden">
+      <button onclick="document.getElementById('mobileNav').classList.toggle('hidden')">
+        <span class="material-symbols-outlined text-primary text-3xl">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div id="mobileNav" class="hidden fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center gap-8">
+  <button onclick="document.getElementById('mobileNav').classList.add('hidden')" class="absolute top-6 right-6 text-white text-2xl">✕</button>
+  <a href="#" class="font-headline text-2xl uppercase tracking-widest text-on-surface-variant" onclick="document.getElementById('mobileNav').classList.add('hidden')">หน้าหลัก</a>
+  <a href="#services" class="font-headline text-2xl uppercase tracking-widest text-on-surface-variant" onclick="document.getElementById('mobileNav').classList.add('hidden')">บริการ</a>
+  <a href="#gallery" class="font-headline text-2xl uppercase tracking-widest text-on-surface-variant" onclick="document.getElementById('mobileNav').classList.add('hidden')">ผลิตภัณฑ์</a>
+  <a href="#contact" class="font-headline text-2xl uppercase tracking-widest text-on-surface-variant" onclick="document.getElementById('mobileNav').classList.add('hidden')">ติดต่อ</a>
+</div>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 bg-black/40 z-10"></div>
+  <img alt="เหล็กหลอมเหลว" class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1920&h=1080&fit=crop"/>
+  <div class="relative z-20 text-center px-6 max-w-5xl">
+    <span class="inline-block py-1 px-3 mb-6 border border-primary/30 text-primary text-xs font-bold tracking-[0.4em] uppercase bg-primary-container/10 backdrop-blur-sm noto-sans-thai">วิศวกรรมความแม่นยำสูง ตั้งแต่ปี 1988</span>
+    <h1 class="editorial-title text-6xl md:text-8xl mb-8 text-white uppercase">
+      หล่อหลอม <span class="text-primary-container italic">เหล็กกล้า</span><br/>
+      ให้เป็นไปตาม<br/>
+      จินตนาการของคุณ
+    </h1>
+    <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+      <a class="w-full md:w-auto px-10 py-5 bg-primary-container text-white font-black uppercase tracking-widest hover:shadow-[0_0_30px_rgba(255,86,37,0.4)] transition-all font-headline text-center" href="#contact">เริ่มโปรเจกต์ของคุณ</a>
+      <a class="w-full md:w-auto px-10 py-5 border border-white/20 backdrop-blur-md text-white font-black uppercase tracking-widest hover:bg-white/10 transition-all font-headline text-center" href="#services">สำรวจบริการของเรา</a>
+    </div>
+  </div>
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 hidden md:block">
+    <div class="w-[2px] h-16 bg-white/10 relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1/2 bg-primary-container animate-bounce"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="border-y border-outline-variant/20 py-4 overflow-hidden bg-surface">
+  <div class="flex animate-marquee whitespace-nowrap">
+    <div class="flex items-center gap-8 px-8">
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">SAND CASTING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">INVESTMENT CASTING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">DIE CASTING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">CNC MACHINING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">HEAT TREATMENT</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">SURFACE FINISHING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">QUALITY INSPECTION</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">OEM MANUFACTURING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+    </div>
+    <div class="flex items-center gap-8 px-8">
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">SAND CASTING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">INVESTMENT CASTING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">DIE CASTING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">CNC MACHINING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">HEAT TREATMENT</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">SURFACE FINISHING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">QUALITY INSPECTION</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">OEM MANUFACTURING</span>
+      <span class="w-1 h-1 bg-primary-container rounded-full"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICES — HORIZONTAL SCROLL ===== -->
+<section class="py-24 bg-surface relative overflow-hidden" id="services">
+  <div class="px-8 mb-16 flex justify-between items-end max-w-screen-2xl mx-auto">
+    <div>
+      <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai">// ขีดความสามารถหลัก</p>
+      <h2 class="editorial-title text-5xl text-on-surface">ความเชี่ยวชาญด้านอุตสาหกรรม</h2>
+    </div>
+    <div class="hidden md:flex gap-4">
+      <button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary-container transition-colors group" onclick="document.getElementById('serviceScroll').scrollBy({left:-500,behavior:'smooth'})">
+        <span class="material-symbols-outlined group-hover:text-white">west</span>
+      </button>
+      <button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary-container transition-colors group" onclick="document.getElementById('serviceScroll').scrollBy({left:500,behavior:'smooth'})">
+        <span class="material-symbols-outlined group-hover:text-white">east</span>
+      </button>
+    </div>
+  </div>
+  <div id="serviceScroll" class="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory gap-6 px-8 pb-12 cursor-grab active:cursor-grabbing">
+
+    <!-- 01 Sand Casting — Flagship -->
+    <div class="min-w-[85vw] md:min-w-[450px] aspect-[4/5] relative snap-start group overflow-hidden border-2 border-primary-container/20">
+      <img alt="การเตรียมแม่พิมพ์ทราย" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&h=750&fit=crop"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+      <div class="absolute top-4 left-4 bg-primary-container text-white text-[10px] font-black px-2 py-1 uppercase tracking-widest font-headline">บริการหลัก</div>
+      <div class="absolute bottom-0 p-8 w-full">
+        <span class="text-primary text-xs font-bold tracking-widest mb-4 block noto-sans-thai">01 / กระบวนการ</span>
+        <h3 class="font-headline text-3xl font-bold mb-4 uppercase">การหล่อแบบทราย<br/>(Sand Casting)</h3>
+        <p class="text-on-surface-variant text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 noto-sans-thai">เทคนิคดั้งเดิมสำหรับชิ้นงานขนาดใหญ่ที่มีรูปทรงภายในซับซ้อนและผิวสัมผัสที่ดีเยี่ยม</p>
+        <a class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest font-headline" href="#contact">
+          ดูรายละเอียดทางเทคนิค <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 02 Investment Casting -->
+    <div class="min-w-[85vw] md:min-w-[450px] aspect-[4/5] relative snap-start group overflow-hidden">
+      <img alt="อุปกรณ์หล่อขี้ผึ้ง" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&h=750&fit=crop"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+      <div class="absolute bottom-0 p-8 w-full">
+        <span class="text-primary text-xs font-bold tracking-widest mb-4 block noto-sans-thai">02 / กระบวนการ</span>
+        <h3 class="font-headline text-3xl font-bold mb-4 uppercase">การหล่อแบบสูญขี้ผึ้ง<br/>(Investment Casting)</h3>
+        <p class="text-on-surface-variant text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 noto-sans-thai">การหล่อความละเอียดสูงสำหรับชิ้นส่วนการบินและยานยนต์ที่ต้องการค่าความคลาดเคลื่อนต่ำมาก</p>
+        <a class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest font-headline" href="#contact">
+          ดูรายละเอียดทางเทคนิค <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 03 Die Casting -->
+    <div class="min-w-[85vw] md:min-w-[450px] aspect-[4/5] relative snap-start group overflow-hidden">
+      <img alt="เครื่องฉีดอลูมิเนียม" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=750&fit=crop"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+      <div class="absolute bottom-0 p-8 w-full">
+        <span class="text-primary text-xs font-bold tracking-widest mb-4 block noto-sans-thai">03 / กระบวนการ</span>
+        <h3 class="font-headline text-3xl font-bold mb-4 uppercase">การหล่อแบบฉีด<br/>(Die Casting)</h3>
+        <p class="text-on-surface-variant text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 noto-sans-thai">ระบบแรงดันสูงอัตโนมัติสำหรับการผลิตชิ้นส่วนโลหะนอกกลุ่มเหล็กจำนวนมากด้วยความเร็วสูง</p>
+        <a class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest font-headline" href="#contact">
+          ดูรายละเอียดทางเทคนิค <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PROCESS SECTION ===== -->
+<section class="py-24 bg-surface-container-lowest" id="process">
+  <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+    <div class="relative">
+      <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary-container/20 blur-[80px]"></div>
+      <img alt="CAD Design" class="w-full aspect-square object-cover grayscale brightness-75 border-l-4 border-primary-container p-4" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=600&fit=crop"/>
+      <div class="absolute bottom-4 right-4 bg-surface-container-highest p-6 max-w-xs border border-outline-variant/20">
+        <p class="font-headline text-xl font-bold mb-2 uppercase text-primary">นโยบายความผิดพลาดเป็นศูนย์</p>
+        <p class="text-xs text-on-surface-variant leading-relaxed noto-sans-thai">แม่พิมพ์ทุกชิ้นผ่านการสแกนด้วยเทคโนโลยีเลเซอร์ 3 มิติ เพื่อให้มั่นใจว่าเป็นไปตามข้อกำหนดทางวิศวกรรม 100%</p>
+      </div>
+    </div>
+    <div class="space-y-12">
+      <div>
+        <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai">// ขั้นตอนการผลิต</p>
+        <h2 class="editorial-title text-6xl text-white mb-6 uppercase">ลำดับ<br/><span class="text-outline">งานผลิต</span></h2>
+      </div>
+      <div class="space-y-10">
+        <div class="flex gap-6 items-start">
+          <span class="text-4xl font-black text-outline-variant/30 font-headline">01</span>
+          <div>
+            <h4 class="text-xl font-bold text-white uppercase mb-2 tracking-tighter font-headline">การออกแบบและจำลองสถานการณ์</h4>
+            <p class="text-on-surface-variant text-sm noto-sans-thai">การวิเคราะห์ด้วย CAD/CAM ขั้นสูงเพื่อทำนายการไหลของโลหะและป้องกันโพรงอากาศก่อนการเทจริง</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <span class="text-4xl font-black text-outline-variant/30 font-headline">02</span>
+          <div>
+            <h4 class="text-xl font-bold text-white uppercase mb-2 tracking-tighter font-headline">การสร้างแม่พิมพ์</h4>
+            <p class="text-on-surface-variant text-sm noto-sans-thai">การทำแม่พิมพ์ต้นแบบภายในโรงงานเพื่อให้มั่นใจว่าเก็บทุกรายละเอียดเล็กๆ ของชิ้นงานได้ครบถ้วน</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <span class="text-4xl font-black text-primary-container font-headline">03</span>
+          <div>
+            <h4 class="text-xl font-bold text-white uppercase mb-2 tracking-tighter font-headline">การหล่อแบบควบคุมสภาวะ</h4>
+            <p class="text-on-surface-variant text-sm noto-sans-thai">การหลอมโลหะในเตาที่ควบคุมบรรยากาศ พร้อมการตรวจสอบส่วนผสมของอัลลอยด์แบบเรียลไทม์</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <span class="text-4xl font-black text-outline-variant/30 font-headline">04</span>
+          <div>
+            <h4 class="text-xl font-bold text-white uppercase mb-2 tracking-tighter font-headline">การตรวจสอบขั้นสุดท้าย</h4>
+            <p class="text-on-surface-variant text-sm noto-sans-thai">การทดสอบด้วย X-ray, อัลตราโซนิก และแรงดันน้ำ เพื่อรับประกันความแข็งแรงของโครงสร้างและประสิทธิภาพ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY SECTION ===== -->
+<section class="py-24 bg-surface border-y border-outline-variant/10" id="gallery">
+  <div class="px-8 mb-12 flex flex-col md:flex-row md:items-center justify-between gap-6 max-w-screen-2xl mx-auto">
+    <h2 class="editorial-title text-5xl text-white uppercase">ผลงาน <span class="text-primary italic">คุณภาพ</span></h2>
+    <div class="flex flex-wrap gap-2">
+      <span class="px-4 py-1 rounded-full border border-primary text-primary text-[10px] font-black uppercase tracking-widest font-headline">ยานยนต์</span>
+      <span class="px-4 py-1 rounded-full border border-outline-variant text-on-surface-variant text-[10px] font-black uppercase tracking-widest font-headline">ปั๊มอุตสาหกรรม</span>
+      <span class="px-4 py-1 rounded-full border border-outline-variant text-on-surface-variant text-[10px] font-black uppercase tracking-widest font-headline">อากาศยาน</span>
+    </div>
+  </div>
+  <div class="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory gap-4 px-8">
+    <div class="min-w-[70vw] md:min-w-[400px] aspect-square snap-start overflow-hidden bg-surface-container-low group">
+      <img alt="ตัวเรือนปั๊ม" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=500&h=500&fit=crop"/>
+    </div>
+    <div class="min-w-[70vw] md:min-w-[400px] aspect-square snap-start overflow-hidden bg-surface-container-low group">
+      <img alt="ชิ้นส่วนวาล์ว" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=500&h=500&fit=crop"/>
+    </div>
+    <div class="min-w-[70vw] md:min-w-[400px] aspect-square snap-start overflow-hidden bg-surface-container-low group">
+      <img alt="ชิ้นส่วนยานยนต์" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1537462715315-eb42f5849031?w=500&h=500&fit=crop"/>
+    </div>
+    <div class="min-w-[70vw] md:min-w-[400px] aspect-square snap-start overflow-hidden bg-surface-container-low group">
+      <img alt="ชิ้นส่วนเทอร์ไบน์" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&h=500&fit=crop"/>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MATERIALS ===== -->
+<section class="py-24 bg-surface-container-lowest border-b border-outline-variant/10" id="materials">
+  <div class="max-w-screen-2xl mx-auto px-8">
+    <div class="mb-16">
+      <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai">// วัสดุที่เราใช้</p>
+      <h2 class="editorial-title text-5xl text-on-surface">การเลือกใช้วัสดุที่ <span class="text-primary italic">เหมาะสม</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="bg-surface p-8 border border-outline-variant/20 hover:border-primary/30 transition-all group">
+        <div class="w-12 h-12 bg-primary-container/20 rounded-full flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary">hardware</span>
+        </div>
+        <h3 class="font-headline text-xl font-bold uppercase mb-3">Cast Iron</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed noto-sans-thai">เหล็กหล่อ FC/FCD ทนทานสูง ราคาคุ้มค่า เหมาะสำหรับชิ้นส่วนเครื่องจักรหนัก</p>
+      </div>
+      <div class="bg-surface p-8 border border-outline-variant/20 hover:border-primary/30 transition-all group">
+        <div class="w-12 h-12 bg-primary-container/20 rounded-full flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary">construction</span>
+        </div>
+        <h3 class="font-headline text-xl font-bold uppercase mb-3">Carbon Steel</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed noto-sans-thai">เหล็กกล้าคาร์บอน SC/SCM แข็งแรงสูง ใช้ในงานโครงสร้างและเครื่องจักร</p>
+      </div>
+      <div class="bg-surface p-8 border border-outline-variant/20 hover:border-primary/30 transition-all group">
+        <div class="w-12 h-12 bg-primary-container/20 rounded-full flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary">shield</span>
+        </div>
+        <h3 class="font-headline text-xl font-bold uppercase mb-3">Stainless Steel</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed noto-sans-thai">สแตนเลส SUS304/316 ทนการกัดกร่อน เหมาะสำหรับอุตสาหกรรมอาหารและเคมี</p>
+      </div>
+      <div class="bg-surface p-8 border border-outline-variant/20 hover:border-primary/30 transition-all group">
+        <div class="w-12 h-12 bg-primary-container/20 rounded-full flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary">local_fire_department</span>
+        </div>
+        <h3 class="font-headline text-xl font-bold uppercase mb-3">Alloy Steel</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed noto-sans-thai">เหล็กผสม SCM คุณสมบัติพิเศษตามการใช้งาน ทนความร้อนสูง</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="py-32 bg-surface-container-lowest relative">
+  <div class="max-w-4xl mx-auto px-8">
+    <div class="glass-panel p-12 md:p-20 border border-white/5 relative overflow-hidden text-center">
+      <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary-container/20 rounded-full blur-[100px]"></div>
+      <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary-container/20 rounded-full blur-[100px]"></div>
+      <h2 class="editorial-title text-5xl md:text-7xl mb-8 text-white uppercase relative z-10">ขอใบ <span class="text-primary">เสนอราคา</span> วันนี้</h2>
+      <p class="text-on-surface-variant text-lg mb-12 max-w-2xl mx-auto relative z-10 noto-sans-thai">ปรึกษาทีมวิศวกรของเราเพื่อศึกษาความเป็นไปได้ของโปรเจกต์และรับราคาที่โปร่งใสภายใน 24 ชั่วโมง</p>
+      <div class="flex flex-col md:flex-row gap-6 justify-center items-center relative z-10">
+        <a class="w-full md:w-auto px-12 py-5 bg-primary-container text-white font-black uppercase tracking-widest hover:bg-primary transition-all shadow-xl shadow-primary-container/20 font-headline text-center" href="#contact">ขอข้อเสนอโครงการ</a>
+        <a class="text-white font-bold flex items-center gap-3 group font-headline" href="tel:0986362356">
+          <span class="material-symbols-outlined text-primary group-hover:rotate-12 transition-transform">call</span> 098 636 2356
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="py-24 bg-surface" id="contact">
+  <div class="max-w-screen-2xl mx-auto px-8">
+    <div class="mb-16">
+      <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai">// ติดต่อเรา</p>
+      <h2 class="editorial-title text-5xl text-on-surface">ส่งข้อความ <span class="text-primary italic">ถึงเรา</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div class="space-y-8">
+        <div class="border-b border-outline-variant/20 pb-6">
+          <p class="font-headline text-xs uppercase tracking-widest text-outline-variant mb-2">อีเมล</p>
+          <a class="text-lg text-on-surface hover:text-primary transition-colors" href="mailto:info@suphancasting.com">info@suphancasting.com</a>
+        </div>
+        <div class="border-b border-outline-variant/20 pb-6">
+          <p class="font-headline text-xs uppercase tracking-widest text-outline-variant mb-2">โทรศัพท์</p>
+          <a class="text-lg text-on-surface hover:text-primary transition-colors" href="tel:0986362356">098 636 2356</a>
+        </div>
+        <div class="border-b border-outline-variant/20 pb-6">
+          <p class="font-headline text-xs uppercase tracking-widest text-outline-variant mb-2">ที่อยู่</p>
+          <p class="text-lg text-on-surface">จังหวัดสุพรรณบุรี ประเทศไทย</p>
+        </div>
+        <div class="pb-6">
+          <p class="font-headline text-xs uppercase tracking-widest text-outline-variant mb-2">เวลาทำการ</p>
+          <p class="text-lg text-on-surface">จันทร์ - เสาร์: 08:00 - 17:00</p>
+        </div>
+      </div>
+      <form class="space-y-6" onsubmit="event.preventDefault(); alert('ขอบคุณที่ติดต่อเรา!');">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="font-headline text-xs uppercase tracking-widest text-outline-variant block mb-2">ชื่อ-นามสกุล</label>
+            <input type="text" class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-4 py-3 text-on-surface focus:border-primary outline-none transition-colors" placeholder="ชื่อของคุณ" required>
+          </div>
+          <div>
+            <label class="font-headline text-xs uppercase tracking-widest text-outline-variant block mb-2">บริษัท</label>
+            <input type="text" class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-4 py-3 text-on-surface focus:border-primary outline-none transition-colors" placeholder="ชื่อบริษัท">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="font-headline text-xs uppercase tracking-widest text-outline-variant block mb-2">อีเมล</label>
+            <input type="email" class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-4 py-3 text-on-surface focus:border-primary outline-none transition-colors" placeholder="email@example.com" required>
+          </div>
+          <div>
+            <label class="font-headline text-xs uppercase tracking-widest text-outline-variant block mb-2">โทรศัพท์</label>
+            <input type="tel" class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-4 py-3 text-on-surface focus:border-primary outline-none transition-colors" placeholder="+66 XX-XXX-XXXX">
+          </div>
+        </div>
+        <div>
+          <label class="font-headline text-xs uppercase tracking-widest text-outline-variant block mb-2">บริการที่สนใจ</label>
+          <select class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-4 py-3 text-on-surface focus:border-primary outline-none transition-colors">
+            <option>เลือกบริการ</option>
+            <option>Sand Casting - หล่อทราย</option>
+            <option>Investment Casting - หล่อขี้ผึ้ง</option>
+            <option>Die Casting - หล่อแม่พิมพ์</option>
+            <option>CNC Machining - กลึง CNC</option>
+            <option>อื่นๆ</option>
+          </select>
+        </div>
+        <div>
+          <label class="font-headline text-xs uppercase tracking-widest text-outline-variant block mb-2">รายละเอียด</label>
+          <textarea class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-4 py-3 text-on-surface focus:border-primary outline-none transition-colors min-h-[120px] resize-y" placeholder="รายละเอียดชิ้นส่วนที่ต้องการ วัสดุ ขนาด จำนวน..."></textarea>
+        </div>
+        <button type="submit" class="bg-primary-container text-white font-bold px-10 py-4 rounded uppercase tracking-widest font-headline hover:bg-primary hover:shadow-[0_0_30px_rgba(255,86,37,0.4)] transition-all">ส่งข้อความ</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-[#0e0e0e] w-full py-12 px-8">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+    <div class="space-y-6 col-span-1">
+      <div class="flex items-center gap-3">
+        <div class="bg-[#FF4500] text-white font-black px-2 py-1 leading-none text-xl rounded-sm font-['Space_Grotesk']">SC</div>
+        <span class="text-xl font-bold text-[#ff5625] font-headline uppercase">SUPHAN CASTING</span>
+      </div>
+      <p class="text-[#2e4e4e] text-xs leading-relaxed max-w-xs font-headline tracking-wider">กำหนดอนาคตของการผลิตโลหะผ่านการหล่อที่มีความแม่นยำสูงและมาตรฐานคุณภาพที่เข้มงวด</p>
+    </div>
+    <div class="col-span-1">
+      <h5 class="text-[#ffb5a0] font-bold text-xs uppercase mb-6 font-headline tracking-wider">ลิงก์ด่วน</h5>
+      <ul class="space-y-3">
+        <li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] transition-opacity font-headline text-xs tracking-wider" href="#">หน้าหลัก</a></li>
+        <li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] transition-opacity font-headline text-xs tracking-wider" href="#services">บริการของเรา</a></li>
+        <li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] transition-opacity font-headline text-xs tracking-wider" href="#gallery">พอร์ตโฟลิโอ</a></li>
+        <li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] transition-opacity font-headline text-xs tracking-wider" href="#contact">ติดต่อ</a></li>
+      </ul>
+    </div>
+    <div class="col-span-1">
+      <h5 class="text-[#ffb5a0] font-bold text-xs uppercase mb-6 font-headline tracking-wider">กฎหมาย</h5>
+      <ul class="space-y-3">
+        <li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] transition-opacity font-headline text-xs tracking-wider" href="#">นโยบายความเป็นส่วนตัว</a></li>
+        <li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] transition-opacity font-headline text-xs tracking-wider" href="#">ข้อกำหนดการให้บริการ</a></li>
+        <li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] transition-opacity font-headline text-xs tracking-wider" href="#">การรับรอง ISO</a></li>
+      </ul>
+    </div>
+    <div class="col-span-1">
+      <h5 class="text-[#ffb5a0] font-bold text-xs uppercase mb-6 font-headline tracking-wider">ติดต่อโดยตรง</h5>
+      <div class="space-y-4">
+        <div class="flex items-start gap-3">
+          <span class="material-symbols-outlined text-[#ffb5a0] text-sm">person</span>
+          <span class="text-[#2e4e4e] text-xs font-headline tracking-wider">กอล์ฟ ศศิธร</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="material-symbols-outlined text-[#ffb5a0] text-sm">call</span>
+          <a class="text-[#2e4e4e] hover:text-[#ffb5a0] transition-colors text-xs font-headline tracking-wider" href="tel:0986362356">098 636 2356</a>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="material-symbols-outlined text-[#ffb5a0] text-sm">mail</span>
+          <a class="text-[#2e4e4e] hover:text-[#ffb5a0] transition-colors text-xs font-headline tracking-wider" href="mailto:cnwmax@gmail.com">cnwmax@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-16 pt-8 border-t border-[#5d4038]/15 text-center">
+    <p class="font-headline text-xs tracking-wider text-[#2e4e4e]">© 2025 SUPHAN CASTING INDUSTRIAL. สงวนลิขสิทธิ์ทั้งหมด</p>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// Language Selector
+function setLang(label, el) {
+  document.getElementById('langDisplay').textContent = label;
+  document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// Marquee animation
+const style = document.createElement('style');
+style.textContent = `@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } } .animate-marquee { animation: marquee 25s linear infinite; }`;
+document.head.appendChild(style);
+
+// Drag scroll for service cards
+const scrollEl = document.getElementById('serviceScroll');
+let isDown = false, startX, scrollLeft;
+scrollEl.addEventListener('mousedown', (e) => {
+  isDown = true; startX = e.pageX - scrollEl.offsetLeft; scrollLeft = scrollEl.scrollLeft;
+});
+scrollEl.addEventListener('mouseleave', () => isDown = false);
+scrollEl.addEventListener('mouseup', () => isDown = false);
+scrollEl.addEventListener('mousemove', (e) => {
+  if (!isDown) return; e.preventDefault();
+  const x = e.pageX - scrollEl.offsetLeft;
+  scrollEl.scrollLeft = scrollLeft - (x - startX) * 1.5;
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>

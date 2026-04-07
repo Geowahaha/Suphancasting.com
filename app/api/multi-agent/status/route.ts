@@ -21,10 +21,15 @@ export async function GET() {
     });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Groq API Error:', message);
     return NextResponse.json({
       success: false,
       status: 'error',
       error: message,
+      envCheck: {
+        GROQ_API_KEY: !!process.env.GROQ_API_KEY,
+        Groq_api_key: !!(process.env as Record<string, unknown>).Groq_api_key,
+      }
     }, { status: 500 });
   }
 }
