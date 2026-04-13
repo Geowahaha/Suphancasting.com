@@ -86,7 +86,7 @@ export async function GET(request: Request) {
   return POST(request);
 }
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
     if (!GROQ_API_KEY) {
       return NextResponse.json({
