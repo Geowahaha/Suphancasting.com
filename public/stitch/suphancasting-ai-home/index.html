@@ -2,1052 +2,657 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suphancasting — Professional OEM Casting</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Work+Sans:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<script>
-tailwind.config={
-  darkMode:"class",theme:{extend:{
-  colors:{
-    "inverse-on-surface":"#313030","surface-container-lowest":"#0e0e0e",
-    "on-primary-fixed":"#3b0900","inverse-surface":"#e5e2e1",
-    "secondary":"#abcdcd","secondary-fixed-dim":"#abcdcd",
-    "on-secondary":"#143535","on-primary-container":"#541100",
-    "primary-container":"#ff5625","surface-dim":"#131313",
-    "on-secondary-fixed-variant":"#2c4c4c","surface-container-low":"#1c1b1b",
-    "error":"#ffb4ab","on-surface-variant":"#e7bdb2",
-    "on-primary":"#601400","background":"#131313",
-    "on-tertiary-container":"#002a53","primary":"#ffb5a0",
-    "on-error":"#690005","tertiary":"#a5c8ff",
-    "surface-tint":"#ffb5a0","secondary-container":"#2e4e4e",
-    "on-tertiary-fixed":"#001c3a","on-primary-fixed-variant":"#872000",
-    "on-surface":"#e5e2e1","primary-fixed-dim":"#ffb5a0",
-    "surface-bright":"#3a3939","on-tertiary-fixed-variant":"#004785",
-    "tertiary-fixed-dim":"#a5c8ff","on-background":"#e5e2e1",
-    "surface-container-highest":"#353534","tertiary-fixed":"#d4e3ff",
-    "primary-fixed":"#ffdbd1","outline":"#ad887e",
-    "error-container":"#93000a","inverse-primary":"#b12d00",
-    "surface-variant":"#353534","surface-container":"#201f1f",
-    "tertiary-container":"#2592ff","on-error-container":"#ffdad6",
-    "on-secondary-container":"#9dbfbe","surface":"#131313",
-    "on-secondary-fixed":"#002020","secondary-fixed":"#c6e9e9",
-    "outline-variant":"#5d4038","on-tertiary":"#00315e",
-    "surface-container-high":"#2a2a2a"
-  },
-  fontFamily:{
-    "headline":["Space Grotesk","Noto Sans Thai","sans-serif"],
-    "body":["Work Sans","Noto Sans Thai","sans-serif"]
-  },
-  borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"}
-}}}
-</script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Suphan Casting Co., Ltd.</title>
 <style>
-body{background-color:#131313;color:#e5e2e1;font-family:'Noto Sans Thai','Work Sans',sans-serif}
-.hide-scrollbar::-webkit-scrollbar{display:none}
-.hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
-.glass-panel{background:rgba(53,53,52,0.6);backdrop-filter:blur(20px)}
-.editorial-title{font-family:'Space Grotesk','Noto Sans Thai',sans-serif;font-weight:900;letter-spacing:-0.02em;line-height:1.1}
-.noto-sans-thai{font-family:'Noto Sans Thai',sans-serif}
-.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#000;
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif}
+canvas{position:fixed;inset:0;z-index:0}
+#click-layer{position:fixed;inset:0;z-index:5;cursor:crosshair}
 
-/* ===== LANGUAGE DROPDOWN — FIXED ===== */
-.lang-wrap{position:relative}
-.lang-btn{display:flex;align-items:center;gap:8px;background:#161616;border:1px solid rgba(255,255,255,0.06);color:#a8a29e;padding:8px 16px;border-radius:6px;font-size:12px;letter-spacing:0.08em;transition:all 0.2s;cursor:pointer;white-space:nowrap}
-.lang-btn:hover{border-color:rgba(255,255,255,0.12);color:#fff}
-.lang-arrow{transition:transform 0.3s;font-size:10px;display:inline-block}
-.lang-wrap.open .lang-arrow{transform:rotate(180deg)}
-.lang-dd{position:absolute;top:calc(100% + 8px);right:0;background:#1e1e1e;border:1px solid rgba(255,255,255,0.06);border-radius:8px;min-width:180px;box-shadow:0 16px 48px rgba(0,0,0,0.5);z-index:9999;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all 0.25s cubic-bezier(0.23,1,0.32,1);pointer-events:none}
-.lang-wrap.open .lang-dd{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
-.lang-opt{padding:10px 16px;display:flex;align-items:center;gap:10px;transition:background 0.15s;cursor:pointer;font-size:13px;color:#a8a29e}
-.lang-opt:hover{background:rgba(232,98,44,0.1);color:#fff}
-.lang-opt.sel{color:#e8622c;font-weight:700}
+/* ── LOGO ── */
+#logo{position:fixed;top:20px;left:20px;z-index:200;display:flex;align-items:center;gap:10px;
+  filter:drop-shadow(0 2px 16px rgba(0,0,0,.9))}
+#logo img{width:56px;height:56px;object-fit:contain;border-radius:50%;
+  border:1.5px solid rgba(220,160,40,.5)}
+#logo-text{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  line-height:1.55;color:#e8b84b;text-shadow:0 0 16px rgba(230,160,40,.55)}
 
-/* ===== MARQUEE ===== */
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.animate-marquee{animation:marquee 25s linear infinite}
+/* ── TOP NAV ── */
+#top-nav{position:fixed;top:20px;right:20px;z-index:200}
+.tn-btn{padding:9px 18px;border-radius:6px;border:1px solid rgba(255,255,255,.12);
+  background:rgba(6,3,0,.78);backdrop-filter:blur(16px);color:rgba(255,255,255,.6);
+  font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  transition:all .2s}
+.tn-btn:hover{color:#e8b84b;border-color:rgba(220,160,40,.4)}
 
-/* ===== VIDEO ===== */
-.video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;border:1px solid rgba(255,255,255,0.06)}
-.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-.v-card{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;overflow:hidden;transition:all 0.4s;cursor:pointer;min-width:260px;flex-shrink:0}
-.v-card:hover{border-color:rgba(255,86,37,0.3);transform:translateY(-3px)}
-.v-card.active{border-color:#ff5625;box-shadow:0 0 20px rgba(255,86,37,0.2)}
-.v-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#111}
-.v-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
-.v-card:hover .v-thumb img{transform:scale(1.05)}
-.v-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);opacity:0;transition:opacity 0.3s}
-.v-card:hover .v-play{opacity:1}
-.v-play-icon{width:48px;height:48px;background:rgba(255,86,37,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center}
+/* ── PAGES ── */
+.page{position:fixed;inset:0;z-index:10;opacity:0;pointer-events:none;
+  transition:opacity .65s cubic-bezier(.4,0,.2,1)}
+.page.active{opacity:1;pointer-events:auto}
 
-/* ===== AGENT ===== */
-.agent-card{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:1.5rem;transition:all 0.4s}
-.agent-card:hover{border-color:rgba(255,86,37,0.2);transform:translateY(-2px)}
-.pulse-dot{width:8px;height:8px;background:#4ade80;border-radius:50%;animation:pulse-d 2s ease-in-out infinite}
-@keyframes pulse-d{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)}}
-.agent-st{display:flex;align-items:center;gap:6px;font-size:11px;color:#4ade80;font-family:'Space Mono',monospace}
+/* Page title — floats over shader */
+.ptitle{position:absolute;left:48px;top:92px;pointer-events:none;max-width:50%}
+.ptitle .eye{font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--acc,#e8b84b);margin-bottom:14px;opacity:.85;display:block}
+.ptitle h1{font-size:clamp(40px,5.5vw,82px);font-weight:900;color:#fff;line-height:.94;
+  letter-spacing:-.025em;text-shadow:0 4px 48px rgba(0,0,0,.6),0 0 80px rgba(0,0,0,.4);
+  text-wrap:pretty;max-height:48vh;overflow:hidden}
+.ptitle p{margin-top:14px;font-size:13px;color:rgba(255,255,255,.5);
+  max-width:320px;line-height:1.6;font-weight:400}
 
-/* ===== GALLERY ===== */
-.img-card{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:1;cursor:pointer}
-.img-card img{width:100%;height:100%;object-fit:cover;transition:all 0.6s cubic-bezier(0.23,1,0.32,1);filter:brightness(0.7)}
-.img-card:hover img{transform:scale(1.08);filter:brightness(0.9)}
-.img-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,0.8));display:flex;flex-direction:column;justify-content:flex-end;padding:1rem;opacity:0;transition:opacity 0.4s}
-.img-card:hover .img-ov{opacity:1}
+/* Content band — bottom floating bar */
+.cband{position:absolute;bottom:88px;left:50%;transform:translateX(-50%);
+  width:88%;max-width:1280px;display:flex;gap:10px;align-items:stretch;
+  pointer-events:auto;min-height:180px;max-height:42vh}
 
-/* ===== CINEMA HERO ===== */
-.c-hero{position:relative;min-height:100vh;display:flex;flex-direction:column}
-.c-bg{position:absolute;inset:0;z-index:0}
-.c-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,19,19,0.3) 0%,rgba(19,19,19,0.6) 50%,rgba(19,19,19,0.95) 100%);z-index:1}
-.c-content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:72px}
+/* Card */
+.card{background:rgba(4,2,1,.86);backdrop-filter:blur(22px);
+  border:1px solid rgba(var(--acc-rgb,220,160,40),.22);border-radius:10px;
+  padding:18px 20px;flex:1;min-width:0;overflow:hidden}
+.card.wide{flex:1.6}
+.card.xwide{flex:2.2}
+.card.nopad{padding:0}
+.card.nopad img,.card.nopad video{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block}
+.card-label{font-size:8.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--acc,#e8b84b);margin-bottom:9px}
+.card-body{font-size:12px;color:rgba(255,255,255,.75);line-height:1.72}
+.card-body b{color:var(--acc,#e8b84b);font-weight:700}
+.card-body br{line-height:2.2}
 
-/* ===== ADMIN PANEL ===== */
-#adminDashboard::-webkit-scrollbar{width:6px}
-#adminDashboard::-webkit-scrollbar-track{background:transparent}
-#adminDashboard::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:3px}
-#activityLog::-webkit-scrollbar{width:4px}
-#activityLog::-webkit-scrollbar-track{background:transparent}
-#activityLog::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:2px}
+/* Step list */
+.step{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start}
+.snum{width:24px;height:24px;border-radius:50%;background:rgba(var(--acc-rgb,220,160,40),.2);
+  border:1px solid rgba(var(--acc-rgb,220,160,40),.4);color:var(--acc,#e8b84b);
+  font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.stitle{font-size:11px;font-weight:800;color:#fff;margin-bottom:2px}
+.sdesc{font-size:11px;color:rgba(255,255,255,.6);line-height:1.5}
+
+/* Gallery grid */
+#gal{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;height:100%}
+.gi{width:100%;height:100px;object-fit:cover;border-radius:6px;cursor:pointer;
+  border:1px solid rgba(var(--acc-rgb,220,160,40),.18);transition:transform .2s,border-color .2s}
+.gi:hover{transform:scale(1.05);border-color:var(--acc,#e8b84b)}
+.upload-z{border:2px dashed rgba(var(--acc-rgb,220,160,40),.3);border-radius:7px;
+  padding:12px;text-align:center;cursor:pointer;font-size:10px;
+  color:rgba(255,200,100,.45);letter-spacing:.06em}
+.upload-z input{display:none}
+
+/* Q-cards grid */
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;height:100%}
+.qcard{background:rgba(var(--acc-rgb,220,160,40),.07);
+  border:1px solid rgba(var(--acc-rgb,220,160,40),.2);border-radius:8px;padding:14px}
+.qtitle{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--acc,#e8b84b);margin-bottom:6px}
+.qtext{font-size:11.5px;color:rgba(255,255,255,.68);line-height:1.6}
+
+/* ── THEME ACCENT VARS ── */
+.page[data-theme="sandy"]{--acc:#d4a845;--acc-rgb:212,168,69}
+.page[data-theme="lava"] {--acc:#ff7020;--acc-rgb:255,112,32}
+.page[data-theme="rust"] {--acc:#d05020;--acc-rgb:208,80,32}
+.page[data-theme="steel"]{--acc:#80aac0;--acc-rgb:128,170,192}
+
+/* ── TABS ── */
+#tabs{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  display:flex;gap:4px;z-index:200;background:rgba(4,2,0,.78);backdrop-filter:blur(16px);
+  border:1px solid rgba(220,160,40,.2);border-radius:50px;padding:5px 7px}
+.tab{padding:7px 18px;border-radius:40px;border:none;background:transparent;
+  color:rgba(255,200,100,.4);font-size:9.5px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;transition:all .25s;white-space:nowrap}
+.tab:hover{color:#e8b84b}
+.tab.active{background:rgba(200,80,0,.35);color:#ffcc55;
+  box-shadow:0 0 12px rgba(220,100,0,.3) inset}
+
+/* ── SOCIAL ── */
+#social{position:fixed;bottom:24px;right:22px;z-index:200;display:flex;gap:8px}
+.soc{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;text-decoration:none;background:rgba(8,4,0,.8);
+  border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px);transition:transform .2s,box-shadow .2s}
+.soc:hover{transform:scale(1.18);box-shadow:0 0 16px rgba(255,160,0,.4)}
+.soc svg{width:17px;height:17px}
+
+/* ── CONTACT PANEL ── */
+#cp{position:fixed;top:0;right:-460px;width:440px;height:100vh;z-index:300;
+  background:rgba(6,3,0,.97);backdrop-filter:blur(24px);
+  border-left:1px solid rgba(200,100,0,.2);transition:right .38s cubic-bezier(.25,.8,.25,1);
+  display:flex;flex-direction:column}
+#cp.open{right:0}
+.cp-hd{padding:24px 26px 18px;border-bottom:1px solid rgba(200,100,0,.18);
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.cp-hd h2{color:#e8b84b;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.cpx{background:none;border:none;color:rgba(255,255,255,.4);font-size:20px;cursor:pointer;transition:color .2s}
+.cpx:hover{color:#fff}
+.cp-bd{padding:22px 26px;flex:1;overflow-y:auto}
+.cplogo{text-align:center;margin-bottom:20px}
+.cplogo img{width:96px;height:96px;object-fit:contain}
+.cl{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#e8b84b;margin-bottom:4px}
+.cv{color:rgba(255,255,255,.82);font-size:13.5px;line-height:1.65;margin-bottom:16px}
+.cv a{color:rgba(255,210,120,.8);text-decoration:none}.cv a:hover{color:#e8b84b}
+.hr{border:none;border-top:1px solid rgba(200,100,0,.15);margin:14px 0}
+.mapw{border-radius:8px;overflow:hidden;border:1px solid rgba(200,100,0,.2);margin-top:8px}
+.mapw iframe{display:block;width:100%;height:210px;border:0;filter:sepia(15%) brightness(.85)}
+
+/* ── LIGHTBOX ── */
+#lb{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.93);display:none;
+  align-items:center;justify-content:center}
+#lb.open{display:flex}
+#lb img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px;
+  border:1px solid rgba(200,100,0,.3)}
+#lbx{position:absolute;top:20px;right:28px;background:none;border:none;
+  color:rgba(255,255,255,.7);font-size:32px;cursor:pointer}
+
+/* ── FLAME BURST ── */
+.fburst{position:fixed;pointer-events:none;z-index:500;transform:translate(-50%,-50%)}
+.fp{position:absolute;border-radius:50%;animation:fpanim var(--d) ease-out var(--dl) forwards}
+@keyframes fpanim{
+  0%{transform:translate(-50%,-50%) scale(0);opacity:1}
+  100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(.2);opacity:0}}
+.flogorise{position:absolute;left:50%;transform:translateX(-50%);
+  width:82px;height:82px;object-fit:contain;border-radius:50%;
+  animation:logorise 2.2s cubic-bezier(.15,.8,.25,1) forwards}
+@keyframes logorise{
+  0%  {bottom:-20px;opacity:0;filter:blur(8px) brightness(3)}
+  20% {opacity:1;filter:blur(0) brightness(1.6)}
+  65% {bottom:90px;opacity:1;filter:brightness(1.1)}
+  100%{bottom:160px;opacity:0;filter:blur(4px) brightness(2)}}
+
+/* ── HINT ── */
+#hint{position:fixed;bottom:74px;left:50%;transform:translateX(-50%);
+  color:rgba(255,180,60,.3);font-size:10px;letter-spacing:.1em;pointer-events:none;
+  transition:opacity 1.5s;white-space:nowrap;z-index:190}
 </style>
 </head>
-<body class="selection:bg-primary-container selection:text-white overflow-x-hidden">
+<body>
+<canvas id="c"></canvas>
+<div id="click-layer"></div>
 
-<!-- NAV -->
-<nav class="fixed top-0 w-full z-50 bg-[#131313]/60 backdrop-blur-xl shadow-2xl shadow-black/50" id="mainNav">
-<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
-  <a class="flex items-center gap-3" href="#">
-    <div class="bg-[#FF4500] text-white font-black px-2 py-1 leading-none text-xl rounded-sm font-['Space_Grotesk'] shadow-[0_0_10px_rgba(255,69,0,0.5)]">SC</div>
-    <span class="text-2xl font-black tracking-tighter text-[#ff5625] uppercase font-['Space_Grotesk']">SUPHAN CASTING</span>
+<!-- Logo -->
+<div id="logo" style="z-index:200">
+  <img src="uploads/logo-suphan.png" alt="Logo" onerror="this.style.opacity='.4'">
+  <div id="logo-text">Suphan Casting<br>Co., Ltd.</div>
+</div>
+
+<!-- Top nav -->
+<div id="top-nav">
+  <button class="tn-btn" id="btn-cp">☰ ติดต่อเรา</button>
+</div>
+
+<!-- ══ PAGE: SAND CASTING ══ -->
+<div class="page" id="p-sand" data-theme="sandy" data-tidx="0">
+  <div class="ptitle">
+    <span class="eye">🏜️ Sand Casting · การหล่อทราย</span>
+    <h1>Sand<br>Casting</h1>
+    <p>กระบวนการหล่อโลหะด้วยแม่พิมพ์ทราย<br>คุณภาพสูงตามแบบลูกค้า</p>
+  </div>
+  <div class="cband">
+    <div class="card">
+      <div class="card-label">🏜️ คืออะไร / What Is It</div>
+      <div class="card-body">
+        <b>การหล่อทราย</b> คือวิธีผลิตชิ้นงานโลหะโดยเทโลหะหลอมเหลวลงในแม่พิมพ์ทราย เป็นกระบวนการที่นิยมที่สุดในโลก คิดเป็น<b>70%</b>ของงานหล่อทั้งหมด<br><br>
+        <b>Sand casting</b> creates metal parts by pouring molten metal into sand molds — the world's most used casting method, ideal for complex custom shapes.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">⚗️ วัสดุ / Materials</div>
+      <div class="card-body">
+        • <b>ทรายซิลิกา</b> — ทนความร้อนสูง<br>
+        • <b>ดินเหนียว/เบนโทไนต์</b> — สารยึดเกาะ<br>
+        • <b>เหล็กหล่อ/เหล็กกล้า</b> — โลหะหลัก<br>
+        • <b>Silica sand</b> — heat-resistant mold base<br>
+        • <b>Clay binders</b> — hold sand shape<br>
+        • <b>Cast iron/steel</b> — poured metal
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">✅ ข้อดี / Advantages</div>
+      <div class="card-body">
+        ✓ รูปทรงซับซ้อน / Complex shapes<br>
+        ✓ ต้นทุนแม่พิมพ์ต่ำ / Low tooling cost<br>
+        ✓ ชิ้นงานทุกขนาด / Any batch size<br>
+        ✓ หลากหลายโลหะ / Any metal type<br>
+        ✓ งานที่ทนความร้อน / High-temp parts
+      </div>
+    </div>
+    <div class="card nopad">
+      <img src="uploads/casting-pour.jpg" alt="Casting pour" onerror="this.src='uploads/molten-iron-1.jpg'">
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: PROCESS ══ -->
+<div class="page" id="p-process" data-theme="lava" data-tidx="1">
+  <div class="ptitle">
+    <span class="eye">⚙️ ขั้นตอนการผลิต · Production</span>
+    <h1>Production<br>Process</h1>
+  </div>
+  <div class="cband" style="min-height:210px">
+    <div class="card">
+      <div class="card-label">ขั้นตอน 1–3 / Steps 1–3</div>
+      <div class="step"><div class="snum">1</div><div><div class="stitle">เตรียมแบบหล่อ / Pattern Making</div><div class="sdesc">สร้างแบบจำลองจากไม้หรือโลหะ / Create part pattern from wood or metal</div></div></div>
+      <div class="step"><div class="snum">2</div><div><div class="stitle">ทำแม่พิมพ์ทราย / Mold Making</div><div class="sdesc">อัดทรายรอบแบบหล่อให้แน่น / Pack sand tightly around the pattern</div></div></div>
+      <div class="step"><div class="snum">3</div><div><div class="stitle">ทำแกนทราย / Core Making</div><div class="sdesc">สร้างแกนสำหรับช่องว่างภายใน / Sand cores for internal cavities</div></div></div>
+    </div>
+    <div class="card">
+      <div class="card-label">ขั้นตอน 4–6 / Steps 4–6</div>
+      <div class="step"><div class="snum">4</div><div><div class="stitle">หลอมและเทโลหะ / Melt & Pour</div><div class="sdesc">หลอมโลหะ &gt;1300°C แล้วเทลงแม่พิมพ์ / Melt &gt;1300°C, pour into mold</div></div></div>
+      <div class="step"><div class="snum">5</div><div><div class="stitle">ถอดแม่พิมพ์ / Shakeout</div><div class="sdesc">ทุบแม่พิมพ์ทรายออกหลังแข็งตัว / Break sand away after solidification</div></div></div>
+      <div class="step"><div class="snum">6</div><div><div class="stitle">ตกแต่งและตรวจสอบ / Finish & Inspect</div><div class="sdesc">เจียร ตัดชิ้นส่วนเกิน ตรวจสอบคุณภาพ / Grind, cut gates, quality check</div></div></div>
+    </div>
+    <div class="card nopad">
+      <img src="uploads/molten-iron-1.jpg" alt="Molten metal" onerror="this.src='uploads/molten-iron-2.jpg'">
+    </div>
+    <div class="card nopad">
+      <img src="uploads/molten-iron-2.jpg" alt="Pouring" onerror="this.remove()">
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: PRODUCTS ══ -->
+<div class="page" id="p-products" data-theme="rust" data-tidx="2">
+  <div class="ptitle">
+    <span class="eye">🏭 งานหล่อของเรา · Our Work</span>
+    <h1>Products</h1>
+    <p>งานหล่อทรายตามแบบลูกค้า<br>Custom castings for industry</p>
+  </div>
+  <div class="cband" style="min-height:220px">
+    <div class="card xwide">
+      <label class="upload-z" style="margin-bottom:8px">
+        📎 อัปโหลดรูปภาพ / Upload Images
+        <input type="file" id="finput" accept="image/*" multiple>
+      </label>
+      <div id="gal"></div>
+    </div>
+    <div class="card">
+      <div class="card-label">งานของเรา / Our Work</div>
+      <div class="card-body">
+        ผลิตชิ้นส่วนเหล็กหล่อตามแบบลูกค้าทุกประเภท<br><br>
+        • ปั๊มน้ำและใบพัด<br>
+        • ชิ้นส่วนเครื่องจักร<br>
+        • อะไหล่อุตสาหกรรม<br>
+        • Pump housings &amp; impellers<br>
+        • Machine components<br>
+        • Industrial spare parts<br><br>
+        <b>รับงานตามแบบ Drawing ลูกค้า</b>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: QUALITY ══ -->
+<div class="page" id="p-quality" data-theme="steel" data-tidx="3">
+  <div class="ptitle">
+    <span class="eye">✅ มาตรฐานคุณภาพ · Standards</span>
+    <h1>Quality<br>Control</h1>
+    <p>มาตรฐานการตรวจสอบคุณภาพ<br>Inspection &amp; quality assurance</p>
+  </div>
+  <div class="cband">
+    <div class="card wide">
+      <div class="card-label">มาตรฐานคุณภาพ / Standards</div>
+      <div class="qgrid">
+        <div class="qcard">
+          <div class="qtitle">📐 Dimensional</div>
+          <div class="qtext">ตรวจสอบมิติด้วยเครื่องมือวัดละเอียด / Precision measurement with calipers &amp; gauges to customer spec</div>
+        </div>
+        <div class="qcard">
+          <div class="qtitle">🔍 Surface Quality</div>
+          <div class="qtext">ตรวจสอบผิวชิ้นงาน รอยแตก รูพรุน / Visual &amp; NDT inspection for cracks, porosity &amp; defects</div>
+        </div>
+        <div class="qcard">
+          <div class="qtitle">⚗️ Material Test</div>
+          <div class="qtext">วิเคราะห์ส่วนประกอบโลหะและความแข็ง / Chemical composition &amp; hardness verification</div>
+        </div>
+        <div class="qcard">
+          <div class="qtitle">📋 Customer Spec</div>
+          <div class="qtext">ผลิตตาม Drawing ลูกค้า 100% / Produced strictly to customer drawings &amp; tolerances</div>
+        </div>
+      </div>
+    </div>
+    <div class="card nopad">
+      <img src="uploads/S__113631319_0.jpg" alt="Quality casting" onerror="this.src='uploads/S__113631314_0.jpg'">
+    </div>
+  </div>
+</div>
+
+<!-- Tabs -->
+<div id="tabs">
+  <button class="tab active" data-page="p-sand">🔥 Sand Casting</button>
+  <button class="tab" data-page="p-process">⚙️ Process</button>
+  <button class="tab" data-page="p-products">🏭 Products</button>
+  <button class="tab" data-page="p-quality">✅ Quality</button>
+</div>
+
+<!-- Social -->
+<div id="social">
+  <a class="soc" href="https://www.facebook.com/profile.php?id=61581617963584" target="_blank">
+    <svg viewBox="0 0 24 24" fill="#4267B2"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
   </a>
-  <div class="hidden md:flex gap-8 items-center">
-    <a class="font-headline uppercase tracking-widest text-sm text-[#ff5625] border-b-2 border-[#ff5625] pb-1" href="#" data-i="nav_home">หน้าหลัก</a>
-    <a class="font-headline uppercase tracking-widest text-sm text-on-surface-variant hover:text-[#ffb5a0] transition-colors" href="#video-section" data-i="nav_video">วิดีโอ</a>
-    <a class="font-headline uppercase tracking-widest text-sm text-on-surface-variant hover:text-[#ffb5a0] transition-colors" href="#services" data-i="nav_services">บริการ</a>
-    <a class="font-headline uppercase tracking-widest text-sm text-on-surface-variant hover:text-[#ffb5a0] transition-colors" href="#gallery" data-i="nav_gallery">ผลงาน</a>
-    <a class="font-headline uppercase tracking-widest text-sm text-on-surface-variant hover:text-[#ffb5a0] transition-colors" href="#agents" data-i="nav_agents">AI Agents</a>
-    <a class="font-headline uppercase tracking-widest text-sm text-on-surface-variant hover:text-[#ffb5a0] transition-colors" href="#contact" data-i="nav_contact">ติดต่อ</a>
-    <div class="flex items-center gap-6">
-      <!-- LANGUAGE DROPDOWN — FIXED -->
-      <div class="lang-wrap" id="langWrap">
-        <button class="lang-btn" onclick="toggleLang()">
-          <span id="langLabel">🇹🇭 ไทย</span>
-          <span class="lang-arrow">▼</span>
-        </button>
-        <div class="lang-dd" id="langDD">
-          <div class="lang-opt sel" onclick="setLang('th','🇹🇭 ไทย',this)"><span>🇹🇭</span><span>ไทย</span></div>
-          <div class="lang-opt" onclick="setLang('en','🇺🇸 English',this)"><span>🇺🇸</span><span>English</span></div>
-          <div class="lang-opt" onclick="setLang('ja','🇯🇵 日本語',this)"><span>🇯🇵</span><span>日本語</span></div>
-          <div class="lang-opt" onclick="setLang('zh','🇨🇳 中文',this)"><span>🇨🇳</span><span>中文</span></div>
-          <div class="lang-opt" onclick="setLang('ko','🇰🇷 한국어',this)"><span>🇰🇷</span><span>한국어</span></div>
-          <div class="lang-opt" onclick="setLang('de','🇩🇪 Deutsch',this)"><span>🇩🇪</span><span>Deutsch</span></div>
-          <div class="lang-opt" onclick="setLang('es','🇪🇸 Español',this)"><span>🇪🇸</span><span>Español</span></div>
-          <div class="lang-opt" onclick="setLang('fr','🇫🇷 Français',this)"><span>🇫🇷</span><span>Français</span></div>
-          <div class="lang-opt" onclick="setLang('ru','🇷🇺 Русский',this)"><span>🇷🇺</span><span>Русский</span></div>
-          <div class="lang-opt" onclick="setLang('vi','🇻🇳 Tiếng Việt',this)"><span>🇻🇳</span><span>Tiếng Việt</span></div>
-          <div class="lang-opt" onclick="setLang('ar','🇸🇦 العربية',this)"><span>🇸🇦</span><span>العربية</span></div>
-        </div>
-      </div>
-      <a class="bg-primary-container text-on-primary-container font-bold px-6 py-2 rounded uppercase tracking-tighter hover:bg-primary transition-all scale-95 active:scale-90 font-headline" href="#contact" data-i="nav_quote">ขอใบเสนอราคา</a>
-    </div>
-  </div>
-  <div class="md:hidden">
-    <button onclick="document.getElementById('mobNav').classList.toggle('hidden')">
-      <span class="material-symbols-outlined text-primary text-3xl">menu</span>
-    </button>
-  </div>
-</div>
-</nav>
-
-<!-- MOBILE NAV -->
-<div id="mobNav" class="hidden fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center gap-8">
-  <button onclick="document.getElementById('mobNav').classList.add('hidden')" class="absolute top-6 right-6 text-white text-2xl">✕</button>
-  <a href="#" onclick="document.getElementById('mobNav').classList.add('hidden')" class="font-headline text-2xl uppercase tracking-widest text-on-surface-variant" data-i="nav_home">หน้าหลัก</a>
-  <a href="#video-section" onclick="document.getElementById('mobNav').classList.add('hidden')" class="font-headline text-2xl uppercase tracking-widest text-on-surface-variant" data-i="nav_video">วิดีโอ</a>
-  <a href="#services" onclick="document.getElementById('mobNav').classList.add('hidden')" class="font-headline text-2xl uppercase tracking-widest text-on-surface-variant" data-i="nav_services">บริการ</a>
-  <a href="#gallery" onclick="document.getElementById('mobNav').classList.add('hidden')" class="font-headline text-2xl uppercase tracking-widest text-on-surface-variant" data-i="nav_gallery">ผลงาน</a>
-  <a href="#agents" onclick="document.getElementById('mobNav').classList.add('hidden')" class="font-headline text-2xl uppercase tracking-widest text-on-surface-variant" data-i="nav_agents">AI Agents</a>
-  <a href="#contact" onclick="document.getElementById('mobNav').classList.add('hidden')" class="font-headline text-2xl uppercase tracking-widest text-on-surface-variant" data-i="nav_contact">ติดต่อ</a>
+  <a class="soc" href="https://www.tiktok.com/@suphan.casting" target="_blank">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+  </a>
+  <a class="soc" href="https://line.me/ti/p/~@213bzijc" target="_blank">
+    <svg viewBox="0 0 24 24" fill="#06C755"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+  </a>
 </div>
 
-<!-- HERO -->
-<section class="c-hero" id="hero">
-  <div class="c-bg">
-    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1920&h=1080&fit=crop" alt="Molten metal" class="absolute inset-0 w-full h-full object-cover opacity-40">
-  </div>
-  <div class="c-content px-8 md:px-16">
-    <div class="max-w-4xl mx-auto text-center">
-      <span class="inline-block py-1 px-3 mb-4 border border-primary/30 text-primary text-[10px] font-bold tracking-[0.4em] uppercase bg-primary-container/10 backdrop-blur-sm noto-sans-thai" data-i="hero_badge">วิศวกรรมความแม่นยำสูง ตั้งแต่ปี 1988</span>
-      <h1 class="editorial-title text-4xl md:text-6xl lg:text-7xl mb-6 text-white uppercase" data-i="hero_title">หล่อหลอม <span class="text-primary-container italic">เหล็กกล้า</span> ให้เป็นไปตามจินตนาการ</h1>
-      <p class="text-on-surface-variant text-sm md:text-base max-w-2xl mx-auto mb-8 leading-relaxed noto-sans-thai" data-i="hero_desc">โรงงานหลอมเหล็ก OEM คุณภาพสูง บริการครบวงจร Sand Casting, Investment Casting, Die Casting ส่งออกทั่วโลก</p>
-      <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-12">
-        <a class="w-full md:w-auto px-8 py-4 bg-primary-container text-white font-black uppercase tracking-widest hover:shadow-[0_0_30px_rgba(255,86,37,0.4)] transition-all font-headline text-sm text-center" href="#contact" data-i="hero_cta1">เริ่มโปรเจกต์ของคุณ</a>
-        <a class="w-full md:w-auto px-8 py-4 border border-white/20 backdrop-blur-md text-white font-black uppercase tracking-widest hover:bg-white/10 transition-all font-headline text-sm text-center" href="#video-section" data-i="hero_cta2">ดูวิดีโอโรงงาน</a>
-      </div>
-      <div class="flex justify-center gap-8 text-center">
-        <div><div class="font-headline text-3xl text-[#ff5625] font-black">20+</div><div class="text-[10px] uppercase tracking-widest text-outline-variant font-headline" data-i="stat_years">ปีประสบการณ์</div></div>
-        <div><div class="font-headline text-3xl text-[#ff5625] font-black">500+</div><div class="text-[10px] uppercase tracking-widest text-outline-variant font-headline" data-i="stat_clients">ลูกค้าทั่วโลก</div></div>
-        <div><div class="font-headline text-3xl text-[#ff5625] font-black">10K+</div><div class="text-[10px] uppercase tracking-widest text-outline-variant font-headline" data-i="stat_parts">ชิ้นส่วนที่ผลิต</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-    <span class="material-symbols-outlined text-white/30 animate-bounce text-3xl">expand_more</span>
-  </div>
-</section>
+<div id="hint">คลิกที่ใดก็ได้เพื่อสำรวจ · Click anywhere to explore</div>
+<div id="home-hint" style="position:fixed;inset:0;z-index:8;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
+  <div style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,200,80,.5);animation:pulse 2.5s ease-in-out infinite">✦ คลิกเพื่อสำรวจ · Click to explore ✦</div>
+  <style>@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.8}}</style>
+</div>
 
-<!-- MARQUEE -->
-<div class="border-y border-outline-variant/20 py-4 overflow-hidden bg-surface">
-  <div class="flex animate-marquee whitespace-nowrap">
-    <div class="flex items-center gap-8 px-8">
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">SAND CASTING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">INVESTMENT CASTING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">DIE CASTING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">CNC MACHINING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">HEAT TREATMENT</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">SURFACE FINISHING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">QUALITY INSPECTION</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">OEM MANUFACTURING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-    </div>
-    <div class="flex items-center gap-8 px-8">
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">SAND CASTING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">INVESTMENT CASTING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">DIE CASTING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">CNC MACHINING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">HEAT TREATMENT</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">SURFACE FINISHING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">QUALITY INSPECTION</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-      <span class="font-headline text-sm uppercase tracking-widest text-outline-variant">OEM MANUFACTURING</span><span class="w-1 h-1 bg-primary-container rounded-full"></span>
-    </div>
+<!-- Contact Panel -->
+<div id="cp">
+  <div class="cp-hd"><h2>ติดต่อเรา / Contact</h2><button class="cpx" id="cpx">✕</button></div>
+  <div class="cp-bd">
+    <div class="cplogo"><img src="uploads/logo-suphan.png" alt="Logo" onerror="this.style.opacity='.4'"></div>
+    <div class="cl">ชื่อ / Name</div><div class="cv">กอล์ฟ ศศิธร</div>
+    <div class="cl">โทรศัพท์ / Phone</div>
+    <div class="cv"><a href="tel:0986362356">098 636 2356</a><br><a href="tel:0843177788">084-317 7788</a></div>
+    <div class="cl">Email</div><div class="cv"><a href="mailto:cnwmax@gmail.com">cnwmax@gmail.com</a></div>
+    <div class="cl">Line</div><div class="cv"><a href="https://line.me/ti/p/~@213bzijc">@213bzijc</a></div>
+    <div class="cl">ที่อยู่</div><div class="cv">จังหวัดสุพรรณบุรี ประเทศไทย</div>
+    <div class="hr"></div>
+    <div class="cl" style="margin-bottom:8px">แผนที่ / Map</div>
+    <div class="mapw"><iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d1979044.5421485738!2d100.1830313!3d14.3508042!3m2!1i1024!2i768!4f13.1!2m1!1ssuphan%20casting!5e0!3m2!1sen!2sth!4v1777173911650!5m2!1sen!2sth" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
   </div>
 </div>
 
-<!-- VIDEO SECTION -->
-<section class="py-24 bg-surface-container-lowest" id="video-section">
-  <div class="max-w-screen-2xl mx-auto px-8">
-    <div class="mb-12">
-      <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai" data-i="video_tag">// ภาพยนตร์โฆษณาโรงงาน</p>
-      <h2 class="editorial-title text-4xl md:text-5xl text-on-surface" data-i="video_title">ชมกระบวนการผลิต <span class="text-primary italic">จริง</span></h2>
-      <p class="text-on-surface-variant text-sm mt-3 max-w-xl noto-sans-thai" data-i="video_desc">วิดีโอถูกสร้างและอัปโหลดโดย AI Agent อัตโนมัติ</p>
-    </div>
-    <!-- Main Player -->
-    <div class="video-wrap mb-8" id="mainPlayer">
-      <iframe id="mainVideo" src="https://www.youtube.com/embed/9FjXmHumS2M?rel=0&modestbranding=1" title="Suphancasting" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <!-- Playlist — ALL THUMBNAILS USE UNSPLASH (NO YOUTUBE 404) -->
-    <div class="flex overflow-x-auto hide-scrollbar gap-4 pb-4">
-      <div class="v-card active" onclick="playVideo('9FjXmHumS2M',this)">
-        <div class="v-thumb">
-          <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=320&h=180&fit=crop" alt="Sand Casting" loading="lazy">
-          <div class="v-play"><div class="v-play-icon"><span class="material-symbols-outlined text-white">play_arrow</span></div></div>
-        </div>
-        <div class="p-3"><p class="font-headline text-xs uppercase tracking-wider text-on-surface font-bold" data-i="v1">ทัวร์โรงงาน Sand Casting</p><p class="text-[10px] text-outline-variant mt-1">Agent: Video Creator</p></div>
-      </div>
-      <div class="v-card" onclick="playVideo('L_jWHffIx5E',this)">
-        <div class="v-thumb">
-          <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=320&h=180&fit=crop" alt="Metal Parts" loading="lazy">
-          <div class="v-play"><div class="v-play-icon"><span class="material-symbols-outlined text-white">play_arrow</span></div></div>
-        </div>
-        <div class="p-3"><p class="font-headline text-xs uppercase tracking-wider text-on-surface font-bold" data-i="v2">กระบวนการหล่อทราย</p><p class="text-[10px] text-outline-variant mt-1">Agent: Video Creator</p></div>
-      </div>
-      <div class="v-card" onclick="playVideo('eIho2S0ZahI',this)">
-        <div class="v-thumb">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=320&h=180&fit=crop" alt="Furnace" loading="lazy">
-          <div class="v-play"><div class="v-play-icon"><span class="material-symbols-outlined text-white">play_arrow</span></div></div>
-        </div>
-        <div class="p-3"><p class="font-headline text-xs uppercase tracking-wider text-on-surface font-bold" data-i="v3">เทโลหะหลอมเหลว</p><p class="text-[10px] text-outline-variant mt-1">Agent: Video Creator</p></div>
-      </div>
-      <div class="v-card" onclick="playVideo('aqz-KE-bpKQ',this)">
-        <div class="v-thumb">
-          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=320&h=180&fit=crop" alt="Quality" loading="lazy">
-          <div class="v-play"><div class="v-play-icon"><span class="material-symbols-outlined text-white">play_arrow</span></div></div>
-        </div>
-        <div class="p-3"><p class="font-headline text-xs uppercase tracking-wider text-on-surface font-bold" data-i="v4">ระบบตรวจสอบคุณภาพ</p><p class="text-[10px] text-outline-variant mt-1">Agent: Video Creator</p></div>
-      </div>
-      <div class="v-card" onclick="playVideo('dQw4w9WgXcQ',this)">
-        <div class="v-thumb">
-          <img src="https://images.unsplash.com/photo-1537462715315-eb42f5849031?w=320&h=180&fit=crop" alt="CNC" loading="lazy">
-          <div class="v-play"><div class="v-play-icon"><span class="material-symbols-outlined text-white">play_arrow</span></div></div>
-        </div>
-        <div class="p-3"><p class="font-headline text-xs uppercase tracking-wider text-on-surface font-bold" data-i="v5">CNC Machining ขั้นสูง</p><p class="text-[10px] text-outline-variant mt-1">Agent: Video Creator</p></div>
-      </div>
-    </div>
-    <div class="mt-6 flex items-center gap-3 glass-panel p-3 rounded-lg border border-outline-variant/20">
-      <div class="pulse-dot"></div>
-      <p class="text-xs text-on-surface-variant noto-sans-thai" data-i="video_auto">วิดีโอถูกสร้างและอัปโหลดโดย Video Creator Agent อัตโนมัติ — อัปเดตล่าสุด: <span class="text-primary font-bold">วันนี้</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- AI AGENTS -->
-<section class="py-24 bg-surface" id="agents">
-  <div class="max-w-screen-2xl mx-auto px-8">
-    <div class="mb-12">
-      <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai" data-i="agent_tag">// Multi-Agent System</p>
-      <h2 class="editorial-title text-4xl md:text-5xl text-on-surface" data-i="agent_title">ระบบ AI Agents <span class="text-primary italic">อัตโนมัติ</span></h2>
-      <p class="text-on-surface-variant text-sm mt-3 max-w-2xl noto-sans-thai" data-i="agent_desc">ทีม AI Agents ดูแลเว็บเพจนี้อัตโนมัติ</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      <div class="agent-card">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 bg-primary-container/20 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-primary">videocam</span></div>
-          <div><h3 class="font-headline text-sm font-bold uppercase tracking-wider" data-i="a1n">Video Creator Agent</h3><div class="agent-st"><div class="pulse-dot"></div>Active</div></div>
-        </div>
-        <p class="text-xs text-on-surface-variant leading-relaxed mb-4 noto-sans-thai" data-i="a1d">สร้างวิดีโอโฆษณาโรงงาน Sand Casting อัตโนมัติ ใช้ AI สร้าง creative content แล้วอัปโหลดขึ้น YouTube</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-[10px] px-2 py-1 border border-outline-variant/30 rounded text-outline-variant font-headline uppercase">Script Gen</span>
-          <span class="text-[10px] px-2 py-1 border border-outline-variant/30 rounded text-outline-variant font-headline uppercase">Video Edit</span>
-          <span class="text-[10px] px-2 py-1 border border-outline-variant/30 rounded text-outline-variant font-headline uppercase">YouTube API</span>
-        </div>
-      </div>
-      <div class="agent-card">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 bg-secondary-container/20 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-secondary">edit_note</span></div>
-          <div><h3 class="font-headline text-sm font-bold uppercase tracking-wider" data-i="a2n">Content Manager Agent</h3><div class="agent-st"><div class="pulse-dot"></div>Active</div></div>
-        </div>
-        <p class="text-xs text-on-surface-variant leading-relaxed mb-4 noto-sans-thai" data-i="a2d">อัปเดตเนื้อหา Sand Casting, Investment Casting, Die Casting ลงหน้าเว็บ พร้อมบทความ SEO</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-[10px] px-2 py-1 border border-outline-variant/30 rounded text-outline-variant font-headline uppercase">SEO Blog</span>
-          <span class="text-[10px] px-2 py-1 border border-outline-variant/30 rounded text-outline-variant font-headline uppercase">Tech Specs</span>
-          <span class="text-[10px] px-2 py-1 border border-outline-variant/30 rounded text-outline-variant font-headline uppercase">Auto Update</span>
-        </div>
-      </div>
-      <div class="agent-card">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 bg-tertiary-container/20 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-tertiary">photo_library</span></div>
-          <div><h3 class="font-headline text-sm font-bold uppercase tracking-wider" data-i="a3n">Gallery Agent</h3><div class="agent-st"><div class="pulse-dot"></div>Active</div></div>
-        </div>
-        <p class="text-xs text-on-surface-variant leading-relaxed mb-4 noto-sans-thai" data-i="a3d">หารูปภาพงานหล่อสวยๆ จาก Unsplash, Pexels หรือ generate จาก AI ทั้งภาพนิ่งและภาพเคลื่อนไหว</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-[10px] px-2 py-1 border border-outline-variant/30 rounded text-outline-variant font-headline uppercase">Unsplash API</span>
-          <span class="text-[10px] px-2 py-1 border border-outline-variant/30 rounded text-outline-variant font-headline uppercase">AI Generate</span>
-          <span class="text-[10px] px-2 py-1 border border-outline-variant/30 rounded text-outline-variant font-headline uppercase">GIF/Video</span>
-        </div>
-      </div>
-    </div>
-    <div class="glass-panel p-8 rounded-lg border border-outline-variant/20">
-      <h3 class="font-headline text-lg font-bold uppercase tracking-wider mb-6 text-center" data-i="arch_t">Agent Architecture</h3>
-      <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
-        <div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant/30 min-w-[140px]">
-          <span class="material-symbols-outlined text-primary text-2xl mb-2 block">smart_toy</span>
-          <p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="arch_o">Orchestrator</p>
-          <p class="text-[10px] text-outline-variant mt-1" data-i="arch_od">จัดสรรงาน</p>
-        </div>
-        <span class="material-symbols-outlined text-outline-variant text-2xl hidden md:block">arrow_forward</span>
-        <div class="flex flex-col gap-3">
-          <div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 flex items-center gap-3"><span class="material-symbols-outlined text-primary text-lg">videocam</span><p class="font-headline text-xs uppercase tracking-wider" data-i="arch_v">Video Agent</p></div>
-          <div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-lg">edit_note</span><p class="font-headline text-xs uppercase tracking-wider" data-i="arch_c">Content Agent</p></div>
-          <div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 flex items-center gap-3"><span class="material-symbols-outlined text-tertiary text-lg">photo_library</span><p class="font-headline text-xs uppercase tracking-wider" data-i="arch_g">Gallery Agent</p></div>
-        </div>
-        <span class="material-symbols-outlined text-outline-variant text-2xl hidden md:block">arrow_forward</span>
-        <div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant/30 min-w-[140px]">
-          <span class="material-symbols-outlined text-primary text-2xl mb-2 block">language</span>
-          <p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="arch_w">Web Output</p>
-          <p class="text-[10px] text-outline-variant mt-1" data-i="arch_wd">YouTube + หน้าเว็บ</p>
-        </div>
-      </div>
-      <p class="text-center text-[11px] text-outline-variant mt-6 noto-sans-thai" data-i="arch_r">อ้างอิงสถาปัตยกรรมจาก: <a href="https://github.com/Geowahaha/open-multi-agent" target="_blank" rel="noopener" class="text-primary hover:underline">github.com/Geowahaha/open-multi-agent</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- AI GENERATED CONTENT (Auto-Updated) -->
-<section class="py-16 bg-surface-container-lowest" id="ai-content">
-  <div class="max-w-screen-2xl mx-auto px-8">
-    <div class="mb-8 flex items-center justify-between">
-      <div>
-        <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai">// AI Generated</p>
-        <h2 class="editorial-title text-3xl md:text-4xl text-on-surface">เนื้อหาล่าสุด <span class="text-primary italic">จาก AI</span></h2>
-      </div>
-      <div class="flex items-center gap-2">
-        <div class="pulse-dot"></div>
-        <span class="text-[10px] text-outline-variant font-headline">อัปเดตอัตโนมัติ</span>
-      </div>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Latest Blog Post -->
-      <div class="bg-surface-container-low rounded-lg p-6 border border-outline-variant/20">
-        <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-secondary text-xl">edit_note</span>
-          <h3 class="font-headline text-sm font-bold uppercase tracking-wider text-secondary">Blog Post ล่าสุด</h3>
-        </div>
-        <div id="latestBlogContent" class="hidden">
-          <!-- Content will be injected by JavaScript -->
-        </div>
-        <div id="latestBlogPlaceholder">
-          <p class="text-[11px] text-outline-variant italic">ยังไม่มีเนื้อหา... คลิก ⚙️ เพื่อสร้าง</p>
-        </div>
-      </div>
-      
-      <!-- Latest Image Prompt -->
-      <div class="bg-surface-container-low rounded-lg p-6 border border-outline-variant/20">
-        <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-tertiary text-xl">photo_library</span>
-          <h3 class="font-headline text-sm font-bold uppercase tracking-wider text-tertiary">Image Prompt ล่าสุด</h3>
-        </div>
-        <div id="latestImageContent" class="hidden">
-          <!-- Content will be injected by JavaScript -->
-        </div>
-        <div id="latestImagePlaceholder">
-          <p class="text-[11px] text-outline-variant italic">ยังไม่มีเนื้อหา... คลิก ⚙️ เพื่อสร้าง</p>
-        </div>
-      </div>
-      
-      <!-- Latest Video Script -->
-      <div class="bg-surface-container-low rounded-lg p-6 border border-outline-variant/20">
-        <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-primary text-xl">videocam</span>
-          <h3 class="font-headline text-sm font-bold uppercase tracking-wider text-primary">Video Script ล่าสุด</h3>
-        </div>
-        <div id="latestVideoContent" class="hidden">
-          <!-- Content will be injected by JavaScript -->
-        </div>
-        <div id="latestVideoPlaceholder">
-          <p class="text-[11px] text-outline-variant italic">ยังไม่มีเนื้อหา... คลิก ⚙️ เพื่อสร้าง</p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="mt-6 glass-panel p-3 rounded-lg border border-outline-variant/20 flex items-center gap-3">
-      <div class="pulse-dot"></div>
-      <p class="text-[11px] text-on-surface-variant noto-sans-thai">เนื้อหาถูกสร้างโดย AI Agent และจะแสดงที่นี่อัตโนมัติ — เปิดใช้งาน Auto-Save ในแผงควบคุม admin</p>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="py-24 bg-surface relative overflow-hidden" id="services">
-  <div class="px-8 mb-16 flex justify-between items-end max-w-screen-2xl mx-auto">
-    <div>
-      <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai" data-i="svc_tag">// ขีดความสามารถหลัก</p>
-      <h2 class="editorial-title text-4xl md:text-5xl text-on-surface" data-i="svc_t">ความเชี่ยวชาญด้านอุตสาหกรรม</h2>
-    </div>
-    <div class="hidden md:flex gap-4">
-      <button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary-container transition-colors group" onclick="document.getElementById('svcScroll').scrollBy({left:-500,behavior:'smooth'})"><span class="material-symbols-outlined group-hover:text-white">west</span></button>
-      <button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary-container transition-colors group" onclick="document.getElementById('svcScroll').scrollBy({left:500,behavior:'smooth'})"><span class="material-symbols-outlined group-hover:text-white">east</span></button>
-    </div>
-  </div>
-  <div id="svcScroll" class="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory gap-6 px-8 pb-12 cursor-grab active:cursor-grabbing">
-    <div class="min-w-[85vw] md:min-w-[450px] aspect-[4/5] relative snap-start group overflow-hidden border-2 border-primary-container/20">
-      <img alt="Sand Casting" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&h=750&fit=crop" loading="lazy">
-      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-      <div class="absolute top-4 left-4 bg-primary-container text-white text-[10px] font-black px-2 py-1 uppercase tracking-widest font-headline" data-i="svc_main">บริการหลัก</div>
-      <div class="absolute bottom-0 p-8 w-full">
-        <span class="text-primary text-xs font-bold tracking-widest mb-4 block noto-sans-thai">01 / กระบวนการ</span>
-        <h3 class="font-headline text-2xl font-bold mb-4 uppercase" data-i="s1t">การหล่อแบบทราย<br/>(Sand Casting)</h3>
-        <p class="text-on-surface-variant text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 noto-sans-thai" data-i="s1d">เทคนิคดั้งเดิมสำหรับชิ้นงานขนาดใหญ่ที่มีรูปทรงภายในซับซ้อน</p>
-        <a class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest font-headline" href="#contact" data-i="s1l">ดูรายละเอียด <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
-      </div>
-    </div>
-    <div class="min-w-[85vw] md:min-w-[450px] aspect-[4/5] relative snap-start group overflow-hidden">
-      <img alt="Investment" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&h=750&fit=crop" loading="lazy">
-      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-      <div class="absolute bottom-0 p-8 w-full">
-        <span class="text-primary text-xs font-bold tracking-widest mb-4 block noto-sans-thai">02 / กระบวนการ</span>
-        <h3 class="font-headline text-2xl font-bold mb-4 uppercase" data-i="s2t">การหล่อแบบสูญขี้ผึ้ง<br/>(Investment Casting)</h3>
-        <p class="text-on-surface-variant text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 noto-sans-thai" data-i="s2d">การหล่อความละเอียดสูงสำหรับชิ้นส่วนการบินและยานยนต์</p>
-        <a class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest font-headline" href="#contact" data-i="s2l">ดูรายละเอียด <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
-      </div>
-    </div>
-    <div class="min-w-[85vw] md:min-w-[450px] aspect-[4/5] relative snap-start group overflow-hidden">
-      <img alt="Die Casting" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=750&fit=crop" loading="lazy">
-      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-      <div class="absolute bottom-0 p-8 w-full">
-        <span class="text-primary text-xs font-bold tracking-widest mb-4 block noto-sans-thai">03 / กระบวนการ</span>
-        <h3 class="font-headline text-2xl font-bold mb-4 uppercase" data-i="s3t">การหล่อแบบฉีด<br/>(Die Casting)</h3>
-        <p class="text-on-surface-variant text-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 noto-sans-thai" data-i="s3d">ระบบแรงดันสูงอัตโนมัติสำหรับการผลิตจำนวนมาก</p>
-        <a class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest font-headline" href="#contact" data-i="s3l">ดูรายละเอียด <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="py-24 bg-surface-container-lowest" id="gallery">
-  <div class="max-w-screen-2xl mx-auto px-8">
-    <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-      <div>
-        <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai" data-i="gal_tag">// Gallery Agent รวบรวม</p>
-        <h2 class="editorial-title text-4xl md:text-5xl text-white uppercase" data-i="gal_t">ผลงาน <span class="text-primary italic">คุณภาพ</span></h2>
-      </div>
-      <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1 rounded-full border border-primary text-primary text-[10px] font-black uppercase tracking-widest font-headline cursor-pointer" data-i="gf1">ทั้งหมด</span>
-        <span class="px-3 py-1 rounded-full border border-outline-variant text-on-surface-variant text-[10px] font-black uppercase tracking-widest font-headline cursor-pointer" data-i="gf2">Sand Casting</span>
-        <span class="px-3 py-1 rounded-full border border-outline-variant text-on-surface-variant text-[10px] font-black uppercase tracking-widest font-headline cursor-pointer" data-i="gf3">Investment</span>
-        <span class="px-3 py-1 rounded-full border border-outline-variant text-on-surface-variant text-[10px] font-black uppercase tracking-widest font-headline cursor-pointer" data-i="gf4">Die Casting</span>
-      </div>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-      <div class="img-card"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=500&h=500&fit=crop" alt="Molten metal" loading="lazy"><div class="img-ov"><p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="g1">เทโลหะหลอมเหลว</p><p class="text-[10px] text-outline-variant">Sand Casting</p></div></div>
-      <div class="img-card"><img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=500&h=500&fit=crop" alt="Metal parts" loading="lazy"><div class="img-ov"><p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="g2">ชิ้นส่วนโลหะ</p><p class="text-[10px] text-outline-variant">Precision Parts</p></div></div>
-      <div class="img-card"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&h=500&fit=crop" alt="Furnace" loading="lazy"><div class="img-ov"><p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="g3">เตาหลอม</p><p class="text-[10px] text-outline-variant">Melting Furnace</p></div></div>
-      <div class="img-card"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&h=500&fit=crop" alt="Quality" loading="lazy"><div class="img-ov"><p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="g4">ตรวจสอบคุณภาพ</p><p class="text-[10px] text-outline-variant">CMM Inspection</p></div></div>
-      <div class="img-card"><img src="https://images.unsplash.com/photo-1537462715315-eb42f5849031?w=500&h=500&fit=crop" alt="Auto" loading="lazy"><div class="img-ov"><p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="g5">ชิ้นส่วนยานยนต์</p><p class="text-[10px] text-outline-variant">Automotive</p></div></div>
-      <div class="img-card"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&h=500&fit=crop" alt="Energy" loading="lazy"><div class="img-ov"><p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="g6">ชิ้นส่วนพลังงาน</p><p class="text-[10px] text-outline-variant">Energy</p></div></div>
-      <div class="img-card"><img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?w=500&h=500&fit=crop" alt="Factory" loading="lazy"><div class="img-ov"><p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="g7">โรงงานอุตสาหกรรม</p><p class="text-[10px] text-outline-variant">Factory</p></div></div>
-      <div class="img-card"><img src="https://images.unsplash.com/photo-1586864387789-628af9feed72?w=500&h=500&fit=crop" alt="Steel" loading="lazy"><div class="img-ov"><p class="font-headline text-xs uppercase tracking-wider font-bold" data-i="g8">โครงสร้างเหล็ก</p><p class="text-[10px] text-outline-variant">Structural Steel</p></div></div>
-    </div>
-    <div class="mt-6 flex items-center gap-3 glass-panel p-3 rounded-lg border border-outline-variant/20">
-      <div class="pulse-dot"></div>
-      <p class="text-[11px] text-on-surface-variant noto-sans-thai" data-i="gal_auto">Gallery Agent อัปเดตภาพอัตโนมัติทุกวัน — แหล่งที่มา: Unsplash, Pexels, AI Generated</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="py-24 bg-surface" id="process">
-  <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-    <div class="relative">
-      <img alt="CAD" class="w-full aspect-square object-cover grayscale brightness-75 border-l-4 border-primary-container" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=600&fit=crop" loading="lazy">
-      <div class="absolute bottom-4 right-4 bg-surface-container-highest p-4 max-w-xs border border-outline-variant/20">
-        <p class="font-headline text-sm font-bold mb-1 uppercase text-primary" data-i="zero_t">นโยบายความผิดพลาดเป็นศูนย์</p>
-        <p class="text-[11px] text-on-surface-variant leading-relaxed noto-sans-thai" data-i="zero_d">แม่พิมพ์ทุกชิ้นผ่านการสแกน 3 มิติ 100%</p>
-      </div>
-    </div>
-    <div class="space-y-8">
-      <div>
-        <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai" data-i="proc_tag">// ขั้นตอนการผลิต</p>
-        <h2 class="editorial-title text-4xl md:text-5xl text-white uppercase" data-i="proc_t">ลำดับ <span class="text-outline">งานผลิต</span></h2>
-      </div>
-      <div class="space-y-6">
-        <div class="flex gap-4 items-start"><span class="text-3xl font-black text-outline-variant/30 font-headline">01</span><div><h4 class="text-sm font-bold text-white uppercase mb-1 tracking-tighter font-headline" data-i="p1">การออกแบบและจำลอง</h4><p class="text-on-surface-variant text-xs noto-sans-thai" data-i="p1d">CAD/CAM ขั้นสูงเพื่อทำนายการไหลของโลหะ</p></div></div>
-        <div class="flex gap-4 items-start"><span class="text-3xl font-black text-outline-variant/30 font-headline">02</span><div><h4 class="text-sm font-bold text-white uppercase mb-1 tracking-tighter font-headline" data-i="p2">การสร้างแม่พิมพ์</h4><p class="text-on-surface-variant text-xs noto-sans-thai" data-i="p2d">แม่พิมพ์ต้นแบบภายในโรงงาน ความแม่นยำสูง</p></div></div>
-        <div class="flex gap-4 items-start"><span class="text-3xl font-black text-primary-container font-headline">03</span><div><h4 class="text-sm font-bold text-white uppercase mb-1 tracking-tighter font-headline" data-i="p3">การหล่อแบบควบคุม</h4><p class="text-on-surface-variant text-xs noto-sans-thai" data-i="p3d">ควบคุมบรรยากาศเตาหลอม ตรวจสอบอัลลอยด์เรียลไทม์</p></div></div>
-        <div class="flex gap-4 items-start"><span class="text-3xl font-black text-outline-variant/30 font-headline">04</span><div><h4 class="text-sm font-bold text-white uppercase mb-1 tracking-tighter font-headline" data-i="p4">การตรวจสอบขั้นสุดท้าย</h4><p class="text-on-surface-variant text-xs noto-sans-thai" data-i="p4d">X-ray, อัลตราโซนิก, แรงดันน้ำ ทุกชิ้น</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="py-24 bg-surface-container-lowest relative">
-  <div class="max-w-4xl mx-auto px-8">
-    <div class="glass-panel p-10 md:p-16 border border-white/5 relative overflow-hidden text-center">
-      <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary-container/20 rounded-full blur-[100px]"></div>
-      <h2 class="editorial-title text-4xl md:text-5xl mb-6 text-white uppercase relative z-10" data-i="cta_t">ขอใบ <span class="text-primary">เสนอราคา</span> วันนี้</h2>
-      <p class="text-on-surface-variant text-sm mb-8 max-w-2xl mx-auto relative z-10 noto-sans-thai" data-i="cta_d">ปรึกษาทีมวิศวกร รับราคาโปร่งใสภายใน 24 ชั่วโมง</p>
-      <div class="flex flex-col md:flex-row gap-4 justify-center items-center relative z-10">
-        <a class="w-full md:w-auto px-10 py-4 bg-primary-container text-white font-black uppercase tracking-widest hover:bg-primary transition-all font-headline text-sm text-center" href="#contact" data-i="cta_b">ขอข้อเสนอโครงการ</a>
-        <a class="text-white font-bold flex items-center gap-3 group font-headline text-sm" href="tel:0986362356"><span class="material-symbols-outlined text-primary group-hover:rotate-12 transition-transform">call</span> 098 636 2356</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="py-24 bg-surface" id="contact">
-  <div class="max-w-screen-2xl mx-auto px-8">
-    <div class="mb-12">
-      <p class="text-primary font-bold tracking-widest uppercase text-xs mb-2 italic noto-sans-thai" data-i="con_tag">// ติดต่อเรา</p>
-      <h2 class="editorial-title text-4xl md:text-5xl text-on-surface" data-i="con_t">ส่งข้อความ <span class="text-primary italic">ถึงเรา</span></h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div class="space-y-6">
-        <div class="border-b border-outline-variant/20 pb-4"><p class="font-headline text-[10px] uppercase tracking-widest text-outline-variant mb-1" data-i="ci_e">อีเมล</p><a class="text-sm text-on-surface hover:text-primary transition-colors" href="mailto:info@suphancasting.com">info@suphancasting.com</a></div>
-        <div class="border-b border-outline-variant/20 pb-4"><p class="font-headline text-[10px] uppercase tracking-widest text-outline-variant mb-1" data-i="ci_p">โทรศัพท์</p><a class="text-sm text-on-surface hover:text-primary transition-colors" href="tel:0986362356">098 636 2356</a></div>
-        <div class="border-b border-outline-variant/20 pb-4"><p class="font-headline text-[10px] uppercase tracking-widest text-outline-variant mb-1" data-i="ci_a">ที่อยู่</p><p class="text-sm text-on-surface" data-i="ci_av">จังหวัดสุพรรณบุรี ประเทศไทย</p></div>
-        <div class="pb-4"><p class="font-headline text-[10px] uppercase tracking-widest text-outline-variant mb-1" data-i="ci_h">เวลาทำการ</p><p class="text-sm text-on-surface" data-i="ci_hv">จันทร์ - เสาร์: 08:00 - 17:00</p></div>
-      </div>
-      <form class="space-y-4" onsubmit="event.preventDefault(); alert('ขอบคุณที่ติดต่อเรา!');">
-        <div class="grid grid-cols-2 gap-4">
-          <div><label class="font-headline text-[10px] uppercase tracking-widest text-outline-variant block mb-1" data-i="fn">ชื่อ-นามสกุล</label><input type="text" class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-3 py-2.5 text-sm text-on-surface focus:border-primary outline-none" required></div>
-          <div><label class="font-headline text-[10px] uppercase tracking-widest text-outline-variant block mb-1" data-i="fc">บริษัท</label><input type="text" class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-3 py-2.5 text-sm text-on-surface focus:border-primary outline-none"></div>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div><label class="font-headline text-[10px] uppercase tracking-widest text-outline-variant block mb-1" data-i="fe">อีเมล</label><input type="email" class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-3 py-2.5 text-sm text-on-surface focus:border-primary outline-none" required></div>
-          <div><label class="font-headline text-[10px] uppercase tracking-widest text-outline-variant block mb-1" data-i="fp">โทรศัพท์</label><input type="tel" class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-3 py-2.5 text-sm text-on-surface focus:border-primary outline-none"></div>
-        </div>
-        <div><label class="font-headline text-[10px] uppercase tracking-widest text-outline-variant block mb-1" data-i="fs">บริการที่สนใจ</label>
-          <select class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-3 py-2.5 text-sm text-on-surface focus:border-primary outline-none">
-            <option data-i="fse">เลือกบริการ</option><option>Sand Casting</option><option>Investment Casting</option><option>Die Casting</option><option>CNC Machining</option>
-          </select>
-        </div>
-        <div><label class="font-headline text-[10px] uppercase tracking-widest text-outline-variant block mb-1" data-i="fm">รายละเอียด</label><textarea class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-3 py-2.5 text-sm text-on-surface focus:border-primary outline-none min-h-[100px] resize-y"></textarea></div>
-        <button type="submit" class="bg-primary-container text-white font-bold px-8 py-3 rounded uppercase tracking-widest font-headline text-xs hover:bg-primary hover:shadow-[0_0_30px_rgba(255,86,37,0.4)] transition-all" data-i="fsub">ส่งข้อความ</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ADMIN FLOATING BUTTON -->
-<button onclick="openAdminLogin()" class="fixed bottom-6 right-6 z-50 bg-primary-container hover:bg-primary text-white w-14 h-14 rounded-full shadow-lg shadow-black/50 flex items-center justify-center transition-all hover:scale-110 group" title="Admin Panel">
-  <span class="material-symbols-outlined text-2xl group-hover:rotate-12 transition-transform">settings</span>
-</button>
-
-<!-- ADMIN LOGIN MODAL -->
-<div id="adminLoginModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm">
-  <div class="bg-surface-container rounded-xl p-8 w-full max-w-md mx-4 border border-outline-variant/30 shadow-2xl">
-    <div class="flex justify-between items-center mb-6">
-      <h3 class="font-headline text-xl font-bold text-on-surface uppercase tracking-wider">Admin Login</h3>
-      <button onclick="closeAdminLogin()" class="text-outline-variant hover:text-on-surface transition-colors">
-        <span class="material-symbols-outlined">close</span>
-      </button>
-    </div>
-    <div class="space-y-4">
-      <div>
-        <label class="font-headline text-[10px] uppercase tracking-widest text-outline-variant block mb-2">Username</label>
-        <input type="text" id="adminUser" class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-4 py-3 text-on-surface focus:border-primary outline-none" placeholder="admin">
-      </div>
-      <div>
-        <label class="font-headline text-[10px] uppercase tracking-widest text-outline-variant block mb-2">Password</label>
-        <input type="password" id="adminPass" class="w-full bg-surface-container-low border border-outline-variant/30 rounded px-4 py-3 text-on-surface focus:border-primary outline-none" placeholder="••••••••">
-      </div>
-      <button onclick="doAdminLogin()" class="w-full bg-primary-container hover:bg-primary text-white font-bold py-3 rounded uppercase tracking-widest font-headline text-sm transition-all">Login</button>
-      <p id="loginError" class="text-error text-xs text-center hidden">Invalid credentials</p>
-    </div>
-  </div>
-</div>
-
-<!-- ADMIN DASHBOARD PANEL -->
-<div id="adminDashboard" class="fixed top-0 right-0 z-[90] w-full max-w-lg h-full bg-surface border-l border-outline-variant/30 shadow-2xl transform translate-x-full transition-transform duration-300 overflow-y-auto">
-  <div class="p-6">
-    <div class="flex justify-between items-center mb-6">
-      <h3 class="font-headline text-xl font-bold text-on-surface uppercase tracking-wider">AI Agent Control</h3>
-      <button onclick="closeAdminDashboard()" class="text-outline-variant hover:text-on-surface transition-colors">
-        <span class="material-symbols-outlined">close</span>
-      </button>
-    </div>
-    
-    <!-- AI Status -->
-    <div class="bg-surface-container-low rounded-lg p-4 mb-6 border border-outline-variant/20">
-      <div class="flex items-center justify-between mb-3">
-        <span class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface">AI Status</span>
-        <span id="aiStatusBadge" class="px-3 py-1 bg-surface-container-highest rounded-full text-[10px] font-bold uppercase tracking-wider text-outline-variant">Checking...</span>
-      </div>
-      <button onclick="checkAIStatus()" class="w-full bg-surface-container-highest hover:bg-surface-container-high text-on-surface font-headline text-xs py-2 rounded uppercase tracking-wider transition-colors">Refresh Status</button>
-    </div>
-    
-    <!-- Test AI -->
-    <div class="bg-surface-container-low rounded-lg p-4 mb-6 border border-outline-variant/20">
-      <h4 class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface mb-3">Test AI Connection</h4>
-      <button onclick="testAI()" class="w-full bg-primary-container hover:bg-primary text-white font-bold py-3 rounded uppercase tracking-widest font-headline text-xs transition-all mb-3">Run Test</button>
-      <div id="testAIResult" class="bg-surface-container-highest rounded p-3 text-[11px] text-on-surface-variant font-mono max-h-32 overflow-y-auto hidden"></div>
-    </div>
-    
-    <!-- Video Script Agent -->
-    <div class="bg-surface-container-low rounded-lg p-4 mb-4 border border-outline-variant/20">
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-primary">videocam</span>
-        <h4 class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface">Video Script Agent</h4>
-      </div>
-      <select id="videoTopic" class="w-full bg-surface-container-highest border border-outline-variant/30 rounded px-3 py-2 text-on-surface text-xs mb-3 focus:border-primary outline-none">
-        <option value="sand_casting">Sand Casting Process</option>
-        <option value="investment_casting">Investment Casting</option>
-        <option value="die_casting">Die Casting</option>
-        <option value="factory_tour">Factory Tour</option>
-      </select>
-      <button onclick="runAgent('videoscript')" class="w-full bg-primary hover:bg-primary-container text-white font-bold py-3 rounded uppercase tracking-widest font-headline text-xs transition-all">Generate Video Script</button>
-      <div id="videoScriptResult" class="mt-3 bg-surface-container-highest rounded p-3 text-[11px] text-on-surface-variant font-mono max-h-48 overflow-y-auto hidden"></div>
-    </div>
-    
-    <!-- Blog Post Agent -->
-    <div class="bg-surface-container-low rounded-lg p-4 mb-4 border border-outline-variant/20">
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-secondary">edit_note</span>
-        <h4 class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface">Blog Post Agent</h4>
-      </div>
-      <select id="blogTopic" class="w-full bg-surface-container-highest border border-outline-variant/30 rounded px-3 py-2 text-on-surface text-xs mb-3 focus:border-primary outline-none">
-        <option value="sand_casting">Sand Casting Guide</option>
-        <option value="investment_casting">Investment Casting Benefits</option>
-        <option value="die_casting">Die Casting Applications</option>
-        <option value="quality_control">Quality Control Process</option>
-      </select>
-      <button onclick="runAgent('blog-post')" class="w-full bg-secondary hover:bg-secondary-container text-on-secondary font-bold py-3 rounded uppercase tracking-widest font-headline text-xs transition-all">Generate Blog Post</button>
-      <div id="blogPostResult" class="mt-3 bg-surface-container-highest rounded p-3 text-[11px] text-on-surface-variant font-mono max-h-48 overflow-y-auto hidden"></div>
-    </div>
-    
-    <!-- Image Prompt Agent -->
-    <div class="bg-surface-container-low rounded-lg p-4 mb-4 border border-outline-variant/20">
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-tertiary">photo_library</span>
-        <h4 class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface">Image Prompt Agent</h4>
-      </div>
-      <select id="imageTopic" class="w-full bg-surface-container-highest border border-outline-variant/30 rounded px-3 py-2 text-on-surface text-xs mb-3 focus:border-primary outline-none">
-        <option value="casting_process">Casting Process</option>
-        <option value="finished_parts">Finished Parts</option>
-        <option value="factory_equipment">Factory Equipment</option>
-        <option value="quality_inspection">Quality Inspection</option>
-      </select>
-      <button onclick="runAgent('image-prompt')" class="w-full bg-tertiary hover:bg-tertiary-container text-on-tertiary font-bold py-3 rounded uppercase tracking-widest font-headline text-xs transition-all">Generate Image Prompt</button>
-      <div id="imagePromptResult" class="mt-3 bg-surface-container-highest rounded p-3 text-[11px] text-on-surface-variant font-mono max-h-48 overflow-y-auto hidden"></div>
-    </div>
-    
-    <!-- Scheduler -->
-    <div class="bg-surface-container-low rounded-lg p-4 mb-4 border border-outline-variant/20">
-      <h4 class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface mb-3">Auto Scheduler</h4>
-      <div class="space-y-3">
-        <label class="flex items-center gap-3 cursor-pointer">
-          <input type="checkbox" id="scheduleVideo" class="w-5 h-5 accent-primary">
-          <span class="font-headline text-xs text-on-surface">Auto-generate Video Script (Daily)</span>
-        </label>
-        <label class="flex items-center gap-3 cursor-pointer">
-          <input type="checkbox" id="scheduleBlog" class="w-5 h-5 accent-secondary">
-          <span class="font-headline text-xs text-on-surface">Auto-generate Blog Post (Weekly)</span>
-        </label>
-        <label class="flex items-center gap-3 cursor-pointer">
-          <input type="checkbox" id="scheduleImage" class="w-5 h-5 accent-tertiary">
-          <span class="font-headline text-xs text-on-surface">Auto-generate Image Prompt (Daily)</span>
-        </label>
-      </div>
-    </div>
-    
-    <!-- Auto Save Settings -->
-    <div class="bg-surface-container-low rounded-lg p-4 mb-4 border border-primary-container/50">
-      <h4 class="font-headline text-sm font-bold uppercase tracking-wider text-primary mb-3">Auto-Save & Display</h4>
-      <div class="space-y-3">
-        <label class="flex items-center gap-3 cursor-pointer">
-          <input type="checkbox" id="autoSaveToggle" checked class="w-5 h-5 accent-primary">
-          <span class="font-headline text-xs text-on-surface">Auto-save to Supabase</span>
-        </label>
-        <div class="bg-surface-container-highest rounded p-2">
-          <p id="contentCount" class="text-[10px] text-on-surface-variant font-mono">Loading from Supabase...</p>
-        </div>
-        <button onclick="loadFromSupabase()" class="w-full bg-surface-container-highest hover:bg-surface-bright text-on-surface font-bold py-2 rounded uppercase tracking-widest font-headline text-xs transition-all">Refresh from Supabase</button>
-      </div>
-    </div>
-    
-    <!-- Groq API Config -->
-    <div class="bg-surface-container-low rounded-lg p-4 mb-4 border border-outline-variant/20">
-      <h4 class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface mb-3">API Configuration</h4>
-      <div class="space-y-3">
-        <div>
-          <label class="font-headline text-[10px] uppercase tracking-widest text-outline-variant block mb-1">Groq Model</label>
-          <select id="groqModel" class="w-full bg-surface-container-highest border border-outline-variant/30 rounded px-3 py-2 text-on-surface text-xs focus:border-primary outline-none">
-            <option value="llama-3.3-70b-versatile">Llama 3.3 70B (Fast)</option>
-            <option value="mixtral-8x7b-32768">Mixtral 8x7B</option>
-            <option value="llama-3.1-8b-instant">Llama 3.1 8B (Budget)</option>
-          </select>
-        </div>
-        <div>
-          <label class="font-headline text-[10px] uppercase tracking-widest text-outline-variant block mb-1">Max Tokens</label>
-          <input type="number" id="maxTokens" value="1024" min="256" max="8192" class="w-full bg-surface-container-highest border border-outline-variant/30 rounded px-3 py-2 text-on-surface text-xs focus:border-primary outline-none">
-        </div>
-      </div>
-    </div>
-    
-    <!-- Activity Log -->
-    <div class="bg-surface-container-low rounded-lg p-4 border border-outline-variant/20">
-      <h4 class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface mb-3">Activity Log</h4>
-      <div id="activityLog" class="space-y-2 max-h-64 overflow-y-auto">
-        <p class="text-[10px] text-outline-variant italic">No activity yet...</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer class="bg-[#0e0e0e] w-full py-10 px-8">
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-7xl mx-auto">
-    <div class="space-y-4"><div class="flex items-center gap-3"><div class="bg-[#FF4500] text-white font-black px-2 py-1 leading-none text-lg rounded-sm font-['Space_Grotesk']">SC</div><span class="text-lg font-bold text-[#ff5625] font-headline uppercase">SUPHAN CASTING</span></div><p class="text-[#2e4e4e] text-[11px] leading-relaxed max-w-xs font-headline tracking-wider" data-i="ft_d">กำหนดอนาคตของการผลิตโลหะผ่านการหล่อที่มีความแม่นยำสูง</p></div>
-    <div><h5 class="text-[#ffb5a0] font-bold text-[10px] uppercase mb-4 font-headline tracking-wider" data-i="ft_l">ลิงก์ด่วน</h5><ul class="space-y-2"><li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] font-headline text-[11px] tracking-wider" href="#" data-i="ft_h">หน้าหลัก</a></li><li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] font-headline text-[11px] tracking-wider" href="#services" data-i="ft_s">บริการ</a></li><li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] font-headline text-[11px] tracking-wider" href="#gallery" data-i="ft_g">ผลงาน</a></li><li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] font-headline text-[11px] tracking-wider" href="#contact" data-i="ft_c">ติดต่อ</a></li></ul></div>
-    <div><h5 class="text-[#ffb5a0] font-bold text-[10px] uppercase mb-4 font-headline tracking-wider" data-i="ft_le">กฎหมาย</h5><ul class="space-y-2"><li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] font-headline text-[11px] tracking-wider" href="#" data-i="ft_p">นโยบายความเป็นส่วนตัว</a></li><li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] font-headline text-[11px] tracking-wider" href="#" data-i="ft_t">ข้อกำหนดการให้บริการ</a></li><li><a class="text-[#2e4e4e] hover:text-[#ffb5a0] font-headline text-[11px] tracking-wider" href="#" data-i="ft_i">การรับรอง ISO</a></li></ul></div>
-    <div><h5 class="text-[#ffb5a0] font-bold text-[10px] uppercase mb-4 font-headline tracking-wider" data-i="ft_di">ติดต่อโดยตรง</h5><div class="space-y-3"><div class="flex items-start gap-2"><span class="material-symbols-outlined text-[#ffb5a0] text-xs">person</span><span class="text-[#2e4e4e] text-[11px] font-headline tracking-wider">กอล์ฟ ศศิธร</span></div><div class="flex items-start gap-2"><span class="material-symbols-outlined text-[#ffb5a0] text-xs">call</span><a class="text-[#2e4e4e] hover:text-[#ffb5a0] text-[11px] font-headline tracking-wider" href="tel:0986362356">098 636 2356</a></div><div class="flex items-start gap-2"><span class="material-symbols-outlined text-[#ffb5a0] text-xs">mail</span><a class="text-[#2e4e4e] hover:text-[#ffb5a0] text-[11px] font-headline tracking-wider" href="mailto:cnwmax@gmail.com">cnwmax@gmail.com</a></div></div></div>
-  </div>
-  <div class="mt-10 pt-6 border-t border-[#5d4038]/15 text-center"><p class="font-headline text-[10px] tracking-wider text-[#2e4e4e]">© 2025 SUPHAN CASTING INDUSTRIAL. สงวนลิขสิทธิ์ทั้งหมด</p></div>
-</footer>
+<!-- Lightbox -->
+<div id="lb"><button id="lbx">✕</button><img id="lbi" src="" alt=""></div>
 
 <script>
-// ===== LANGUAGE DROPDOWN — CLICK TOGGLE (NOT HOVER) =====
-function toggleLang(){
-  document.getElementById('langWrap').classList.toggle('open');
+// ═══════════════════════════════════════════
+// WebGL — Single Molten Aurora with 4 color themes
+// ═══════════════════════════════════════════
+const canvas = document.getElementById('c');
+const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+
+const VS = `attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}`;
+
+const FS = `precision highp float;
+uniform vec2 R, M;
+uniform float T, TH; /* TH: 0=sandy,1=lava,2=rust,3=steel */
+uniform vec4 CK[8];
+uniform int NC;
+
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5);}
+float n(vec2 p){
+  vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);
+  return mix(mix(h(i),h(i+vec2(1,0)),u.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);
 }
-function setLang(lang,label,el){
-  document.getElementById('langLabel').textContent=label;
-  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.remove('sel'));
-  el.classList.add('sel');
-  document.getElementById('langWrap').classList.remove('open');
-  const t=i18n[lang];
-  if(t){document.querySelectorAll('[data-i]').forEach(e=>{const k=e.getAttribute('data-i');if(t[k])e.innerHTML=t[k];})}
-  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+float fbm(vec2 p){
+  float v=0.,a=.5;
+  mat2 rot=mat2(.8,.6,-.6,.8);
+  for(int i=0;i<8;i++){v+=a*n(p);p=rot*p*2.1+vec2(3.1,5.9);a*=.48;}
+  return v;
 }
-// Close on outside click
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.lang-wrap')){document.getElementById('langWrap').classList.remove('open');}
+
+vec3 cSandy(float t){
+  if(t<.3) return mix(vec3(.04,.03,.02),vec3(.22,.14,.05),t/.3);
+  if(t<.6) return mix(vec3(.22,.14,.05),vec3(.60,.40,.10),(t-.3)/.3);
+  if(t<.8) return mix(vec3(.60,.40,.10),vec3(.82,.62,.22),(t-.6)/.2);
+  return mix(vec3(.82,.62,.22),vec3(.97,.90,.70),(t-.8)/.2);
+}
+vec3 cLava(float t){
+  if(t<.25) return mix(vec3(.01,.005,.0),vec3(.18,.02,.0),t/.25);
+  if(t<.5)  return mix(vec3(.18,.02,.0),vec3(.9,.25,.0),(t-.25)/.25);
+  if(t<.75) return mix(vec3(.9,.25,.0),vec3(1.,.65,.05),(t-.5)/.25);
+  return mix(vec3(1.,.65,.05),vec3(1.,.95,.75),(t-.75)/.25);
+}
+vec3 cRust(float t){
+  if(t<.3) return mix(vec3(.03,.01,.0),vec3(.28,.06,.01),t/.3);
+  if(t<.6) return mix(vec3(.28,.06,.01),vec3(.68,.22,.04),(t-.3)/.3);
+  if(t<.8) return mix(vec3(.68,.22,.04),vec3(.88,.42,.10),(t-.6)/.2);
+  return mix(vec3(.88,.42,.10),vec3(.96,.62,.28),(t-.8)/.2);
+}
+vec3 cSteel(float t){
+  if(t<.3) return mix(vec3(.02,.025,.03),vec3(.07,.10,.15),t/.3);
+  if(t<.6) return mix(vec3(.07,.10,.15),vec3(.22,.34,.44),(t-.3)/.3);
+  if(t<.8) return mix(vec3(.22,.34,.44),vec3(.45,.60,.72),(t-.6)/.2);
+  return mix(vec3(.45,.60,.72),vec3(.70,.82,.90),(t-.8)/.2);
+}
+
+vec3 themeCol(float f, float th){
+  float i = floor(th);
+  float blend = fract(th);
+  vec3 ca,cb;
+  if(i < 0.5){      ca=cSandy(f); cb=cLava(f); }
+  else if(i < 1.5){ ca=cLava(f);  cb=cRust(f); }
+  else if(i < 2.5){ ca=cRust(f);  cb=cSteel(f);}
+  else{              ca=cSteel(f); cb=cSteel(f);}
+  return mix(ca, cb, clamp(blend,0.,1.));
+}
+
+void main(){
+  vec2 uv = gl_FragCoord.xy / R;
+  float ar = R.x/R.y;
+  vec2 p = uv * vec2(ar, 1.);
+  vec2 m = M / R * vec2(ar, 1.);
+  float t = T * .11;
+
+  /* Mouse heat distortion — upward like hot air */
+  float md = length(p - m);
+  p += vec2(0., -1.) * (.32/(md*md+.07)) * (1.-smoothstep(0.,.85,md));
+
+  /* Click ripples */
+  for(int i=0;i<8;i++){
+    if(i>=NC) break;
+    vec2 cp = CK[i].xy/R*vec2(ar,1.);
+    float age = CK[i].z, cd = length(p-cp);
+    p += normalize(p-cp)*sin(cd*22.-age*7.)*exp(-cd*3.5)*exp(-age*1.4)*.10;
+  }
+
+  /* Layered FBM aurora */
+  vec2 q = vec2(fbm(p+t), fbm(p+vec2(5.2,1.3)+t*.8));
+  vec2 r = vec2(fbm(p+2.*q+vec2(1.7,9.2)+t*.6), fbm(p+2.*q+vec2(8.3,2.8)+t*.4));
+  float f = fbm(p + 2.8*r + t*.3);
+
+  /* Aurora banding */
+  float band = abs(sin(p.x*1.8+T*.35+q.x*3.));
+  f = mix(f, f*1.6, band*.35);
+  f = pow(clamp(f,0.,1.), 1.45);
+
+  /* Mouse glow spot */
+  float mg = exp(-md*md*2.6);
+  f = mix(f, 1., mg*.65);
+
+  vec3 col = themeCol(f, TH);
+
+  /* Bright mouse highlight */
+  col += themeCol(1., TH) * mg * mg * .7;
+
+  /* Vignette */
+  col *= mix(.22, 1., 1.-smoothstep(.5,1.5,length(uv-.5)*1.6));
+
+  gl_FragColor = vec4(col, 1.);
+}`;
+
+function mkShader(src, type){
+  const s = gl.createShader(type);
+  gl.shaderSource(s, src);
+  gl.compileShader(s);
+  if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));
+  return s;
+}
+// Reduce octaves for better performance
+const perfFS = FS.replace('for(int i=0;i<8;i++)','for(int i=0;i<6;i())');
+const prog = gl.createProgram();
+gl.attachShader(prog, mkShader(VS, gl.VERTEX_SHADER));
+gl.attachShader(prog, mkShader(FS.replace('<8;i++){v','<6;i++){v'), gl.FRAGMENT_SHADER));
+gl.linkProgram(prog);
+gl.useProgram(prog);
+
+const buf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+const aPos = gl.getAttribLocation(prog, 'a');
+gl.enableVertexAttribArray(aPos);
+gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+const uR  = gl.getUniformLocation(prog, 'R');
+const uM  = gl.getUniformLocation(prog, 'M');
+const uT  = gl.getUniformLocation(prog, 'T');
+const uTH = gl.getUniformLocation(prog, 'TH');
+const uNC = gl.getUniformLocation(prog, 'NC');
+const uCK = gl.getUniformLocation(prog, 'CK');
+
+let mouse = {x: 0, y: 0};
+let clicks = [];
+let t0 = performance.now(), lt = 0;
+let uTheme = 0, targetTheme = 0; // animated 0-3
+const PAGE_THEMES = {0: 0, 1: 1, 2: 2, 3: 3}; // page index → theme index
+
+function resize(){
+  canvas.width = innerWidth; canvas.height = innerHeight;
+  gl.viewport(0,0,canvas.width,canvas.height);
+}
+resize(); window.addEventListener('resize', resize);
+
+const clayer = document.getElementById('click-layer');
+// Track mouse globally for smooth response
+window.addEventListener('mousemove', e => {
+  mouse.x = e.clientX; mouse.y = canvas.height - e.clientY;
+}, {passive:true});
+
+function render(now){
+  requestAnimationFrame(render);
+  const t = (now - t0)/1000;
+  const dt = Math.min(t - lt, .05); lt = t;
+  clicks.forEach(c => c.time += dt);
+  clicks = clicks.filter(c => c.time < 4);
+
+  // Smooth theme transition
+  uTheme += (targetTheme - uTheme) * dt * 2.2;
+
+  gl.uniform2f(uR, canvas.width, canvas.height);
+  gl.uniform2f(uM, mouse.x, mouse.y);
+  gl.uniform1f(uT, t);
+  gl.uniform1f(uTH, uTheme);
+  gl.uniform1i(uNC, clicks.length);
+  const ca = new Float32Array(32);
+  clicks.forEach((c,i) => { ca[i*4]=c.x; ca[i*4+1]=c.y; ca[i*4+2]=c.time; ca[i*4+3]=1; });
+  gl.uniform4fv(uCK, ca);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+}
+requestAnimationFrame(render);
+
+// ── Page switching ──
+const PAGES = ['p-sand','p-process','p-products','p-quality'];
+let curPage = null;
+
+function goHome(){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  curPage=null; targetTheme=0; clicks=[];
+  document.getElementById('home-hint').style.display='flex';
+}
+function goTo(id){
+  if(id===curPage)return;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.page===id));
+  curPage=id; targetTheme=parseInt(document.getElementById(id).dataset.tidx); clicks=[];
+  document.getElementById('home-hint').style.display='none';
+}
+
+document.querySelectorAll('.tab').forEach(b => {
+  b.addEventListener('click', () => goTo(b.dataset.page));
+  b.addEventListener('mousedown', e => e.stopPropagation());
 });
 
-// ===== VIDEO PLAYER =====
-function playVideo(id,card){
-  document.getElementById('mainVideo').src='https://www.youtube.com/embed/'+id+'?rel=0&modestbranding=1&autoplay=1';
-  document.querySelectorAll('.v-card').forEach(c=>c.classList.remove('active'));
-  card.classList.add('active');
-  document.getElementById('mainPlayer').scrollIntoView({behavior:'smooth',block:'center'});
-}
-
-// ===== DRAG SCROLL =====
-const sEl=document.getElementById('svcScroll');
-let iD=false,sX,sL;
-sEl.addEventListener('mousedown',e=>{iD=true;sX=e.pageX-sEl.offsetLeft;sL=sEl.scrollLeft;});
-sEl.addEventListener('mouseleave',()=>iD=false);
-sEl.addEventListener('mouseup',()=>iD=false);
-sEl.addEventListener('mousemove',e=>{if(!iD)return;e.preventDefault();sEl.scrollLeft=sL-(e.pageX-sEl.offsetLeft-sX)*1.5;});
-
-// ===== SMOOTH SCROLL =====
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});
+// ── Click catcher — flame + random nav ──
+// Intercept clicks that land on click-layer (shader area)
+clayer.addEventListener('click', e => {
+  clicks.unshift({x:e.clientX, y:canvas.height-e.clientY, time:0});
+  if(clicks.length>8) clicks.pop();
+  spawnFlameLogo(e.clientX, e.clientY);
 });
 
-// ===== 11 LANGUAGES =====
-const i18n={
-th:{nav_home:'หน้าหลัก',nav_video:'วิดีโอ',nav_services:'บริการ',nav_gallery:'ผลงาน',nav_agents:'AI Agents',nav_contact:'ติดต่อ',nav_quote:'ขอใบเสนอราคา',hero_badge:'วิศวกรรมความแม่นยำสูง ตั้งแต่ปี 1988',hero_title:'หล่อหลอม <span class="text-primary-container italic">เหล็กกล้า</span> ให้เป็นไปตามจินตนาการ',hero_desc:'โรงงานหลอมเหล็ก OEM คุณภาพสูง บริการครบวงจร Sand Casting, Investment Casting, Die Casting ส่งออกทั่วโลก',hero_cta1:'เริ่มโปรเจกต์ของคุณ',hero_cta2:'ดูวิดีโอโรงงาน',stat_years:'ปีประสบการณ์',stat_clients:'ลูกค้าทั่วโลก',stat_parts:'ชิ้นส่วนที่ผลิต',video_tag:'// ภาพยนตร์โฆษณาโรงงาน',video_title:'ชมกระบวนการผลิต <span class="text-primary italic">จริง</span>',video_desc:'วิดีโอถูกสร้างและอัปโหลดโดย AI Agent อัตโนมัติ',v1:'ทัวร์โรงงาน Sand Casting',v2:'กระบวนการหล่อทราย',v3:'เทโลหะหลอมเหลว',v4:'ระบบตรวจสอบคุณภาพ',v5:'CNC Machining ขั้นสูง',video_auto:'วิดีโอถูกสร้างและอัปโหลดโดย Video Creator Agent อัตโนมัติ',agent_tag:'// Multi-Agent System',agent_title:'ระบบ AI Agents <span class="text-primary italic">อัตโนมัติ</span>',agent_desc:'ทีม AI Agents ดูแลเว็บเพจนี้อัตโนมัติ',a1n:'Video Creator Agent',a1d:'สร้างวิดีโอโฆษณาโรงงาน Sand Casting อัตโนมัติ แล้วอัปโหลดขึ้น YouTube',a2n:'Content Manager Agent',a2d:'อัปเดตเนื้อหา Sand Casting, Investment Casting, Die Casting ลงหน้าเว็บ',a3n:'Gallery Agent',a3d:'หารูปภาพงานหล่อสวยๆ จาก Unsplash, Pexels หรือ generate จาก AI',arch_t:'Agent Architecture',arch_o:'Orchestrator',arch_od:'จัดสรรงาน',arch_v:'Video Agent',arch_c:'Content Agent',arch_g:'Gallery Agent',arch_w:'Web Output',arch_wd:'YouTube + หน้าเว็บ',arch_r:'อ้างอิงสถาปัตยกรรมจาก:',svc_tag:'// ขีดความสามารถหลัก',svc_t:'ความเชี่ยวชาญด้านอุตสาหกรรม',svc_main:'บริการหลัก',s1t:'การหล่อแบบทราย<br/>(Sand Casting)',s1d:'เทคนิคดั้งเดิมสำหรับชิ้นงานขนาดใหญ่',s1l:'ดูรายละเอียด',s2t:'การหล่อแบบสูญขี้ผึ้ง<br/>(Investment Casting)',s2d:'การหล่อความละเอียดสูงสำหรับชิ้นส่วนการบิน',s2l:'ดูรายละเอียด',s3t:'การหล่อแบบฉีด<br/>(Die Casting)',s3d:'ระบบแรงดันสูงอัตโนมัติสำหรับการผลิตจำนวนมาก',s3l:'ดูรายละเอียด',gal_tag:'// Gallery Agent รวบรวม',gal_t:'ผลงาน <span class="text-primary italic">คุณภาพ</span>',gf1:'ทั้งหมด',gf2:'Sand Casting',gf3:'Investment',gf4:'Die Casting',g1:'เทโลหะหลอมเหลว',g2:'ชิ้นส่วนโลหะ',g3:'เตาหลอม',g4:'ตรวจสอบคุณภาพ',g5:'ชิ้นส่วนยานยนต์',g6:'ชิ้นส่วนพลังงาน',g7:'โรงงานอุตสาหกรรม',g8:'โครงสร้างเหล็ก',gal_auto:'Gallery Agent อัปเดตภาพอัตโนมัติทุกวัน',proc_tag:'// ขั้นตอนการผลิต',proc_t:'ลำดับ <span class="text-outline">งานผลิต</span>',zero_t:'นโยบายความผิดพลาดเป็นศูนย์',zero_d:'แม่พิมพ์ทุกชิ้นผ่านการสแกน 3 มิติ 100%',p1:'การออกแบบและจำลอง',p1d:'CAD/CAM ขั้นสูงเพื่อทำนายการไหลของโลหะ',p2:'การสร้างแม่พิมพ์',p2d:'แม่พิมพ์ต้นแบบภายในโรงงาน ความแม่นยำสูง',p3:'การหล่อแบบควบคุม',p3d:'ควบคุมบรรยากาศเตาหลอม ตรวจสอบอัลลอยด์เรียลไทม์',p4:'การตรวจสอบขั้นสุดท้าย',p4d:'X-ray, อัลตราโซนิก, แรงดันน้ำ ทุกชิ้น',cta_t:'ขอใบ <span class="text-primary">เสนอราคา</span> วันนี้',cta_d:'ปรึกษาทีมวิศวกร รับราคาโปร่งใสภายใน 24 ชั่วโมง',cta_b:'ขอข้อเสนอโครงการ',con_tag:'// ติดต่อเรา',con_t:'ส่งข้อความ <span class="text-primary italic">ถึงเรา</span>',ci_e:'อีเมล',ci_p:'โทรศัพท์',ci_a:'ที่อยู่',ci_av:'จังหวัดสุพรรณบุรี ประเทศไทย',ci_h:'เวลาทำการ',ci_hv:'จันทร์ - เสาร์: 08:00 - 17:00',fn:'ชื่อ-นามสกุล',fc:'บริษัท',fe:'อีเมล',fp:'โทรศัพท์',fs:'บริการที่สนใจ',fse:'เลือกบริการ',fm:'รายละเอียด',fsub:'ส่งข้อความ',ft_d:'กำหนดอนาคตของการผลิตโลหะผ่านการหล่อที่มีความแม่นยำสูง',ft_l:'ลิงก์ด่วน',ft_h:'หน้าหลัก',ft_s:'บริการ',ft_g:'ผลงาน',ft_c:'ติดต่อ',ft_le:'กฎหมาย',ft_p:'นโยบายความเป็นส่วนตัว',ft_t:'ข้อกำหนดการให้บริการ',ft_i:'การรับรอง ISO',ft_di:'ติดต่อโดยตรง'},
-en:{nav_home:'Home',nav_video:'Videos',nav_services:'Services',nav_gallery:'Gallery',nav_agents:'AI Agents',nav_contact:'Contact',nav_quote:'Get Quote',hero_badge:'Precision Engineering Since 1988',hero_title:'Molten <span class="text-primary-container italic">Steel</span> Shaped Into Your Vision',hero_desc:'Premium OEM steel foundry. Full-service Sand Casting, Investment Casting, Die Casting. Worldwide delivery.',hero_cta1:'Start Your Project',hero_cta2:'Watch Factory Tour',stat_years:'Years Experience',stat_clients:'Global Clients',stat_parts:'Parts Produced',video_tag:'// Factory Cinema',video_title:'Watch Real <span class="text-primary italic">Production</span> Process',video_desc:'Videos auto-generated and uploaded by AI Agent',v1:'Sand Casting Factory Tour',v2:'Sand Casting Process',v3:'Molten Metal Pouring',v4:'Quality Control System',v5:'Advanced CNC Machining',video_auto:'Videos auto-generated by Video Creator Agent',agent_tag:'// Multi-Agent System',agent_title:'Automated <span class="text-primary italic">AI Agents</span> System',agent_desc:'AI Agents automatically manage this webpage',a1n:'Video Creator Agent',a1d:'Auto-creates factory advertising videos and uploads to YouTube',a2n:'Content Manager Agent',a2d:'Updates casting content with SEO articles and technical specs',a3n:'Gallery Agent',a3d:'Curates beautiful casting photos from Unsplash, Pexels, or AI-generated',arch_t:'Agent Architecture',arch_o:'Orchestrator',arch_od:'Task Distribution',arch_v:'Video Agent',arch_c:'Content Agent',arch_g:'Gallery Agent',arch_w:'Web Output',arch_wd:'YouTube + Webpage',arch_r:'Architecture reference from:',svc_tag:'// Core Capabilities',svc_t:'Industrial <span class="text-primary italic">Expertise</span>',svc_main:'Flagship',s1t:'Sand Casting',s1d:'Traditional technique for large parts with complex internal geometries',s1l:'View Details',s2t:'Investment Casting',s2d:'High-precision lost-wax casting for aerospace and automotive',s2l:'View Details',s3t:'Die Casting',s3d:'High-pressure automated system for mass production',s3_link:'View Details',gal_tag:'// Curated by Gallery Agent',gal_t:'Quality <span class="text-primary italic">Portfolio</span>',gf1:'All',gf2:'Sand Casting',gf3:'Investment',gf4:'Die Casting',g1:'Molten Metal Pour',g2:'Metal Components',g3:'Melting Furnace',g4:'Quality Inspection',g5:'Automotive Parts',g6:'Energy Components',g7:'Industrial Factory',g8:'Steel Structure',gal_auto:'Gallery Agent auto-updates daily',proc_tag:'// Production Steps',proc_t:'Production <span class="text-outline">Sequence</span>',zero_t:'Zero Defect Policy',zero_d:'Every mold 3D-scanned for 100% compliance',p1:'Design & Simulation',p1d:'Advanced CAD/CAM to predict metal flow',p2:'Mold Creation',p2d:'In-house precision mold manufacturing',p3:'Controlled Casting',p3d:'Atmosphere-controlled furnace with real-time alloy monitoring',p4:'Final Inspection',p4d:'X-ray, ultrasonic, and pressure testing',cta_t:'Request a <span class="text-primary">Quote</span> Today',cta_d:'Transparent pricing within 24 hours',cta_b:'Request Project Quote',con_tag:'// Contact Us',con_t:'Send Us a <span class="text-primary italic">Message</span>',ci_e:'Email',ci_p:'Phone',ci_a:'Address',ci_av:'Suphan Buri Province, Thailand',ci_h:'Business Hours',ci_hv:'Mon - Sat: 08:00 - 17:00',fn:'Full Name',fc:'Company',fe:'Email',fp:'Phone',fs:'Service Interest',fse:'Select a service',fm:'Details',fsub:'Send Message',ft_d:'Shaping the future of metal manufacturing',ft_l:'Quick Links',ft_h:'Home',ft_s:'Services',ft_g:'Gallery',ft_c:'Contact',ft_le:'Legal',ft_p:'Privacy Policy',ft_t:'Terms of Service',ft_i:'ISO Certification',ft_di:'Direct Contact'},
-ja:{nav_home:'ホーム',nav_video:'動画',nav_services:'サービス',nav_gallery:'実績',nav_agents:'AIエージェント',nav_contact:'お問い合わせ',nav_quote:'見積もり',hero_badge:'1988年創業の精密エンジニアリング',hero_title:'溶融<span class="text-primary-container italic">鋼</span>をあなたのビジョンに',hero_desc:'高品質OEM鋳鋼所。砂型鋳造、精密鋳造、ダイカスト。世界へ出荷。',hero_cta1:'プロジェクトを始める',hero_cta2:'工場ツアーを見る',stat_years:'年の実績',stat_clients:'世界のお客様',stat_parts:'生産部品数',video_tag:'// ファクトリーシネマ',video_title:'実際の<span class="text-primary italic">生産</span>工程を見る',video_desc:'AIエージェントが自動生成した動画',v1:'砂型鋳造工場ツアー',v2:'砂型鋳造工程',v3:'溶融金属注湯',v4:'品質管理システム',v5:'高度CNC加工',video_auto:'Video Creatorエージェントが自動生成',agent_tag:'// マルチエージェント',agent_title:'自動化<span class="text-primary italic">AIエージェント</span>',agent_desc:'AIエージェントがウェブページを自動管理',a1n:'ビデオクリエイターエージェント',a1d:'工場広告動画を自動作成しYouTubeにアップロード',a2n:'コンテンツマネージャーエージェント',a2d:'鋳造コンテンツを自動更新',a3n:'ギャラリーエージェント',a3d:'UnsplashやAI生成から美しい鋳造写真を収集',arch_t:'エージェントアーキテクチャ',arch_o:'オーケストレーター',arch_od:'タスク配分',arch_v:'動画',arch_c:'コンテンツ',arch_g:'ギャラリー',arch_w:'Web出力',arch_wd:'YouTube + Web',arch_ref:'アーキテクチャ参照元:',svc_tag:'// 主要能力',svc_t:'産業<span class="text-primary italic">専門知識</span>',svc_main:'主力サービス',s1t:'砂型鋳造',s1d:'複雑な内部形状を持つ大型部品向け',s1l:'詳細を見る',s2t:'精密鋳造',s2d:'航空宇宙・自動車向け高精度鋳造',s2l:'詳細を見る',s3t:'ダイカスト',s3d:'大量生産向け高圧自動システム',s3l:'詳細を見る',gal_tag:'// ギャラリーエージェント収集',gal_t:'品質<span class="text-primary italic">ポートフォリオ</span>',gf1:'すべて',gf2:'砂型鋳造',gf3:'精密鋳造',gf4:'ダイカスト',g1:'溶融金属注湯',g2:'金属部品',g3:'溶解炉',g4:'品質検査',g5:'自動車部品',g6:'エネルギー部品',g7:'産業工場',g8:'鋼構造物',gal_auto:'ギャラリーエージェントが毎日自動更新',proc_tag:'// 製造工程',proc_t:'生産<span class="text-outline">シーケンス</span>',zero_t:'ゼロ欠陥ポリシー',zero_d:'全金型を3Dスキャン',p1:'設計・シミュレーション',p2:'金型作成',p3:'制御鋳造',p4:'最終検査',cta_t:'今日<span class="text-primary">見積もり</span>を依頼',cta_d:'24時間以内に透明な価格',cta_b:'プロジェクト見積もり',con_tag:'// お問い合わせ',con_t:'<span class="text-primary italic">メッセージ</span>を送る',ci_e:'メール',ci_p:'電話',ci_a:'住所',ci_av:'スパンブリー県、タイ',ci_h:'営業時間',ci_hv:'月〜土: 08:00 - 17:00',fn:'氏名',fc:'会社',fe:'メール',fp:'電話',fs:'サービス',fse:'サービスを選択',fm:'詳細',fsub:'送信',ft_d:'精密鋳造で金属製造の未来を形作る',ft_l:'リンク',ft_h:'ホーム',ft_s:'サービス',ft_g:'実績',ft_c:'お問い合わせ',ft_le:'法的',ft_p:'プライバシー',ft_t:'利用規約',ft_i:'ISO認証',ft_di:'直接連絡'},
-zh:{nav_home:'首页',nav_video:'视频',nav_services:'服务',nav_gallery:'案例',nav_agents:'AI代理',nav_contact:'联系我们',nav_quote:'询价',hero_badge:'精密工程 自1988年',hero_title:'熔融<span class="text-primary-container italic">钢铁</span> 铸就您的愿景',hero_desc:'高品质OEM铸钢厂。砂型铸造、熔模铸造、压铸一站式服务。全球交付。',hero_cta1:'启动您的项目',hero_cta2:'观看工厂视频',stat_years:'年经验',stat_clients:'全球客户',stat_parts:'已生产零件',video_tag:'// 工厂影院',video_title:'观看真实<span class="text-primary italic">生产</span>过程',video_desc:'视频由AI代理自动生成',v1:'砂型铸造工厂参观',v2:'砂型铸造流程',v3:'熔融金属浇注',v4:'质量控制系统',v5:'高级CNC加工',video_auto:'视频由Video Creator代理自动生成',agent_tag:'// 多代理系统',agent_title:'自动化<span class="text-primary italic">AI代理</span>系统',agent_desc:'AI代理自动管理此网页',a1n:'视频创作者代理',a1d:'自动创建工厂广告视频并上传YouTube',a2n:'内容管理代理',a2d:'自动更新铸造内容和SEO文章',a3n:'图库代理',a3d:'从Unsplash、Pexels或AI生成收集精美铸造图片',arch_t:'代理架构',arch_o:'编排器',arch_od:'任务分配',arch_v:'视频代理',arch_c:'内容代理',arch_g:'图库代理',arch_w:'网页输出',arch_wd:'YouTube + 网页',arch_r:'架构参考来源:',svc_tag:'// 核心能力',svc_t:'工业<span class="text-primary italic">专业知识</span>',svc_main:'核心服务',s1t:'砂型铸造',s1d:'适用于大型复杂内部形状零件',s1l:'查看详情',s2t:'熔模铸造',s2d:'航空航天和汽车高精度铸造',s2l:'查看详情',s3t:'压铸',s3d:'大批量生产高压自动化系统',s3l:'查看详情',gal_tag:'// 图库代理收集',gal_t:'品质<span class="text-primary italic">案例</span>',gf1:'全部',gf2:'砂型铸造',gf3:'熔模铸造',gf4:'压铸',g1:'熔融金属浇注',g2:'金属零件',g3:'熔炉',g4:'质量检测',g5:'汽车零件',g6:'能源零件',g7:'工业工厂',g8:'钢结构',gal_auto:'图库代理每日自动更新',proc_tag:'// 生产步骤',proc_t:'生产<span class="text-outline">流程</span>',zero_t:'零缺陷政策',zero_d:'每个模具100% 3D扫描',p1:'设计与模拟',p2:'模具制作',p3:'控制铸造',p4:'最终检验',cta_t:'今天<span class="text-primary">询价</span>',cta_d:'24小时内提供透明报价',cta_b:'请求项目报价',con_tag:'// 联系我们',con_t:'给我们<span class="text-primary italic">留言</span>',ci_e:'邮箱',ci_p:'电话',ci_a:'地址',ci_av:'泰国素攀武里府',ci_h:'营业时间',ci_hv:'周一至周六: 08:00 - 17:00',fn:'姓名',fc:'公司',fe:'邮箱',fp:'电话',fs:'服务',fse:'选择服务',fm:'详情',fsub:'发送',ft_d:'以精密铸造塑造金属制造的未来',ft_l:'快速链接',ft_h:'首页',ft_s:'服务',ft_g:'案例',ft_c:'联系',ft_le:'法律',ft_p:'隐私政策',ft_t:'服务条款',ft_i:'ISO认证',ft_di:'直接联系'},
-ko:{nav_home:'홈',nav_video:'비디오',nav_services:'서비스',nav_gallery:'포트폴리오',nav_agents:'AI 에이전트',nav_contact:'문의',nav_quote:'견적',hero_badge:'1988년부터 정밀 엔지니어링',hero_title:'용융 <span class="text-primary-container italic">강철</span>을 비전으로',hero_desc:'프리미엄 OEM 주강소. 사형 주조, 정밀 주조, 다이캐스팅. 전 세계 배송.',hero_cta1:'프로젝트 시작',hero_cta2:'공장 투어 보기',stat_years:'년 경험',stat_clients:'글로벌 고객',stat_parts:'생산 부품',video_tag:'// 팩토리 시네마',video_title:'실제 <span class="text-primary italic">생산</span> 과정 보기',video_desc:'AI 에이전트가 자동 생성한 비디오',v1:'사형 주조 공장 투어',v2:'사형 주조 공정',v3:'용융 금속 주입',v4:'품질 관리 시스템',v5:'고급 CNC 가공',video_auto:'Video Creator 에이전트가 자동 생성',agent_tag:'// 멀티 에이전트',agent_title:'자동화 <span class="text-primary italic">AI 에이전트</span>',agent_desc:'AI 에이전트가 웹페이지를 자동 관리',a1n:'비디오 크리에이터 에이전트',a1d:'공장 광고 비디오 자동 생성 후 YouTube 업로드',a2n:'콘텐츠 매니저 에이전트',a2d:'주조 콘텐츠 자동 업데이트',a3n:'갤러리 에이전트',a3d:'Unsplash, Pexels 또는 AI 생성에서 주조 사진 수집',arch_t:'에이전트 아키텍처',arch_o:'오케스트레이터',arch_od:'작업 분배',arch_v:'비디오',arch_c:'콘텐츠',arch_g:'갤러리',arch_w:'웹 출력',arch_wd:'YouTube + 웹',arch_r:'아키텍처 참조:',svc_tag:'// 핵심 역량',svc_t:'산업 <span class="text-primary italic">전문성</span>',svc_main:'핵심 서비스',s1t:'사형 주조',s1d:'복잡한 내부 형상의 대형 부품용',s1l:'상세 보기',s2t:'정밀 주조',s2d:'항공우주 및 자동차용 고정밀 주조',s2l:'상세 보기',s3t:'다이캐스팅',s3d:'대량 생산용 고압 자동화 시스템',s3l:'상세 보기',gal_tag:'// 갤러리 에이전트 수집',gal_t:'품질 <span class="text-primary italic">포트폴리오</span>',gf1:'전체',gf2:'사형 주조',gf3:'정밀 주조',gf4:'다이캐스팅',g1:'용융 금속 주입',g2:'금속 부품',g3:'용광로',g4:'품질 검사',g5:'자동차 부품',g6:'에너지 부품',g7:'산업 공장',g8:'강철 구조물',gal_auto:'갤러리 에이전트가 매일 자동 업데이트',proc_tag:'// 생산 단계',proc_t:'생산 <span class="text-outline">시퀀스</span>',zero_t:'제로 결함 정책',zero_d:'모든 금형 3D 스캔 100%',p1:'설계 및 시뮬레이션',p2:'금형 제작',p3:'제어 주조',p4:'최종 검사',cta_t:'오늘 <span class="text-primary">견적</span> 요청',cta_d:'24시간 내 투명한 가격',cta_b:'프로젝트 견적 요청',con_tag:'// 문의하기',con_t:'<span class="text-primary italic">메시지</span> 보내기',ci_e:'이메일',ci_p:'전화',ci_a:'주소',ci_av:'태국 수판부리 주',ci_h:'영업시간',ci_hv:'월~토: 08:00 - 17:00',fn:'성명',fc:'회사',fe:'이메일',fp:'전화',fs:'서비스',fse:'서비스 선택',fm:'상세',fsub:'보내기',ft_d:'정밀 주조로 금속 제조의 미래를 형성하다',ft_l:'빠른 링크',ft_h:'홈',ft_s:'서비스',ft_g:'포트폴리오',ft_c:'문의',ft_le:'법률',ft_p:'개인정보',ft_t:'이용약관',ft_i:'ISO 인증',ft_di:'직접 연락'},
-de:{nav_home:'Startseite',nav_video:'Videos',nav_services:'Dienstleistungen',nav_gallery:'Referenzen',nav_agents:'KI-Agenten',nav_contact:'Kontakt',nav_quote:'Angebot',hero_badge:'Präzisionstechnik seit 1988',hero_title:'Geschmolzener <span class="text-primary-container italic">Stahl</span> nach Ihrer Vision',hero_desc:'Premium-OEM-Stahlgießerei. Sandguss, Feinguss, Druckguss. Weltweiter Versand.',hero_cta1:'Projekt starten',hero_cta2:'Fabriktour ansehen',stat_years:'Jahre Erfahrung',stat_clients:'Globale Kunden',stat_parts:'Produzierte Teile',video_tag:'// Fabrik-Kino',video_title:'Echten <span class="text-primary italic">Produktionsprozess</span> ansehen',video_desc:'Vom KI-Agenten automatisch erstellte Videos',v1:'Sandguss Fabriktour',v2:'Sandguss-Prozess',v3:'Metallschmelze-Gießen',v4:'Qualitätskontrollsystem',v5:'Fortgeschrittene CNC-Bearbeitung',video_auto:'Vom Video Creator Agent erstellt',agent_tag:'// Multi-Agent-System',agent_title:'Automatisierte <span class="text-primary italic">KI-Agenten</span>',agent_desc:'KI-Agenten verwalten diese Webseite automatisch',a1n:'Video Creator Agent',a1d:'Erstellt automatisch Werbevideos und lädt sie auf YouTube hoch',a2n:'Content Manager Agent',a2d:'Aktualisiert Gießerei-Inhalte automatisch',a3n:'Galerie-Agent',a3d:'Sammelt schöne Gießereibilder von Unsplash oder KI-generiert',arch_t:'Agent-Architektur',arch_o:'Orchestrator',arch_od:'Aufgabenverteilung',arch_v:'Video',arch_c:'Inhalt',arch_g:'Galerie',arch_w:'Web-Ausgabe',arch_wd:'YouTube + Webseite',arch_r:'Architektur-Referenz:',svc_tag:'// Kernkompetenzen',svc_t:'Industrielle <span class="text-primary italic">Expertise</span>',svc_main:'Hauptdienst',s1t:'Sandguss',s1d:'Für große Teile mit komplexen Innenformen',s1l:'Details',s2t:'Feinguss',s2d:'Hochpräziser Feinguss für Luft- und Raumfahrt',s2l:'Details',s3t:'Druckguss',s3d:'Hochdruck-Automatisierung für Massenproduktion',s3l:'Details',gal_tag:'// Vom Galerie-Agent kuratiert',gal_t:'Qualitäts-<span class="text-primary italic">Portfolio</span>',gf1:'Alle',gf2:'Sandguss',gf3:'Feinguss',gf4:'Druckguss',g1:'Metallschmelze-Gießen',g2:'Metallkomponenten',g3:'Schmelzofen',g4:'Qualitätsprüfung',g5:'Automobilteile',g6:'Energiekomponenten',g7:'Industrieanlage',g8:'Stahlkonstruktion',gal_auto:'Galerie-Agent aktualisiert täglich automatisch',proc_tag:'// Produktionsschritte',proc_t:'Produktions-<span class="text-outline">sequenz</span>',zero_t:'Null-Fehler-Politik',zero_d:'Jede Form 3D-gescannt 100%',p1:'Design & Simulation',p2:'Formenbau',p3:'Kontrolliertes Gießen',p4:'Endprüfung',cta_t:'Fordern Sie heute ein <span class="text-primary">Angebot</span> an',cta_d:'Transparente Preisgestaltung in 24 Stunden',cta_b:'Projektangebot anfordern',con_tag:'// Kontakt',con_t:'Senden Sie uns eine <span class="text-primary italic">Nachricht</span>',ci_e:'E-Mail',ci_p:'Telefon',ci_a:'Adresse',ci_av:'Provinz Suphan Buri, Thailand',ci_h:'Geschäftszeiten',ci_hv:'Mo - Sa: 08:00 - 17:00',fn:'Vollständiger Name',fc:'Unternehmen',fe:'E-Mail',fp:'Telefon',fs:'Service',fse:'Service auswählen',fm:'Details',fsub:'Senden',ft_d:'Die Zukunft der Metallfertigung durch Präzisionsguss gestalten',ft_l:'Schnelllinks',ft_h:'Startseite',ft_s:'Services',ft_g:'Referenzen',ft_c:'Kontakt',ft_le:'Rechtliches',ft_p:'Datenschutz',ft_t:'AGB',ft_i:'ISO-Zertifizierung',ft_di:'Direktkontakt'},
-es:{nav_home:'Inicio',nav_video:'Videos',nav_services:'Servicios',nav_gallery:'Portafolio',nav_agents:'Agentes IA',nav_contact:'Contacto',nav_quote:'Cotización',hero_badge:'Ingeniería de precisión desde 1988',hero_title:'Acero <span class="text-primary-container italic">fundido</span> moldeado a tu visión',hero_desc:'Fundición OEM premium. Servicio completo: arena, inversión, troquelado. Entrega mundial.',hero_cta1:'Iniciar Proyecto',hero_cta2:'Ver Tour de Fábrica',stat_years:'Años de experiencia',stat_clients:'Clientes globales',stat_parts:'Piezas producidas',video_tag:'// Cine de fábrica',video_title:'Ver proceso de <span class="text-primary italic">producción</span> real',video_desc:'Videos generados automáticamente por Agente IA',v1:'Tour Fábrica Sand Casting',v2:'Proceso Sand Casting',v3:'Vertido Metal Fundido',v4:'Sistema Control de Calidad',v5:'Mecanizado CNC Avanzado',video_auto:'Generados por Video Creator Agent',agent_tag:'// Sistema Multi-Agente',agent_title:'Sistema de <span class="text-primary italic">Agentes IA</span> Automatizado',agent_desc:'Los Agentes IA gestionan esta página automáticamente',a1n:'Agente Creador de Video',a1d:'Crea automáticamente videos publicitarios y los sube a YouTube',a2n:'Agente Gestor de Contenido',a2d:'Actualiza contenido de fundición automáticamente',a3n:'Agente Galería',a3d:'Recopila fotos hermosas de fundición de Unsplash o IA',arch_t:'Arquitectura de Agentes',arch_o:'Orquestador',arch_od:'Distribución',arch_v:'Video',arch_c:'Contenido',arch_g:'Galería',arch_w:'Salida Web',arch_wd:'YouTube + Web',arch_r:'Referencia de arquitectura:',svc_tag:'// Capacidades Principales',svc_t:'<span class="text-primary italic">Experiencia</span> Industrial',svc_main:'Servicio Principal',s1t:'Fundición en Arena',s1d:'Para piezas grandes con geometrías internas complejas',s1l:'Ver Detalles',s2t:'Fundición de Inversión',s2d:'Alta precisión para aeroespacial y automotriz',s2l:'Ver Detalles',s3t:'Troquelado',s3d:'Sistema automatizado de alta presión para producción masiva',s3l:'Ver Detalles',gal_tag:'// Curado por Agente Galería',gal_t:'<span class="text-primary italic">Portafolio</span> de Calidad',gf1:'Todo',gf2:'Arena',gf3:'Inversión',gf4:'Troquelado',g1:'Vertido Metal Fundido',g2:'Componentes Metálicos',g3:'Horno de Fusión',g4:'Control de Calidad',g5:'Partes Automotrices',g6:'Componentes Energéticos',g7:'Fábrica Industrial',g8:'Estructura de Acero',gal_auto:'Agente Galería actualiza diariamente',proc_tag:'// Pasos de Producción',proc_t:'<span class="text-outline">Secuencia</span> de Producción',zero_t:'Política de Cero Defectos',zero_d:'Cada molde escaneado 3D al 100%',p1:'Diseño y Simulación',p2:'Creación de Moldes',p3:'Fundición Controlada',p4:'Inspección Final',cta_t:'Solicite una <span class="text-primary">Cotización</span> Hoy',cta_d:'Precios transparentes en 24 horas',cta_b:'Solicitar Cotización',con_tag:'// Contáctenos',con_t:'Envíenos un <span class="text-primary italic">Mensaje</span>',ci_e:'Correo',ci_p:'Teléfono',ci_a:'Dirección',ci_av:'Provincia Suphan Buri, Tailandia',ci_h:'Horario',ci_hv:'Lun - Sáb: 08:00 - 17:00',fn:'Nombre',fc:'Empresa',fe:'Correo',fp:'Teléfono',fs:'Servicio',fse:'Seleccionar',fm:'Detalles',fsub:'Enviar',ft_d:'Moldeando el futuro de la fabricación de metales',ft_l:'Enlaces',ft_h:'Inicio',ft_s:'Servicios',ft_g:'Portafolio',ft_c:'Contacto',ft_le:'Legal',ft_p:'Privacidad',ft_t:'Términos',ft_i:'ISO',ft_di:'Contacto Directo'},
-fr:{nav_home:'Accueil',nav_video:'Vidéos',nav_services:'Services',nav_gallery:'Portfolio',nav_agents:'Agents IA',nav_contact:'Contact',nav_quote:'Devis',hero_badge:'Ingénierie de précision depuis 1988',hero_title:'Acier <span class="text-primary-container italic">fondu</span> façonné selon votre vision',hero_desc:'Fonderie OEM premium. Sable, cire perdue, moulage sous pression. Livraison mondiale.',hero_cta1:'Démarrer le Projet',hero_cta2:"Visite d'Usine",stat_years:"Ans d'expérience",stat_clients:'Clients mondiaux',stat_parts:'Pièces produites',video_tag:"// Cinéma d'usine",video_title:'Regarder le vrai processus de <span class="text-primary italic">production</span>',video_desc:"Vidéos générées automatiquement par l'Agent IA",v1:'Visite Fonderie Sable',v2:'Processus Moulage Sable',v3:'Coulée Métal en Fusion',v4:'Système Contrôle Qualité',v5:'Usinage CNC Avancé',video_auto:'Créées par Video Creator Agent',agent_tag:'// Système Multi-Agents',agent_title:'Système <span class="text-primary italic">Agents IA</span> Automatisé',agent_desc:'Les Agents IA gèrent cette page automatiquement',a1n:'Agent Créateur Vidéo',a1d:'Crée automatiquement des vidéos et les publie sur YouTube',a2n:'Agent Gestionnaire',a2d:'Met à jour le contenu de fonderie automatiquement',a3n:'Agent Galerie',a3d:'Collecte de belles photos de fonderie depuis Unsplash ou IA',arch_t:'Architecture des Agents',arch_o:'Orchestrateur',arch_od:'Distribution',arch_v:'Vidéo',arch_c:'Contenu',arch_g:'Galerie',arch_w:'Sortie Web',arch_wd:'YouTube + Site',arch_r:'Référence architecture:',svc_tag:'// Compétences Clés',svc_t:'<span class="text-primary italic">Expertise</span> Industrielle',svc_main:'Service Phare',s1t:'Moulage en Sable',s1d:'Pour grandes pièces avec géométries internes complexes',s1l:'Détails',s2t:'Cire Perdue',s2d:'Haute précision pour aérospatial et automobile',s2l:'Détails',s3t:'Moulage sous Pression',s3d:'Système haute pression pour production de masse',s3l:'Détails',gal_tag:'// Curaté par Agent Galerie',gal_t:'<span class="text-primary italic">Portfolio</span> Qualité',gf1:'Tout',gf2:'Sable',gf3:'Cire Perdue',gf4:'Pression',g1:'Coulée Métal en Fusion',g2:'Composants Métalliques',g3:'Four de Fusion',g4:'Contrôle Qualité',g5:'Pièces Auto',g6:'Composants Énergie',g7:'Usine Industrielle',g8:'Structure Acier',gal_auto:'Agent Galerie mise à jour quotidiennement',proc_tag:'// Étapes de Production',proc_t:'<span class="text-outline">Séquence</span> de Production',zero_t:'Politique Zéro Défaut',zero_d:'Chaque moule scanné 3D 100%',p1:'Conception & Simulation',p2:'Création Moules',p3:'Fonte Contrôlée',p4:'Inspection Finale',cta_t:'Demandez un <span class="text-primary">Devis</span> Aujourd\'hui',cta_d:'Prix transparents en 24 heures',cta_b:'Demander un Devis',con_tag:'// Contactez-nous',con_t:'Envoyez-nous un <span class="text-primary italic">Message</span>',ci_e:'Email',ci_p:'Téléphone',ci_a:'Adresse',ci_av:'Province Suphan Buri, Thaïlande',ci_h:'Horaires',ci_hv:'Lun - Sam: 08:00 - 17:00',fn:'Nom Complet',fc:'Entreprise',fe:'Email',fp:'Téléphone',fs:'Service',fse:'Sélectionner',fm:'Détails',fsub:'Envoyer',ft_d:"Façonner l'avenir de la fabrication métallique",ft_l:'Liens Rapides',ft_h:'Accueil',ft_s:'Services',ft_g:'Portfolio',ft_c:'Contact',ft_le:'Légal',ft_p:'Confidentialité',ft_t:'CGU',ft_i:'ISO',ft_di:'Contact Direct'},
-ru:{nav_home:'Главная',nav_video:'Видео',nav_services:'Услуги',nav_gallery:'Портфолио',nav_agents:'AI Агенты',nav_contact:'Контакты',nav_quote:'Запрос цены',hero_badge:'Точная инженерия с 1988 года',hero_title:'Расплавленная <span class="text-primary-container italic">сталь</span> по вашему замыслу',hero_desc:'Премиальная литейная OEM. Литье в песок, по выплавляемым моделям, под давлением. Доставка по миру.',hero_cta1:'Начать проект',hero_cta2:'Видео завода',stat_years:'Лет опыта',stat_clients:'Глобальные клиенты',stat_parts:'Произведено деталей',video_tag:'// Заводское кино',video_title:'Смотреть реальный <span class="text-primary italic">производственный</span> процесс',video_desc:'Видео автоматически создаются AI-агентом',v1:'Экскурсия: песчаное литьё',v2:'Процесс песчаного литья',v3:'Заливка расплавленного металла',v4:'Система контроля качества',v5:'Продвинутая обработка ЧПУ',video_auto:'Видео созданы Video Creator Agent',agent_tag:'// Мультиагентная система',agent_title:'Автоматизированная система <span class="text-primary italic">AI-агентов</span>',agent_desc:'AI-агенты автоматически управляют этой страницей',a1n:'Агент-создатель видео',a1d:'Автоматически создаёт рекламные видео и загружает на YouTube',a2n:'Агент-менеджер контента',a2d:'Автоматически обновляет литейный контент',a3n:'Агент галереи',a3d:'Собирает красивые литейные фото из Unsplash или генерирует ИИ',arch_t:'Архитектура агентов',arch_o:'Оркестратор',arch_od:'Распределение',arch_v:'Видео',arch_c:'Контент',arch_g:'Галерея',arch_w:'Веб-вывод',arch_wd:'YouTube + Сайт',arch_r:'Архитектурная ссылка:',svc_tag:'// Основные возможности',svc_t:'Промышленная <span class="text-primary italic">экспертиза</span>',svc_main:'Основная услуга',s1t:'Песчаное литьё',s1d:'Для крупных деталей со сложной внутренней геометрией',s1l:'Подробнее',s2t:'Литьё по выплавляемым моделям',s2d:'Высокоточное литьё для аэрокосмоса и автопрома',s2l:'Подробнее',s3t:'Литьё под давлением',s3d:'Автоматизированная высокопроизводительная система',s3l:'Подробнее',gal_tag:'// Куратор — Галерея-агент',gal_t:'<span class="text-primary italic">Портфолио</span> качества',gf1:'Все',gf2:'Песок',gf3:'Модели',gf4:'Давление',g1:'Заливка расплава',g2:'Металлокомпоненты',g3:'Плавильная печь',g4:'Контроль качества',g5:'Автозапчасти',g6:'Энергокомпоненты',g7:'Промышленный завод',g8:'Стальная конструкция',gal_auto:'Галерея-агент обновляется ежедневно',proc_tag:'// Этапы производства',proc_t:'Производственная <span class="text-outline">последовательность</span>',zero_t:'Политика нулевого дефекта',zero_d:'Каждая форма 3D-сканирована 100%',p1:'Дизайн и симуляция',p2:'Создание форм',p3:'Контролируемая заливка',p4:'Финальная проверка',cta_t:'Запросите <span class="text-primary">расчёт</span> сегодня',cta_d:'Прозрачные цены в течение 24 часов',cta_b:'Запросить расчёт',con_tag:'// Контакты',con_t:'Отправьте нам <span class="text-primary italic">сообщение</span>',ci_e:'Email',ci_p:'Телефон',ci_a:'Адрес',ci_av:'Провинция Супханбури, Таиланд',ci_h:'Часы работы',ci_hv:'Пн - Сб: 08:00 - 17:00',fn:'Полное имя',fc:'Компания',fe:'Email',fp:'Телефон',fs:'Услуга',fse:'Выберите услугу',fm:'Детали',fsub:'Отправить',ft_d:'Формируем будущее металлообработки точным литьём',ft_l:'Ссылки',ft_h:'Главная',ft_s:'Услуги',ft_g:'Портфолио',ft_c:'Контакты',ft_le:'Юридическое',ft_p:'Конфиденциальность',ft_t:'Условия',ft_i:'ISO',ft_di:'Прямой контакт'},
-vi:{nav_home:'Trang chủ',nav_video:'Video',nav_services:'Dịch vụ',nav_gallery:'Dự án',nav_agents:'AI Agents',nav_contact:'Liên hệ',nav_quote:'Báo giá',hero_badge:'Kỹ thuật chính xác từ 1988',hero_title:'Thép <span class="text-primary-container italic">nóng chảy</span> tạo hình theo tầm nhìn',hero_desc:'Nhà máy đúc OEM cao cấp. Đúc cát, đúc sáp, đúc áp suất. Giao hàng toàn cầu.',hero_cta1:'Bắt đầu dự án',hero_cta2:'Xem video nhà máy',stat_years:'Năm kinh nghiệm',stat_clients:'Khách hàng toàn cầu',stat_parts:'Chi tiết đã sản xuất',video_tag:'// Rạp phim nhà máy',video_title:'Xem quy trình <span class="text-primary italic">sản xuất</span> thực tế',video_desc:'Video được AI Agent tự động tạo',v1:'Tham quan nhà máy đúc cát',v2:'Quy trình đúc cát',v3:'Đổ kim loại nóng chảy',v4:'Hệ thống kiểm soát chất lượng',v5:'Gia công CNC nâng cao',video_auto:'Video do Video Creator Agent tự động tạo',agent_tag:'// Hệ thống Multi-Agent',agent_title:'Hệ thống <span class="text-primary italic">AI Agents</span> tự động',agent_desc:'AI Agents tự động quản lý trang web này',a1n:'Video Creator Agent',a1d:'Tự động tạo video quảng cáo và tải lên YouTube',a2n:'Content Manager Agent',a2d:'Tự động cập nhật nội dung đúc',a3n:'Gallery Agent',a3d:'Thu thập ảnh đúc đẹp từ Unsplash hoặc AI tạo',arch_t:'Kiến trúc Agent',arch_o:'Orchestrator',arch_od:'Phân công',arch_v:'Video',arch_c:'Nội dung',arch_g:'Thư viện',arch_w:'Web Output',arch_wd:'YouTube + Web',arch_r:'Tham chiếu kiến trúc:',svc_tag:'// Năng lực cốt lõi',svc_t:'<span class="text-primary italic">Chuyên môn</span> công nghiệp',svc_main:'Dịch vụ chính',s1t:'Đúc cát',s1d:'Cho chi tiết lớn với hình dạng bên trong phức tạp',s1l:'Chi tiết',s2t:'Đúc sáp',s2d:'Đúc chính xác cao cho hàng không và ô tô',s2l:'Chi tiết',s3t:'Đúc áp suất',s3d:'Hệ thống tự động áp suất cao cho sản xuất hàng loạt',s3l:'Chi tiết',gal_tag:'// Sưu tầm bởi Gallery Agent',gal_t:'<span class="text-primary italic">Dự án</span> chất lượng',gf1:'Tất cả',gf2:'Đúc cát',gf3:'Đúc sáp',gf4:'Đúc áp suất',g1:'Đổ kim loại nóng chảy',g2:'Chi tiết kim loại',g3:'Lò nấu chảy',g4:'Kiểm tra chất lượng',g5:'Chi tiết ô tô',g6:'Chi tiết năng lượng',g7:'Nhà máy công nghiệp',g8:'Kết cấu thép',gal_auto:'Gallery Agent tự động cập nhật hàng ngày',proc_tag:'// Các bước sản xuất',proc_t:'<span class="text-outline">Trình tự</span> sản xuất',zero_t:'Chính sách zero lỗi',zero_d:'Mỗi khuôn được quét 3D 100%',p1:'Thiết kế & Mô phỏng',p2:'Tạo khuôn',p3:'Đúc có kiểm soát',p4:'Kiểm tra cuối cùng',cta_t:'Yêu cầu <span class="text-primary">báo giá</span> ngay hôm nay',cta_d:'Giá minh bạch trong 24 giờ',cta_b:'Yêu cầu báo giá',con_tag:'// Liên hệ',con_t:'Gửi <span class="text-primary italic">tin nhắn</span> cho chúng tôi',ci_e:'Email',ci_p:'Điện thoại',ci_a:'Địa chỉ',ci_av:'Tỉnh Suphan Buri, Thái Lan',ci_h:'Giờ làm việc',ci_hv:'T2 - T7: 08:00 - 17:00',fn:'Họ tên',fc:'Công ty',fe:'Email',fp:'Điện thoại',fs:'Dịch vụ',fse:'Chọn dịch vụ',fm:'Chi tiết',fsub:'Gửi',ft_d:'Định hình tương lai sản xuất kim loại bằng đúc chính xác',ft_l:'Liên kết',ft_h:'Trang chủ',ft_s:'Dịch vụ',ft_g:'Dự án',ft_c:'Liên hệ',ft_le:'Pháp lý',ft_p:'Riêng tư',ft_t:'Điều khoản',ft_i:'ISO',ft_di:'Liên hệ trực tiếp'},
-ar:{nav_home:'الرئيسية',nav_video:'الفيديو',nav_services:'الخدمات',nav_gallery:'أعمالنا',nav_agents:'وكلاء AI',nav_contact:'اتصل بنا',nav_quote:'طلب عرض',hero_badge:'هندسة دقيقة منذ 1988',hero_title:'<span class="text-primary-container italic">فولاذ</span> منصهر مشكّل حسب رؤيتك',hero_desc:'مسبك OEM متميز. صب رمل، صب شمع مفقود، صب ضغط. شحن عالمي.',hero_cta1:'ابدأ مشروعك',hero_cta2:'شاهد جولة المصنع',stat_years:'سنوات خبرة',stat_clients:'عملاء عالميون',stat_parts:'قطع منتجة',video_tag:'// سينما المصنع',video_title:'شاهد عملية <span class="text-primary italic">الإنتاج</span> الحقيقية',video_desc:'فيديوهات تم إنشاؤها تلقائياً بواسطة وكيل AI',v1:'جولة مصنع صب الرمل',v2:'عملية صب الرمل',v3:'صب المعدن المنصهر',v4:'نظام مراقبة الجودة',v5:' تصنيع CNC متقدم',video_auto:'أنشئت بواسطة Video Creator Agent',agent_tag:'// نظام الوكلاء المتعددين',agent_title:'نظام <span class="text-primary italic">وكلاء AI</span> الآلي',agent_desc:'وكلاء AI يديرون هذه الصفحة تلقائياً',a1n:'وكيل إنشاء الفيديو',a1d:'ينشئ تلقائياً فيديوهات إعلانية ويuploadها على YouTube',a2n:'وكيل إدارة المحتوى',a2d:'يحدث محتوى الصب تلقائياً',a3n:'وكيل المعرض',a3d:'يجمع صور صب جميلة من Unsplash أو AI',arch_t:'بنية الوكلاء',arch_o:'المنسق',arch_od:'توزيع المهام',arch_v:'فيديو',arch_c:'محتوى',arch_g:'معرض',arch_w:'إخراج الويب',arch_wd:'YouTube + موقع',arch_r:'مرجع البنية:',svc_tag:'// القدرات الأساسية',svc_t:'<span class="text-primary italic">خبرة</span> صناعية',svc_main:'الخدمة الرئيسية',s1t:'صب الرمل',s1d:'للقطع الكبيرة ذات الأشكال الداخلية المعقدة',s1l:'تفاصيل',s2t:'صب الشمع المفقود',s2d:'دقة عالية للطيران والسيارات',s2l:'تفاصيل',s3t:'صب الضغط',s3d:'نظام آلي عالي الضغط للإنتاج الضخم',s3l:'تفاصيل',gal_tag:'// منسق بواسطة وكيل المعرض',gal_t:'<span class="text-primary italic">معرض</span> الجودة',gf1:'الكل',gf2:'رمل',gf3:'شمع',gf4:'ضغط',g1:'صب المعدن المنصهر',g2:'مكونات معدنية',g3:'فرن الصهر',g4:'مراقبة الجودة',g5:'قطع سيارات',g6:'مكونات طاقة',g7:'مصنع صناعي',g8:'هيكل فولاذي',gal_auto:'وكيل المعرض يحدث تلقائياً يومياً',proc_tag:'// خطوات الإنتاج',proc_t:'<span class="text-outline">تسلسل</span> الإنتاج',zero_t:'سياسة الصفر عيوب',zero_d:'كل قالب ممسوح ضوئياً ثلاثي الأبعاد 100%',p1:'التصميم والمحاكاة',p2:'إنشاء القوالب',p3:'صب مراقب',p4:'الفحص النهائي',cta_t:'اطلب <span class="text-primary">عرض سعر</span> اليوم',cta_d:'أسعار شفافة خلال 24 ساعة',cta_b:'طلب عرض سعر',con_tag:'// اتصل بنا',con_t:'أرسل لنا <span class="text-primary italic">رسالة</span>',ci_e:'البريد',ci_p:'الهاتف',ci_a:'العنوان',ci_av:'محافظة ساموت براكان، تايلاند',ci_h:'ساعات العمل',ci_hv:'الإثنين - السبت: 08:00 - 17:00',fn:'الاسم الكامل',fc:'الشركة',fe:'البريد',fp:'الهاتف',fs:'الخدمة',fse:'اختر خدمة',fm:'التفاصيل',fsub:'إرسال',ft_d:'نصنع مستقبل تصنيع المعادن بالصب الدقيق',ft_l:'روابط',ft_h:'رئيسية',ft_s:'خدمات',ft_g:'أعمال',ft_c:'اتصال',ft_le:'قانوني',ft_p:'خصوصية',ft_t:'شروط',ft_i:'ISO',ft_di:'اتصال مباشر'}
-};
-
-// ===== ADMIN FUNCTIONS =====
-function openAdminLogin() {
-  document.getElementById('adminLoginModal').classList.remove('hidden');
-  document.getElementById('adminLoginModal').classList.add('flex');
-  document.getElementById('loginError').classList.add('hidden');
-  document.getElementById('adminUser').value = '';
-  document.getElementById('adminPass').value = '';
-  document.getElementById('adminUser').focus();
-}
-
-function closeAdminLogin() {
-  document.getElementById('adminLoginModal').classList.add('hidden');
-  document.getElementById('adminLoginModal').classList.remove('flex');
-}
-
-function doAdminLogin() {
-  const user = document.getElementById('adminUser').value;
-  const pass = document.getElementById('adminPass').value;
-  if (user === 'admin' && pass === 'Admin123') {
-    closeAdminLogin();
-    openAdminDashboard();
-    checkAIStatus();
-    addLog('Admin logged in');
-  } else {
-    document.getElementById('loginError').classList.remove('hidden');
-    document.getElementById('loginError').textContent = 'Invalid credentials';
-  }
-}
-
-function openAdminDashboard() {
-  document.getElementById('adminDashboard').style.transform = 'translateX(0)';
-}
-
-function closeAdminDashboard() {
-  document.getElementById('adminDashboard').style.transform = 'translateX(100%)';
-}
-
-function addLog(message) {
-  const log = document.getElementById('activityLog');
-  const time = new Date().toLocaleTimeString();
-  const entry = document.createElement('div');
-  entry.className = 'text-[10px] text-on-surface-variant';
-  entry.innerHTML = `<span class="text-outline-variant">[${time}]</span> ${message}`;
-  if (log.querySelector('p.italic')) log.innerHTML = '';
-  log.insertBefore(entry, log.firstChild);
-}
-
-// ===== AI FUNCTIONS =====
-async function checkAIStatus() {
-  const badge = document.getElementById('aiStatusBadge');
-  badge.textContent = 'Checking...';
-  badge.className = 'px-3 py-1 bg-surface-container-highest rounded-full text-[10px] font-bold uppercase tracking-wider text-outline-variant';
-  try {
-    const res = await fetch('/api/multi-agent/ai-status');
-    const data = await res.json();
-    if (data.success) {
-      badge.textContent = 'Connected';
-      badge.className = 'px-3 py-1 bg-green-900/50 rounded-full text-[10px] font-bold uppercase tracking-wider text-green-400';
-      addLog('AI Status: Connected - Using ' + data.model);
-    } else {
-      badge.textContent = 'Error';
-      badge.className = 'px-3 py-1 bg-red-900/50 rounded-full text-[10px] font-bold uppercase tracking-wider text-red-400';
-      addLog('AI Error: ' + data.error);
-    }
-  } catch (e) {
-    badge.textContent = 'Offline';
-    badge.className = 'px-3 py-1 bg-red-900/50 rounded-full text-[10px] font-bold uppercase tracking-wider text-red-400';
-    addLog('AI Offline: ' + e.message);
-  }
-}
-
-async function testAI() {
-  const resultDiv = document.getElementById('testAIResult');
-  resultDiv.classList.remove('hidden');
-  resultDiv.textContent = 'Testing AI connection...';
-  addLog('Testing AI connection...');
-  try {
-    const res = await fetch('/api/multi-agent/videoscript', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ topic: 'test' })
-    });
-    const data = await res.json();
-    if (data.success) {
-      resultDiv.textContent = 'SUCCESS: ' + data.script.substring(0, 200) + '...';
-      addLog('AI Test: SUCCESS');
-    } else {
-      resultDiv.textContent = 'ERROR: ' + data.error;
-      addLog('AI Test: FAILED - ' + data.error);
-    }
-  } catch (e) {
-    resultDiv.textContent = 'ERROR: ' + e.message;
-    addLog('AI Test: FAILED - ' + e.message);
-  }
-}
-
-// ===== SUPABASE CONTENT MANAGEMENT =====
-async function saveToSupabase(type, topic, content, model) {
-  try {
-    const res = await fetch('/api/ai-content/save', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type, topic, content, model })
-    });
-    const data = await res.json();
-    if (data.success) {
-      addLog(`Saved to Supabase: ${data.id}`);
-      return true;
-    } else {
-      addLog(`Supabase save failed: ${data.error}`);
-      return false;
-    }
-  } catch (e) {
-    addLog(`Supabase error: ${e.message}`);
-    return false;
-  }
-}
-
-async function loadFromSupabase() {
-  try {
-    const res = await fetch('/api/ai-content/latest');
-    const data = await res.json();
-    if (data.success) {
-      updateContentDisplayFromSupabase(data.latest);
-      updateContentCountFromSupabase(data.latest);
-    }
-  } catch (e) {
-    console.error('Failed to load from Supabase:', e);
-  }
-}
-
-function updateContentDisplayFromSupabase(latest) {
-  // Update blog section
-  const blogSection = document.getElementById('latestBlogContent');
-  const blogPlaceholder = document.getElementById('latestBlogPlaceholder');
-  if (blogSection && latest.blogPost) {
-    blogSection.innerHTML = `<p class="text-xs text-on-surface-variant">${latest.blogPost.content.substring(0, 300)}...</p>
-      <p class="text-[10px] text-outline mt-2">Topic: ${latest.blogPost.topic} | ${new Date(latest.blogPost.created_at).toLocaleDateString()}</p>`;
-    blogSection.classList.remove('hidden');
-    if (blogPlaceholder) blogPlaceholder.classList.add('hidden');
-  }
-  
-  // Update image section
-  const imageSection = document.getElementById('latestImageContent');
-  const imagePlaceholder = document.getElementById('latestImagePlaceholder');
-  if (imageSection && latest.imagePrompt) {
-    imageSection.innerHTML = `<p class="text-xs text-on-surface-variant font-mono">${latest.imagePrompt.content.substring(0, 300)}...</p>
-      <p class="text-[10px] text-outline mt-2">Topic: ${latest.imagePrompt.topic} | ${new Date(latest.imagePrompt.created_at).toLocaleDateString()}</p>`;
-    imageSection.classList.remove('hidden');
-    if (imagePlaceholder) imagePlaceholder.classList.add('hidden');
-  }
-  
-  // Update video section
-  const videoSection = document.getElementById('latestVideoContent');
-  const videoPlaceholder = document.getElementById('latestVideoPlaceholder');
-  if (videoSection && latest.videoScript) {
-    videoSection.innerHTML = `<p class="text-xs text-on-surface-variant">${latest.videoScript.content.substring(0, 300)}...</p>
-      <p class="text-[10px] text-outline mt-2">Topic: ${latest.videoScript.topic} | ${new Date(latest.videoScript.created_at).toLocaleDateString()}</p>`;
-    videoSection.classList.remove('hidden');
-    if (videoPlaceholder) videoPlaceholder.classList.add('hidden');
-  }
-}
-
-async function updateContentCountFromSupabase(latest) {
-  try {
-    const res = await fetch('/api/ai-content/list?limit=100');
-    const data = await res.json();
-    if (data.success) {
-      const blog = data.data.filter(d => d.type === 'blog-post').length;
-      const image = data.data.filter(d => d.type === 'image-prompt').length;
-      const video = data.data.filter(d => d.type === 'video-script').length;
-      const contentCount = document.getElementById('contentCount');
-      if (contentCount) {
-        contentCount.textContent = `Blog: ${blog} | Images: ${image} | Scripts: ${video} (Supabase)`;
-      }
-    }
-  } catch (e) {
-    console.error('Failed to update count:', e);
-  }
-}
-
-function legacyLocalStorageUpdate() {
-  // For backward compatibility, also save to localStorage
-  const data = { blogPosts: [], imagePrompts: [], videoScripts: [] };
-  localStorage.setItem('suphan_ai_content', JSON.stringify(data));
-}
-
-// Initialize content display on page load
-document.addEventListener('DOMContentLoaded', function() {
-  loadFromSupabase();
+// Allow UI elements above click-layer to work
+document.querySelectorAll('#tabs,.tab,#top-nav,.tn-btn,#logo,#social,.soc,#cp,.cpx,#btn-cp,.page .card,.page .cband,#lb,#lbx').forEach(el => {
+  el.addEventListener('mousedown', e => e.stopPropagation());
+  el.addEventListener('click', e => e.stopPropagation());
 });
 
-async function runAgent(type) {
-  const resultIds = {
-    'videoscript': 'videoScriptResult',
-    'blog-post': 'blogPostResult',
-    'image-prompt': 'imagePromptResult'
-  };
-  const topicIds = {
-    'videoscript': 'videoTopic',
-    'blog-post': 'blogTopic',
-    'image-prompt': 'imageTopic'
-  };
-  const resultDiv = document.getElementById(resultIds[type]);
-  const topic = document.getElementById(topicIds[type]).value;
-  const model = document.getElementById('groqModel').value;
-  const maxTokens = parseInt(document.getElementById('maxTokens').value) || 1024;
-  const autoSave = document.getElementById('autoSaveToggle')?.checked || false;
-  
-  resultDiv.classList.remove('hidden');
-  resultDiv.textContent = 'Generating...';
-  addLog(`Running ${type} agent with topic: ${topic}`);
-  
-  try {
-    const res = await fetch('/api/multi-agent/' + type, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ topic, model, maxTokens })
-    });
-    const data = await res.json();
-    if (data.success) {
-      const content = type === 'videoscript' ? data.script : type === 'blog-post' ? data.content : data.prompt;
-      resultDiv.textContent = content.substring(0, 500) + (content.length > 500 ? '...' : '');
-      addLog(`${type}: SUCCESS - Generated ${content.length} chars`);
-      
-      // Auto-save to Supabase if enabled
-      if (autoSave) {
-        const saved = await saveToSupabase(type, topic, content, model);
-        if (saved) {
-          // Refresh display
-          await loadFromSupabase();
-        }
-      }
-    } else {
-      resultDiv.textContent = 'ERROR: ' + data.error;
-      addLog(`${type}: FAILED - ` + data.error);
-    }
-  } catch (e) {
-    resultDiv.textContent = 'ERROR: ' + e.message;
-    addLog(`${type}: FAILED - ` + e.message);
+function spawnFlameLogo(cx, cy){
+  const burst = document.createElement('div');
+  burst.className = 'fburst';
+  burst.style.cssText = `left:${cx}px;top:${cy}px`;
+
+  // Flame particles
+  for(let i=0; i<28; i++){
+    const p = document.createElement('div');
+    p.className = 'fp';
+    const angle = Math.random()*Math.PI*2;
+    const dist  = 30 + Math.random()*90;
+    const size  = 12 + Math.random()*32;
+    const dur   = (.5 + Math.random()*.8).toFixed(2);
+    const dl    = (Math.random()*.2).toFixed(2);
+    const hue   = Math.random()<.5 ? '#ff8800' : Math.random()<.5 ? '#ff4400' : '#fff8a0';
+    p.style.cssText = `width:${size}px;height:${size}px;background:radial-gradient(circle,#fff 0%,${hue} 40%,transparent 70%);`+
+      `--x:${(Math.cos(angle)*dist).toFixed(1)}px;--y:${(Math.sin(angle)*dist - dist*.5).toFixed(1)}px;`+
+      `--d:${dur}s;--dl:${dl}s;left:50%;top:50%`;
+    burst.appendChild(p);
   }
+
+  // Logo rises
+  const logo = document.createElement('img');
+  logo.src = 'uploads/logo-suphan.png';
+  logo.className = 'flogorise';
+  burst.appendChild(logo);
+  document.body.appendChild(burst);
+
+  setTimeout(() => {
+    burst.remove();
+    if(curPage===null){
+      goTo(PAGES[Math.floor(Math.random()*PAGES.length)]);
+    } else {
+      const others=PAGES.filter(p=>p!==curPage);
+      goTo(others[Math.floor(Math.random()*others.length)]);
+    }
+  }, 2100);
 }
 
-// Enter key for login
-document.getElementById('adminPass').addEventListener('keypress', function(e) {
-  if (e.key === 'Enter') doAdminLogin();
+// ── Gallery ──
+const galGrid = document.getElementById('gal');
+const GALIMGS = [
+  'uploads/S__113631312_0-Copy.jpg','uploads/S__113631314_0.jpg',
+  'uploads/S__113631319_0.jpg','uploads/S__113631301_0-Copy.jpg',
+  'uploads/S__113631315_0-Copy.jpg','uploads/S__113631316_0.jpg',
+  'uploads/S__113631317_0.jpg','uploads/S__113631318_0.jpg',
+  'uploads/molten-iron-1.jpg','uploads/molten-iron-2.jpg','uploads/casting-pour.jpg'
+];
+function addGalImg(src){
+  const img = document.createElement('img');
+  img.className = 'gi'; img.src = src;
+  img.onerror = () => img.remove();
+  img.onclick = () => { document.getElementById('lbi').src = src; document.getElementById('lb').classList.add('open'); };
+  galGrid.appendChild(img);
+}
+GALIMGS.forEach(addGalImg);
+document.getElementById('finput').addEventListener('change', e => {
+  [...e.target.files].forEach(f => {
+    const r = new FileReader(); r.onload = ev => addGalImg(ev.target.result); r.readAsDataURL(f);
+  });
 });
+
+// ── Lightbox ──
+const lbEl = document.getElementById('lb');
+document.getElementById('lbx').addEventListener('click', () => lbEl.classList.remove('open'));
+lbEl.addEventListener('click', e => { if(e.target === lbEl) lbEl.classList.remove('open'); });
+
+// ── Contact panel ──
+document.getElementById('btn-cp').addEventListener('click', () => document.getElementById('cp').classList.toggle('open'));
+document.getElementById('cpx').addEventListener('click', () => document.getElementById('cp').classList.remove('open'));
+document.getElementById('cp').addEventListener('click', e => e.stopPropagation());
+
+// Logo → home
+document.getElementById('logo').style.cursor='pointer';
+document.getElementById('logo').addEventListener('click',e=>{e.stopPropagation();goHome();});
+
+// Hint fade
+setTimeout(() => { const h = document.getElementById('hint'); if(h) h.style.opacity='0'; }, 5000);
 </script>
 </body>
 </html>
