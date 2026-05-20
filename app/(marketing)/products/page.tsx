@@ -65,36 +65,36 @@ const processVideos = [
 ];
 
 export const metadata: Metadata = {
-  title: "สินค้า | Success Casting",
+  title: "สินค้า | Suphan Casting",
   description:
-    "สินค้าของ Success Casting แยกตามวัสดุ FC25, FCD, SC46, S45C, Mo4140 รวม SUC Pulley และชิ้นส่วนเครื่องจักรอุตสาหกรรม.",
+    "สินค้าของ Suphan Casting แยกตามวัสดุ FC25, FCD, SC46, S45C, Mo4140 รวม SUC Pulley และชิ้นส่วนเครื่องจักรอุตสาหกรรม.",
 };
 
 function TopBar() {
   return (
     <>
-      <div className="bg-black px-4 py-3 text-sm text-white">
+      <div className="bg-[#120f0d] px-4 py-3 text-sm text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-center sm:gap-10">
-          <a href="mailto:SCNWMax@gmail.com" className="hover:text-[#d99d2d]">✉ Email: SCNWMax@gmail.com</a>
-          <a href="tel:0986362356" className="hover:text-[#d99d2d]">☎ โทร: 098-636-2356</a>
-          <a href={lineUrl} className="hover:text-[#d99d2d]">LINE ID: @SCNW</a>
+          <a href="mailto:SCNWMax@gmail.com" className="hover:text-[#ff5625]">✉ Email: SCNWMax@gmail.com</a>
+          <a href="tel:0986362356" className="hover:text-[#ff5625]">☎ โทร: 098-636-2356</a>
+          <a href={lineUrl} className="hover:text-[#ff5625]">ผู้ติดต่อ: Golf Sasithon</a>
         </div>
       </div>
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#080808]/92 text-white shadow-lg backdrop-blur">
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#15110f]/92 text-white shadow-lg backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between">
           <Link href="/" className="flex items-center gap-4">
-            <img src={pulleyLogo} alt="Success Network Company logo" className="h-32 w-32 object-contain" decoding="async" />
+            <img src={pulleyLogo} alt="Suphan Casting industrial mark" className="h-32 w-32 object-contain" decoding="async" />
             <span>
-              <span className="block text-2xl font-semibold leading-none tracking-tight sm:text-3xl">Success Casting</span>
+              <span className="block text-2xl font-semibold leading-none tracking-tight sm:text-3xl">Suphan Casting</span>
               <span className="text-xs uppercase tracking-[0.18em] text-zinc-300 sm:text-sm">Sand Casting & Machined Components</span>
             </span>
           </Link>
           <nav className="flex flex-wrap gap-2 text-sm font-semibold md:justify-end">
-            <Link className="rounded px-4 py-3 hover:bg-[#d99d2d] hover:text-zinc-950" href="/">หน้าแรก</Link>
-            <Link className="rounded px-4 py-3 hover:bg-[#d99d2d] hover:text-zinc-950" href="/products">สินค้า</Link>
-            <Link className="rounded px-4 py-3 hover:bg-[#d99d2d] hover:text-zinc-950" href="/#materials">วัสดุที่รับผลิต</Link>
-            <Link className="rounded px-4 py-3 hover:bg-[#d99d2d] hover:text-zinc-950" href="/#why">ทำไมต้องเรา</Link>
-            <Link className="rounded-2xl bg-[#d99d2d] px-5 py-3 font-black text-zinc-950 hover:bg-white" href="/contact">ขอใบเสนอราคา</Link>
+            <Link className="rounded px-4 py-3 hover:bg-[#ff5625] hover:text-zinc-950" href="/">หน้าแรก</Link>
+            <Link className="rounded px-4 py-3 hover:bg-[#ff5625] hover:text-zinc-950" href="/products">สินค้า</Link>
+            <Link className="rounded px-4 py-3 hover:bg-[#ff5625] hover:text-zinc-950" href="/#materials">วัสดุที่รับผลิต</Link>
+            <Link className="rounded px-4 py-3 hover:bg-[#ff5625] hover:text-zinc-950" href="/#why">ทำไมต้องเรา</Link>
+            <Link className="rounded-2xl bg-[#ff5625] px-5 py-3 font-black text-zinc-950 hover:bg-white" href="/contact">ขอใบเสนอราคา</Link>
           </nav>
         </div>
       </header>
@@ -108,25 +108,25 @@ export default function ProductsPage() {
       <TopBar />
       <section className="relative overflow-hidden px-4 pb-16 pt-32 sm:px-6 lg:px-8">
         <div className="absolute inset-0 opacity-35">
-          <img src="/successcasting-assets/shopee-products/LINE_NOTE_260502_1.jpg" alt="Success Casting product background" className="h-full w-full object-cover" />
+          <img src="/successcasting-assets/shopee-products/LINE_NOTE_260502_1.jpg" alt="Suphan Casting product background" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/45" />
         </div>
         <div className="mx-auto max-w-7xl">
           <div className="relative">
-          <p className="mb-4 inline-flex rounded-full bg-[#d99d2d] px-5 py-3 text-xs font-black uppercase tracking-[0.32em] text-zinc-950">ผลงานสินค้า</p>
+          <p className="mb-4 inline-flex rounded-full bg-[#ff5625] px-5 py-3 text-xs font-black uppercase tracking-[0.32em] text-zinc-950">ผลงานสินค้า</p>
           <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-end">
             <div>
               <h1 className="font-forge-headline text-5xl font-black uppercase leading-none tracking-[-0.06em] text-white sm:text-7xl lg:text-8xl">
                 Metal Castings and Machined Components
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-9 text-zinc-300">
-                สินค้างานหล่อแยกตามวัสดุหลักที่ Success Casting เชี่ยวชาญ พร้อมภาพชิ้นงานจริงจากโฟลเดอร์ Shopee/product เพื่อให้ลูกค้าเห็น portfolio จริงและเชื่อมั่นก่อนขอใบเสนอราคา.
+                สินค้างานหล่อแยกตามวัสดุหลักที่ Suphan Casting เชี่ยวชาญ พร้อมภาพชิ้นงานจริงจากโฟลเดอร์ Shopee/product เพื่อให้ลูกค้าเห็น portfolio จริงและเชื่อมั่นก่อนขอใบเสนอราคา.
               </p>
             </div>
             <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur">
               <h2 className="text-xl font-black">สินค้าหลักที่รับผลิต</h2>
               <p className="mt-3 text-zinc-300">SUC Pulley จาก FC25 / FCD และงานหล่อตามแบบจาก FC25, FCD, SC46, S45C, Mo4140</p>
-              <Link href="/contact" className="mt-5 inline-flex rounded-3xl bg-[#d99d2d] px-6 py-3 font-black text-zinc-950 hover:bg-white">
+              <Link href="/contact" className="mt-5 inline-flex rounded-3xl bg-[#ff5625] px-6 py-3 font-black text-zinc-950 hover:bg-white">
                 ขอใบเสนอราคา
               </Link>
             </div>
@@ -141,7 +141,7 @@ export default function ProductsPage() {
             <article key={item.material} className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-xl shadow-black/30">
               <div className="relative h-72 overflow-hidden bg-zinc-900">
                 <img src={item.img} alt={item.title} className="h-full w-full object-cover transition duration-500 hover:scale-105" loading="lazy" decoding="async" />
-                <div className="absolute left-5 top-5 rounded-xl bg-[#d99d2d] px-4 py-2 font-forge-headline text-2xl font-black text-zinc-950">
+                <div className="absolute left-5 top-5 rounded-xl bg-[#ff5625] px-4 py-2 font-forge-headline text-2xl font-black text-zinc-950">
                   {item.material}
                 </div>
               </div>
@@ -151,7 +151,7 @@ export default function ProductsPage() {
                 <ul className="mt-5 space-y-2 text-sm text-zinc-300">
                   {item.specs.map((spec) => (
                     <li key={spec} className="flex gap-2">
-                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#d99d2d]" />
+                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#ff5625]" />
                       <span>{spec}</span>
                     </li>
                   ))}
@@ -164,22 +164,22 @@ export default function ProductsPage() {
 
       <section className="bg-white px-4 py-20 text-zinc-950 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="mb-4 inline-flex rounded-full bg-[#d99d2d] px-5 py-3 text-xs font-black uppercase tracking-[0.28em] text-zinc-950">Real product gallery</p>
+          <p className="mb-4 inline-flex rounded-full bg-[#ff5625] px-5 py-3 text-xs font-black uppercase tracking-[0.28em] text-zinc-950">Real product gallery</p>
           <h2 className="text-4xl font-black uppercase tracking-[-0.04em] sm:text-6xl">รูปภาพผลงานสินค้า</h2>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-600">ใช้รูปผลงานจริงจากคลังสินค้าของ Success Casting เป็นหลัก และเพิ่มรูปใหม่เฉพาะที่เป็นงานหล่อ/ชิ้นส่วนเครื่องจักรเท่านั้น ไม่ใช้รูปเอกสาร กระดาษตัวเลข หรือวิดีโอที่ไม่เกี่ยวกับกระบวนการหล่อ.</p>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-600">ใช้รูปผลงานจริงจากคลังสินค้าของ Suphan Casting เป็นหลัก และเพิ่มรูปใหม่เฉพาะที่เป็นงานหล่อ/ชิ้นส่วนเครื่องจักรเท่านั้น ไม่ใช้รูปเอกสาร กระดาษตัวเลข หรือวิดีโอที่ไม่เกี่ยวกับกระบวนการหล่อ.</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {galleryImages.map((img, index) => (
               <figure key={img} className="group overflow-hidden rounded-3xl bg-zinc-100 shadow-sm ring-1 ring-zinc-200">
-                <img src={img} alt={`Success Casting product photo ${index + 1}`} className="h-72 w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+                <img src={img} alt={`Suphan Casting product photo ${index + 1}`} className="h-72 w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
                 <figcaption className="flex items-center justify-between px-4 py-3 text-sm font-bold text-zinc-700">
                   <span>Product #{index + 1}</span>
-                  <span className="text-[#a66f12]">Success Casting</span>
+                  <span className="text-[#a66f12]">Suphan Casting</span>
                 </figcaption>
               </figure>
             ))}
             {newGalleryImages.map(([label, img]) => (
               <figure key={img} className="group overflow-hidden rounded-3xl bg-zinc-100 shadow-sm ring-1 ring-zinc-200">
-                <img src={img} alt={`Success Casting ${label}`} className="h-72 w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+                <img src={img} alt={`Suphan Casting ${label}`} className="h-72 w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
                 <figcaption className="flex items-center justify-between px-4 py-3 text-sm font-bold text-zinc-700">
                   <span>{label}</span>
                   <span className="text-[#a66f12]">new casting</span>
@@ -190,8 +190,8 @@ export default function ProductsPage() {
 
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {processVideos.map(([title, src, material]) => (
-              <article key={src} className="overflow-hidden rounded-[2rem] bg-zinc-950 text-white shadow-xl shadow-black/20">
-                <video src={src} className="h-80 w-full bg-black object-cover" muted loop playsInline preload="metadata" controls />
+              <article key={src} className="overflow-hidden rounded-[2rem] bg-[#17110f] text-white shadow-xl shadow-black/20">
+                <video src={src} className="h-80 w-full bg-[#120f0d] object-cover" muted loop playsInline preload="metadata" controls />
                 <div className="p-5">
                   <h3 className="text-xl font-black">{title}</h3>
                   <p className="mt-2 text-sm text-zinc-300">เหมาะกับ: {material}</p>
