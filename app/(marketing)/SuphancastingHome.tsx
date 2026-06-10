@@ -40,7 +40,7 @@ const copy = {
     portfolioTitle: "ตัวอย่างผลงาน",
     portfolioCta: "ดูเพิ่มเติม",
     portfolio: [
-      [["SUC Pulley / พูลเล่ย์", "งาน pulley ตามแบบสำหรับระบบส่งกำลัง", "/suphancasting-assets/shopee-new/pulley-product-fc25-no-price.png"],
+      ["SUC Pulley / พูลเล่ย์", "งาน pulley ตามแบบสำหรับระบบส่งกำลัง", "/suphancasting-assets/shopee-new/pulley-product-fc25-no-price.png"],
       ["Gear & drive parts", "เฟืองและชิ้นส่วนส่งกำลังสำหรับโรงงาน", "/suphancasting-assets/shopee-new/gear-fcd.jpg"],
       ["Pump / machine parts", "pump casing, housing และอะไหล่เครื่องจักร", "/suphancasting-assets/pump-casing-close.jpg"],
     ],
