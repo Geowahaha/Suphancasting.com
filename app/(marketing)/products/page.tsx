@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 const lineUrl = "https://line.me/R/ti/p/@SCNW";
-const pulleyLogo = "/successcasting-assets/logo/success-logo2-transparent.png";
+const pulleyLogo = "/stitch/suphancasting-ai-home/uploads/logo-suphan.png";
 
 const productRows = [
   {
@@ -77,7 +77,8 @@ function TopBar() {
         <div className="mx-auto flex max-w-7xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-center sm:gap-10">
           <a href="mailto:SCNWMax@gmail.com" className="hover:text-[#ff5625]">✉ Email: SCNWMax@gmail.com</a>
           <a href="tel:0986362356" className="hover:text-[#ff5625]">☎ โทร: 098-636-2356</a>
-          <a href={lineUrl} className="hover:text-[#ff5625]">ผู้ติดต่อ: Golf Sasithon</a>
+          <a href="tel:0843177788" className="hover:text-[#ff5625]">☎ โทร: 084-317 7788</a>
+          <a href={lineUrl} className="hover:text-[#ff5625]">ผู้ติดต่อ: กอล์ฟ ศศิธร</a>
         </div>
       </div>
       <header className="sticky top-0 z-40 border-b border-white/10 bg-[#15110f]/92 text-white shadow-lg backdrop-blur">
