@@ -395,7 +395,7 @@ function AiAndContact({ locale }: { locale: HomeLocale }) {
           </div>
 
           <a href={lineUrl} className="flex flex-col items-center justify-center bg-white p-6 text-center shadow-sm">
-            <img src="/successcasting-assets/line-official-qr.png" alt="LINE @SCNW QR" className="h-40 w-40 object-contain" />
+            <img src="/successcasting-assets/line-213bzijc-qr.png" alt="LINE @213bzijc QR" className="h-40 w-40 object-contain" />
             <div className="mt-4 font-forge-headline text-2xl font-black">LINE @SCNW</div>
             <div className="mt-1 text-sm text-[#67564a]">Golf Sasithon</div>
           </a>

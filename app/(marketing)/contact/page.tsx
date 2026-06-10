@@ -118,7 +118,7 @@ export default function ContactPage() {
                 </p>
               </div>
               <a href={lineUrl} className="mt-8 inline-flex items-center gap-4 rounded border border-zinc-200 bg-zinc-50 p-4 transition hover:border-[#b8322a] hover:bg-white">
-                <img src="/successcasting-assets/line-official-qr.png" alt="Suphan Casting LINE official QR code @SCNW" className="h-28 w-28 bg-white object-contain" decoding="async" />
+                <img src="/successcasting-assets/line-213bzijc-qr.png" alt="Suphan Casting LINE QR @213bzijc" className="h-28 w-28 bg-white object-contain" decoding="async" />
                 <span>
                   <span className="block text-lg font-bold text-zinc-800">LINE Official</span>
                   <span className="block text-[#b8322a]">ช่องทางเสริม LINE @SCNW</span>
