@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const lineUrl = "https://line.me/R/ti/p/@SCNW";
+const lineUrl = "https://line.me/R/ti/p/@213bzijc";
 const pulleyLogo = "/stitch/suphancasting-ai-home/uploads/logo-suphan.png";
 const mapEmbedSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3865.3213722401542!2d100.17816574475148!3d14.350804150392461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e241004452e5a9%3A0xb32b522a55c34948!2sSuphan%20casting%20Co.%2Cltd.!5e0!3m2!1sen!2sus!4v1775020729048!5m2!1sen!2sus";
 
@@ -121,7 +121,7 @@ export default function ContactPage() {
                 <img src="/suphancasting-assets/line-213bzijc-qr.png" alt="Suphancasting LINE QR @213bzijc" className="h-28 w-28 bg-white object-contain" decoding="async" />
                 <span>
                   <span className="block text-lg font-bold text-zinc-800">LINE Official</span>
-                  <span className="block text-[#b8322a]">ช่องทางเสริม LINE @SCNW</span>
+                  <span className="block text-[#b8322a]">ช่องทางเสริม LINE @213bzijc</span>
                 </span>
               </a>
             </section>
