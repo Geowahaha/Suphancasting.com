@@ -1,9 +1,9 @@
 import { SuccessCastingHome } from "./SuccessCastingHome";
 
 export const metadata = {
-  title: "Suphan Casting | งานหล่อทรายและชิ้นส่วนเครื่องจักร",
+  title: "SuccessCasting | โรงหล่อรับงานตามแบบและอะไหล่เครื่องจักร",
   description:
-    "Suphan Casting รับผลิตงานหล่อทราย ชิ้นส่วนเครื่องจักร และวัสดุ FC25, FCD, SC46, S45C, Mo4140 พร้อมข้อมูลติดต่อและแผนที่เดิมของ Suphancasting.com.",
+    "SuccessCasting รับปรึกษางานหล่อโลหะ งานหล่อทราย pulley และอะไหล่เครื่องจักรตามแบบ พร้อม RFQ ภาษาไทยและ English.",
 };
 
 export default function HomePage() {
