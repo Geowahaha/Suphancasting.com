@@ -33,7 +33,7 @@ export const staticBlogPosts: BlogPost[] = [
       "Ask how the factory schedules melting, molding, machining (if any), and inspection to meet the target delivery date.",
       "",
       "## 4) Use AI-assisted RFQ for faster validation",
-      "Successcasting.com includes AI quote estimation and product matching to help you shortlist the right casting program earlier.",
+      "Suphancasting.com includes AI quote estimation and product matching to help you shortlist the right casting program earlier.",
       "",
       "## Request an RFQ",
       "Share your specs and drawings and get an instant AI estimate of lead time and pricing assumptions.",
@@ -75,7 +75,7 @@ export const staticBlogPosts: BlogPost[] = [
       "- What machining coordination is included (if required)?",
       "",
       "## Get AI quote guidance",
-      "Use the AI quote generator on Successcasting.com to get a structured estimate you can route internally for approvals.",
+      "Use the AI quote generator on Suphancasting.com to get a structured estimate you can route internally for approvals.",
     ].join("\n"),
     faq: [
       {
@@ -156,7 +156,7 @@ const localizedBlogOverrides: Partial<
         "สอบถามแผนการหลอม ขึ้นแบบ งานแมชชีน (ถ้ามี) และการตรวจสอบเพื่อให้ทันกำหนดส่ง",
         "",
         "## 4) ใช้ AI ช่วย RFQ ให้ประเมินเร็วขึ้น",
-        "Successcasting.com มี AI ประเมินราคาและจับคู่สินค้า ช่วยคัดเลือกโปรแกรมการผลิตได้เร็วขึ้น",
+        "Suphancasting.com มี AI ประเมินราคาและจับคู่สินค้า ช่วยคัดเลือกโปรแกรมการผลิตได้เร็วขึ้น",
       ].join("\n"),
       faq: [
         { q: "ข้อมูลใดสำคัญต่อการประเมินราคาให้แม่นยำ?", a: "ควรส่งเกรดวัสดุ จำนวน ค่าความคลาดเคลื่อน เงื่อนไขตรวจสอบ และกำหนดส่ง เป้าหมายคือข้อมูลที่พร้อมอ่านแบบมากที่สุด" },

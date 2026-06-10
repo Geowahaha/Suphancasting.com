@@ -1,5 +1,5 @@
 export default function robots() {
-  const site = process.env.NEXT_PUBLIC_SITE_URL ?? "https://successcasting.com";
+  const site = process.env.NEXT_PUBLIC_SITE_URL ?? "https://suphancasting.com";
   void site;
   return {
     rules: [
@@ -12,7 +12,7 @@ export default function robots() {
         disallow: ["/dashboard"],
       },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://successcasting.com"}/sitemap.xml`,
+    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://suphancasting.com"}/sitemap.xml`,
   };
 }
 

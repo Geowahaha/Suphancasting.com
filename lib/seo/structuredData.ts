@@ -3,14 +3,14 @@ import { siteConfig } from "./site";
 
 export function buildOrganizationJsonLd(): JsonLd {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ?? "";
-  const urlBase = siteUrl || "https://successcasting.com";
+  const urlBase = siteUrl || "https://suphancasting.com";
 
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: siteConfig.fullName,
     url: urlBase,
-    logo: `${urlBase}/logo.png`,
+    logo: `${urlBase}/stitch/suphancasting-ai-home/uploads/logo-suphan.png`,
     sameAs: [],
   };
 }

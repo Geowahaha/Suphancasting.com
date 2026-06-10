@@ -5,9 +5,9 @@ import { useEffect, useMemo, useState } from "react";
 
 type HomeLocale = "th" | "en";
 
-const lineUrl = "https://line.me/R/ti/p/@SCNW";
+const lineUrl = "https://line.me/R/ti/p/@213bzijc";
 const logoSrc = "/stitch/suphancasting-ai-home/uploads/logo-suphan.png";
-const heroPoster = "/successcasting-assets/video/successcasting-foundry-hero-poster.jpg";
+const heroPoster = "/suphancasting-assets/video/suphancasting-foundry-hero-poster.jpg";
 const mapUrl = "https://maps.google.com/?q=Suphan%20casting%20Co.%2Cltd.";
 
 const copy = {
@@ -27,7 +27,7 @@ const copy = {
     fullServiceTitle: "บริการตั้งแต่ดูแบบจนถึงส่งมอบ",
     fullServiceText: "ช่วยไล่ข้อมูลวัสดุ ขนาด น้ำหนัก จำนวน machining และ deadline เพื่อให้ทีมขายประเมินงานได้เร็วขึ้น",
     welcomeTitle: "ยินดีต้อนรับ",
-    welcomeText1: "SuccessCasting เชื่อมต่อประสบการณ์โรงหล่อไทยกับระบบ RFQ สมัยใหม่ ลูกค้าสามารถส่งรูป แบบ หรือชิ้นงานตัวอย่าง เพื่อให้ทีมงานช่วยประเมินวัสดุและขั้นตอนผลิตที่เหมาะสม",
+    welcomeText1: "Suphancasting เชื่อมต่อประสบการณ์โรงหล่อไทยกับระบบ RFQ สมัยใหม่ ลูกค้าสามารถส่งรูป แบบ หรือชิ้นงานตัวอย่าง เพื่อให้ทีมงานช่วยประเมินวัสดุและขั้นตอนผลิตที่เหมาะสม",
     welcomeText2: "เราทำงานกับงานหล่อโลหะตามแบบ งานอะไหล่เครื่องจักร งาน pulley และงานซ่อมบำรุงที่ต้องการสื่อสารชัดเจนก่อนเสนอราคา",
     capabilitiesTitle: "ความสามารถหลัก",
     capabilitiesSub: "โครงสร้างหน้าแบบโรงหล่อคลาสสิก แต่จัดข้อมูลให้ลูกค้าไทยอ่านง่ายและติดต่อได้ทันที",
@@ -40,9 +40,9 @@ const copy = {
     portfolioTitle: "ตัวอย่างผลงาน",
     portfolioCta: "ดูเพิ่มเติม",
     portfolio: [
-      ["SUC Pulley / พูลเล่ย์", "งาน pulley ตามแบบสำหรับระบบส่งกำลัง", "/successcasting-assets/shopee-new/pulley-product-fc25-no-price.png"],
-      ["Gear & drive parts", "เฟืองและชิ้นส่วนส่งกำลังสำหรับโรงงาน", "/successcasting-assets/shopee-new/gear-fcd.jpg"],
-      ["Pump / machine parts", "pump casing, housing และอะไหล่เครื่องจักร", "/successcasting-assets/pump-casing-close.jpg"],
+      ["SUC Pulley / พูลเล่ย์", "งาน pulley ตามแบบสำหรับระบบส่งกำลัง", "/suphancasting-assets/shopee-new/pulley-product-fc25-no-price.png"],
+      ["Gear & drive parts", "เฟืองและชิ้นส่วนส่งกำลังสำหรับโรงงาน", "/suphancasting-assets/shopee-new/gear-fcd.jpg"],
+      ["Pump / machine parts", "pump casing, housing และอะไหล่เครื่องจักร", "/suphancasting-assets/pump-casing-close.jpg"],
     ],
     aiTitle: "AI RFQ Assist ยังอยู่ด้านหลัง",
     aiText: "หน้าใหม่ยังคงเชื่อมกับ backend AI/RFQ ที่ทำไว้เดิม เพื่อช่วยสรุปข้อมูลงาน ประเมินความพร้อม และส่งต่อให้ operator ดูแลต่อ",
@@ -60,7 +60,7 @@ const copy = {
     contactName: "Golf Sasithorn",
     search: "Search",
     brand: "Suphancasting",
-    nav: ["Home", "Why castings?", "Why SuccessCasting?", "Capabilities", "Portfolio", "Contact"],
+    nav: ["Home", "Why castings?", "Why Suphancasting?", "Capabilities", "Portfolio", "Contact"],
     heroTitle: "Jobbing foundry for custom metal castings and machinery spare parts",
     heroSub: "Sand casting consultation for gray iron, ductile iron, cast steel, alloy parts, pulley work, and low-to-medium volume industrial maintenance jobs.",
     ctaPrimary: "Send RFQ / request review",
@@ -70,7 +70,7 @@ const copy = {
     fullServiceTitle: "Support from drawing review to delivery",
     fullServiceText: "We help clarify material, dimensions, weight, quantity, machining needs, and timeline before quotation.",
     welcomeTitle: "Welcome",
-    welcomeText1: "SuccessCasting connects Thai foundry experience with a modern RFQ workflow. Customers can send photos, drawings, or sample parts so the team can review material and production feasibility.",
+    welcomeText1: "Suphancasting connects Thai foundry experience with a modern RFQ workflow. Customers can send photos, drawings, or sample parts so the team can review material and production feasibility.",
     welcomeText2: "We focus on custom castings, machinery spare parts, pulley work, and maintenance jobs where clear technical communication matters before pricing.",
     capabilitiesTitle: "Capabilities",
     capabilitiesSub: "A classic foundry information structure, rebuilt for Thai buyers and international RFQ review.",
@@ -83,9 +83,9 @@ const copy = {
     portfolioTitle: "Portfolio",
     portfolioCta: "See more",
     portfolio: [
-      ["SUC Pulley", "Pulley casting work for power transmission systems", "/successcasting-assets/shopee-new/pulley-product-fc25-no-price.png"],
-      ["Gear & drive parts", "Gear and transmission parts for factories", "/successcasting-assets/shopee-new/gear-fcd.jpg"],
-      ["Pump / machine parts", "Pump casings, housings, and machinery spare parts", "/successcasting-assets/pump-casing-close.jpg"],
+      ["SUC Pulley", "Pulley casting work for power transmission systems", "/suphancasting-assets/shopee-new/pulley-product-fc25-no-price.png"],
+      ["Gear & drive parts", "Gear and transmission parts for factories", "/suphancasting-assets/shopee-new/gear-fcd.jpg"],
+      ["Pump / machine parts", "Pump casings, housings, and machinery spare parts", "/suphancasting-assets/pump-casing-close.jpg"],
     ],
     aiTitle: "AI RFQ Assist remains in the backend",
     aiText: "The redesign keeps the existing AI/RFQ backend intact for spec extraction, readiness checks, and operator handoff.",
@@ -99,10 +99,10 @@ const copy = {
 } as const;
 
 const productImages = [
-  "/successcasting-assets/casting-work.jpg",
-  "/successcasting-assets/drive-gear.jpg",
-  "/successcasting-assets/cast-rollers.jpg",
-  "/successcasting-assets/shopee-new/mold-boxes-fc25.jpg",
+  "/suphancasting-assets/casting-work.jpg",
+  "/suphancasting-assets/drive-gear.jpg",
+  "/suphancasting-assets/cast-rollers.jpg",
+  "/suphancasting-assets/shopee-new/mold-boxes-fc25.jpg",
 ];
 
 function getInitialLocale(): HomeLocale {
@@ -171,7 +171,7 @@ function TopFrame({
       <header className="sticky top-0 z-40 border-b border-[#ded2c5] bg-white/95 shadow-sm backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 lg:flex-row lg:items-center lg:justify-between">
           <Link href={withLang("/", locale)} className="flex items-center gap-3">
-            <img src={logoSrc} alt="SuccessCasting logo" className="h-16 w-16 object-contain" />
+            <img src={logoSrc} alt="Suphancasting logo" className="h-16 w-16 object-contain" />
             <span>
               <span className="block font-forge-headline text-3xl font-black uppercase leading-none text-[#211913]">
                 {tr.brand}
@@ -186,7 +186,7 @@ function TopFrame({
             {[
               ["#home", tr.nav[0]],
               ["#why-castings", tr.nav[1]],
-              ["#why-success", tr.nav[2]],
+              ["#why-suphan", tr.nav[2]],
               ["#capabilities", tr.nav[3]],
               ["#portfolio", tr.nav[4]],
               ["#contact", tr.nav[5]],
@@ -276,7 +276,7 @@ function Welcome({ locale }: { locale: HomeLocale }) {
             <img
               key={src}
               src={src}
-              alt={`SuccessCasting foundry work ${index + 1}`}
+              alt={`Suphancasting foundry work ${index + 1}`}
               className={`h-48 w-full object-cover shadow-sm ${index === 0 ? "col-span-2 h-72" : ""}`}
             />
           ))}
@@ -348,7 +348,7 @@ function AiAndContact({ locale }: { locale: HomeLocale }) {
 
   return (
     <>
-      <section id="why-success" className="bg-[#201913] px-4 py-16 text-white sm:py-20">
+      <section id="why-suphan" className="bg-[#201913] px-4 py-16 text-white sm:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-center">
           <div>
             <h2 className="font-forge-headline text-4xl font-black tracking-normal sm:text-5xl">
@@ -395,7 +395,7 @@ function AiAndContact({ locale }: { locale: HomeLocale }) {
           </div>
 
           <a href={lineUrl} className="flex flex-col items-center justify-center bg-white p-6 text-center shadow-sm">
-            <img src="/successcasting-assets/line-213bzijc-qr.png" alt="LINE @213bzijc QR" className="h-40 w-40 object-contain" />
+            <img src="/suphancasting-assets/line-213bzijc-qr.png" alt="LINE @213bzijc QR" className="h-40 w-40 object-contain" />
             <div className="mt-4 font-forge-headline text-2xl font-black">LINE @SCNW</div>
             <div className="mt-1 text-sm text-[#67564a]">Golf Sasithon</div>
           </a>
@@ -422,7 +422,7 @@ function AiAndContact({ locale }: { locale: HomeLocale }) {
   );
 }
 
-export function SuccessCastingHome() {
+export function SuphancastingHome() {
   const [locale, setLocale] = useState<HomeLocale>("th");
 
   useEffect(() => {
@@ -442,7 +442,7 @@ export function SuccessCastingHome() {
       <footer className="bg-[#17120f] px-4 py-8 text-center text-sm text-[#d9cec3]">
         <img src={logoSrc} alt="" className="mx-auto mb-3 h-14 w-14 object-contain" />
         <p className="font-semibold">{tr.footer}</p>
-        <p className="mt-2 text-[#a99688]">© {new Date().getFullYear()} SuccessCasting. All rights reserved.</p>
+        <p className="mt-2 text-[#a99688]">© {new Date().getFullYear()} Suphancasting. All rights reserved.</p>
       </footer>
     </main>
   );

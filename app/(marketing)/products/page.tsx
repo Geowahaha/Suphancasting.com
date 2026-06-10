@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const lineUrl = "https://line.me/R/ti/p/@SCNW";
+const lineUrl = "https://line.me/R/ti/p/@213bzijc";
 const pulleyLogo = "/stitch/suphancasting-ai-home/uploads/logo-suphan.png";
 
 const productRows = [
   {
     material: "FC25",
     title: "SUC Pulley — FC25 Gray Cast Iron",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_2.jpg",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_2.jpg",
     description:
       "Pulley / drive gear casting สำหรับระบบส่งกำลังโรงสีและเครื่องจักรอุตสาหกรรม วัสดุ FC25 เหมาะกับงานหล่อเทา ลดแรงสั่นสะเทือน กลึงต่อได้ดี และคุมต้นทุนได้จริง.",
     specs: ["SUC Pulley / wheel / drive gear", "FC25 gray cast iron", "Machining-ready casting allowance"],
@@ -16,7 +16,7 @@ const productRows = [
   {
     material: "FCD",
     title: "SUC Pulley — Ductile Iron",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_5.jpg",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_5.jpg",
     description:
       "FCD สำหรับพูลเล่ย์และชิ้นส่วนเครื่องจักรที่ต้องการความเหนียวและรับแรงกระแทกสูงกว่าเหล็กหล่อเทาทั่วไป.",
     specs: ["เหล็กหล่อเหนียว", "Suitable for load-bearing parts", "OEM casting by drawing/sample"],
@@ -24,7 +24,7 @@ const productRows = [
   {
     material: "SC46",
     title: "Cast Steel Machinery Parts",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_10.jpg",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_10.jpg",
     description:
       "SC46 สำหรับงานเหล็กกล้าหล่อ ชิ้นส่วนรับแรง งานโครงสร้าง และงานโรงงานที่ต้องควบคุมกระบวนการผลิตอย่างจริงจัง.",
     specs: ["เหล็กกล้าหล่อ", "Sand casting process", "Inspection before delivery"],
@@ -32,7 +32,7 @@ const productRows = [
   {
     material: "S45C",
     title: "Machinery Shafts / Hubs / Custom Parts",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_15.jpg",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_15.jpg",
     description:
       "S45C สำหรับชิ้นงานที่ต้องการความแข็งแรง งานกลึงต่อ งาน hub, shaft และอะไหล่เครื่องจักรตามแบบเฉพาะ.",
     specs: ["Medium-carbon steel", "Custom geometry", "Replacement and OEM support"],
@@ -40,28 +40,28 @@ const productRows = [
   {
     material: "Mo4140",
     title: "High Strength Heavy-Duty Components",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_20.jpg",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_20.jpg",
     description:
       "Mo4140 / chromium-molybdenum steel สำหรับงานหนัก งานแข็งแรงสูง ชิ้นส่วนเฉพาะทาง และงานซ่อมบำรุงที่ต้องลด downtime.",
     specs: ["Heavy-duty application", "High strength material family", "Controlled production planning"],
   },
 ];
 
-const galleryImages = Array.from({ length: 20 }, (_, index) => `/successcasting-assets/shopee-products/LINE_NOTE_260502_${index + 1}.jpg`);
+const galleryImages = Array.from({ length: 20 }, (_, index) => `/suphancasting-assets/shopee-products/LINE_NOTE_260502_${index + 1}.jpg`);
 
 const newGalleryImages = [
-  ["Pulley product FC25", "/successcasting-assets/shopee-new/pulley-product-fc25-no-price.png?v=3"],
-  ["FCD gear", "/successcasting-assets/shopee-new/gear-fcd.jpg?v=2"],
-  ["FCD large gear", "/successcasting-assets/shopee-new/large-gear-fcd.jpg?v=2"],
-  ["SC46 molten metal", "/successcasting-assets/shopee-new/molten-metal-sc46.jpg?v=2"],
-  ["S45C / Mo4140 machining", "/successcasting-assets/shopee-new/grinding-machining-s45c.jpg?v=2"],
-  ["FC25 mold boxes", "/successcasting-assets/shopee-new/mold-boxes-fc25.jpg?v=2"],
+  ["Pulley product FC25", "/suphancasting-assets/shopee-new/pulley-product-fc25-no-price.png?v=3"],
+  ["FCD gear", "/suphancasting-assets/shopee-new/gear-fcd.jpg?v=2"],
+  ["FCD large gear", "/suphancasting-assets/shopee-new/large-gear-fcd.jpg?v=2"],
+  ["SC46 molten metal", "/suphancasting-assets/shopee-new/molten-metal-sc46.jpg?v=2"],
+  ["S45C / Mo4140 machining", "/suphancasting-assets/shopee-new/grinding-machining-s45c.jpg?v=2"],
+  ["FC25 mold boxes", "/suphancasting-assets/shopee-new/mold-boxes-fc25.jpg?v=2"],
 ];
 
 const processVideos = [
-  ["Pattern & mold components", "/successcasting-assets/shopee-video/pattern-and-mold-components.mp4", "FC25 / FCD"],
-  ["Cylindrical castings", "/successcasting-assets/shopee-video/cylindrical-castings-fc-fcd.mp4", "FC25 / FCD"],
-  ["Mold box production", "/successcasting-assets/shopee-video/mold-box-production.mp4", "FC25 / SC46"],
+  ["Pattern & mold components", "/suphancasting-assets/shopee-video/pattern-and-mold-components.mp4", "FC25 / FCD"],
+  ["Cylindrical castings", "/suphancasting-assets/shopee-video/cylindrical-castings-fc-fcd.mp4", "FC25 / FCD"],
+  ["Mold box production", "/suphancasting-assets/shopee-video/mold-box-production.mp4", "FC25 / SC46"],
 ];
 
 export const metadata: Metadata = {
@@ -109,7 +109,7 @@ export default function ProductsPage() {
       <TopBar />
       <section className="relative overflow-hidden px-4 pb-16 pt-32 sm:px-6 lg:px-8">
         <div className="absolute inset-0 opacity-35">
-          <img src="/successcasting-assets/shopee-products/LINE_NOTE_260502_1.jpg" alt="Suphan Casting product background" className="h-full w-full object-cover" />
+          <img src="/suphancasting-assets/shopee-products/LINE_NOTE_260502_1.jpg" alt="Suphan Casting product background" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/45" />
         </div>
         <div className="mx-auto max-w-7xl">

@@ -1,6 +1,6 @@
 export function GET() {
   const body = [
-    "Successcasting.com",
+    "Suphancasting.com",
     "Industrial steel casting and OEM casting parts supplier in Thailand.",
     "",
     "Primary pages:",
