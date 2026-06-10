@@ -40,13 +40,10 @@ const copy = {
     portfolioTitle: "ตัวอย่างผลงาน",
     portfolioCta: "ดูเพิ่มเติม",
     portfolio: [
-      ["SUC Pulley / พูลเล่ย์", "งาน pulley ตามแบบสำหรับระบบส่งกำลัง", "/suphancasting-assets/shopee-new/pulley-product-fc25-no-price.png"],
+      [["SUC Pulley / พูลเล่ย์", "งาน pulley ตามแบบสำหรับระบบส่งกำลัง", "/suphancasting-assets/shopee-new/pulley-product-fc25-no-price.png"],
       ["Gear & drive parts", "เฟืองและชิ้นส่วนส่งกำลังสำหรับโรงงาน", "/suphancasting-assets/shopee-new/gear-fcd.jpg"],
       ["Pump / machine parts", "pump casing, housing และอะไหล่เครื่องจักร", "/suphancasting-assets/pump-casing-close.jpg"],
     ],
-    aiTitle: "AI RFQ Assist ยังอยู่ด้านหลัง",
-    aiText: "หน้าใหม่ยังคงเชื่อมกับ backend AI/RFQ ที่ทำไว้เดิม เพื่อช่วยสรุปข้อมูลงาน ประเมินความพร้อม และส่งต่อให้ operator ดูแลต่อ",
-    aiCta: "เปิดหน้า RFQ",
     contactTitle: "ติดต่อเรา",
     contactText: "ส่งรูป/แบบ ขนาด วัสดุ และจำนวนที่ต้องการ ทีมงานจะประเมินและติดต่อกลับ หรือติดต่อทันที โทรคุณกอล์ฟ ศศิธร",
     address: "Suphan casting Co., Ltd. จังหวัดสุพรรณบุรี ประเทศไทย",
@@ -87,9 +84,6 @@ const copy = {
       ["Gear & drive parts", "Gear and transmission parts for factories", "/suphancasting-assets/shopee-new/gear-fcd.jpg"],
       ["Pump / machine parts", "Pump casings, housings, and machinery spare parts", "/suphancasting-assets/pump-casing-close.jpg"],
     ],
-    aiTitle: "AI RFQ Assist remains in the backend",
-    aiText: "The redesign keeps the existing AI/RFQ backend intact for spec extraction, readiness checks, and operator handoff.",
-    aiCta: "Open RFQ page",
     contactTitle: "Contact us",
     contactText: "Send photo/drawing, dimensions, material, and quantity. Our team will review and follow up, or call Golf directly.",
     address: "Suphan casting Co., Ltd. Suphan Buri, Thailand",
@@ -343,34 +337,11 @@ function Portfolio({ locale }: { locale: HomeLocale }) {
   );
 }
 
-function AiAndContact({ locale }: { locale: HomeLocale }) {
+function ContactAndMap({ locale }: { locale: HomeLocale }) {
   const tr = copy[locale];
 
   return (
     <>
-      <section id="why-suphan" className="bg-[#201913] px-4 py-16 text-white sm:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-center">
-          <div>
-            <h2 className="font-forge-headline text-4xl font-black tracking-normal sm:text-5xl">
-              {tr.aiTitle}
-            </h2>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-[#eaded3]">{tr.aiText}</p>
-          </div>
-          <div className="bg-[#f15a24] p-7 text-white">
-            <div className="font-forge-headline text-5xl font-black">AI + RFQ</div>
-            <p className="mt-3 leading-7 text-white/90">
-              Smart search · quote assist · production advisor · operator handoff
-            </p>
-            <Link
-              href={withLang("/rfq#quote-tool", locale)}
-              className="mt-6 inline-flex rounded bg-white px-6 py-3 font-black text-[#211913] hover:bg-[#211913] hover:text-white"
-            >
-              {tr.aiCta}
-            </Link>
-          </div>
-        </div>
-      </section>
-
       <section id="contact" className="bg-[#f5f1ec] px-4 py-16 text-[#241d18] sm:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_0.42fr_0.9fr]">
           <div className="bg-white p-7 shadow-sm">
