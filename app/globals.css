@@ -17,16 +17,19 @@
   --border: #e4e4e7;
   --muted: rgba(39, 39, 42, 0.78);
   --muted-2: rgba(39, 39, 42, 0.58);
-  /* Hero scrim: a light wash, so a bright photo stays bright and dark type reads */
+  /* The hero photo is molten metal — vivid orange on a dark ground — so it is
+     deliberately scrimmed the same way in BOTH themes: a white wash would grey
+     it out, which is exactly the "blends into the background" problem. Lighter
+     than the original 0.78 wash so the glow stays vivid rather than murky. */
   --hero-scrim: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.92),
-    rgba(255, 255, 255, 0.74) 46%,
-    rgba(255, 255, 255, 0.3)
+    rgba(0, 0, 0, 0.62),
+    rgba(0, 0, 0, 0.3) 46%,
+    rgba(0, 0, 0, 0.1)
   );
-  --hero-scrim-bottom: linear-gradient(to top, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0));
-  --hero-ink: #18181b;
-  --hero-ink-soft: #3f3f46;
+  --hero-scrim-bottom: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0));
+  --hero-ink: #ffffff;
+  --hero-ink-soft: #f4f4f5;
 }
 
 .dark {
@@ -41,13 +44,14 @@
   --border: rgba(255, 255, 255, 0.12);
   --muted: rgba(231, 231, 231, 0.72);
   --muted-2: rgba(231, 231, 231, 0.55);
+  /* Same hero treatment as light — see the note in :root. */
   --hero-scrim: linear-gradient(
     90deg,
-    rgba(0, 0, 0, 0.78),
-    rgba(0, 0, 0, 0.38) 48%,
-    rgba(0, 0, 0, 0.14)
+    rgba(0, 0, 0, 0.62),
+    rgba(0, 0, 0, 0.3) 46%,
+    rgba(0, 0, 0, 0.1)
   );
-  --hero-scrim-bottom: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  --hero-scrim-bottom: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0));
   --hero-ink: #ffffff;
   --hero-ink-soft: #f4f4f5;
 }
@@ -111,9 +115,10 @@ body {
 }
 
 /* ── Hero theming ───────────────────────────────────────────────────────────
-   The hero swaps its scrim and type colour with the theme, so the same markup
-   reads as a bright editorial hero in light mode and the original forge hero
-   in dark mode. */
+   Driven by tokens, but both themes currently resolve to the same dark scrim
+   and white type: the hero photo is molten metal, which only reads correctly
+   that way. Kept as tokens so the treatment can diverge later without touching
+   the markup. */
 .hero-scrim {
   background: var(--hero-scrim);
 }
@@ -128,11 +133,6 @@ body {
 
 .hero-ink-soft {
   color: var(--hero-ink-soft);
-}
-
-/* In light mode the photo is lifted rather than darkened. */
-:root:not(.dark) .hero-photo {
-  filter: brightness(1.06) saturate(1.04);
 }
 
 @media (prefers-reduced-motion: reduce) {

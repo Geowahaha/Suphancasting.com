@@ -52,7 +52,10 @@ const copy = {
     portfolioBtn: "ดูผลงาน",
     welcomeTitle: "ยินดีต้อนรับ",
     welcome: [
-      "บริษัท สุพรรณ แคสติ้ง จำกัด ก่อตั้งขึ้นในปี พ.ศ. 2565 ดำเนินธุรกิจด้านโรงงานหลอมเหล็ก ด้วยประสบการณ์และความเชี่ยวชาญ",
+      // Success Network is the affiliated parent company (owner-confirmed), so its
+      // 2544 founding is legitimately part of this group's history — not stale
+      // Success Casting text. Do not "correct" this to Suphan Casting / 2565.
+      "บริษัท ซัคเซสเน็ทเวิร์ค จำกัด ก่อตั้งขึ้นในปี พ.ศ. 2544 ดำเนินธุรกิจด้านโรงงานหลอมเหล็ก ด้วยประสบการณ์และความเชี่ยวชาญ",
       "เรามุ่งมั่นในการผลิตสินค้าที่มีคุณภาพ ได้มาตรฐาน และตอบสนองความต้องการของลูกค้าอย่างดีที่สุด เรารับผลิตชิ้นงาน เหล็กหล่อ เหล็กหล่อเหนียว เหล็กทนสึก ไปจนถึงเหล็กทนความร้อน",
       "เราให้ความสำคัญกับความสัมพันธ์ที่ดีกับลูกค้า เพื่อให้ผลิตภัณฑ์เป็นไปตามกำหนดเวลา และนำส่งตรงตามข้อตกลง",
     ],
@@ -91,7 +94,7 @@ const copy = {
     portfolioBtn: "View Portfolio",
     welcomeTitle: "Welcome!",
     welcome: [
-      "Suphan Casting Co., Ltd. was founded in 2022 and operates in iron melting and foundry production with long-standing experience and technical expertise.",
+      "Success Network Co., Ltd. was founded in 2001 and operates in iron melting and foundry production with long-standing experience and technical expertise.",
       "We focus on producing quality parts to required standards and customer needs, including gray cast iron, ductile iron, wear-resistant steel and heat-resistant steel.",
       "We value strong customer relationships so products are completed on schedule and delivered according to agreed requirements.",
     ],
@@ -124,17 +127,16 @@ const copy = {
 // hero reads bright rather than murky; dark mode keeps the dramatic pour shots,
 // which only work against a dark scrim. Measured, not guessed — the previous
 // light-mode set sat at 35-72 and looked dim under any scrim.
-// Only these two are both bright AND free of the burnt-in Thai product labels
-// that the other shop photos carry ("ดุมเหล็กหล่อ", "ปั้มตามแบบลูกค้า", "QDC") —
-// a caption baked into a hero photo collides with the headline. Every gpt-hero
-// image measured 35-79 luminance, i.e. too dark for a light hero.
-const heroImagesLight = [
-  "/suphancasting-assets/casting-work.webp",
-  "/suphancasting-assets/sand-casting.webp",
-];
-
-const heroImagesDark = [
-  "/suphancasting-assets/factory2.webp",
+// Owner brief: a striking shot of molten metal being poured — the casting
+// process itself — with NO people, that stands out instead of blending into the
+// page. Vivid orange on a dark ground reads strongly on both themes, so the hero
+// uses one set regardless of theme.
+// Excluded on purpose: molten-pour-3 and factory2 both show workers; the shop
+// photos (cast-rollers, pump-castings-stack, qdc-heavy-castings) have Thai
+// captions burnt into the pixels; casting-work/sand-casting are pale grey and
+// were washing out against the page.
+const heroImages = [
+  "/suphancasting-assets/gpt-hero/molten-pour-4.webp",
   "/suphancasting-assets/gpt-hero/molten-pour-1.webp",
   "/suphancasting-assets/gpt-hero/molten-pour-2.webp",
 ];
@@ -367,8 +369,6 @@ function SiteHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) => vo
 }
 
 function Hero({ lang }: { lang: Lang }) {
-  const isDark = useIsDark();
-  const heroImages = isDark ? heroImagesDark : heroImagesLight;
   const [active, setActive] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [contentHidden, setContentHidden] = useState(false);
@@ -377,11 +377,6 @@ function Hero({ lang }: { lang: Lang }) {
   const resumeTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
   const swipeHintTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
   const slide = copy[lang].hero[active];
-
-  // The two sets differ in length, so a stale index would blank the hero.
-  useEffect(() => {
-    setActive((value) => (value < heroImages.length ? value : 0));
-  }, [heroImages.length]);
 
   const flashSwipeHint = () => {
     setShowSwipeHint(true);
@@ -430,11 +425,11 @@ function Hero({ lang }: { lang: Lang }) {
     scheduleAutoResume();
   };
 
-  // The hero background is only visible while the photo loads, so it must match
-  // the theme — a dark fallback in light mode flashes dark behind dark headline text.
+  // The hero photo is dark in both themes, so its fallback background and its
+  // controls stay dark/light-on-dark regardless of theme.
   return (
     <section
-      className="relative min-h-[470px] touch-pan-y overflow-hidden bg-zinc-200 text-zinc-900 sm:min-h-[520px] md:min-h-[58vh] md:max-h-[620px] dark:bg-[#1f1f1f] dark:text-white"
+      className="relative min-h-[470px] touch-pan-y overflow-hidden bg-[#1f1f1f] text-white sm:min-h-[520px] md:min-h-[58vh] md:max-h-[620px]"
       aria-label="Suphancasting foundry image slideshow"
       onPointerDown={(event) => {
         if ((event.target as Element).closest("a,button")) return;
@@ -497,7 +492,7 @@ function Hero({ lang }: { lang: Lang }) {
         {[0, 1, 2].map((item) => (
           <span
             key={item}
-            className="block h-7 w-5 bg-zinc-900/70 shadow-[0_0_14px_rgba(0,0,0,0.25)] sm:h-10 sm:w-7 dark:bg-white/75 dark:shadow-[0_0_14px_rgba(255,255,255,0.45)]"
+            className="block h-7 w-5 bg-white/75 shadow-[0_0_14px_rgba(255,255,255,0.45)] sm:h-10 sm:w-7"
             style={{
               animation: `heroSwipeHint 1.45s ${item * 0.16}s ease-in-out infinite`,
               clipPath: "polygon(0 0, 42% 0, 100% 50%, 42% 100%, 0 100%, 58% 50%)",
@@ -540,7 +535,7 @@ function Hero({ lang }: { lang: Lang }) {
       </div>
       <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2">
         {heroImages.map((_, index) => (
-          <button key={index} type="button" aria-label={`Show slide ${index + 1}`} onClick={() => { setContentHidden(false); setActive(index); scheduleAutoResume(); }} className={`h-2.5 transition-all ${active === index ? "w-9 bg-[#c72127]" : "w-3 bg-zinc-900/45 hover:bg-zinc-900/70 dark:bg-white/65 dark:hover:bg-white"}`} />
+          <button key={index} type="button" aria-label={`Show slide ${index + 1}`} onClick={() => { setContentHidden(false); setActive(index); scheduleAutoResume(); }} className={`h-2.5 transition-all ${active === index ? "w-9 bg-[#c72127]" : "w-3 bg-white/65 hover:bg-white"}`} />
         ))}
       </div>
     </section>
@@ -1162,12 +1157,19 @@ function ContactFooter({ lang }: { lang: Lang }) {
         <div>
           <h3 className="border-b border-zinc-600 pb-3 text-2xl font-semibold text-[#e23a40]">{t.contactTitle}</h3>
           <div className="mt-5 space-y-2 leading-7">
-            <p className="font-semibold">บริษัท สุพรรณ แคสติ้ง จำกัด</p>
-            <p>
-              {lang === "th"
-                ? "229 หมู่ 3 ตำบลตะค่า อำเภอบางปลาม้า จังหวัดสุพรรณบุรี 72150"
-                : "229 Moo 3, Takha, Bang Pla Ma, Suphan Buri 72150, Thailand"}
-            </p>
+            {/* Head office is the affiliated parent, Success Network; the foundry
+                itself is Suphan Casting in Suphan Buri. Both are correct and
+                owner-confirmed — keep the two blocks. */}
+            <p className="font-semibold">บริษัท ซัคเซสเน็ทเวิร์ค จำกัด</p>
+            <p>307/288 หมู่ที่ 11 ต.บางพลีใหญ่ อ.บางพลี จ.สมุทรปราการ 10540</p>
+            <div className="pt-1">
+              <p className="font-semibold">{lang === "th" ? "โรงงาน Suphan Casting" : "Suphan Casting factory"}</p>
+              <p>
+                {lang === "th"
+                  ? "229 หมู่ 3 ต.ตะค่า อ.บางปลาม้า จ.สุพรรณบุรี 72150"
+                  : "229 Moo 3, Takha, Bang Pla Ma, Suphan Buri 72150, Thailand"}
+              </p>
+            </div>
             <p>{lang === "th" ? "โทร" : "Phone"}: <a href={phoneHref} className="text-white hover:text-[#e23a40]">{phoneDisplay}</a>, <a href={phoneHrefAlt} className="text-white hover:text-[#e23a40]">{phoneDisplayAlt}</a></p>
             <p>Email: <a href="mailto:scnwmax@gmail.com" className="text-white hover:text-[#e23a40]">scnwmax@gmail.com</a></p>
             <p>LINE: <a href={lineUrl} target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#e23a40]">@213bzijc</a></p>

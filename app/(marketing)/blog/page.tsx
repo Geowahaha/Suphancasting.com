@@ -52,10 +52,10 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Suphancasting คือใคร และอยู่ที่ไหน?",
-    // The previous brand's "over 20 years of experience" claim was removed: it
-    // contradicts the confirmed founding year (พ.ศ. 2565). Dropped rather than
-    // replaced with a guessed figure — see _local/OWNER_FACTS_2026-07-29.md.
-    a: "ดำเนินงานโดย บริษัท สุพรรณ แคสติ้ง จำกัด (Suphan Casting Co., Ltd.) โรงหล่อเหล็กและงานหลอมโลหะ ก่อตั้งปี พ.ศ. 2565 ที่อยู่ 229 หมู่ 3 ตำบลตะค่า อำเภอบางปลาม้า จังหวัดสุพรรณบุรี 72150",
+    // The "20+ years" claim is valid: it belongs to the group, whose parent
+    // Success Network was founded in พ.ศ. 2544 (owner-confirmed). Suphan Casting
+    // itself was founded พ.ศ. 2565 and is the group's foundry.
+    a: "ดำเนินงานโดย บริษัท สุพรรณ แคสติ้ง จำกัด (Suphan Casting Co., Ltd.) ในเครือบริษัท ซัคเซสเน็ทเวิร์ค จำกัด โรงหล่อเหล็กและงานหลอมโลหะประสบการณ์กว่า 20 ปี ที่อยู่ 229 หมู่ 3 ตำบลตะค่า อำเภอบางปลาม้า จังหวัดสุพรรณบุรี 72150",
   },
 ];
 

@@ -823,12 +823,18 @@ function ContactBand({ lang }: { lang: Lang }) {
         <div>
           <h2 className="border-b border-zinc-600 pb-3 text-2xl font-semibold text-[#e23a40]">{t.contact}</h2>
           <div className="mt-5 space-y-2 leading-7">
-            <p>บริษัท สุพรรณ แคสติ้ง จำกัด</p>
-            <p>
-              {lang === "th"
-                ? "229 หมู่ 3 ตำบลตะค่า อำเภอบางปลาม้า จังหวัดสุพรรณบุรี 72150"
-                : "229 Moo 3, Takha, Bang Pla Ma, Suphan Buri 72150, Thailand"}
-            </p>
+            {/* Head office is the affiliated parent, Success Network; the foundry
+                itself is Suphan Casting in Suphan Buri. Both owner-confirmed. */}
+            <p className="font-semibold">บริษัท ซัคเซสเน็ทเวิร์ค จำกัด</p>
+            <p>307/288 หมู่ที่ 11 ต.บางพลีใหญ่ อ.บางพลี จ.สมุทรปราการ 10540</p>
+            <div className="pt-1">
+              <p className="font-semibold">{lang === "th" ? "โรงงาน Suphan Casting" : "Suphan Casting factory"}</p>
+              <p>
+                {lang === "th"
+                  ? "229 หมู่ 3 ต.ตะค่า อ.บางปลาม้า จ.สุพรรณบุรี 72150"
+                  : "229 Moo 3, Takha, Bang Pla Ma, Suphan Buri 72150, Thailand"}
+              </p>
+            </div>
             <p>
               {lang === "th" ? "โทร" : "Phone"}:{" "}
               <a href={phoneHref} className="text-white hover:text-[#e23a40]">{phoneDisplay}</a>
