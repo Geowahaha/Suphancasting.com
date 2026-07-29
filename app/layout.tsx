@@ -37,20 +37,23 @@ const notoSansThai = Noto_Sans_Thai({
 export const metadata: Metadata = {
   title: siteConfig.defaultTitle,
   description: siteConfig.defaultDescription,
-  metadataBase: process.env.NEXT_PUBLIC_SITE_URL
-    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
-    : undefined,
+  metadataBase: new URL(process.env.NEXT_PUBLIC_CANONICAL_SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.successcasting.com"),
   alternates: { canonical: "/" },
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: siteConfig.defaultTitle,
     description: siteConfig.defaultDescription,
     type: "website",
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? undefined,
+    url: process.env.NEXT_PUBLIC_CANONICAL_SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.successcasting.com",
+    images: [{ url: siteConfig.defaultOgImage, width: 1200, height: 630, alt: "Success Casting industrial foundry" }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.defaultTitle,
     description: siteConfig.defaultDescription,
+    images: [siteConfig.defaultOgImage],
   },
 };
 

@@ -44,4 +44,12 @@ yarn-error.log*
 
 # clerk configuration (can include secrets)
 /.clerk/
-.env*.local
+
+# pre-existing local files moved aside during repo cleanup (may contain secrets)
+/_preexisting_backup/
+
+# local working assets (not part of the site)
+/_local/
+.agents/
+.cursor/
+.claude/

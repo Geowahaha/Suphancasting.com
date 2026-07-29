@@ -1,18 +1,15 @@
-export default function robots() {
-  const site = process.env.NEXT_PUBLIC_SITE_URL ?? "https://suphancasting.com";
-  void site;
+import type { MetadataRoute } from "next";
+
+export default function robots(): MetadataRoute.Robots {
+  const site = (process.env.NEXT_PUBLIC_CANONICAL_SITE_URL ?? "https://www.successcasting.com").replace(/\/+$/, "");
+
   return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-      },
-      {
-        userAgent: "*",
-        disallow: ["/dashboard"],
-      },
-    ],
-    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://suphancasting.com"}/sitemap.xml`,
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/admin", "/api", "/dashboard"],
+    },
+    sitemap: `${site}/sitemap.xml`,
   };
 }
 
