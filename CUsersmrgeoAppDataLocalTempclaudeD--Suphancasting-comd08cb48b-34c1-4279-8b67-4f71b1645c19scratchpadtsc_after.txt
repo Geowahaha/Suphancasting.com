@@ -1,0 +1,59 @@
+app/(marketing)/products/ProductsPageClient.tsx(245,45): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(type: "touchstart", listener: (this: Document, ev: TouchEvent) => any, options?: boolean | AddEventListenerOptions | undefined): void', gave the following error.
+    Argument of type '(event: MouseEvent | TouchEvent) => void' is not assignable to parameter of type '(this: Document, ev: TouchEvent) => any'.
+      Types of parameters 'event' and 'ev' are incompatible.
+        Type 'TouchEvent' is not assignable to type 'MouseEvent | TouchEvent<Element>'.
+          Type 'TouchEvent' is missing the following properties from type 'MouseEvent': button, buttons, clientX, clientY, and 15 more.
+  Overload 2 of 2, '(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void', gave the following error.
+    Argument of type '(event: MouseEvent | TouchEvent) => void' is not assignable to parameter of type 'EventListenerOrEventListenerObject'.
+      Type '(event: MouseEvent | TouchEvent) => void' is not assignable to type 'EventListener'.
+        Types of parameters 'event' and 'evt' are incompatible.
+          Type 'Event' is not assignable to type 'MouseEvent | TouchEvent<Element>'.
+            Type 'Event' is missing the following properties from type 'MouseEvent': altKey, button, buttons, clientX, and 23 more.
+app/(marketing)/products/ProductsPageClient.tsx(248,50): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(type: "touchstart", listener: (this: Document, ev: TouchEvent) => any, options?: boolean | EventListenerOptions | undefined): void', gave the following error.
+    Argument of type '(event: MouseEvent | TouchEvent) => void' is not assignable to parameter of type '(this: Document, ev: TouchEvent) => any'.
+      Types of parameters 'event' and 'ev' are incompatible.
+        Type 'TouchEvent' is not assignable to type 'MouseEvent | TouchEvent<Element>'.
+          Type 'TouchEvent' is missing the following properties from type 'MouseEvent': button, buttons, clientX, clientY, and 15 more.
+  Overload 2 of 2, '(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void', gave the following error.
+    Argument of type '(event: MouseEvent | TouchEvent) => void' is not assignable to parameter of type 'EventListenerOrEventListenerObject'.
+      Type '(event: MouseEvent | TouchEvent) => void' is not assignable to type 'EventListener'.
+        Types of parameters 'event' and 'evt' are incompatible.
+          Type 'Event' is not assignable to type 'MouseEvent | TouchEvent<Element>'.
+            Type 'Event' is missing the following properties from type 'MouseEvent': altKey, button, buttons, clientX, and 23 more.
+app/(marketing)/products/ProductsPageClient.tsx(517,36): error TS2345: Argument of type 'React.TouchList' is not assignable to parameter of type 'TouchList'.
+  Property '[Symbol.iterator]' is missing in type 'React.TouchList' but required in type 'TouchList'.
+app/(marketing)/products/ProductsPageClient.tsx(530,36): error TS2345: Argument of type 'React.TouchList' is not assignable to parameter of type 'TouchList'.
+  Property '[Symbol.iterator]' is missing in type 'React.TouchList' but required in type 'TouchList'.
+app/(marketing)/SuphancastingHome.tsx(281,45): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(type: "touchstart", listener: (this: Document, ev: TouchEvent) => any, options?: boolean | AddEventListenerOptions | undefined): void', gave the following error.
+    Argument of type '(event: MouseEvent | TouchEvent) => void' is not assignable to parameter of type '(this: Document, ev: TouchEvent) => any'.
+      Types of parameters 'event' and 'ev' are incompatible.
+        Type 'TouchEvent' is not assignable to type 'MouseEvent | TouchEvent<Element>'.
+          Type 'TouchEvent' is missing the following properties from type 'MouseEvent': button, buttons, clientX, clientY, and 15 more.
+  Overload 2 of 2, '(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void', gave the following error.
+    Argument of type '(event: MouseEvent | TouchEvent) => void' is not assignable to parameter of type 'EventListenerOrEventListenerObject'.
+      Type '(event: MouseEvent | TouchEvent) => void' is not assignable to type 'EventListener'.
+        Types of parameters 'event' and 'evt' are incompatible.
+          Type 'Event' is not assignable to type 'MouseEvent | TouchEvent<Element>'.
+            Type 'Event' is missing the following properties from type 'MouseEvent': altKey, button, buttons, clientX, and 23 more.
+app/(marketing)/SuphancastingHome.tsx(284,50): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(type: "touchstart", listener: (this: Document, ev: TouchEvent) => any, options?: boolean | EventListenerOptions | undefined): void', gave the following error.
+    Argument of type '(event: MouseEvent | TouchEvent) => void' is not assignable to parameter of type '(this: Document, ev: TouchEvent) => any'.
+      Types of parameters 'event' and 'ev' are incompatible.
+        Type 'TouchEvent' is not assignable to type 'MouseEvent | TouchEvent<Element>'.
+          Type 'TouchEvent' is missing the following properties from type 'MouseEvent': button, buttons, clientX, clientY, and 15 more.
+  Overload 2 of 2, '(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions | undefined): void', gave the following error.
+    Argument of type '(event: MouseEvent | TouchEvent) => void' is not assignable to parameter of type 'EventListenerOrEventListenerObject'.
+      Type '(event: MouseEvent | TouchEvent) => void' is not assignable to type 'EventListener'.
+        Types of parameters 'event' and 'evt' are incompatible.
+          Type 'Event' is not assignable to type 'MouseEvent | TouchEvent<Element>'.
+            Type 'Event' is missing the following properties from type 'MouseEvent': altKey, button, buttons, clientX, and 23 more.
+app/(marketing)/SuphancastingHome.tsx(389,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+app/(marketing)/SuphancastingHome.tsx(415,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+app/(marketing)/SuphancastingHome.tsx(781,36): error TS2345: Argument of type 'React.TouchList' is not assignable to parameter of type 'TouchList'.
+  Property '[Symbol.iterator]' is missing in type 'React.TouchList' but required in type 'TouchList'.
+app/(marketing)/SuphancastingHome.tsx(794,36): error TS2345: Argument of type 'React.TouchList' is not assignable to parameter of type 'TouchList'.
+  Property '[Symbol.iterator]' is missing in type 'React.TouchList' but required in type 'TouchList'.
+app/(marketing)/SuphancastingHome.tsx(1242,9): error TS2322: Type 'number' is not assignable to type 'Timeout'.

@@ -52,7 +52,10 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Suphancasting คือใคร และอยู่ที่ไหน?",
-    a: "ดำเนินงานโดย บริษัท สุพรรณ แคสติ้ง จำกัด (Suphan Casting Co., Ltd.) โรงหล่อเหล็กและงานหลอมโลหะประสบการณ์กว่า 20 ปี ที่อยู่ จังหวัดสุพรรณบุรี ประเทศไทย",
+    // The previous brand's "over 20 years of experience" claim was removed: it
+    // contradicts the confirmed founding year (พ.ศ. 2565). Dropped rather than
+    // replaced with a guessed figure — see _local/OWNER_FACTS_2026-07-29.md.
+    a: "ดำเนินงานโดย บริษัท สุพรรณ แคสติ้ง จำกัด (Suphan Casting Co., Ltd.) โรงหล่อเหล็กและงานหลอมโลหะ ก่อตั้งปี พ.ศ. 2565 ที่อยู่ 229 หมู่ 3 ตำบลตะค่า อำเภอบางปลาม้า จังหวัดสุพรรณบุรี 72150",
   },
 ];
 
@@ -135,7 +138,7 @@ export default function BlogFaqPage() {
 
       <footer className="border-t border-white/10 bg-[#1c1b1b] px-4 py-8 text-sm text-zinc-400 sm:px-6">
         <div className="mx-auto max-w-4xl">
-          <p>บริษัท สุพรรณ แคสติ้ง จำกัด — จังหวัดสุพรรณบุรี ประเทศไทย</p>
+          <p>บริษัท สุพรรณ แคสติ้ง จำกัด — 229 หมู่ 3 ตำบลตะค่า อำเภอบางปลาม้า จังหวัดสุพรรณบุรี 72150</p>
           <p className="mt-1">โทร 098-636-2356, 084-317-7788 · LINE @213bzijc · scnwmax@gmail.com</p>
           <p className="mt-3">© Suphancasting / Suphan Casting Co., Ltd.</p>
         </div>

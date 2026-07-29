@@ -292,7 +292,7 @@ export default async function MaterialPage({
 
       <footer className="mt-10 border-t border-white/10 bg-[#1c1b1b] px-4 py-8 text-sm text-zinc-400 sm:px-6">
         <div className="mx-auto max-w-5xl">
-          <p>บริษัท สุพรรณ แคสติ้ง จำกัด — จังหวัดสุพรรณบุรี ประเทศไทย</p>
+          <p>บริษัท สุพรรณ แคสติ้ง จำกัด — 229 หมู่ 3 ตำบลตะค่า อำเภอบางปลาม้า จังหวัดสุพรรณบุรี 72150</p>
           <p className="mt-1">โทร {PHONE_MAIN}, {PHONE_ALT} · LINE @213bzijc · scnwmax@gmail.com</p>
           <p className="mt-3">© Suphancasting / Suphan Casting Co., Ltd.</p>
         </div>

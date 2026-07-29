@@ -17,10 +17,17 @@ export function buildOrganizationJsonLd(): JsonLd {
     email: "scnwmax@gmail.com",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "229 หมู่ 3 ตำบลตะค่า",
+      addressLocality: "บางปลาม้า",
       addressRegion: "สุพรรณบุรี",
+      postalCode: "72150",
       addressCountry: "TH",
     },
-    sameAs: ["https://line.me/R/ti/p/@213bzijc"],
+    sameAs: [
+      "https://www.facebook.com/profile.php?id=61581617963584",
+      "https://www.tiktok.com/@suphan.casting",
+      "https://line.me/R/ti/p/@213bzijc",
+    ],
   };
 }
 

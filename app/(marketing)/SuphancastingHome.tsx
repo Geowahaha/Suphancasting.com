@@ -23,6 +23,10 @@ const phoneHref = "tel:0986362356";
 const phoneDisplayAlt = "084-317-7788";
 const phoneHrefAlt = "tel:0843177788";
 const lineUrl = "https://line.me/R/ti/p/@213bzijc";
+const facebookUrl = "https://www.facebook.com/profile.php?id=61581617963584";
+// Clean account URL — the owner's pasted link carried browser tracking query
+// params, which are not part of the account address.
+const tiktokUrl = "https://www.tiktok.com/@suphan.casting";
 const lineQrGreen = "/suphancasting-assets/line-official-qr-green.png";
 const pulleyLogo = "/suphancasting-assets/logo/suphan-logo-header.webp";
 // Google-generated embed for the real "Suphan casting Co.,ltd." place listing.
@@ -48,7 +52,7 @@ const copy = {
     portfolioBtn: "ดูผลงาน",
     welcomeTitle: "ยินดีต้อนรับ",
     welcome: [
-      "บริษัท สุพรรณ แคสติ้ง จำกัด ก่อตั้งขึ้นในปี พ.ศ. 2544 ดำเนินธุรกิจด้านโรงงานหลอมเหล็ก ด้วยประสบการณ์และความเชี่ยวชาญ",
+      "บริษัท สุพรรณ แคสติ้ง จำกัด ก่อตั้งขึ้นในปี พ.ศ. 2565 ดำเนินธุรกิจด้านโรงงานหลอมเหล็ก ด้วยประสบการณ์และความเชี่ยวชาญ",
       "เรามุ่งมั่นในการผลิตสินค้าที่มีคุณภาพ ได้มาตรฐาน และตอบสนองความต้องการของลูกค้าอย่างดีที่สุด เรารับผลิตชิ้นงาน เหล็กหล่อ เหล็กหล่อเหนียว เหล็กทนสึก ไปจนถึงเหล็กทนความร้อน",
       "เราให้ความสำคัญกับความสัมพันธ์ที่ดีกับลูกค้า เพื่อให้ผลิตภัณฑ์เป็นไปตามกำหนดเวลา และนำส่งตรงตามข้อตกลง",
     ],
@@ -87,7 +91,7 @@ const copy = {
     portfolioBtn: "View Portfolio",
     welcomeTitle: "Welcome!",
     welcome: [
-      "Suphan Casting Co., Ltd. was founded in 2001 and operates in iron melting and foundry production with long-standing experience and technical expertise.",
+      "Suphan Casting Co., Ltd. was founded in 2022 and operates in iron melting and foundry production with long-standing experience and technical expertise.",
       "We focus on producing quality parts to required standards and customer needs, including gray cast iron, ductile iron, wear-resistant steel and heat-resistant steel.",
       "We value strong customer relationships so products are completed on schedule and delivered according to agreed requirements.",
     ],
@@ -220,15 +224,21 @@ const materials: Array<{ code: string; name: TextPair; body: TextPair; img: stri
 
 const text = (pair: TextPair, lang: Lang) => pair[lang === "th" ? 0 : 1];
 
-// The previous brand's TikTok account was removed here and is intentionally
-// absent — add a Suphancasting handle when one exists.
 const socialLinks = [
+  { name: "Facebook", href: facebookUrl, icon: "facebook", className: "border-[#1877f2] bg-[#1877f2] text-white hover:bg-[#0f5fd0]" },
+  { name: "TikTok", href: tiktokUrl, icon: "tiktok", className: "border-zinc-700 bg-black text-white hover:bg-zinc-900" },
   { name: "LINE", href: lineUrl, icon: "line", className: "border-[#06c755] bg-[#06c755] text-white hover:bg-[#05a948]" },
   { name: "Message", href: "mailto:scnwmax@gmail.com", icon: "mail", className: "border-[#00b900] bg-[#00b900] text-white hover:bg-[#009f00]" },
   { name: "Call", href: phoneHref, icon: "phone", className: "border-[#c72127] bg-[#c72127] text-white hover:bg-[#a91920]" },
 ] as const;
 
 function SocialIcon({ icon }: { icon: (typeof socialLinks)[number]["icon"] }) {
+  if (icon === "facebook") {
+    return <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z" /></svg>;
+  }
+  if (icon === "tiktok") {
+    return <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 1 0 6.33 6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" /></svg>;
+  }
   if (icon === "line") {
     return <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true"><path fill="currentColor" d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" /></svg>;
   }
@@ -1153,7 +1163,11 @@ function ContactFooter({ lang }: { lang: Lang }) {
           <h3 className="border-b border-zinc-600 pb-3 text-2xl font-semibold text-[#e23a40]">{t.contactTitle}</h3>
           <div className="mt-5 space-y-2 leading-7">
             <p className="font-semibold">บริษัท สุพรรณ แคสติ้ง จำกัด</p>
-            <p>จังหวัดสุพรรณบุรี ประเทศไทย</p>
+            <p>
+              {lang === "th"
+                ? "229 หมู่ 3 ตำบลตะค่า อำเภอบางปลาม้า จังหวัดสุพรรณบุรี 72150"
+                : "229 Moo 3, Takha, Bang Pla Ma, Suphan Buri 72150, Thailand"}
+            </p>
             <p>{lang === "th" ? "โทร" : "Phone"}: <a href={phoneHref} className="text-white hover:text-[#e23a40]">{phoneDisplay}</a>, <a href={phoneHrefAlt} className="text-white hover:text-[#e23a40]">{phoneDisplayAlt}</a></p>
             <p>Email: <a href="mailto:scnwmax@gmail.com" className="text-white hover:text-[#e23a40]">scnwmax@gmail.com</a></p>
             <p>LINE: <a href={lineUrl} target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#e23a40]">@213bzijc</a></p>
