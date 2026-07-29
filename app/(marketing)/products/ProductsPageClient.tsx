@@ -217,13 +217,12 @@ function LanguageIcon() {
   );
 }
 
+// The header stays pinned and fully opaque at all times — it deliberately has no
+// hide-on-scroll or fade behaviour.
 function ProductHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) => void }) {
   const t = copy[lang];
   const [open, setOpen] = useState(false);
-  const [headerVisible, setHeaderVisible] = useState(true);
   const menuRef = useRef<HTMLDivElement | null>(null);
-  const lastScrollY = useRef(0);
-  const scrollIdleTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
   const links = ["/", "#products", "#gallery", "#videos", "/#materials", "#contact"];
 
   useEffect(() => {
@@ -239,43 +238,13 @@ function ProductHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) =>
     };
   }, [open]);
 
-  useEffect(() => {
-    lastScrollY.current = window.scrollY;
-
-    const showAfterScrollStops = () => {
-      if (scrollIdleTimer.current) window.clearTimeout(scrollIdleTimer.current);
-      scrollIdleTimer.current = window.setTimeout(() => setHeaderVisible(true), 300);
-    };
-
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-      const scrollingDown = currentY > lastScrollY.current + 6;
-      const scrollingUp = currentY < lastScrollY.current - 6;
-
-      if (currentY < 24 || scrollingUp || open) {
-        setHeaderVisible(true);
-      } else if (scrollingDown) {
-        setHeaderVisible(false);
-      }
-
-      lastScrollY.current = currentY;
-      showAfterScrollStops();
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollIdleTimer.current) window.clearTimeout(scrollIdleTimer.current);
-    };
-  }, [open]);
-
   const switchLang = () => {
     setLang(lang === "th" ? "en" : "th");
     setOpen(false);
   };
 
   return (
-    <header className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-4 py-4 text-white transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)] ${headerVisible || open ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0"}`}>
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 py-4 text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
         <Link href="/" className="pointer-events-auto flex items-center gap-3 rounded-2xl border border-white/10 bg-black/35 px-3 py-2 shadow-2xl backdrop-blur-md transition hover:bg-black/55">
           <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-transparent p-0 shadow-[0_0_0_1px_rgba(255,255,255,0.72),0_0_10px_rgba(255,255,255,0.28),0_0_18px_rgba(249,115,22,0.22)] sm:h-14 sm:w-14">
