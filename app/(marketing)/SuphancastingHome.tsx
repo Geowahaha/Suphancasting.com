@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ChangeEvent, FormEvent, TouchEvent } from "react";
 import { useEffect, useRef, useState } from "react";
+import { ThemeToggle, useIsDark } from "@/components/site/ThemeToggle";
 
 type Lang = "th" | "en";
 
@@ -114,9 +115,23 @@ const copy = {
   },
 } as const;
 
-const heroImages = [
+// Hero imagery is chosen per theme. Light mode uses the genuinely bright,
+// watermark-free shots of real Suphancasting work (mean luminance 135-139) so the
+// hero reads bright rather than murky; dark mode keeps the dramatic pour shots,
+// which only work against a dark scrim. Measured, not guessed — the previous
+// light-mode set sat at 35-72 and looked dim under any scrim.
+// Only these two are both bright AND free of the burnt-in Thai product labels
+// that the other shop photos carry ("ดุมเหล็กหล่อ", "ปั้มตามแบบลูกค้า", "QDC") —
+// a caption baked into a hero photo collides with the headline. Every gpt-hero
+// image measured 35-79 luminance, i.e. too dark for a light hero.
+const heroImagesLight = [
+  "/suphancasting-assets/casting-work.webp",
+  "/suphancasting-assets/sand-casting.webp",
+];
+
+const heroImagesDark = [
+  "/suphancasting-assets/factory2.webp",
   "/suphancasting-assets/gpt-hero/molten-pour-1.webp",
-  "/suphancasting-assets/gpt-hero/suphan-fcd-wide.webp",
   "/suphancasting-assets/gpt-hero/molten-pour-2.webp",
 ];
 
@@ -234,7 +249,7 @@ function LanguageIcon() {
 function LineQrImage({ size = "hero" }: { size?: "hero" | "footer" }) {
   const dimensions = size === "footer" ? "h-28 w-28 sm:h-32 sm:w-32" : "h-[55px] w-[55px] sm:h-[63px] sm:w-[63px]";
   return (
-    <span className={`grid shrink-0 place-items-center overflow-hidden bg-white p-[3px] shadow-sm ring-1 ring-white/90 ${dimensions}`}>
+    <span className={`grid shrink-0 place-items-center overflow-hidden bg-white dark:bg-zinc-900 p-[3px] shadow-sm ring-1 ring-white/90 ${dimensions}`}>
       <img src={lineQrGreen} alt="LINE QR code for Suphancasting" className="h-full w-full scale-[1.08] object-cover" decoding="async" loading="lazy" />
     </span>
   );
@@ -242,6 +257,7 @@ function LineQrImage({ size = "hero" }: { size?: "hero" | "footer" }) {
 
 function SiteHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) => void }) {
   const t = copy[lang];
+  const isDark = useIsDark();
   const links = ["/", "#portfolio", "/products", "#contact"];
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -267,7 +283,17 @@ function SiteHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) => vo
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 py-4 text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
-        <Link href="/" className="pointer-events-auto flex items-center gap-3 rounded-2xl border border-white/10 bg-black/35 px-3 py-2 shadow-2xl backdrop-blur-md transition hover:bg-black/55">
+        {/* The header is fixed over both the hero photo and the white sections below,
+            so in light mode the pill must be light — white-on-black/35 over a white
+            section measures only 2.43:1. */}
+        {/* Background is set inline from the theme hook. The `bg-x dark:bg-y`
+            utility pair and a `.dark .class` rule both failed to switch on this
+            element — even with !important — so the value is applied directly. */}
+        <Link
+          href="/"
+          style={{ backgroundColor: isDark ? "rgba(0,0,0,0.35)" : "rgba(255,255,255,0.75)" }}
+          className="pointer-events-auto flex items-center gap-3 rounded-2xl border border-zinc-900/10 px-3 py-2 text-zinc-900 shadow-2xl backdrop-blur-md transition dark:border-white/10 dark:text-white"
+        >
           <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-transparent p-0 shadow-[0_0_0_1px_rgba(255,255,255,0.72),0_0_10px_rgba(255,255,255,0.28),0_0_18px_rgba(249,115,22,0.22)] sm:h-14 sm:w-14">
             <Image src={pulleyLogo} alt="Suphancasting logo" width={56} height={56} priority fetchPriority="high" decoding="sync" unoptimized className="h-full w-full scale-[1.22] object-cover [filter:drop-shadow(0_0_1px_rgba(255,255,255,0.92))_drop-shadow(0_0_4px_rgba(249,115,22,0.42))]" />
           </span>
@@ -277,10 +303,14 @@ function SiteHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) => vo
         </Link>
 
         <div className="pointer-events-auto flex items-center gap-2">
+          <ThemeToggle
+            lang={lang}
+            className="grid h-12 w-12 place-items-center rounded-2xl border border-zinc-900/15 bg-white/70 text-zinc-900 shadow-2xl backdrop-blur-md transition hover:bg-white dark:border-white/15 dark:bg-black/45 dark:text-white dark:hover:bg-white dark:hover:text-zinc-950"
+          />
           <button
             type="button"
             onClick={switchLang}
-            className="flex h-12 items-center gap-2 rounded-2xl border border-white/15 bg-black/45 px-3 text-sm font-black uppercase tracking-[0.14em] text-white shadow-2xl backdrop-blur-md transition hover:bg-white hover:text-zinc-950"
+            className="flex h-12 items-center gap-2 rounded-2xl border border-zinc-900/15 bg-white/70 px-3 text-sm font-black uppercase tracking-[0.14em] text-zinc-900 shadow-2xl backdrop-blur-md transition hover:bg-white dark:border-white/15 dark:bg-black/45 dark:text-white dark:hover:bg-white dark:hover:text-zinc-950"
             aria-label={lang === "th" ? "Switch to English" : "เปลี่ยนเป็นภาษาไทย"}
           >
             <LanguageIcon />
@@ -327,6 +357,8 @@ function SiteHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) => vo
 }
 
 function Hero({ lang }: { lang: Lang }) {
+  const isDark = useIsDark();
+  const heroImages = isDark ? heroImagesDark : heroImagesLight;
   const [active, setActive] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [contentHidden, setContentHidden] = useState(false);
@@ -335,6 +367,11 @@ function Hero({ lang }: { lang: Lang }) {
   const resumeTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
   const swipeHintTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
   const slide = copy[lang].hero[active];
+
+  // The two sets differ in length, so a stale index would blank the hero.
+  useEffect(() => {
+    setActive((value) => (value < heroImages.length ? value : 0));
+  }, [heroImages.length]);
 
   const flashSwipeHint = () => {
     setShowSwipeHint(true);
@@ -383,9 +420,11 @@ function Hero({ lang }: { lang: Lang }) {
     scheduleAutoResume();
   };
 
+  // The hero background is only visible while the photo loads, so it must match
+  // the theme — a dark fallback in light mode flashes dark behind dark headline text.
   return (
     <section
-      className="relative min-h-[470px] touch-pan-y overflow-hidden bg-[#1f1f1f] text-white sm:min-h-[520px] md:min-h-[58vh] md:max-h-[620px]"
+      className="relative min-h-[470px] touch-pan-y overflow-hidden bg-zinc-200 text-zinc-900 sm:min-h-[520px] md:min-h-[58vh] md:max-h-[620px] dark:bg-[#1f1f1f] dark:text-white"
       aria-label="Suphancasting foundry image slideshow"
       onPointerDown={(event) => {
         if ((event.target as Element).closest("a,button")) return;
@@ -426,7 +465,7 @@ function Hero({ lang }: { lang: Lang }) {
           key={src}
           src={src}
           alt={`Suphancasting industrial background ${index + 1}`}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-out ${active === index ? "opacity-100" : "opacity-0"}`}
+          className={`hero-photo absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-out ${active === index ? "opacity-100" : "opacity-0"}`}
           fill
           sizes="100vw"
           priority={index === 0}
@@ -437,8 +476,8 @@ function Hero({ lang }: { lang: Lang }) {
           draggable={false}
         />
       ))}
-      <div className={`absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.38)_48%,rgba(0,0,0,.14))] transition-opacity delay-75 duration-700 ease-out ${contentHidden ? "opacity-10" : "opacity-100"}`} />
-      <div className={`absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/70 to-transparent transition-opacity delay-75 duration-700 ease-out ${contentHidden ? "opacity-10" : "opacity-100"}`} />
+      <div className={`hero-scrim absolute inset-0 transition-opacity delay-75 duration-700 ease-out ${contentHidden ? "opacity-10" : "opacity-100"}`} />
+      <div className={`hero-scrim-bottom absolute inset-x-0 bottom-0 h-28 transition-opacity delay-75 duration-700 ease-out ${contentHidden ? "opacity-10" : "opacity-100"}`} />
       <button
         type="button"
         aria-label={lang === "th" ? "เลื่อนไปภาพถัดไป" : "Show next hero image"}
@@ -448,7 +487,7 @@ function Hero({ lang }: { lang: Lang }) {
         {[0, 1, 2].map((item) => (
           <span
             key={item}
-            className="block h-7 w-5 bg-white/75 shadow-[0_0_14px_rgba(255,255,255,0.45)] sm:h-10 sm:w-7"
+            className="block h-7 w-5 bg-zinc-900/70 shadow-[0_0_14px_rgba(0,0,0,0.25)] sm:h-10 sm:w-7 dark:bg-white/75 dark:shadow-[0_0_14px_rgba(255,255,255,0.45)]"
             style={{
               animation: `heroSwipeHint 1.45s ${item * 0.16}s ease-in-out infinite`,
               clipPath: "polygon(0 0, 42% 0, 100% 50%, 42% 100%, 0 100%, 58% 50%)",
@@ -472,8 +511,8 @@ function Hero({ lang }: { lang: Lang }) {
       <button type="button" aria-label="Next background product" onClick={() => go(1)} className="absolute right-2 top-1/2 z-30 grid h-10 w-10 -translate-y-1/2 place-items-center bg-black/55 text-3xl text-white ring-1 ring-white/25 transition hover:bg-[#c72127] sm:right-4 sm:h-11 sm:w-11">›</button>
       <div className="relative z-10 mx-auto flex min-h-[470px] max-w-6xl items-start justify-center px-4 pb-16 pt-40 text-center sm:min-h-[520px] sm:pt-36 md:min-h-[58vh] md:max-h-[620px] md:pt-32">
         <div className={`mx-auto w-full max-w-6xl transition-all delay-100 duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${contentHidden ? "pointer-events-none translate-y-5 opacity-0" : "translate-y-0 opacity-100"}`}>
-          <h1 className="mx-auto max-w-4xl whitespace-pre-line text-3xl font-light leading-tight tracking-[-0.03em] text-white sm:text-5xl md:text-6xl lg:text-[4.35rem]">{slide[1]}</h1>
-          {slide[2] && <p className="mx-auto mt-5 max-w-[78vw] whitespace-pre-line text-base leading-7 text-zinc-100 sm:max-w-3xl sm:text-2xl sm:leading-10">{slide[2]}</p>}
+          <h1 className="hero-ink mx-auto max-w-4xl whitespace-pre-line text-3xl font-light leading-tight tracking-[-0.03em] sm:text-5xl md:text-6xl lg:text-[4.35rem]">{slide[1]}</h1>
+          {slide[2] && <p className="hero-ink-soft mx-auto mt-5 max-w-[78vw] whitespace-pre-line text-base leading-7 sm:max-w-3xl sm:text-2xl sm:leading-10">{slide[2]}</p>}
         </div>
       </div>
       <a
@@ -491,7 +530,7 @@ function Hero({ lang }: { lang: Lang }) {
       </div>
       <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2">
         {heroImages.map((_, index) => (
-          <button key={index} type="button" aria-label={`Show slide ${index + 1}`} onClick={() => { setContentHidden(false); setActive(index); scheduleAutoResume(); }} className={`h-2.5 transition-all ${active === index ? "w-9 bg-[#c72127]" : "w-3 bg-white/65 hover:bg-white"}`} />
+          <button key={index} type="button" aria-label={`Show slide ${index + 1}`} onClick={() => { setContentHidden(false); setActive(index); scheduleAutoResume(); }} className={`h-2.5 transition-all ${active === index ? "w-9 bg-[#c72127]" : "w-3 bg-zinc-900/45 hover:bg-zinc-900/70 dark:bg-white/65 dark:hover:bg-white"}`} />
         ))}
       </div>
     </section>
@@ -535,10 +574,10 @@ function MaterialHighlight({ children }: { children: string }) {
 function Welcome({ lang }: { lang: Lang }) {
   const t = copy[lang];
   return (
-    <section id="welcome" className="bg-white px-4 py-16 text-zinc-700 sm:px-6 lg:px-8">
+    <section id="welcome" className="bg-white dark:bg-zinc-900 px-4 py-16 text-zinc-700 dark:text-zinc-300 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-5xl">
         <div>
-          <h2 className="border-b border-zinc-200 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.welcomeTitle}</h2>
+          <h2 className="border-b border-zinc-200 dark:border-zinc-700 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.welcomeTitle}</h2>
           <div className="mt-6 space-y-5 text-base leading-8 sm:text-lg sm:leading-9">
             {t.welcome.map((p) => (
               <p key={p}>{p}</p>
@@ -562,6 +601,7 @@ function PortfolioImageCarousel({
   openViewer: (itemIndex: number, imageIndex?: number) => void;
 }) {
   const [activeImage, setActiveImage] = useState(0);
+  const isDark = useIsDark();
   const swipeStartRef = useRef<{ x: number; y: number } | null>(null);
   const lastSwipeAtRef = useRef(0);
   const hasMultiple = item.images.length > 1;
@@ -573,7 +613,8 @@ function PortfolioImageCarousel({
 
   return (
     <div
-      className="group/slide relative overflow-hidden bg-white shadow-[0_18px_45px_rgba(0,0,0,0.10)] ring-1 ring-zinc-200 transition duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(0,0,0,0.18)]"
+      style={{ backgroundColor: isDark ? "#18181b" : "#ffffff" }}
+      className="group/slide relative overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,0.10)] ring-1 ring-zinc-200 dark:ring-zinc-700 transition duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(0,0,0,0.18)]"
       onPointerDown={(event) => {
         if (!hasMultiple) return;
         event.currentTarget.setPointerCapture?.(event.pointerId);
@@ -605,14 +646,14 @@ function PortfolioImageCarousel({
           event.preventDefault();
           openViewer(itemIndex, activeImage);
         }}
-        className="relative block w-full overflow-hidden bg-white text-left"
+        className="relative block w-full overflow-hidden bg-white dark:bg-zinc-900 text-left"
         title={lang === "th" ? "ดับเบิลคลิกเพื่อดูรูปใหญ่" : "Double-click to view large image"}
         aria-label={`${lang === "th" ? "เปิดรูปผลงาน" : "Open portfolio image"} ${item.grade}`}
       >
         <span className="absolute left-4 top-4 z-10 rounded-full border border-[#d99d2d]/65 bg-[#fff7de] px-3 py-1 font-mono text-sm font-black text-zinc-950 shadow-sm">
           {item.grade}
         </span>
-        <span className="grid aspect-[4/3] place-items-center bg-white">
+        <span className="grid aspect-[4/3] place-items-center bg-white dark:bg-zinc-900">
           <img
             src={item.images[activeImage]}
             alt={`${item.grade} ${text(item.title, lang)} casting ${activeImage + 1}`}
@@ -637,7 +678,7 @@ function PortfolioImageCarousel({
             className="absolute inset-y-0 left-0 z-30 flex w-[34%] items-center justify-start px-3 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#c72127]"
             aria-label={lang === "th" ? "ดูรูปก่อนหน้า" : "Previous image"}
           >
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-black/35 text-3xl shadow-lg shadow-black/25 backdrop-blur-sm transition hover:bg-[#c72127]/90 sm:opacity-0 sm:group-hover/slide:opacity-100">
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-black/55 text-3xl shadow-lg shadow-black/25 backdrop-blur-sm transition hover:bg-[#c72127]/90 sm:opacity-0 sm:group-hover/slide:opacity-100">
               ‹
             </span>
           </button>
@@ -652,7 +693,7 @@ function PortfolioImageCarousel({
             className="absolute inset-y-0 right-0 z-30 flex w-[34%] items-center justify-end px-3 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#c72127]"
             aria-label={lang === "th" ? "ดูรูปถัดไป" : "Next image"}
           >
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-black/35 text-3xl shadow-lg shadow-black/25 backdrop-blur-sm transition hover:bg-[#c72127]/90 sm:opacity-0 sm:group-hover/slide:opacity-100">
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-black/55 text-3xl shadow-lg shadow-black/25 backdrop-blur-sm transition hover:bg-[#c72127]/90 sm:opacity-0 sm:group-hover/slide:opacity-100">
               ›
             </span>
           </button>
@@ -769,19 +810,21 @@ function Portfolio({ lang }: { lang: Lang }) {
   }, [viewer]);
 
   return (
-    <section id="portfolio" className="bg-white px-4 pb-16 text-zinc-800 sm:px-6 lg:px-8">
+    <section id="portfolio" className="bg-white dark:bg-zinc-900 px-4 pb-16 text-zinc-800 dark:text-zinc-200 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <h2 className="border-b border-zinc-200 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.portfolioTitle}</h2>
+        <h2 className="border-b border-zinc-200 dark:border-zinc-700 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.portfolioTitle}</h2>
         <div className="mt-10 grid items-start gap-x-12 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           {portfolio.map((item, itemIndex) => (
-            <article key={item.grade} className="group bg-white">
+            <article key={item.grade} className="group bg-white dark:bg-zinc-900">
               <PortfolioImageCarousel item={item} itemIndex={itemIndex} lang={lang} openViewer={openViewer} />
               <div className="pt-5">
-                <h3 className="text-2xl font-semibold text-zinc-800">{text(item.title, lang)}</h3>
-                <p className="mt-2 line-clamp-2 text-sm leading-7 text-zinc-600">{text(item.body, lang)}</p>
+                <h3 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">{text(item.title, lang)}</h3>
+                <p className="mt-2 line-clamp-2 text-sm leading-7 text-zinc-600 dark:text-zinc-400">{text(item.body, lang)}</p>
+                {/* dark:text-red-400 — brand red is only 3.10:1 on the dark card
+                    (below AA); red-400 keeps the brand feel at 6.40:1. */}
                 <Link
                   href={`/products/${item.slug}`}
-                  className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-[#c72127] hover:underline"
+                  className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-[#c72127] hover:underline dark:text-red-400"
                 >
                   {lang === "th" ? "อ่านต่อ" : "Learn more"} →
                 </Link>
@@ -820,7 +863,7 @@ function Portfolio({ lang }: { lang: Lang }) {
           </div>
           <figure className="flex min-h-0 flex-1 flex-col items-center justify-center" onClick={(event) => event.stopPropagation()}>
             <div
-              className={`relative grid aspect-square w-full max-w-[min(94vw,68dvh)] select-none place-items-center overflow-hidden rounded-sm bg-white ring-1 ring-white/10 sm:max-w-[min(88vw,74dvh)] lg:max-w-[min(72vw,76dvh)] ${viewerZoom > 1 ? "cursor-grab touch-none active:cursor-grabbing" : "cursor-zoom-in touch-pan-y"}`}
+              className={`relative grid aspect-square w-full max-w-[min(94vw,68dvh)] select-none place-items-center overflow-hidden rounded-sm bg-white dark:bg-zinc-900 ring-1 ring-white/10 sm:max-w-[min(88vw,74dvh)] lg:max-w-[min(72vw,76dvh)] ${viewerZoom > 1 ? "cursor-grab touch-none active:cursor-grabbing" : "cursor-zoom-in touch-pan-y"}`}
               onClick={toggleViewerZoom}
               onDoubleClick={(event) => {
                 event.preventDefault();
@@ -887,14 +930,14 @@ function Portfolio({ lang }: { lang: Lang }) {
                 draggable={false}
               />
               <div
-                className="absolute right-2 top-2 z-20 flex overflow-hidden rounded-full border border-black/10 bg-white/90 text-sm font-bold text-zinc-950 shadow-lg backdrop-blur-sm"
+                className="absolute right-2 top-2 z-20 flex overflow-hidden rounded-full border border-black/10 bg-white/90 dark:bg-zinc-900/90 text-sm font-bold text-zinc-950 dark:text-zinc-50 shadow-lg backdrop-blur-sm"
                 onPointerDown={(event) => event.stopPropagation()}
                 onPointerUp={(event) => event.stopPropagation()}
                 onClick={(event) => event.stopPropagation()}
               >
-                <button type="button" className="grid h-10 w-10 place-items-center hover:bg-zinc-100" onClick={() => setViewerZoom(viewerZoom - 0.45)} aria-label={lang === "th" ? "ซูมออก" : "Zoom out"}>−</button>
-                <button type="button" className="min-w-14 px-3 hover:bg-zinc-100" onClick={toggleViewerZoom} aria-label={lang === "th" ? "สลับซูม" : "Toggle zoom"}>{Math.round(viewerZoom * 100)}%</button>
-                <button type="button" className="grid h-10 w-10 place-items-center hover:bg-zinc-100" onClick={() => setViewerZoom(viewerZoom + 0.45)} aria-label={lang === "th" ? "ซูมเข้า" : "Zoom in"}>+</button>
+                <button type="button" className="grid h-10 w-10 place-items-center hover:bg-zinc-100 dark:hover:bg-zinc-800" onClick={() => setViewerZoom(viewerZoom - 0.45)} aria-label={lang === "th" ? "ซูมออก" : "Zoom out"}>−</button>
+                <button type="button" className="min-w-14 px-3 hover:bg-zinc-100 dark:hover:bg-zinc-800" onClick={toggleViewerZoom} aria-label={lang === "th" ? "สลับซูม" : "Toggle zoom"}>{Math.round(viewerZoom * 100)}%</button>
+                <button type="button" className="grid h-10 w-10 place-items-center hover:bg-zinc-100 dark:hover:bg-zinc-800" onClick={() => setViewerZoom(viewerZoom + 0.45)} aria-label={lang === "th" ? "ซูมเข้า" : "Zoom in"}>+</button>
               </div>
               {viewerItem.images.length > 1 && viewerZoom === 1 && (
                 <>
@@ -912,7 +955,7 @@ function Portfolio({ lang }: { lang: Lang }) {
                       key={src}
                       type="button"
                       onClick={() => setViewer({ itemIndex: viewer.itemIndex, imageIndex: index })}
-                      className={`h-12 w-16 shrink-0 overflow-hidden bg-white ring-2 transition ${viewer.imageIndex === index ? "ring-[#c72127]" : "ring-white/20 hover:ring-white/60"}`}
+                      className={`h-12 w-16 shrink-0 overflow-hidden bg-white dark:bg-zinc-900 ring-2 transition ${viewer.imageIndex === index ? "ring-[#c72127]" : "ring-white/20 hover:ring-white/60"}`}
                       aria-label={`${lang === "th" ? "เลือกรูป" : "Select image"} ${index + 1}`}
                     >
                       <img src={src} alt="" className="h-full w-full object-cover" decoding="async" loading="lazy" />
@@ -933,12 +976,12 @@ function Capabilities({ lang }: { lang: Lang }) {
   return (
     <section id="capabilities" className="bg-[#f1f1f1] px-4 py-14 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-8 border-b border-zinc-300 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.capabilities}</h2>
+        <h2 className="mb-8 border-b border-zinc-300 dark:border-zinc-700 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.capabilities}</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {t.capabilityCards.map(([title, body], index) => (
-            <div key={title} className="border-t-4 border-[#c72127] bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-semibold text-zinc-900">{title}</h3>
-              <p className="mt-3 leading-7 text-zinc-600">{index === 2 ? <MaterialHighlight>{body}</MaterialHighlight> : body}</p>
+            <div key={title} className="border-t-4 border-[#c72127] bg-white dark:bg-zinc-900 p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">{title}</h3>
+              <p className="mt-3 leading-7 text-zinc-600 dark:text-zinc-400">{index === 2 ? <MaterialHighlight>{body}</MaterialHighlight> : body}</p>
             </div>
           ))}
         </div>
@@ -952,25 +995,25 @@ function Materials({ lang }: { lang: Lang }) {
   const current = materials[active];
   const t = copy[lang];
   return (
-    <section id="materials" className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+    <section id="materials" className="bg-white dark:bg-zinc-900 px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
         <div>
-          <h2 className="border-b border-zinc-200 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.materialsTitle}</h2>
-          <p className="mt-5 leading-8 text-zinc-600"><MaterialHighlight>{t.materialsLead}</MaterialHighlight></p>
+          <h2 className="border-b border-zinc-200 dark:border-zinc-700 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.materialsTitle}</h2>
+          <p className="mt-5 leading-8 text-zinc-600 dark:text-zinc-400"><MaterialHighlight>{t.materialsLead}</MaterialHighlight></p>
           <div className="mt-6 flex flex-wrap gap-2">
             {materials.map((item, index) => (
               <button key={item.code} type="button" onClick={() => setActive(index)} className={`border px-4 py-2 text-sm font-bold ${active === index ? "border-[#c72127] bg-[#c72127] text-white" : "border-[#d99d2d]/50 bg-[#fff2c7] text-zinc-950 hover:border-[#c72127]"}`}>{item.code}</button>
             ))}
           </div>
         </div>
-        <div className="grid gap-0 overflow-hidden border border-zinc-200 bg-white shadow-lg md:grid-cols-[.95fr_1.05fr]">
-          <div className="aspect-[4/3] min-h-[260px] bg-zinc-100 md:aspect-auto">
+        <div className="grid gap-0 overflow-hidden border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-lg md:grid-cols-[.95fr_1.05fr]">
+          <div className="aspect-[4/3] min-h-[260px] bg-zinc-100 dark:bg-zinc-800 md:aspect-auto">
             <img src={current.img} alt={`${current.code} ${text(current.name, lang)} casting`} className="h-full w-full object-cover" decoding="async" />
           </div>
           <div className="p-8">
             <div className="inline-block bg-[#c72127] px-4 py-2 text-2xl font-bold text-white">{current.code}</div>
-            <h3 className="mt-5 text-3xl font-semibold text-zinc-950">{text(current.name, lang)}</h3>
-            <p className="mt-4 leading-8 text-zinc-600">{text(current.body, lang)}</p>
+            <h3 className="mt-5 text-3xl font-semibold text-zinc-950 dark:text-zinc-50">{text(current.name, lang)}</h3>
+            <p className="mt-4 leading-8 text-zinc-600 dark:text-zinc-400">{text(current.body, lang)}</p>
           </div>
         </div>
       </div>
@@ -1037,15 +1080,15 @@ function AiRfqAssist({ lang }: { lang: Lang }) {
           </div>
         </div>
 
-        <div className="bg-white p-5 text-zinc-950 shadow-2xl shadow-black/30 sm:p-6">
+        <div className="bg-white dark:bg-zinc-900 p-5 text-zinc-950 dark:text-zinc-50 shadow-2xl shadow-black/30 sm:p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="material" className="text-sm font-bold text-zinc-700">Material</label>
+              <label htmlFor="material" className="text-sm font-bold text-zinc-700 dark:text-zinc-300">Material</label>
               <select
                 id="material"
                 value={material}
                 onChange={(event) => setMaterial(event.target.value)}
-                className="mt-2 w-full border border-zinc-300 bg-zinc-50 px-4 py-3 font-semibold outline-none focus:border-[#c72127]"
+                className="mt-2 w-full border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 px-4 py-3 font-semibold outline-none focus:border-[#c72127]"
               >
                 {materials.map((item) => (
                   <option key={item.code} value={item.code}>{item.code} · {text(item.name, lang)}</option>
@@ -1053,7 +1096,7 @@ function AiRfqAssist({ lang }: { lang: Lang }) {
               </select>
             </div>
             <div>
-              <label htmlFor="rfq-specs" className="text-sm font-bold text-zinc-700">RFQ details</label>
+              <label htmlFor="rfq-specs" className="text-sm font-bold text-zinc-700 dark:text-zinc-300">RFQ details</label>
               <textarea
                 id="rfq-specs"
                 value={specs}
@@ -1062,14 +1105,14 @@ function AiRfqAssist({ lang }: { lang: Lang }) {
                 rows={7}
                 placeholder={t.aiPlaceholder}
                 required
-                className="mt-2 w-full resize-y border border-zinc-300 bg-zinc-50 px-4 py-3 leading-7 outline-none focus:border-[#c72127]"
+                className="mt-2 w-full resize-y border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 px-4 py-3 leading-7 outline-none focus:border-[#c72127]"
               />
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <button type="submit" disabled={loading || specs.trim().length < 10} className="bg-[#c72127] px-6 py-3 font-semibold text-white hover:bg-zinc-900 disabled:cursor-not-allowed disabled:opacity-50">
                 {loading ? "Checking..." : t.aiButton}
               </button>
-              <a href={`${lineUrl}?text=${lineMessage}`} target="_blank" rel="noopener noreferrer" className="border border-zinc-300 px-6 py-3 text-center font-semibold hover:border-[#c72127] hover:text-[#c72127]">LINE @213bzijc</a>
+              <a href={`${lineUrl}?text=${lineMessage}`} target="_blank" rel="noopener noreferrer" className="border border-zinc-300 dark:border-zinc-700 px-6 py-3 text-center font-semibold hover:border-[#c72127] hover:text-[#c72127]">LINE @213bzijc</a>
             </div>
           </form>
 
@@ -1370,7 +1413,7 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
   }
 
   return (
-    <div ref={widgetRef} className="fixed bottom-4 right-3 z-50 font-sans text-zinc-950 sm:bottom-5 sm:right-5">
+    <div ref={widgetRef} className="fixed bottom-4 right-3 z-50 font-sans text-zinc-950 dark:text-zinc-50 sm:bottom-5 sm:right-5">
       {!open && (
         <button
           type="button"
@@ -1385,30 +1428,30 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
       )}
 
       {open && (
-        <section className="flex h-[min(600px,calc(100dvh-118px))] w-[min(390px,calc(100vw-24px))] flex-col overflow-hidden rounded-[28px] border border-[#d6aa55]/25 bg-white shadow-[0_26px_70px_rgba(0,0,0,0.38)]">
-          <header className="flex min-h-14 items-center justify-between border-b border-zinc-100 px-4">
+        <section className="flex h-[min(600px,calc(100dvh-118px))] w-[min(390px,calc(100vw-24px))] flex-col overflow-hidden rounded-[28px] border border-[#d6aa55]/25 bg-white dark:bg-zinc-900 shadow-[0_26px_70px_rgba(0,0,0,0.38)]">
+          <header className="flex min-h-14 items-center justify-between border-b border-zinc-100 dark:border-zinc-800 px-4">
             <div className="flex items-center gap-3">
               <span className="h-8 w-8 rounded-full bg-[radial-gradient(circle_at_30%_25%,#ffd7a6,#f6821f_58%,#d95f00)]" />
               <span>
                 <span className="block text-sm font-black">Suphancasting AI</span>
               </span>
             </div>
-            <button type="button" onClick={() => setOpen(false)} className="grid h-9 w-9 place-items-center rounded-full bg-zinc-100 text-xl font-light hover:bg-zinc-200" aria-label="Close chat">×</button>
+            <button type="button" onClick={() => setOpen(false)} className="grid h-9 w-9 place-items-center rounded-full bg-zinc-100 dark:bg-zinc-800 text-xl font-light hover:bg-zinc-200 dark:hover:bg-zinc-700" aria-label="Close chat">×</button>
           </header>
 
           <div ref={logRef} className="flex-1 space-y-3 overflow-y-auto bg-[radial-gradient(#dddddd_0.8px,transparent_0.8px)] bg-[length:18px_18px] p-4">
             <div className="grid gap-2">
               {suggestions.map((item) => (
-                <button key={item} type="button" onClick={() => sendChat(item)} className="rounded-2xl border border-zinc-200 bg-white/90 px-3 py-2 text-left text-xs font-bold text-zinc-700 shadow-sm hover:border-[#f6821f]">
+                <button key={item} type="button" onClick={() => sendChat(item)} className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white/90 dark:bg-zinc-900/90 px-3 py-2 text-left text-xs font-bold text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-[#f6821f]">
                   {item}
                 </button>
               ))}
             </div>
             {messages.map((message, index) => (
-              <div key={index} className={`max-w-[88%] rounded-2xl px-3 py-2 text-sm leading-6 shadow-sm ${message.role === "user" ? "ml-auto bg-zinc-950 text-white" : message.role === "system" ? "bg-orange-50 text-orange-900 ring-1 ring-orange-200" : "bg-white text-zinc-800 ring-1 ring-zinc-200"}`}>
+              <div key={index} className={`max-w-[88%] rounded-2xl px-3 py-2 text-sm leading-6 shadow-sm ${message.role === "user" ? "ml-auto bg-zinc-950 text-white" : message.role === "system" ? "bg-orange-50 text-orange-900 ring-1 ring-orange-200" : "bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 ring-1 ring-zinc-200 dark:ring-zinc-700"}`}>
                 <p className="whitespace-pre-line">{message.text}</p>
                 {message.attachmentUrl && (
-                  <a href={message.attachmentUrl} target="_blank" rel="noopener noreferrer" className="mt-2 block overflow-hidden rounded-xl border border-black/10 bg-white text-xs font-bold text-zinc-700">
+                  <a href={message.attachmentUrl} target="_blank" rel="noopener noreferrer" className="mt-2 block overflow-hidden rounded-xl border border-black/10 bg-white dark:bg-zinc-900 text-xs font-bold text-zinc-700 dark:text-zinc-300">
                     {message.attachmentKind === "image" ? (
                       <img src={message.attachmentUrl} alt={message.attachmentName || "uploaded casting file"} className="max-h-36 w-full object-contain" loading="lazy" decoding="async" />
                     ) : (
@@ -1416,14 +1459,14 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
                     )}
                   </a>
                 )}
-                {message.meta && <p className="mt-2 inline-flex rounded-full bg-zinc-100 px-2 py-1 text-[11px] font-bold text-zinc-600">{message.meta}</p>}
+                {message.meta && <p className="mt-2 inline-flex rounded-full bg-zinc-100 dark:bg-zinc-800 px-2 py-1 text-[11px] font-bold text-zinc-600 dark:text-zinc-400">{message.meta}</p>}
               </div>
             ))}
-            {loading && <div className="max-w-[88%] rounded-2xl bg-white px-3 py-2 text-sm text-zinc-500 ring-1 ring-zinc-200">{lang === "th" ? "AI กำลังตอบ..." : "AI is typing..."}</div>}
+            {loading && <div className="max-w-[88%] rounded-2xl bg-white dark:bg-zinc-900 px-3 py-2 text-sm text-zinc-500 dark:text-zinc-400 ring-1 ring-zinc-200 dark:ring-zinc-700">{lang === "th" ? "AI กำลังตอบ..." : "AI is typing..."}</div>}
           </div>
 
           <form
-            className="border-t border-zinc-100 bg-white p-3"
+            className="border-t border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-3"
             onSubmit={(event) => {
               event.preventDefault();
               sendChat();
@@ -1434,12 +1477,12 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
               onChange={(event) => setInput(event.target.value)}
               rows={3}
               placeholder={lang === "th" ? "พิมพ์คำถามหรือรายละเอียดงานหล่อ..." : "Type your casting question or RFQ details..."}
-              className="w-full resize-none rounded-2xl border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-[#f6821f]"
+              className="w-full resize-none rounded-2xl border border-zinc-300 dark:border-zinc-700 px-3 py-2 text-sm outline-none focus:border-[#f6821f]"
             />
             <div className="mt-2 flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <input ref={fileRef} type="file" className="hidden" onChange={handleFileChange} accept="image/*,.pdf,.dwg,.dxf,.step,.stp" multiple />
-                <button type="button" onClick={() => fileRef.current?.click()} disabled={uploading} className="rounded-full bg-zinc-100 px-3 py-2 text-xs font-bold text-zinc-600 hover:bg-zinc-200 disabled:opacity-50">
+                <button type="button" onClick={() => fileRef.current?.click()} disabled={uploading} className="rounded-full bg-zinc-100 dark:bg-zinc-800 px-3 py-2 text-xs font-bold text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 disabled:opacity-50">
                   {uploading ? (lang === "th" ? "กำลังแนบ..." : "Uploading...") : (lang === "th" ? "แนบไฟล์" : "Attach")}
                 </button>
                 <a href={lineUrl} target="_blank" rel="noopener noreferrer" aria-label={lang === "th" ? "ติดต่อทาง LINE" : "Contact via LINE"} className="grid h-10 w-10 place-items-center rounded-full bg-[#06c755] text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#05a948]">
@@ -1484,7 +1527,7 @@ export function SuphancastingHome() {
   };
 
   return (
-    <main className="bg-white text-zinc-800">
+    <main className="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200">
       <SiteHeader lang={lang} setLang={handleLangChange} />
       <Hero lang={lang} />
       <Welcome lang={lang} />

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { TouchEvent } from "react";
 import { useEffect, useRef, useState } from "react";
+import { ThemeToggle } from "@/components/site/ThemeToggle";
 
 const lineUrl = "https://line.me/R/ti/p/@213bzijc";
 const phoneDisplay = "098-636-2356";
@@ -256,10 +257,14 @@ function ProductHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) =>
         </Link>
 
         <div className="pointer-events-auto flex items-center gap-2">
+          <ThemeToggle
+            lang={lang}
+            className="grid h-12 w-12 place-items-center rounded-2xl border border-zinc-900/15 bg-white/70 text-zinc-900 shadow-2xl backdrop-blur-md transition hover:bg-white dark:border-white/15 dark:bg-black/45 dark:text-white dark:hover:bg-white dark:hover:text-zinc-950"
+          />
           <button
             type="button"
             onClick={switchLang}
-            className="flex h-12 items-center gap-2 rounded-2xl border border-white/15 bg-black/45 px-3 text-sm font-black uppercase tracking-[0.14em] text-white shadow-2xl backdrop-blur-md transition hover:bg-white hover:text-zinc-950"
+            className="flex h-12 items-center gap-2 rounded-2xl border border-zinc-900/15 bg-white/70 px-3 text-sm font-black uppercase tracking-[0.14em] text-zinc-900 shadow-2xl backdrop-blur-md transition hover:bg-white dark:border-white/15 dark:bg-black/45 dark:text-white dark:hover:bg-white dark:hover:text-zinc-950"
             aria-label={lang === "th" ? "Switch to English" : "เปลี่ยนเป็นภาษาไทย"}
           >
             <LanguageIcon />
@@ -356,7 +361,7 @@ function ProductCardImageCarousel({
 
   return (
     <div
-      className="group/slide relative h-72 cursor-zoom-in touch-pan-y select-none overflow-hidden bg-white"
+      className="group/slide relative h-72 cursor-zoom-in touch-pan-y select-none overflow-hidden bg-white dark:bg-zinc-900"
       onClick={() => {
         if (Date.now() - lastSwipeAtRef.current < 350) return;
         openViewer(index, activeImage);
@@ -567,7 +572,7 @@ function ProductImageLightbox({
       </div>
       <figure className="flex min-h-0 flex-1 flex-col items-center justify-center" onClick={(event) => event.stopPropagation()}>
         <div
-          className={`relative grid aspect-square w-full max-w-[min(94vw,70dvh)] select-none place-items-center overflow-hidden rounded-sm bg-white ring-1 ring-white/10 sm:max-w-[min(88vw,76dvh)] lg:max-w-[min(72vw,78dvh)] ${zoom > 1 ? "cursor-grab touch-none active:cursor-grabbing" : "cursor-zoom-in touch-pan-y"}`}
+          className={`relative grid aspect-square w-full max-w-[min(94vw,70dvh)] select-none place-items-center overflow-hidden rounded-sm bg-white dark:bg-zinc-900 ring-1 ring-white/10 sm:max-w-[min(88vw,76dvh)] lg:max-w-[min(72vw,78dvh)] ${zoom > 1 ? "cursor-grab touch-none active:cursor-grabbing" : "cursor-zoom-in touch-pan-y"}`}
           onClick={toggleZoom}
           onDoubleClick={(event) => {
             event.preventDefault();
@@ -634,14 +639,14 @@ function ProductImageLightbox({
             draggable={false}
           />
           <div
-            className="absolute right-2 top-2 z-20 flex overflow-hidden rounded-full border border-black/10 bg-white/90 text-sm font-bold text-zinc-950 shadow-lg backdrop-blur-sm"
+            className="absolute right-2 top-2 z-20 flex overflow-hidden rounded-full border border-black/10 bg-white/90 dark:bg-zinc-900/90 text-sm font-bold text-zinc-950 dark:text-zinc-50 shadow-lg backdrop-blur-sm"
             onPointerDown={(event) => event.stopPropagation()}
             onPointerUp={(event) => event.stopPropagation()}
             onClick={(event) => event.stopPropagation()}
           >
-            <button type="button" className="grid h-10 w-10 place-items-center hover:bg-zinc-100" onClick={() => setZoom(zoom - 0.45)} aria-label={lang === "th" ? "ซูมออก" : "Zoom out"}>−</button>
-            <button type="button" className="min-w-14 px-3 hover:bg-zinc-100" onClick={toggleZoom} aria-label={lang === "th" ? "สลับซูม" : "Toggle zoom"}>{Math.round(zoom * 100)}%</button>
-            <button type="button" className="grid h-10 w-10 place-items-center hover:bg-zinc-100" onClick={() => setZoom(zoom + 0.45)} aria-label={lang === "th" ? "ซูมเข้า" : "Zoom in"}>+</button>
+            <button type="button" className="grid h-10 w-10 place-items-center hover:bg-zinc-100 dark:hover:bg-zinc-800" onClick={() => setZoom(zoom - 0.45)} aria-label={lang === "th" ? "ซูมออก" : "Zoom out"}>−</button>
+            <button type="button" className="min-w-14 px-3 hover:bg-zinc-100 dark:hover:bg-zinc-800" onClick={toggleZoom} aria-label={lang === "th" ? "สลับซูม" : "Toggle zoom"}>{Math.round(zoom * 100)}%</button>
+            <button type="button" className="grid h-10 w-10 place-items-center hover:bg-zinc-100 dark:hover:bg-zinc-800" onClick={() => setZoom(zoom + 0.45)} aria-label={lang === "th" ? "ซูมเข้า" : "Zoom in"}>+</button>
           </div>
           {images.length > 1 && zoom === 1 && (
             <>
@@ -662,7 +667,7 @@ function ProductImageLightbox({
                     resetZoom();
                     setViewer({ rowIndex: viewer.rowIndex, imageIndex });
                   }}
-                  className={`h-12 w-16 shrink-0 overflow-hidden bg-white ring-2 transition ${viewer.imageIndex === imageIndex ? "ring-[#c72127]" : "ring-white/20 hover:ring-white/60"}`}
+                  className={`h-12 w-16 shrink-0 overflow-hidden bg-white dark:bg-zinc-900 ring-2 transition ${viewer.imageIndex === imageIndex ? "ring-[#c72127]" : "ring-white/20 hover:ring-white/60"}`}
                   aria-label={`${lang === "th" ? "เลือกรูป" : "Select image"} ${imageIndex + 1}`}
                 >
                   <img src={src} alt="" className="h-full w-full object-cover" decoding="async" loading="lazy" />
@@ -680,14 +685,14 @@ function ProductCards({ lang }: { lang: Lang }) {
   const t = copy[lang];
   const [viewer, setViewer] = useState<{ rowIndex: number; imageIndex: number } | null>(null);
   return (
-    <section id="products" className="bg-white px-4 py-16 text-zinc-900 sm:px-6 lg:px-8">
+    <section id="products" className="bg-white dark:bg-zinc-900 px-4 py-16 text-zinc-900 dark:text-zinc-50 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 grid gap-6 lg:grid-cols-[.85fr_1.15fr] lg:items-end">
           <div>
-            <h2 className="border-b border-zinc-200 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.productTitle}</h2>
-            <p className="mt-5 text-base leading-8 text-zinc-600 sm:text-lg">{t.productLead}</p>
+            <h2 className="border-b border-zinc-200 dark:border-zinc-700 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.productTitle}</h2>
+            <p className="mt-5 text-base leading-8 text-zinc-600 dark:text-zinc-400 sm:text-lg">{t.productLead}</p>
           </div>
-          <div className="rounded-3xl bg-[#f5f5f5] p-5 ring-1 ring-zinc-200">
+          <div className="rounded-3xl bg-[#f5f5f5] dark:bg-zinc-800 p-5 ring-1 ring-zinc-200 dark:ring-zinc-700">
             <p className="inline rounded-lg bg-[#fff2c7] px-2 py-1 font-bold leading-8 text-zinc-950 ring-1 ring-[#d99d2d]/45">วัสดุที่รองรับ: {materialList}</p>
             <p className="mt-3 text-sm font-bold text-[#c72127]">{unsupportedMaterials}</p>
           </div>
@@ -695,11 +700,11 @@ function ProductCards({ lang }: { lang: Lang }) {
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {productRows.map((item, index) => (
-            <article key={`${item.material}-${item.title}`} className="group overflow-hidden border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-2xl">
+            <article key={`${item.material}-${item.title}`} className="group overflow-hidden border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm transition hover:-translate-y-1 hover:shadow-2xl">
               <ProductCardImageCarousel item={item} index={index} openViewer={(rowIndex, imageIndex) => setViewer({ rowIndex, imageIndex })} />
               <div className="p-6">
-                <h3 className="text-2xl font-bold leading-tight text-zinc-950">{item.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-zinc-600 sm:text-base">{item.description}</p>
+                <h3 className="text-2xl font-bold leading-tight text-zinc-950 dark:text-zinc-50">{item.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-base">{item.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {item.specs.map((spec) => (
                     <span key={spec} className="rounded-lg border border-[#c47a20]/30 bg-[#fff2c7] px-3 py-1.5 text-xs font-bold text-zinc-950">
@@ -744,26 +749,26 @@ function BuyerIntentSearch({ lang }: { lang: Lang }) {
 function Gallery({ lang }: { lang: Lang }) {
   const t = copy[lang];
   return (
-    <section id="gallery" className="bg-[#f1f1f1] px-4 py-16 text-zinc-900 sm:px-6 lg:px-8">
+    <section id="gallery" className="bg-[#f1f1f1] dark:bg-zinc-900 px-4 py-16 text-zinc-900 dark:text-zinc-50 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 max-w-3xl">
-          <h2 className="border-b border-zinc-300 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.galleryTitle}</h2>
-          <p className="mt-5 text-base leading-8 text-zinc-600 sm:text-lg">{t.galleryLead}</p>
+          <h2 className="border-b border-zinc-300 dark:border-zinc-700 pb-3 text-3xl font-semibold text-[#c72127] sm:text-4xl">{t.galleryTitle}</h2>
+          <p className="mt-5 text-base leading-8 text-zinc-600 dark:text-zinc-400 sm:text-lg">{t.galleryLead}</p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {galleryImages.map((img, index) => (
-            <figure key={img} className="group overflow-hidden bg-white shadow-sm ring-1 ring-zinc-200">
+            <figure key={img} className="group overflow-hidden bg-white dark:bg-zinc-900 shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-700">
               <img src={img} alt={`Suphancasting product photo ${index + 1}`} className="h-72 w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
-              <figcaption className="flex items-center justify-between px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-zinc-600">
+              <figcaption className="flex items-center justify-between px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-zinc-600 dark:text-zinc-400">
                 <span>Product #{index + 1}</span>
                 <span className="text-[#a66f12]">Suphancasting</span>
               </figcaption>
             </figure>
           ))}
           {newGalleryImages.map(([label, img]) => (
-            <figure key={img} className="group overflow-hidden bg-white shadow-sm ring-1 ring-zinc-200">
+            <figure key={img} className="group overflow-hidden bg-white dark:bg-zinc-900 shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-700">
               <img src={img} alt={`Suphancasting ${label}`} className="h-72 w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
-              <figcaption className="flex items-center justify-between gap-3 px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-zinc-600">
+              <figcaption className="flex items-center justify-between gap-3 px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-zinc-600 dark:text-zinc-400">
                 <span className="truncate">{label}</span>
                 <span className="shrink-0 text-[#a66f12]">new casting</span>
               </figcaption>
@@ -874,7 +879,7 @@ export default function ProductsPageClient() {
   const [lang, setLang] = useState<Lang>("th");
 
   return (
-    <main className="bg-white text-zinc-950">
+    <main className="bg-white dark:bg-zinc-900 text-zinc-950 dark:text-zinc-50">
       <ProductHeader lang={lang} setLang={setLang} />
       <ProductHero lang={lang} />
       <ProductCards lang={lang} />

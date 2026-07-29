@@ -5,6 +5,7 @@ import { buildOrganizationJsonLd } from "@/lib/seo/structuredData";
 import { siteConfig } from "@/lib/seo/site";
 
 import Providers from "./providers";
+import { THEME_INIT_SCRIPT } from "@/components/site/ThemeToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,8 +67,13 @@ export default function RootLayout({
   return (
     <html
       lang="th"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${workSans.variable} ${notoSansThai.variable} h-full antialiased`}
     >
+      <head>
+        {/* Sets the theme class on <html> before first paint — no flash. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body className="forge-surface flex min-h-full flex-col">
         <Providers>
           <main className="flex-1">{children}</main>
