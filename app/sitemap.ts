@@ -1,7 +1,7 @@
 import { MATERIAL_SLUGS } from "@/lib/seo/materials";
 
 function safeBaseUrl() {
-  const url = process.env.NEXT_PUBLIC_CANONICAL_SITE_URL ?? "https://www.successcasting.com";
+  const url = process.env.NEXT_PUBLIC_CANONICAL_SITE_URL ?? "https://suphancasting.com";
   return url.replace(/\/+$/, "");
 }
 
@@ -9,7 +9,7 @@ export default async function sitemap() {
   const baseUrl = safeBaseUrl();
   const now = new Date().toISOString();
 
-  // Only the genuinely real, React-built Success Casting pages. ALL Stitch-iframe
+  // Only the genuinely real, React-built Suphancasting pages. ALL Stitch-iframe
   // routes (/about, /services, /blog, /rfq, /promotions) still render placeholder
   // templates with FAKE brands ("METALCAST THAI", "PRECISION FORGE",
   // "MOLTEN STEEL & FORGE", fake email/phone) and must NOT be indexed until rebuilt.

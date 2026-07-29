@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const VIDEO_SYSTEM_PROMPT = `You are a professional video script writer for Success Casting, a precision metal casting factory in Thailand. Generate engaging video scripts.`;
+const VIDEO_SYSTEM_PROMPT = `You are a professional video script writer for Suphancasting, a precision metal casting factory in Thailand. Generate engaging video scripts.`;
 
 const TOPIC_SCRIPTS: Record<string, string> = {
   sand_casting: 'Generate a video script about Sand Casting process.',

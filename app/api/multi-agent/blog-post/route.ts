@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const BLOG_SYSTEM_PROMPT = `You are a professional content writer for Success Casting, a precision metal casting factory in Thailand (since 1988).
+const BLOG_SYSTEM_PROMPT = `You are a professional content writer for Suphancasting, a precision metal casting factory in Thailand (since 1988).
 Write SEO-optimized blog posts about metal casting topics.`;
 
 const BLOG_TOPICS: Record<string, string> = {

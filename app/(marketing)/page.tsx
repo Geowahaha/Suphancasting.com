@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { SuccessCastingHome } from "./SuccessCastingHome";
+import { SuphancastingHome } from "./SuphancastingHome";
 
 // Short CDN cache so deploys propagate within ~1 min instead of being stuck
 // behind Next's default 1-year s-maxage (which required a manual Cloudflare purge).
 export const revalidate = 60;
 
-const siteUrl = "https://www.successcasting.com";
+const siteUrl = "https://suphancasting.com";
 const canonicalUrl = `${siteUrl}/`;
-const ogImage = `${siteUrl}/successcasting-assets/gpt-hero/molten-pour-1.webp`;
+const ogImage = `${siteUrl}/suphancasting-assets/gpt-hero/molten-pour-1.webp`;
 const materialList = "FC15-30, FCD45-70, Sc46, S45c, S50c, Mo4140, 4340, SCMn, Cr2828, ASTM A532 Class A, Ni-Hard, 1.4777 และ 1.4823";
-const title = "รับหล่อเหล็กอุตสาหกรรมทุกชนิด | โรงหล่อเหล็ก Success Casting";
-const description = `Success Casting รับจ้างผลิตงานหล่อโลหะ งานหล่อทราย ชิ้นส่วนเครื่องจักร และอะไหล่ตามแบบ รองรับ ${materialList} รับงานตั้งแต่ 1 ชิ้น โทร 098-636-2356 หรือ 06-3989-1165 LINE @SCNW`;
+const title = "รับหล่อเหล็กอุตสาหกรรมทุกชนิด | โรงหล่อเหล็ก Suphancasting";
+const description = `Suphancasting รับจ้างผลิตงานหล่อโลหะ งานหล่อทราย ชิ้นส่วนเครื่องจักร และอะไหล่ตามแบบ รองรับ ${materialList} รับงานตั้งแต่ 1 ชิ้น โทร 098-636-2356 หรือ 084-317-7788 LINE @213bzijc`;
 
 export const metadata: Metadata = {
   title,
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     description,
     url: canonicalUrl,
     type: "website",
-    siteName: "Success Casting",
+    siteName: "Suphancasting",
     locale: "th_TH",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Success Casting molten metal foundry service" }],
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Suphancasting molten metal foundry service" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -61,23 +61,20 @@ export default function HomePage() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness", "ManufacturingBusiness"],
-    name: "Success Casting",
-    legalName: "Success Network Co., Ltd.",
+    name: "Suphancasting",
+    legalName: "Suphan Casting Co., Ltd.",
     url: siteUrl,
-    logo: `${siteUrl}/successcasting-assets/logo/success-logo-og.webp`,
+    logo: `${siteUrl}/suphancasting-assets/logo/suphan-logo-og.webp`,
     image: ogImage,
-    telephone: ["+66-98-636-2356", "+66-63-989-1165"],
+    telephone: ["+66-98-636-2356", "+66-84-317-7788"],
     email: "scnwmax@gmail.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "250/8 ซอยกำนันวิฑูรย์ 1 หมู่ที่ 4 ตำบลบางบ่อ",
-      addressLocality: "บางบ่อ",
-      addressRegion: "สมุทรปราการ",
-      postalCode: "10560",
+      addressRegion: "สุพรรณบุรี",
       addressCountry: "TH",
     },
-    areaServed: ["บางบ่อ", "บางนา", "สมุทรปราการ", "กรุงเทพมหานคร", "ประเทศไทย"],
-    sameAs: ["https://www.facebook.com/profile.php?id=61589947250816", "https://line.me/R/ti/p/@SCNW"],
+    areaServed: ["สุพรรณบุรี", "ภาคกลาง", "ประเทศไทย"],
+    sameAs: ["https://line.me/R/ti/p/@213bzijc"],
     knowsAbout: [
       "รับหล่อเหล็ก",
       "รับหล่อโลหะ",
@@ -107,7 +104,7 @@ export default function HomePage() {
       {
         "@type": "ContactPoint",
         contactType: "sales",
-        telephone: "+66-63-989-1165",
+        telephone: "+66-84-317-7788",
         email: "scnwmax@gmail.com",
         areaServed: "TH",
         availableLanguage: ["th", "en"],
@@ -119,7 +116,7 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "รับหล่อเหล็กอุตสาหกรรมและชิ้นส่วนเครื่องจักรตามแบบ",
-    provider: { "@type": "Organization", name: "Success Casting", url: siteUrl },
+    provider: { "@type": "Organization", name: "Suphancasting", url: siteUrl },
     areaServed: { "@type": "Country", name: "Thailand" },
     serviceType: "Industrial metal casting, sand casting, cast iron parts and machine component casting",
     description,
@@ -145,7 +142,7 @@ export default function HomePage() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "Success Casting รับหล่อเหล็กตามแบบหรือไม่",
+        name: "Suphancasting รับหล่อเหล็กตามแบบหรือไม่",
         acceptedAnswer: { "@type": "Answer", text: "รับหล่อเหล็กและโลหะตามแบบ จาก drawing รูปชิ้นงาน หรืออะไหล่เดิม พร้อมช่วยประเมินวัสดุ กระบวนการผลิต และงานกลึงก่อนเสนอราคา" },
       },
       {
@@ -161,7 +158,7 @@ export default function HomePage() {
       {
         "@type": "Question",
         name: "ต้องส่งข้อมูลอะไรเพื่อประเมินราคา",
-        acceptedAnswer: { "@type": "Answer", text: "ส่งรูปชิ้นงาน แบบ drawing ขนาด วัสดุ จำนวนที่ต้องการ และรายละเอียดงานกลึงหรือสภาพใช้งาน ผ่าน LINE @SCNW หรือโทรติดต่อทีมงาน" },
+        acceptedAnswer: { "@type": "Answer", text: "ส่งรูปชิ้นงาน แบบ drawing ขนาด วัสดุ จำนวนที่ต้องการ และรายละเอียดงานกลึงหรือสภาพใช้งาน ผ่าน LINE @213bzijc หรือโทรติดต่อทีมงาน" },
       },
     ],
   };
@@ -169,7 +166,7 @@ export default function HomePage() {
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Success Casting",
+    name: "Suphancasting",
     url: siteUrl,
     inLanguage: "th-TH",
     potentialAction: {
@@ -181,7 +178,7 @@ export default function HomePage() {
 
   return (
     <>
-      <SuccessCastingHome />
+      <SuphancastingHome />
       {[localBusinessJsonLd, serviceJsonLd, faqJsonLd, websiteJsonLd].map((jsonLd, index) => (
         <script
           key={index}

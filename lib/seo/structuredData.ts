@@ -3,27 +3,24 @@ import { siteConfig } from "./site";
 
 export function buildOrganizationJsonLd(): JsonLd {
   const siteUrl = (process.env.NEXT_PUBLIC_CANONICAL_SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL)?.replace(/\/+$/, "") ?? "";
-  const urlBase = siteUrl || "https://www.successcasting.com";
+  const urlBase = siteUrl || "https://suphancasting.com";
 
   return {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness", "ManufacturingBusiness"],
     name: siteConfig.name,
-    legalName: "Success Network Co., Ltd.",
+    legalName: "บริษัท สุพรรณ แคสติ้ง จำกัด",
     url: urlBase,
-    logo: `${urlBase}/successcasting-assets/logo/success-logo-og.webp`,
-    image: `${urlBase}/successcasting-assets/gpt-hero/molten-pour-1.webp`,
-    telephone: ["+66-98-636-2356", "+66-63-989-1165"],
+    logo: `${urlBase}/suphancasting-assets/logo/suphan-logo-og.webp`,
+    image: `${urlBase}/suphancasting-assets/gpt-hero/molten-pour-1.webp`,
+    telephone: ["+66-98-636-2356", "+66-84-317-7788"],
     email: "scnwmax@gmail.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "250/8 ซอยกำนันวิฑูรย์ 1 หมู่ที่ 4 ตำบลบางบ่อ",
-      addressLocality: "บางบ่อ",
-      addressRegion: "สมุทรปราการ",
-      postalCode: "10560",
+      addressRegion: "สุพรรณบุรี",
       addressCountry: "TH",
     },
-    sameAs: ["https://www.facebook.com/profile.php?id=61589947250816", "https://line.me/R/ti/p/@SCNW"],
+    sameAs: ["https://line.me/R/ti/p/@213bzijc"],
   };
 }
 

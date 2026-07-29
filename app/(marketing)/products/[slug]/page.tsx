@@ -18,10 +18,10 @@ export const revalidate = 60;
 // Any slug outside the 7 → redirect, don't try SSR.
 export const dynamicParams = true;
 
-const SITE = "https://www.successcasting.com";
-const LINE_URL = "https://line.me/R/ti/p/@SCNW";
+const SITE = "https://suphancasting.com";
+const LINE_URL = "https://line.me/R/ti/p/@213bzijc";
 const PHONE_MAIN = "098-636-2356";
-const PHONE_ALT = "06-3989-1165";
+const PHONE_ALT = "084-317-7788";
 
 export async function generateMetadata({
   params,
@@ -30,7 +30,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const m = getMaterialPage(slug);
-  if (!m) return { title: "Success Casting" };
+  if (!m) return { title: "Suphancasting" };
   return {
     title: m.th.title,
     description: m.th.lead,
@@ -93,7 +93,7 @@ export default async function MaterialPage({
         name: "ขอใบเสนอราคาอย่างไร",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `ส่งรูป/แบบ ขนาด วัสดุ และจำนวน ผ่าน LINE @SCNW หรือโทร ${PHONE_MAIN} ทีมงานประเมินและเสนอราคาให้ภายในเวลาทำการ`,
+          text: `ส่งรูป/แบบ ขนาด วัสดุ และจำนวน ผ่าน LINE @213bzijc หรือโทร ${PHONE_MAIN} ทีมงานประเมินและเสนอราคาให้ภายในเวลาทำการ`,
         },
       },
     ],
@@ -132,7 +132,7 @@ export default async function MaterialPage({
       <header className="border-b border-white/10 bg-[#1c1b1b]">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
           <Link href="/" className="text-sm font-bold tracking-wide text-[#e8b84b] hover:text-white">
-            ← Success Casting
+            ← Suphancasting
           </Link>
           <nav className="flex gap-4 text-sm text-zinc-300">
             <Link href="/products" className="hover:text-white">สินค้า/บริการ</Link>
@@ -167,7 +167,7 @@ export default async function MaterialPage({
                 rel="noopener noreferrer"
                 className="rounded-full bg-[#06c755] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#05a948]"
               >
-                ขอใบเสนอราคา LINE @SCNW
+                ขอใบเสนอราคา LINE @213bzijc
               </a>
               <a
                 href={`tel:${PHONE_MAIN.replace(/-/g, "")}`}
@@ -283,7 +283,7 @@ export default async function MaterialPage({
             ทีมงานประเมินและเสนอราคาภายในเวลาทำการ
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#06c755] px-5 py-2.5 font-semibold text-white hover:bg-[#05a948]">LINE @SCNW</a>
+            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#06c755] px-5 py-2.5 font-semibold text-white hover:bg-[#05a948]">LINE @213bzijc</a>
             <a href={`tel:${PHONE_MAIN.replace(/-/g, "")}`} className="rounded-full bg-[#c72127] px-5 py-2.5 font-semibold text-white hover:bg-[#a91920]">โทร {PHONE_MAIN}</a>
             <a href={`tel:${PHONE_ALT.replace(/-/g, "")}`} className="rounded-full border border-zinc-500 px-5 py-2.5 font-semibold text-white hover:bg-white/10">{PHONE_ALT}</a>
           </div>
@@ -292,9 +292,9 @@ export default async function MaterialPage({
 
       <footer className="mt-10 border-t border-white/10 bg-[#1c1b1b] px-4 py-8 text-sm text-zinc-400 sm:px-6">
         <div className="mx-auto max-w-5xl">
-          <p>บริษัท ซัคเซสเน็ทเวิร์ค จำกัด — 250/8 ซอยกำนันวิฑูรย์ 1 ม.4 ต.บางบ่อ อ.บางบ่อ จ.สมุทรปราการ 10560</p>
-          <p className="mt-1">โทร {PHONE_MAIN}, {PHONE_ALT} · LINE @SCNW · scnwmax@gmail.com</p>
-          <p className="mt-3">© Success Casting / Success Network Co., Ltd.</p>
+          <p>บริษัท สุพรรณ แคสติ้ง จำกัด — จังหวัดสุพรรณบุรี ประเทศไทย</p>
+          <p className="mt-1">โทร {PHONE_MAIN}, {PHONE_ALT} · LINE @213bzijc · scnwmax@gmail.com</p>
+          <p className="mt-3">© Suphancasting / Suphan Casting Co., Ltd.</p>
         </div>
       </footer>
     </div>

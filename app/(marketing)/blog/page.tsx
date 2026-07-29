@@ -4,15 +4,15 @@ import Link from "next/link";
 // Short CDN cache so deploys propagate within ~1 min (avoids 1-year s-maxage / manual purge).
 export const revalidate = 60;
 
-const SITE = "https://www.successcasting.com";
+const SITE = "https://suphancasting.com";
 
 export const metadata: Metadata = {
-  title: "FAQ & ความรู้งานหล่อโลหะ | Success Casting รับหล่อเหล็กตามแบบ",
+  title: "FAQ & ความรู้งานหล่อโลหะ | Suphancasting รับหล่อเหล็กตามแบบ",
   description:
-    "คำถามที่พบบ่อยเรื่องรับหล่อเหล็กและงานหล่อโลหะตามแบบ — เกรดวัสดุ FC/FCD เหล็กกล้าหล่อ เหล็กทนสึก งานหล่อทราย รับงานตั้งแต่ 1 ชิ้น โดย Success Casting (บริษัท ซัคเซสเน็ทเวิร์ค จำกัด)",
+    "คำถามที่พบบ่อยเรื่องรับหล่อเหล็กและงานหล่อโลหะตามแบบ — เกรดวัสดุ FC/FCD เหล็กกล้าหล่อ เหล็กทนสึก งานหล่อทราย รับงานตั้งแต่ 1 ชิ้น โดย Suphancasting (บริษัท สุพรรณ แคสติ้ง จำกัด)",
   alternates: { canonical: `${SITE}/blog` },
   openGraph: {
-    title: "FAQ & ความรู้งานหล่อโลหะ | Success Casting",
+    title: "FAQ & ความรู้งานหล่อโลหะ | Suphancasting",
     description:
       "คำถามที่พบบ่อยเรื่องรับหล่อเหล็กตามแบบ เกรดวัสดุ งานหล่อทราย รับงานตั้งแต่ 1 ชิ้น",
     url: `${SITE}/blog`,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 // ── เนื้อหา FAQ จริง (อ้างอิงข้อมูลธุรกิจที่ยืนยันแล้ว) ─────────────────
 const faqs: { q: string; a: string }[] = [
   {
-    q: "Success Casting รับหล่อวัสดุอะไรบ้าง?",
+    q: "Suphancasting รับหล่อวัสดุอะไรบ้าง?",
     a: "รับหล่อเหล็กหล่อสีเทา (FC150–FC300), เหล็กหล่อเหนียว (FCD45–FCD70), เหล็กกล้าหล่อ (S45C, S50C, SCMn, 4140, 4340), เหล็กทนสึก (Cr2828, Ni-Hard, ASTM A532 Class A) และเหล็กทนความร้อน หมายเหตุ: ไม่รับหล่อทองเหลือง ทองแดง หรือทองคำ",
   },
   {
@@ -48,11 +48,11 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "ขอใบเสนอราคาอย่างไร?",
-    a: "ส่งรูปชิ้นงาน แบบ Drawing ขนาด วัสดุ จำนวน และรายละเอียดงานกลึง ผ่าน LINE @SCNW หรือโทร 098-636-2356 และ 06-3989-1165 ทีมงานประเมินและเสนอราคาให้ภายในเวลาทำการ",
+    a: "ส่งรูปชิ้นงาน แบบ Drawing ขนาด วัสดุ จำนวน และรายละเอียดงานกลึง ผ่าน LINE @213bzijc หรือโทร 098-636-2356 และ 084-317-7788 ทีมงานประเมินและเสนอราคาให้ภายในเวลาทำการ",
   },
   {
-    q: "Success Casting คือใคร และอยู่ที่ไหน?",
-    a: "ดำเนินงานโดย บริษัท ซัคเซสเน็ทเวิร์ค จำกัด (Success Network Co., Ltd.) โรงหล่อเหล็กและงานหลอมโลหะประสบการณ์กว่า 20 ปี ที่อยู่ 250/8 ซอยกำนันวิฑูรย์ 1 ม.4 ต.บางบ่อ อ.บางบ่อ จ.สมุทรปราการ 10560",
+    q: "Suphancasting คือใคร และอยู่ที่ไหน?",
+    a: "ดำเนินงานโดย บริษัท สุพรรณ แคสติ้ง จำกัด (Suphan Casting Co., Ltd.) โรงหล่อเหล็กและงานหลอมโลหะประสบการณ์กว่า 20 ปี ที่อยู่ จังหวัดสุพรรณบุรี ประเทศไทย",
   },
 ];
 
@@ -78,7 +78,7 @@ export default function BlogFaqPage() {
       <header className="border-b border-white/10 bg-[#1c1b1b]">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4 sm:px-6">
           <Link href="/" className="text-sm font-bold tracking-wide text-[#e8b84b] hover:text-white">
-            ← Success Casting
+            ← Suphancasting
           </Link>
           <nav className="flex gap-4 text-sm text-zinc-300">
             <Link href="/products" className="hover:text-white">สินค้า/บริการ</Link>
@@ -126,18 +126,18 @@ export default function BlogFaqPage() {
             ส่งรูป/แบบ ขนาด วัสดุ และจำนวน ทีมงานประเมินและเสนอราคาให้ภายในเวลาทำการ
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <a href="https://line.me/R/ti/p/@SCNW" target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#06c755] px-5 py-2.5 font-semibold text-white hover:bg-[#05a948]">LINE @SCNW</a>
+            <a href="https://line.me/R/ti/p/@213bzijc" target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#06c755] px-5 py-2.5 font-semibold text-white hover:bg-[#05a948]">LINE @213bzijc</a>
             <a href="tel:0986362356" className="rounded-full bg-[#c72127] px-5 py-2.5 font-semibold text-white hover:bg-[#a91920]">โทร 098-636-2356</a>
-            <a href="tel:0639891165" className="rounded-full border border-zinc-500 px-5 py-2.5 font-semibold text-white hover:bg-white/10">06-3989-1165</a>
+            <a href="tel:0843177788" className="rounded-full border border-zinc-500 px-5 py-2.5 font-semibold text-white hover:bg-white/10">084-317-7788</a>
           </div>
         </section>
       </main>
 
       <footer className="border-t border-white/10 bg-[#1c1b1b] px-4 py-8 text-sm text-zinc-400 sm:px-6">
         <div className="mx-auto max-w-4xl">
-          <p>บริษัท ซัคเซสเน็ทเวิร์ค จำกัด — 250/8 ซอยกำนันวิฑูรย์ 1 ม.4 ต.บางบ่อ อ.บางบ่อ จ.สมุทรปราการ 10560</p>
-          <p className="mt-1">โทร 098-636-2356, 06-3989-1165 · LINE @SCNW · scnwmax@gmail.com</p>
-          <p className="mt-3">© Success Casting / Success Network Co., Ltd.</p>
+          <p>บริษัท สุพรรณ แคสติ้ง จำกัด — จังหวัดสุพรรณบุรี ประเทศไทย</p>
+          <p className="mt-1">โทร 098-636-2356, 084-317-7788 · LINE @213bzijc · scnwmax@gmail.com</p>
+          <p className="mt-3">© Suphancasting / Suphan Casting Co., Ltd.</p>
         </div>
       </footer>
     </div>

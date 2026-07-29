@@ -12,9 +12,9 @@ const TOPICS = {
 };
 
 const PROMPTS = {
-  'blog-post': 'You are a professional content writer for Success Casting, a precision metal casting factory in Thailand (since 1988). Write a comprehensive blog post about {topic}. Format with markdown headings.',
+  'blog-post': 'You are a professional content writer for Suphancasting, a precision metal casting factory in Thailand (since 1988). Write a comprehensive blog post about {topic}. Format with markdown headings.',
   'image-prompt': 'Generate a detailed, cinematic AI image prompt about {topic} for a metal casting factory. Include lighting, composition, and style details.',
-  'video-script': 'Write an engaging video script about {topic} for Success Casting metal casting factory. Include scenes and narration.'
+  'video-script': 'Write an engaging video script about {topic} for Suphancasting metal casting factory. Include scenes and narration.'
 };
 
 async function callGroq(model: string, systemPrompt: string, userPrompt: string, maxTokens = 2048) {

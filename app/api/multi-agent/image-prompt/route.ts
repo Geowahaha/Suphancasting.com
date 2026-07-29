@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const IMAGE_SYSTEM_PROMPT = `You are an image prompt generator for Success Casting metal casting factory. Generate detailed prompts for AI image generators about metal casting.`;
+const IMAGE_SYSTEM_PROMPT = `You are an image prompt generator for Suphancasting metal casting factory. Generate detailed prompts for AI image generators about metal casting.`;
 
 const IMAGE_TOPICS: Record<string, string> = {
   casting_process: 'Generate an image prompt showing metal casting process.',

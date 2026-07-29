@@ -8,8 +8,13 @@ import {
 } from "@/lib/ai/quoteGenerator";
 import { apiText, getApiLocale } from "@/lib/api-i18n";
 
-const successCastingBackendOrigin =
-  process.env.SUCCESSCASTING_BACKEND_ORIGIN ?? "http://43.128.75.149";
+// Reads the new name first, then the legacy one, so this keeps working whether or
+// not the hosting env var has been renamed yet. Drop the legacy fallback once
+// SUPHANCASTING_BACKEND_ORIGIN is set in Vercel.
+const suphancastingBackendOrigin =
+  process.env.SUPHANCASTING_BACKEND_ORIGIN ??
+  process.env.SUCCESSCASTING_BACKEND_ORIGIN ??
+  "http://43.128.75.149";
 
 async function askExistingSalesBackend(params: {
   specsText: string;
@@ -23,7 +28,7 @@ async function askExistingSalesBackend(params: {
     const payload = {
       session_id: `web_${Date.now().toString(36)}`,
       visitor_id: "web-rfq-form",
-      current_page: params.request.headers.get("referer") || "https://www.successcasting.com/",
+      current_page: params.request.headers.get("referer") || "https://suphancasting.com/",
       message: [params.materialName ? `Material: ${params.materialName}` : "", params.specsText]
         .filter(Boolean)
         .join("\n"),
@@ -31,7 +36,7 @@ async function askExistingSalesBackend(params: {
     };
     const backendUrls = [
       new URL("/api/ai-sales/chat", params.request.url).toString(),
-      `${successCastingBackendOrigin}/api/ai-sales/chat`,
+      `${suphancastingBackendOrigin}/api/ai-sales/chat`,
     ];
     let backendData: any = null;
     let backendOk = false;

@@ -25,7 +25,7 @@ export type MaterialPage = {
   keywords: string[];
 };
 
-const SITE = "https://www.successcasting.com";
+const SITE = "https://suphancasting.com";
 
 export const MATERIAL_PAGES: MaterialPage[] = [
   // ─────────────────────────────────────────────────────────────
@@ -36,7 +36,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
     family: "เหล็กหล่อสีเทา (Gray Cast Iron)",
     standard: "JIS G5501 / ASTM A48",
     th: {
-      title: "รับหล่อเหล็กหล่อสีเทา FC150–FC300 ตามแบบ | Success Casting",
+      title: "รับหล่อเหล็กหล่อสีเทา FC150–FC300 ตามแบบ | Suphancasting",
       h1: "เหล็กหล่อสีเทา FC150–FC300 (JIS G5501)",
       lead:
         "รับหล่อเหล็กหล่อสีเทา (Gray Cast Iron) ตามมาตรฐาน JIS G5501 ครอบคลุมเกรด FC150 ถึง FC300 " +
@@ -44,7 +44,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         "หล่อตามแบบ Drawing รูปชิ้นงาน หรือถอดแบบจากอะไหล่เดิม รับงานตั้งแต่ 1 ชิ้น",
     },
     en: {
-      title: "Gray Cast Iron FC150–FC300 Casting Service | Success Casting",
+      title: "Gray Cast Iron FC150–FC300 Casting Service | Suphancasting",
       lead:
         "Custom gray cast iron castings to JIS G5501 (FC150–FC300) for pulleys, housings and machine bases that absorb compression and vibration.",
     },
@@ -95,7 +95,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         body: "เหล็กหล่อสีเทาเหมาะกว่า FCD เมื่อ: งบประมาณจำกัด, ชิ้นงานรับแรงอัดเป็นหลัก, ต้องการ damping สูง, ต้องการ machinability ดีที่สุด ควรใช้ FCD แทนเมื่อ: ชิ้นงานรับแรงดึง/กระแทก, ต้องการ elongation (ไม่แตกหักกะทันหัน), ต้องการ strength เทียบเท่า cast steel แต่ราคาถูกกว่า",
       },
       {
-        heading: "ตัวอย่างชิ้นงานที่ Success Casting รับหล่อ",
+        heading: "ตัวอย่างชิ้นงานที่ Suphancasting รับหล่อ",
         body: "ชิ้นงานที่นิยมสั่งทำจากเหล็กหล่อสีเทา ได้แก่:",
         list: [
           "Pulley / Sheave สำหรับโรงสี โรงงานน้ำตาล และระบบสายพานลำเลียง",
@@ -105,7 +105,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         ],
       },
     ],
-    image: "/successcasting-assets/shopee-products/LINE_NOTE_260502_2.webp",
+    image: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_2.webp",
     keywords: [
       "รับหล่อเหล็กหล่อสีเทา", "FC150", "FC200", "FC250", "FC300",
       "Gray Cast Iron ไทย", "รับหล่อพูลเล่ย์", "JIS G5501",
@@ -120,7 +120,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
     family: "เหล็กหล่อเหนียว (Ductile / Nodular Iron)",
     standard: "JIS G5502",
     th: {
-      title: "รับหล่อเหล็กหล่อเหนียว FCD450–FCD700 ตามแบบ | Success Casting",
+      title: "รับหล่อเหล็กหล่อเหนียว FCD450–FCD700 ตามแบบ | Suphancasting",
       h1: "เหล็กหล่อเหนียว FCD450–FCD700 (JIS G5502)",
       lead:
         "รับหล่อเหล็กหล่อเหนียว (Ductile Iron / Nodular Iron / SG Iron) ตามมาตรฐาน JIS G5502 " +
@@ -128,7 +128,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         "เหมาะกับเฟือง พูลเล่ย์ Shaft และชิ้นส่วนรับแรงสูง รับหล่อตามแบบหรืออะไหล่ตัวอย่าง",
     },
     en: {
-      title: "Ductile Iron FCD450–FCD700 Casting Service | Success Casting",
+      title: "Ductile Iron FCD450–FCD700 Casting Service | Suphancasting",
       lead:
         "Ductile (nodular / SG) iron castings to JIS G5502 — FCD450–FCD700 — for gears, shafts and impact-bearing machine parts requiring higher toughness than gray iron.",
     },
@@ -188,7 +188,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
           "เหล็กหล่อเหนียวรองรับ heat treatment หลายแบบตามความต้องการ: Annealing (อ่อนตัว เพิ่ม machinability), Normalizing (ปรับ microstructure เพิ่ม strength), Quench & Temper (เพิ่ม hardness และ strength สูงสุด), Austempered Ductile Iron — ADI (ให้ microstructure พิเศษ strength สูงมาก ทนการสึกหรอ) แนะนำระบุ heat treatment ที่ต้องการเมื่อสั่งผลิต",
       },
       {
-        heading: "ตัวอย่างชิ้นงานที่ Success Casting รับหล่อ",
+        heading: "ตัวอย่างชิ้นงานที่ Suphancasting รับหล่อ",
         body: "ชิ้นงาน FCD ที่นิยมสั่งผลิต:",
         list: [
           "เฟือง (Gear) ขนาดต่างๆ สำหรับเครื่องจักรโรงสี และระบบส่งกำลัง",
@@ -198,7 +198,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         ],
       },
     ],
-    image: "/successcasting-assets/shopee-products/LINE_NOTE_260502_5.webp",
+    image: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_5.webp",
     keywords: [
       "รับหล่อเหล็กหล่อเหนียว", "FCD450", "FCD500", "FCD600", "FCD700",
       "Ductile Iron ไทย", "Nodular Iron", "SG Iron", "หล่อเฟือง FCD", "JIS G5502",
@@ -213,7 +213,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
     family: "เหล็กกล้าหล่อ (Cast Steel)",
     standard: "JIS G5101",
     th: {
-      title: "รับหล่อเหล็กกล้าหล่อ Sc46 (SC480) ตามแบบ | Success Casting",
+      title: "รับหล่อเหล็กกล้าหล่อ Sc46 (SC480) ตามแบบ | Suphancasting",
       h1: "เหล็กกล้าหล่อ Sc46 / SC480 (JIS G5101)",
       lead:
         "รับหล่อเหล็กกล้าหล่อ (Cast Steel) เกรด Sc46 (SC480) ตามมาตรฐาน JIS G5101 " +
@@ -221,7 +221,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         "งานรับแรงสูง และงานที่ต้องควบคุมคุณภาพอย่างจริงจัง",
     },
     en: {
-      title: "Cast Steel Sc46 (SC480) Casting Service | Success Casting",
+      title: "Cast Steel Sc46 (SC480) Casting Service | Suphancasting",
       lead:
         "Cast steel components to JIS G5101 Sc46 (SC480) — stronger than cast iron, weldable and machinable. For structural and load-bearing industrial machine parts.",
     },
@@ -274,7 +274,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         ],
       },
     ],
-    image: "/successcasting-assets/shopee-products/LINE_NOTE_260502_10.webp",
+    image: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_10.webp",
     keywords: [
       "รับหล่อเหล็กกล้าหล่อ", "Sc46", "SC480", "Cast Steel ไทย", "JIS G5101",
     ],
@@ -288,7 +288,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
     family: "เหล็กกล้าคาร์บอน (Carbon Steel — S45C / S50C)",
     standard: "JIS G4051",
     th: {
-      title: "รับหล่อ Shaft / Hub เหล็กกล้าคาร์บอน S45C / S50C | Success Casting",
+      title: "รับหล่อ Shaft / Hub เหล็กกล้าคาร์บอน S45C / S50C | Suphancasting",
       h1: "เหล็กกล้าคาร์บอน S45C / S50C สำหรับ Shaft, Hub และอะไหล่กลึง",
       lead:
         "รับงานชิ้นส่วนเหล็กกล้าคาร์บอนกลาง S45C และ S50C ตามมาตรฐาน JIS G4051 " +
@@ -296,7 +296,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         "เพื่อเพิ่มความแข็งผิวและทนการสึกหรอตามต้องการ",
     },
     en: {
-      title: "S45C / S50C Carbon Steel Shafts, Hubs and Machined Parts | Success Casting",
+      title: "S45C / S50C Carbon Steel Shafts, Hubs and Machined Parts | Suphancasting",
       lead:
         "S45C / S50C medium carbon steel components to JIS G4051 for shafts, hubs and parts requiring heat treatment for surface hardness and torsional strength.",
     },
@@ -348,7 +348,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
           "S45C/S50C เหมาะกว่า alloy steel เมื่อ: งบประมาณจำกัด, ชิ้นส่วนขนาดเล็ก-กลาง ที่ hardenability ไม่จำเป็นต้องลึกมาก ใช้ alloy steel แทนเมื่อ: ชิ้นงานขนาดใหญ่ที่ต้องการ hardness ลึก (hardenability), ต้องการ fatigue resistance สูง, งานรับแรงมากมีความต้องการ strength สูงกว่า",
       },
     ],
-    image: "/successcasting-assets/shopee-products/LINE_NOTE_260502_15.webp",
+    image: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_15.webp",
     keywords: [
       "S45C", "S50C", "Carbon Steel ไทย", "หล่อ Shaft S45C", "หล่อ Hub เหล็กกล้า", "JIS G4051",
     ],
@@ -362,7 +362,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
     family: "เหล็กกล้าผสม (Alloy Steel — 4140 / 4340 / SCMn)",
     standard: "AISI / SAE / JIS G5111",
     th: {
-      title: "รับหล่อเหล็กกล้าผสม Mo4140, 4340, SCMn งานหนัก | Success Casting",
+      title: "รับหล่อเหล็กกล้าผสม Mo4140, 4340, SCMn งานหนัก | Suphancasting",
       h1: "เหล็กกล้าผสม Mo4140 / 4340 / SCMn สำหรับงานหนักความแข็งแรงสูง",
       lead:
         "รับหล่อเหล็กกล้าผสม (Alloy Steel) — AISI 4140 (SCM440), 4340 และ SCMn — " +
@@ -370,7 +370,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         "รองรับ Quench & Temper และ nitriding หลังหล่อตามต้องการ",
     },
     en: {
-      title: "Alloy Steel 4140 / 4340 / SCMn Heavy-Duty Castings | Success Casting",
+      title: "Alloy Steel 4140 / 4340 / SCMn Heavy-Duty Castings | Suphancasting",
       lead:
         "High-strength alloy steel castings — 4140 (Cr-Mo), 4340 (Ni-Cr-Mo), SCMn (manganese steel) — for heavy machinery parts requiring fatigue resistance and toughness under demanding service.",
     },
@@ -421,7 +421,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         ],
       },
     ],
-    image: "/successcasting-assets/shopee-products/LINE_NOTE_260502_20.webp",
+    image: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_20.webp",
     keywords: [
       "Mo4140", "4140", "4340", "SCMn", "SCM440",
       "เหล็กกล้าผสม ไทย", "Alloy Steel Casting", "หล่อเพลาเหล็กกล้าผสม",
@@ -436,7 +436,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
     family: "เหล็กทนสึก (Wear-Resistant Steel)",
     standard: "ASTM A532 / Ni-Hard",
     th: {
-      title: "รับหล่อเหล็กทนสึก Cr2828 / Ni-Hard เหมืองแร่ ปูนซีเมนต์ | Success Casting",
+      title: "รับหล่อเหล็กทนสึก Cr2828 / Ni-Hard เหมืองแร่ ปูนซีเมนต์ | Suphancasting",
       h1: "เหล็กทนสึก Cr2828 / ASTM A532 / Ni-Hard",
       lead:
         "รับหล่อเหล็กทนสึก (Wear-Resistant Castings) เกรด Cr2828 (High-Chromium White Iron), " +
@@ -444,7 +444,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         "และโรงโม่หิน ทนการสึกหรอแบบ Abrasion สูงมาก เหมาะกับชิ้นส่วนที่สัมผัสวัสดุแข็งต่อเนื่อง",
     },
     en: {
-      title: "Wear-Resistant Castings Cr2828 / Ni-Hard / ASTM A532 | Success Casting",
+      title: "Wear-Resistant Castings Cr2828 / Ni-Hard / ASTM A532 | Suphancasting",
       lead:
         "High-chromium white iron and Ni-Hard wear castings (ASTM A532) with exceptional abrasion resistance for mining, cement and aggregate wear parts.",
     },
@@ -501,7 +501,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         ],
       },
     ],
-    image: "/successcasting-assets/shopee-products/LINE_NOTE_260502_10.webp",
+    image: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_10.webp",
     keywords: [
       "เหล็กทนสึก", "Cr2828", "Ni-Hard", "ASTM A532",
       "หล่อเหล็กเหมืองแร่", "Wear Resistant Casting", "High Chromium White Iron",
@@ -516,7 +516,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
     family: "เหล็กทนความร้อน (Heat-Resistant Steel)",
     standard: "EN 10295 / DIN 17465",
     th: {
-      title: "รับหล่อเหล็กทนความร้อน 1.4777 / 1.4823 อุณหภูมิสูง | Success Casting",
+      title: "รับหล่อเหล็กทนความร้อน 1.4777 / 1.4823 อุณหภูมิสูง | Suphancasting",
       h1: "เหล็กทนความร้อน 1.4777 / 1.4823 (EN 10295)",
       lead:
         "รับหล่อเหล็กทนความร้อน (Heat-Resistant Castings) มาตรฐาน EN 10295 / DIN 17465 " +
@@ -524,7 +524,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         "สำหรับชิ้นส่วนในเตาเผา ระบบนำส่งของร้อน และงานที่ใช้งานในอุณหภูมิสูงต่อเนื่อง",
     },
     en: {
-      title: "Heat-Resistant Castings 1.4777 / 1.4823 | Success Casting",
+      title: "Heat-Resistant Castings 1.4777 / 1.4823 | Suphancasting",
       lead:
         "Heat-resistant alloy steel castings to EN 10295 / DIN 17465 — 1.4777 (GX40CrNiSi27-4) and 1.4823 (GX40CrNiSi22-10) — for furnace components, heat-treatment fixtures and high-temperature conveying systems.",
     },
@@ -587,7 +587,7 @@ export const MATERIAL_PAGES: MaterialPage[] = [
         ],
       },
     ],
-    image: "/successcasting-assets/shopee-products/LINE_NOTE_260502_1.webp",
+    image: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_1.webp",
     keywords: [
       "เหล็กทนความร้อน", "1.4777", "1.4823",
       "Heat Resistant Casting", "หล่อชิ้นส่วนเตาเผา", "EN 10295", "GX40CrNiSi",

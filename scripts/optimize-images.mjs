@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 
-const root = path.join(process.cwd(), "public", "successcasting-assets");
+const root = path.join(process.cwd(), "public", "suphancasting-assets");
 const minBytes = 50 * 1024;
 const extensions = new Set([".jpg", ".jpeg", ".png"]);
 

@@ -2,11 +2,11 @@ import sharp from "sharp";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 
-const src = "public/successcasting-assets/logo/success-logo2-transparent.png";
+const src = "public/suphancasting-assets/logo/suphan-logo2-transparent.png";
 const outputs = [
-  ["public/successcasting-assets/logo/success-logo-header.webp", 192],
-  ["public/successcasting-assets/logo/success-logo-contact.webp", 320],
-  ["public/successcasting-assets/logo/success-logo-og.webp", 512],
+  ["public/suphancasting-assets/logo/suphan-logo-header.webp", 192],
+  ["public/suphancasting-assets/logo/suphan-logo-contact.webp", 320],
+  ["public/suphancasting-assets/logo/suphan-logo-og.webp", 512],
 ];
 for (const [out, size] of outputs) {
   await sharp(src)

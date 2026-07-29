@@ -19,12 +19,15 @@ type AiChatMessage = {
 
 const phoneDisplay = "098-636-2356";
 const phoneHref = "tel:0986362356";
-const phoneDisplayAlt = "06-3989-1165";
-const phoneHrefAlt = "tel:0639891165";
-const lineUrl = "https://line.me/R/ti/p/@SCNW";
-const lineQrGreen = "/successcasting-assets/line-official-qr-green.png";
-const pulleyLogo = "/successcasting-assets/logo/success-logo-header.webp";
-const mapEmbedSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3878.0468607006387!2d100.8540115!3d13.5939493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d43805247e39b%3A0xa792ad76155fb9a1!2sSuccess%20Network%20Co.%2CLTD.!5e0!3m2!1sen!2sth!4v1779216458535!5m2!1sen!2sth";
+const phoneDisplayAlt = "084-317-7788";
+const phoneHrefAlt = "tel:0843177788";
+const lineUrl = "https://line.me/R/ti/p/@213bzijc";
+const lineQrGreen = "/suphancasting-assets/line-official-qr-green.png";
+const pulleyLogo = "/suphancasting-assets/logo/suphan-logo-header.webp";
+// Google-generated embed for the real "Suphan casting Co.,ltd." place listing.
+// Kept identical to components/site/SiteFooter.tsx so every map on the site
+// points at the same verified listing.
+const mapEmbedSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3865.3213722401542!2d100.17816574475148!3d14.350804150392461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e241004452e5a9%3A0xb32b522a55c34948!2sSuphan%20casting%20Co.%2Cltd.!5e0!3m2!1sen!2sus!4v1775020729048!5m2!1sen!2sus";
 const materialListTh = "FC15-30, FCD45-70, Sc46, S45c, S50c, Mo4140, 4340, SCMn, Cr2828, ASTM A532 Class A, Ni-Hard, 1.4777 และ 1.4823";
 const materialListEn = "FC15-30, FCD45-70, Sc46, S45c, S50c, Mo4140, 4340, SCMn, Cr2828, ASTM A532 Class A, Ni-Hard, 1.4777 and 1.4823";
 const unsupportedMaterialsTh = "ไม่รับหล่อทองเหลือง ทองแดง หรือทองคำ";
@@ -44,7 +47,7 @@ const copy = {
     portfolioBtn: "ดูผลงาน",
     welcomeTitle: "ยินดีต้อนรับ",
     welcome: [
-      "บริษัท ซัคเซสเน็ทเวิร์ค จำกัด ก่อตั้งขึ้นในปี พ.ศ. 2544 ดำเนินธุรกิจด้านโรงงานหลอมเหล็ก ด้วยประสบการณ์และความเชี่ยวชาญ",
+      "บริษัท สุพรรณ แคสติ้ง จำกัด ก่อตั้งขึ้นในปี พ.ศ. 2544 ดำเนินธุรกิจด้านโรงงานหลอมเหล็ก ด้วยประสบการณ์และความเชี่ยวชาญ",
       "เรามุ่งมั่นในการผลิตสินค้าที่มีคุณภาพ ได้มาตรฐาน และตอบสนองความต้องการของลูกค้าอย่างดีที่สุด เรารับผลิตชิ้นงาน เหล็กหล่อ เหล็กหล่อเหนียว เหล็กทนสึก ไปจนถึงเหล็กทนความร้อน",
       "เราให้ความสำคัญกับความสัมพันธ์ที่ดีกับลูกค้า เพื่อให้ผลิตภัณฑ์เป็นไปตามกำหนดเวลา และนำส่งตรงตามข้อตกลง",
     ],
@@ -67,7 +70,7 @@ const copy = {
     aiButton: "ให้ AI ช่วยประเมิน",
     aiFallback: "ส่งข้อมูลนี้ผ่าน LINE เพื่อให้ทีมงานประเมินต่อ",
     contactTitle: "ติดต่อเรา",
-    qr: "สแกน LINE @SCNW",
+    qr: "สแกน LINE @213bzijc",
     footer: "งานหล่ออุตสาหกรรมและชิ้นส่วนเครื่องจักรตามแบบ",
   },
   en: {
@@ -83,7 +86,7 @@ const copy = {
     portfolioBtn: "View Portfolio",
     welcomeTitle: "Welcome!",
     welcome: [
-      "Success Network Co., Ltd. was founded in 2001 and operates in iron melting and foundry production with long-standing experience and technical expertise.",
+      "Suphan Casting Co., Ltd. was founded in 2001 and operates in iron melting and foundry production with long-standing experience and technical expertise.",
       "We focus on producing quality parts to required standards and customer needs, including gray cast iron, ductile iron, wear-resistant steel and heat-resistant steel.",
       "We value strong customer relationships so products are completed on schedule and delivered according to agreed requirements.",
     ],
@@ -106,15 +109,15 @@ const copy = {
     aiButton: "Ask AI to review",
     aiFallback: "Send this brief via LINE for team review",
     contactTitle: "Contact Us",
-    qr: "Scan LINE @SCNW",
+    qr: "Scan LINE @213bzijc",
     footer: "Industrial casting and machined components.",
   },
 } as const;
 
 const heroImages = [
-  "/successcasting-assets/gpt-hero/molten-pour-1.webp",
-  "/successcasting-assets/gpt-hero/success-fcd-wide.webp",
-  "/successcasting-assets/gpt-hero/molten-pour-2.webp",
+  "/suphancasting-assets/gpt-hero/molten-pour-1.webp",
+  "/suphancasting-assets/gpt-hero/suphan-fcd-wide.webp",
+  "/suphancasting-assets/gpt-hero/molten-pour-2.webp",
 ];
 
 const autoSlideMs = 15000;
@@ -138,9 +141,9 @@ const portfolio: Array<{ grade: string; slug: string; title: TextPair; body: Tex
     title: ["เหล็กหล่อเทา", "Gray Cast Iron"],
     body: ["เหล็กหล่อสีเทา FC150–FC300 ซับแรงสั่นสะเทือนดีเยี่ยม กลึงต่อง่าย เหมาะกับพูลเล่ย์ ฐานเครื่อง และชิ้นส่วนเครื่องจักรที่ต้องรับแรงอัด", "Gray cast iron FC150–FC300 — excellent vibration damping and machinability. Ideal for pulleys, machine bases and compression-loaded components."],
     images: [
-      "/successcasting-assets/product-grades/fc15-25/fc15-25-01.webp",
-      "/successcasting-assets/product-grades/fc15-25/fc15-25-02.webp",
-      "/successcasting-assets/product-grades/fc15-25/fc15-25-03.webp",
+      "/suphancasting-assets/product-grades/fc15-25/fc15-25-01.webp",
+      "/suphancasting-assets/product-grades/fc15-25/fc15-25-02.webp",
+      "/suphancasting-assets/product-grades/fc15-25/fc15-25-03.webp",
     ],
   },
   {
@@ -149,8 +152,8 @@ const portfolio: Array<{ grade: string; slug: string; title: TextPair; body: Tex
     title: ["เหล็กหล่อเหนียว", "Ductile Cast Iron"],
     body: ["เหล็กหล่อเหนียว FCD450–FCD700 ทนแรงดึงและแรงกระแทกสูงกว่าเหล็กหล่อสีเทา 3–4 เท่า เหมาะกับเฟือง Shaft และชิ้นส่วนรับแรงสูง", "Ductile iron FCD450–FCD700 with 3–4× higher tensile strength and impact resistance than gray iron. For gears, shafts and high-load components."],
     images: [
-      "/successcasting-assets/product-grades/fcd/fcd-01.webp",
-      "/successcasting-assets/product-grades/fcd/fcd-02.webp",
+      "/suphancasting-assets/product-grades/fcd/fcd-01.webp",
+      "/suphancasting-assets/product-grades/fcd/fcd-02.webp",
     ],
   },
   {
@@ -159,7 +162,7 @@ const portfolio: Array<{ grade: string; slug: string; title: TextPair; body: Tex
     title: ["เหล็กกล้าหล่อ", "Cast Steel"],
     body: ["เหล็กกล้าหล่อ Sc46 และเหล็กกล้าคาร์บอน S45c/S50c/Mo4140 แข็งแรงสูง เชื่อมได้ เหมาะกับชิ้นส่วนโครงสร้าง Shaft และอะไหล่รับแรงที่ต้องการความเชื่อถือได้", "Cast and carbon steel Sc46 / S45c / Mo4140 — high strength, weldable. For structural parts, shafts and load-bearing replacements requiring reliability."],
     images: [
-      "/successcasting-assets/product-grades/sc46/sc46-01.webp",
+      "/suphancasting-assets/product-grades/sc46/sc46-01.webp",
     ],
   },
   {
@@ -168,8 +171,8 @@ const portfolio: Array<{ grade: string; slug: string; title: TextPair; body: Tex
     title: ["เหล็กทนความร้อน", "Heat Resistant Steel"],
     body: ["เหล็กทนความร้อน 1.4777 / 1.4823 ใช้งานได้ถึง 1,000–1,100°C ทนการออกซิเดชั่นสูง เหมาะกับชิ้นส่วนเตาเผาและ Heat treatment fixture", "Heat-resistant alloys 1.4777 / 1.4823 rated to 1,000–1,100°C. For furnace components, heat-treatment fixtures and hot conveying systems."],
     images: [
-      "/successcasting-assets/product-grades/heat-resistant/heat-resistant-01.webp",
-      "/successcasting-assets/product-grades/heat-resistant/heat-resistant-02.webp",
+      "/suphancasting-assets/product-grades/heat-resistant/heat-resistant-01.webp",
+      "/suphancasting-assets/product-grades/heat-resistant/heat-resistant-02.webp",
     ],
   },
   {
@@ -178,45 +181,39 @@ const portfolio: Array<{ grade: string; slug: string; title: TextPair; body: Tex
     title: ["เหล็กทนสึก", "Wear Resistant Steel"],
     body: ["เหล็กทนสึก Cr2828 (High-Chromium White Iron) ทนการสึกหรอแบบ Abrasion สูงมากจากคาร์ไบด์โครเมียม เหมาะกับ Liner ใบพัด และชิ้นส่วนเสียดสีในงานเหมืองและปูนซีเมนต์", "Cr2828 high-chromium white iron — outstanding abrasion resistance from chromium carbides. For mill liners, impellers and wear parts in mining and cement plants."],
     images: [
-      "/successcasting-assets/product-grades/cr28/cr28-01.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-02.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-03.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-04.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-05.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-06.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-07.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-08.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-09.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-10.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-01.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-02.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-03.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-04.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-05.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-06.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-07.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-08.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-09.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-10.webp",
     ],
   },
 ];
 
 const materials: Array<{ code: string; name: TextPair; body: TextPair; img: string }> = [
-  { code: "FC15-30", name: ["เหล็กหล่อเทา", "Gray Cast Iron"], body: ["FC150, FC200, FC250, FC300 สำหรับพูลเล่ย์ housing ฐานเครื่อง และชิ้นส่วนที่ต้องการซับแรงสั่น", "FC150, FC200, FC250, FC300 for pulleys, housings, bases and vibration-damping parts"], img: "/successcasting-assets/shopee-new/pulley-product-fc25-no-price.webp" },
-  { code: "FCD45-70", name: ["เหล็กหล่อเหนียว", "Ductile Cast Iron"], body: ["FCD450, FCD500, FCD600, FCD700 สำหรับชิ้นส่วนรับแรง เฟือง และงานที่ต้องการความเหนียวสูงกว่าเหล็กหล่อเทา", "FCD450, FCD500, FCD600, FCD700 for tougher load-bearing components and gears"], img: "/successcasting-assets/shopee-new/large-gear-fcd.webp" },
-  { code: "Sc46", name: ["เหล็กกล้าหล่อ", "Cast Steel"], body: ["Sc46, S45c, S50c, Mo4140, 4340 และ SCMn สำหรับชิ้นส่วนโครงสร้างและงานหล่อที่ต้องการความแข็งแรงสูง", "Sc46, S45c, S50c, Mo4140, 4340 and SCMn for structural and higher-strength cast components"], img: "/successcasting-assets/shopee-new/molten-metal-sc46.webp" },
-  { code: "Cr2828", name: ["เหล็กทนสึก", "Wear Resistant"], body: ["Cr2828, ASTM A532 Class A และ Ni-Hard สำหรับงานเสียดสีและงานสึกหรอสูง", "Cr2828, ASTM A532 Class A and Ni-Hard for abrasive and high-wear applications"], img: "/successcasting-assets/product-grades/Cr2828/Cr2828-01.webp" },
-  { code: "1.4777/1.4823", name: ["เหล็กทนความร้อน", "Heat Resistant"], body: ["เกรดทนความร้อน 1.4777, 1.4823 และ ASTM สำหรับสภาพใช้งานอุณหภูมิสูง", "Heat-resistant 1.4777, 1.4823 and ASTM grades for high-temperature service"], img: "/successcasting-assets/shopee-new/mold-boxes-fc25.webp" },
+  { code: "FC15-30", name: ["เหล็กหล่อเทา", "Gray Cast Iron"], body: ["FC150, FC200, FC250, FC300 สำหรับพูลเล่ย์ housing ฐานเครื่อง และชิ้นส่วนที่ต้องการซับแรงสั่น", "FC150, FC200, FC250, FC300 for pulleys, housings, bases and vibration-damping parts"], img: "/suphancasting-assets/shopee-new/pulley-product-fc25-no-price.webp" },
+  { code: "FCD45-70", name: ["เหล็กหล่อเหนียว", "Ductile Cast Iron"], body: ["FCD450, FCD500, FCD600, FCD700 สำหรับชิ้นส่วนรับแรง เฟือง และงานที่ต้องการความเหนียวสูงกว่าเหล็กหล่อเทา", "FCD450, FCD500, FCD600, FCD700 for tougher load-bearing components and gears"], img: "/suphancasting-assets/shopee-new/large-gear-fcd.webp" },
+  { code: "Sc46", name: ["เหล็กกล้าหล่อ", "Cast Steel"], body: ["Sc46, S45c, S50c, Mo4140, 4340 และ SCMn สำหรับชิ้นส่วนโครงสร้างและงานหล่อที่ต้องการความแข็งแรงสูง", "Sc46, S45c, S50c, Mo4140, 4340 and SCMn for structural and higher-strength cast components"], img: "/suphancasting-assets/shopee-new/molten-metal-sc46.webp" },
+  { code: "Cr2828", name: ["เหล็กทนสึก", "Wear Resistant"], body: ["Cr2828, ASTM A532 Class A และ Ni-Hard สำหรับงานเสียดสีและงานสึกหรอสูง", "Cr2828, ASTM A532 Class A and Ni-Hard for abrasive and high-wear applications"], img: "/suphancasting-assets/product-grades/Cr2828/Cr2828-01.webp" },
+  { code: "1.4777/1.4823", name: ["เหล็กทนความร้อน", "Heat Resistant"], body: ["เกรดทนความร้อน 1.4777, 1.4823 และ ASTM สำหรับสภาพใช้งานอุณหภูมิสูง", "Heat-resistant 1.4777, 1.4823 and ASTM grades for high-temperature service"], img: "/suphancasting-assets/shopee-new/mold-boxes-fc25.webp" },
 ];
 
 const text = (pair: TextPair, lang: Lang) => pair[lang === "th" ? 0 : 1];
 
+// The previous brand's TikTok account was removed here and is intentionally
+// absent — add a Suphancasting handle when one exists.
 const socialLinks = [
-  { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61589947250816", icon: "facebook", className: "border-[#1877f2] bg-[#1877f2] text-white hover:bg-[#0f5fc7]" },
-  { name: "TikTok", href: "https://www.tiktok.com/@success_casting", icon: "tiktok", className: "border-zinc-700 bg-black text-white hover:bg-zinc-900" },
   { name: "LINE", href: lineUrl, icon: "line", className: "border-[#06c755] bg-[#06c755] text-white hover:bg-[#05a948]" },
   { name: "Message", href: "mailto:scnwmax@gmail.com", icon: "mail", className: "border-[#00b900] bg-[#00b900] text-white hover:bg-[#009f00]" },
   { name: "Call", href: phoneHref, icon: "phone", className: "border-[#c72127] bg-[#c72127] text-white hover:bg-[#a91920]" },
 ] as const;
 
 function SocialIcon({ icon }: { icon: (typeof socialLinks)[number]["icon"] }) {
-  if (icon === "facebook") {
-    return <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z" /></svg>;
-  }
-  if (icon === "tiktok") {
-    return <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 1 0 6.33 6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" /></svg>;
-  }
   if (icon === "line") {
     return <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true"><path fill="currentColor" d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" /></svg>;
   }
@@ -238,7 +235,7 @@ function LineQrImage({ size = "hero" }: { size?: "hero" | "footer" }) {
   const dimensions = size === "footer" ? "h-28 w-28 sm:h-32 sm:w-32" : "h-[55px] w-[55px] sm:h-[63px] sm:w-[63px]";
   return (
     <span className={`grid shrink-0 place-items-center overflow-hidden bg-white p-[3px] shadow-sm ring-1 ring-white/90 ${dimensions}`}>
-      <img src={lineQrGreen} alt="LINE QR code for Success Casting" className="h-full w-full scale-[1.08] object-cover" decoding="async" loading="lazy" />
+      <img src={lineQrGreen} alt="LINE QR code for Suphancasting" className="h-full w-full scale-[1.08] object-cover" decoding="async" loading="lazy" />
     </span>
   );
 }
@@ -272,10 +269,10 @@ function SiteHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) => vo
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
         <Link href="/" className="pointer-events-auto flex items-center gap-3 rounded-2xl border border-white/10 bg-black/35 px-3 py-2 shadow-2xl backdrop-blur-md transition hover:bg-black/55">
           <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-transparent p-0 shadow-[0_0_0_1px_rgba(255,255,255,0.72),0_0_10px_rgba(255,255,255,0.28),0_0_18px_rgba(249,115,22,0.22)] sm:h-14 sm:w-14">
-            <Image src={pulleyLogo} alt="Success Casting logo" width={56} height={56} priority fetchPriority="high" decoding="sync" unoptimized className="h-full w-full scale-[1.22] object-cover [filter:drop-shadow(0_0_1px_rgba(255,255,255,0.92))_drop-shadow(0_0_4px_rgba(249,115,22,0.42))]" />
+            <Image src={pulleyLogo} alt="Suphancasting logo" width={56} height={56} priority fetchPriority="high" decoding="sync" unoptimized className="h-full w-full scale-[1.22] object-cover [filter:drop-shadow(0_0_1px_rgba(255,255,255,0.92))_drop-shadow(0_0_4px_rgba(249,115,22,0.42))]" />
           </span>
           <span className="leading-tight">
-            <span className="block text-lg font-semibold tracking-tight sm:text-2xl">Success Casting</span>
+            <span className="block text-lg font-semibold tracking-tight sm:text-2xl">Suphancasting</span>
           </span>
         </Link>
 
@@ -317,7 +314,7 @@ function SiteHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) => vo
                     <a href={phoneHref} onClick={() => setOpen(false)} className="rounded-2xl bg-white/5 px-4 py-3 transition hover:bg-[#c72127] hover:text-white">☎ {phoneDisplay}</a>
                     <a href={phoneHrefAlt} onClick={() => setOpen(false)} className="rounded-2xl bg-white/5 px-4 py-3 transition hover:bg-[#c72127] hover:text-white">☎ {phoneDisplayAlt}</a>
                     <a href="mailto:scnwmax@gmail.com" onClick={() => setOpen(false)} className="rounded-2xl bg-white/5 px-4 py-3 transition hover:bg-[#c72127] hover:text-white">✉ scnwmax@gmail.com</a>
-                    <a href={lineUrl} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="rounded-2xl bg-white/5 px-4 py-3 transition hover:bg-[#00853e] hover:text-white">LINE @SCNW</a>
+                    <a href={lineUrl} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="rounded-2xl bg-white/5 px-4 py-3 transition hover:bg-[#00853e] hover:text-white">LINE @213bzijc</a>
                   </div>
                 </div>
               </nav>
@@ -389,7 +386,7 @@ function Hero({ lang }: { lang: Lang }) {
   return (
     <section
       className="relative min-h-[470px] touch-pan-y overflow-hidden bg-[#1f1f1f] text-white sm:min-h-[520px] md:min-h-[58vh] md:max-h-[620px]"
-      aria-label="Success Casting foundry image slideshow"
+      aria-label="Suphancasting foundry image slideshow"
       onPointerDown={(event) => {
         if ((event.target as Element).closest("a,button")) return;
         pointerStart.current = { x: event.clientX, y: event.clientY };
@@ -428,7 +425,7 @@ function Hero({ lang }: { lang: Lang }) {
         <Image
           key={src}
           src={src}
-          alt={`Success Casting industrial background ${index + 1}`}
+          alt={`Suphancasting industrial background ${index + 1}`}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-out ${active === index ? "opacity-100" : "opacity-0"}`}
           fill
           sizes="100vw"
@@ -1072,7 +1069,7 @@ function AiRfqAssist({ lang }: { lang: Lang }) {
               <button type="submit" disabled={loading || specs.trim().length < 10} className="bg-[#c72127] px-6 py-3 font-semibold text-white hover:bg-zinc-900 disabled:cursor-not-allowed disabled:opacity-50">
                 {loading ? "Checking..." : t.aiButton}
               </button>
-              <a href={`${lineUrl}?text=${lineMessage}`} target="_blank" rel="noopener noreferrer" className="border border-zinc-300 px-6 py-3 text-center font-semibold hover:border-[#c72127] hover:text-[#c72127]">LINE @SCNW</a>
+              <a href={`${lineUrl}?text=${lineMessage}`} target="_blank" rel="noopener noreferrer" className="border border-zinc-300 px-6 py-3 text-center font-semibold hover:border-[#c72127] hover:text-[#c72127]">LINE @213bzijc</a>
             </div>
           </form>
 
@@ -1112,15 +1109,11 @@ function ContactFooter({ lang }: { lang: Lang }) {
         <div>
           <h3 className="border-b border-zinc-600 pb-3 text-2xl font-semibold text-[#e23a40]">{t.contactTitle}</h3>
           <div className="mt-5 space-y-2 leading-7">
-            <p className="font-semibold">บริษัท ซัคเซสเน็ทเวิร์ค จำกัด</p>
-            <p>307/288 หมู่ที่ 11 ต.บางพลีใหญ่ อ.บางพลี จ.สมุทรปราการ 10540</p>
-            <div className="pt-1">
-              <p className="font-semibold">โรงงาน Success Casting</p>
-              <p>250/8 ซอยกำนันวิฑูรย์ 1 ม.4 ต.บางบ่อ อ.บางบ่อ จ.สมุทรปราการ 10560</p>
-            </div>
+            <p className="font-semibold">บริษัท สุพรรณ แคสติ้ง จำกัด</p>
+            <p>จังหวัดสุพรรณบุรี ประเทศไทย</p>
             <p>{lang === "th" ? "โทร" : "Phone"}: <a href={phoneHref} className="text-white hover:text-[#e23a40]">{phoneDisplay}</a>, <a href={phoneHrefAlt} className="text-white hover:text-[#e23a40]">{phoneDisplayAlt}</a></p>
             <p>Email: <a href="mailto:scnwmax@gmail.com" className="text-white hover:text-[#e23a40]">scnwmax@gmail.com</a></p>
-            <p>LINE: <a href={lineUrl} target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#e23a40]">@SCNW</a></p>
+            <p>LINE: <a href={lineUrl} target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#e23a40]">@213bzijc</a></p>
           </div>
           <div className="mt-7">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">{lang === "th" ? "Social / ติดต่อ" : "Social / Contact"}</p>
@@ -1149,11 +1142,11 @@ function ContactFooter({ lang }: { lang: Lang }) {
           </div>
         </div>
         <div className="min-h-[280px] overflow-hidden bg-zinc-800 ring-1 ring-white/10">
-          <iframe src={mapEmbedSrc} width="600" height="320" style={{ border: 0, width: "100%", height: "100%", minHeight: 280 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Success Network Co., LTD. Google Map" />
+          <iframe src={mapEmbedSrc} width="600" height="320" style={{ border: 0, width: "100%", height: "100%", minHeight: 280 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Suphan Casting Co., Ltd. Google Map" />
         </div>
       </div>
       <div className="mx-auto mt-10 max-w-6xl border-t border-zinc-700 pt-5 text-sm text-zinc-400">
-        © Success Casting / Success Network Co., Ltd. {t.footer}
+        © Suphancasting / Suphan Casting Co., Ltd. {t.footer}
       </div>
     </footer>
   );
@@ -1229,8 +1222,8 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
       role: "bot",
       text:
         lang === "th"
-          ? "สวัสดีครับ ผมคือ Success AI ของ Success Casting ส่งรายละเอียดงานหล่อ รูป/แบบ ขนาด วัสดุ และจำนวนได้เลยครับ"
-          : "Hello, I am Success AI for Success Casting. Send casting details, drawings/photos, dimensions, material and quantity.",
+          ? "สวัสดีครับ ผมคือ Success AI ของ Suphancasting ส่งรายละเอียดงานหล่อ รูป/แบบ ขนาด วัสดุ และจำนวนได้เลยครับ"
+          : "Hello, I am Success AI for Suphancasting. Send casting details, drawings/photos, dimensions, material and quantity.",
     },
   ]);
   const logRef = useRef<HTMLDivElement | null>(null);
@@ -1238,10 +1231,10 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
   const widgetRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    let sid = window.localStorage.getItem("successcasting_ai_session");
+    let sid = window.localStorage.getItem("suphancasting_ai_session");
     if (!sid) {
       sid = `web_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
-      window.localStorage.setItem("successcasting_ai_session", sid);
+      window.localStorage.setItem("suphancasting_ai_session", sid);
     }
     setSessionId(sid);
   }, []);
@@ -1272,7 +1265,7 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
     const sid = sessionId || `web_${Date.now().toString(36)}`;
     if (!sessionId) {
       setSessionId(sid);
-      window.localStorage.setItem("successcasting_ai_session", sid);
+      window.localStorage.setItem("suphancasting_ai_session", sid);
     }
     setInput("");
     setLoading(true);
@@ -1284,7 +1277,7 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           session_id: sid,
-          visitor_id: "successcasting-web",
+          visitor_id: "suphancasting-web",
           current_page: window.location.href,
           message: textValue,
           preferred_contact: "line",
@@ -1303,8 +1296,8 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
           role: "system",
           text:
             lang === "th"
-              ? "AI chat ยังไม่ตอบกลับ กรุณาส่งรายละเอียดผ่าน LINE @SCNW หรือโทร 098-636-2356 ได้ทันที"
-              : "AI chat is unavailable. Please send details via LINE @SCNW or call 098-636-2356.",
+              ? "AI chat ยังไม่ตอบกลับ กรุณาส่งรายละเอียดผ่าน LINE @213bzijc หรือโทร 098-636-2356 ได้ทันที"
+              : "AI chat is unavailable. Please send details via LINE @213bzijc or call 098-636-2356.",
         },
       ]);
     } finally {
@@ -1318,7 +1311,7 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
     const sid = sessionId || `web_${Date.now().toString(36)}`;
     if (!sessionId) {
       setSessionId(sid);
-      window.localStorage.setItem("successcasting_ai_session", sid);
+      window.localStorage.setItem("suphancasting_ai_session", sid);
     }
     setUploading(true);
 
@@ -1366,8 +1359,8 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
           role: "system",
           text:
             lang === "th"
-              ? "แนบไฟล์ผ่านหน้าเว็บไม่สำเร็จ กรุณาส่งรูป/แบบทาง LINE @SCNW"
-              : "File upload failed. Please send drawings/photos via LINE @SCNW.",
+              ? "แนบไฟล์ผ่านหน้าเว็บไม่สำเร็จ กรุณาส่งรูป/แบบทาง LINE @213bzijc"
+              : "File upload failed. Please send drawings/photos via LINE @213bzijc.",
         },
       ]);
     } finally {
@@ -1397,7 +1390,7 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
             <div className="flex items-center gap-3">
               <span className="h-8 w-8 rounded-full bg-[radial-gradient(circle_at_30%_25%,#ffd7a6,#f6821f_58%,#d95f00)]" />
               <span>
-                <span className="block text-sm font-black">Success Casting AI</span>
+                <span className="block text-sm font-black">Suphancasting AI</span>
               </span>
             </div>
             <button type="button" onClick={() => setOpen(false)} className="grid h-9 w-9 place-items-center rounded-full bg-zinc-100 text-xl font-light hover:bg-zinc-200" aria-label="Close chat">×</button>
@@ -1452,7 +1445,7 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
                 <a href={lineUrl} target="_blank" rel="noopener noreferrer" aria-label={lang === "th" ? "ติดต่อทาง LINE" : "Contact via LINE"} className="grid h-10 w-10 place-items-center rounded-full bg-[#06c755] text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#05a948]">
                   <SocialIcon icon="line" />
                 </a>
-                <a href={phoneHref} aria-label={lang === "th" ? "โทรหา Success Casting" : "Call Success Casting"} className="grid h-10 w-10 place-items-center rounded-full bg-[#c72127] text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#a91920]">
+                <a href={phoneHref} aria-label={lang === "th" ? "โทรหา Suphancasting" : "Call Suphancasting"} className="grid h-10 w-10 place-items-center rounded-full bg-[#c72127] text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#a91920]">
                   <SocialIcon icon="phone" />
                 </a>
               </div>
@@ -1467,16 +1460,16 @@ function AiSalesChatWidget({ lang }: { lang: Lang }) {
   );
 }
 
-export function SuccessCastingHome() {
+export function SuphancastingHome() {
   const [lang, setLang] = useState<Lang>("th");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const requestedLang = params.get("lang");
-    const savedLang = window.localStorage.getItem("successcasting-lang");
+    const savedLang = window.localStorage.getItem("suphancasting-lang");
     if (requestedLang === "en" || requestedLang === "th") {
       setLang(requestedLang);
-      window.localStorage.setItem("successcasting-lang", requestedLang);
+      window.localStorage.setItem("suphancasting-lang", requestedLang);
     } else if (savedLang === "en" || savedLang === "th") {
       setLang(savedLang);
     }
@@ -1484,7 +1477,7 @@ export function SuccessCastingHome() {
 
   const handleLangChange = (nextLang: Lang) => {
     setLang(nextLang);
-    window.localStorage.setItem("successcasting-lang", nextLang);
+    window.localStorage.setItem("suphancasting-lang", nextLang);
     const url = new URL(window.location.href);
     url.searchParams.set("lang", nextLang);
     window.history.replaceState(null, "", url.toString());

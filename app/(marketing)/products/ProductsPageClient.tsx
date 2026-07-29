@@ -5,15 +5,18 @@ import Link from "next/link";
 import type { TouchEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
-const lineUrl = "https://line.me/R/ti/p/@SCNW";
+const lineUrl = "https://line.me/R/ti/p/@213bzijc";
 const phoneDisplay = "098-636-2356";
 const phoneHref = "tel:0986362356";
-const phoneDisplayAlt = "06-3989-1165";
-const phoneHrefAlt = "tel:0639891165";
-const pulleyLogo = "/successcasting-assets/logo/success-logo-header.webp";
+const phoneDisplayAlt = "084-317-7788";
+const phoneHrefAlt = "tel:0843177788";
+const pulleyLogo = "/suphancasting-assets/logo/suphan-logo-header.webp";
 const materialList = "FC15-30, FCD45-70, Sc46, S45c, S50c, Mo4140, 4340, SCMn, Cr2828, ASTM A532 Class A, Ni-Hard, 1.4777 และ 1.4823";
 const unsupportedMaterials = "ไม่รับหล่อทองเหลือง ทองแดง หรือทองคำ";
-const mapEmbedSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3878.0468607006387!2d100.8540115!3d13.5939493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d43805247e39b%3A0xa792ad76155fb9a1!2sSuccess%20Network%20Co.%2CLTD.!5e0!3m2!1sen!2sth!4v1779216458535!5m2!1sen!2sth";
+// Google-generated embed for the real "Suphan casting Co.,ltd." place listing.
+// Kept identical to components/site/SiteFooter.tsx so every map on the site
+// points at the same verified listing.
+const mapEmbedSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3865.3213722401542!2d100.17816574475148!3d14.350804150392461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e241004452e5a9%3A0xb32b522a55c34948!2sSuphan%20casting%20Co.%2Cltd.!5e0!3m2!1sen!2sus!4v1775020729048!5m2!1sen!2sus";
 
 type Lang = "th" | "en";
 
@@ -30,11 +33,11 @@ const productRows: ProductRow[] = [
   {
     material: "FC15-30",
     title: "SUC Pulley — FC15-30 Gray Cast Iron",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_2.webp",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_2.webp",
     images: [
-      "/successcasting-assets/product-grades/fc15-25/fc15-25-01.webp",
-      "/successcasting-assets/product-grades/fc15-25/fc15-25-02.webp",
-      "/successcasting-assets/product-grades/fc15-25/fc15-25-03.webp",
+      "/suphancasting-assets/product-grades/fc15-25/fc15-25-01.webp",
+      "/suphancasting-assets/product-grades/fc15-25/fc15-25-02.webp",
+      "/suphancasting-assets/product-grades/fc15-25/fc15-25-03.webp",
     ],
     description:
       "Pulley / drive gear casting สำหรับระบบส่งกำลังโรงสีและเครื่องจักรอุตสาหกรรม วัสดุ FC15-30 ครอบคลุม FC150, FC200, FC250, FC300 เหมาะกับงานหล่อเทา ลดแรงสั่นสะเทือน กลึงต่อได้ดี และคุมต้นทุนได้จริง.",
@@ -43,10 +46,10 @@ const productRows: ProductRow[] = [
   {
     material: "FCD45-70",
     title: "SUC Pulley — Ductile Iron",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_5.webp",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_5.webp",
     images: [
-      "/successcasting-assets/product-grades/fcd/fcd-01.webp",
-      "/successcasting-assets/product-grades/fcd/fcd-02.webp",
+      "/suphancasting-assets/product-grades/fcd/fcd-01.webp",
+      "/suphancasting-assets/product-grades/fcd/fcd-02.webp",
     ],
     description:
       "FCD45-70 สำหรับพูลเล่ย์และชิ้นส่วนเครื่องจักรที่ต้องการความเหนียวและรับแรงกระแทกสูงกว่าเหล็กหล่อเทาทั่วไป ครอบคลุม FCD450, FCD500, FCD600 และ FCD700.",
@@ -55,7 +58,7 @@ const productRows: ProductRow[] = [
   {
     material: "Sc46",
     title: "Cast Steel Machinery Parts",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_10.webp",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_10.webp",
     description:
       "Sc46 สำหรับงานเหล็กกล้าหล่อ ชิ้นส่วนรับแรง งานโครงสร้าง และงานโรงงานที่ต้องควบคุมกระบวนการผลิตอย่างจริงจัง.",
     specs: ["เหล็กกล้าหล่อ", "Sand casting process", "Inspection before delivery"],
@@ -63,7 +66,7 @@ const productRows: ProductRow[] = [
   {
     material: "S45c/S50c",
     title: "Machinery Shafts / Hubs / Carbon Steel Parts",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_15.webp",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_15.webp",
     description:
       "S45c และ S50c สำหรับชิ้นงานที่ต้องการความแข็งแรง งานกลึงต่อ งาน hub, shaft และอะไหล่เครื่องจักรตามแบบเฉพาะ.",
     specs: ["Medium-carbon steel", "Custom geometry", "Replacement and OEM support"],
@@ -71,7 +74,7 @@ const productRows: ProductRow[] = [
   {
     material: "Mo4140",
     title: "High Strength Heavy-Duty Components",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_20.webp",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_20.webp",
     description:
       "Mo4140, 4340 และ SCMn สำหรับงานหนัก งานแข็งแรงสูง ชิ้นส่วนเฉพาะทาง และงานซ่อมบำรุงที่ต้องลด downtime.",
     specs: ["Mo4140 / 4340 / SCMn", "High strength material family", "Controlled production planning"],
@@ -79,18 +82,18 @@ const productRows: ProductRow[] = [
   {
     material: "Cr2828",
     title: "Wear Resistant Castings",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_10.webp",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_10.webp",
     images: [
-      "/successcasting-assets/product-grades/cr28/cr28-01.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-02.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-03.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-04.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-05.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-06.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-07.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-08.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-09.webp",
-      "/successcasting-assets/product-grades/cr28/cr28-10.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-01.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-02.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-03.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-04.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-05.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-06.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-07.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-08.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-09.webp",
+      "/suphancasting-assets/product-grades/cr28/cr28-10.webp",
     ],
     description:
       "Cr2828, ASTM A532 Class A และ Ni-Hard สำหรับชิ้นส่วนที่ต้องรับการเสียดสี งานสึกหรอสูง และสภาพใช้งานหนัก.",
@@ -99,10 +102,10 @@ const productRows: ProductRow[] = [
   {
     material: "1.4777/1.4823",
     title: "Heat Resistant Castings",
-    img: "/successcasting-assets/shopee-products/LINE_NOTE_260502_1.webp",
+    img: "/suphancasting-assets/shopee-products/LINE_NOTE_260502_1.webp",
     images: [
-      "/successcasting-assets/product-grades/heat-resistant/heat-resistant-01.webp",
-      "/successcasting-assets/product-grades/heat-resistant/heat-resistant-02.webp",
+      "/suphancasting-assets/product-grades/heat-resistant/heat-resistant-01.webp",
+      "/suphancasting-assets/product-grades/heat-resistant/heat-resistant-02.webp",
     ],
     description:
       "1.4777, 1.4823 และ ASTM สำหรับงานทนความร้อนและชิ้นส่วนที่ใช้งานในสภาพอุณหภูมิสูง.",
@@ -110,21 +113,21 @@ const productRows: ProductRow[] = [
   },
 ];
 
-const galleryImages = Array.from({ length: 20 }, (_, index) => `/successcasting-assets/shopee-products/LINE_NOTE_260502_${index + 1}.webp`);
+const galleryImages = Array.from({ length: 20 }, (_, index) => `/suphancasting-assets/shopee-products/LINE_NOTE_260502_${index + 1}.webp`);
 
 const newGalleryImages = [
-  ["Pulley product FC15-30", "/successcasting-assets/shopee-new/pulley-product-fc25-no-price.webp?v=3"],
-  ["FCD gear", "/successcasting-assets/shopee-new/gear-fcd.webp?v=2"],
-  ["FCD large gear", "/successcasting-assets/shopee-new/large-gear-fcd.webp?v=2"],
-  ["Sc46 molten metal", "/successcasting-assets/shopee-new/molten-metal-sc46.webp?v=2"],
-  ["S45c / S50c / Mo4140 machining", "/successcasting-assets/shopee-new/grinding-machining-s45c.webp?v=2"],
-  ["FC15-30 mold boxes", "/successcasting-assets/shopee-new/mold-boxes-fc25.webp?v=2"],
+  ["Pulley product FC15-30", "/suphancasting-assets/shopee-new/pulley-product-fc25-no-price.webp?v=3"],
+  ["FCD gear", "/suphancasting-assets/shopee-new/gear-fcd.webp?v=2"],
+  ["FCD large gear", "/suphancasting-assets/shopee-new/large-gear-fcd.webp?v=2"],
+  ["Sc46 molten metal", "/suphancasting-assets/shopee-new/molten-metal-sc46.webp?v=2"],
+  ["S45c / S50c / Mo4140 machining", "/suphancasting-assets/shopee-new/grinding-machining-s45c.webp?v=2"],
+  ["FC15-30 mold boxes", "/suphancasting-assets/shopee-new/mold-boxes-fc25.webp?v=2"],
 ] as const;
 
 const processVideos = [
-  ["Pattern & mold components", "/successcasting-assets/shopee-video/pattern-and-mold-components.mp4", "FC15-30 / FCD45-70"],
-  ["Cylindrical castings", "/successcasting-assets/shopee-video/cylindrical-castings-fc-fcd.mp4", "FC15-30 / FCD45-70"],
-  ["Mold box production", "/successcasting-assets/shopee-video/mold-box-production.mp4", "FC15-30 / Sc46"],
+  ["Pattern & mold components", "/suphancasting-assets/shopee-video/pattern-and-mold-components.mp4", "FC15-30 / FCD45-70"],
+  ["Cylindrical castings", "/suphancasting-assets/shopee-video/cylindrical-castings-fc-fcd.mp4", "FC15-30 / FCD45-70"],
+  ["Mold box production", "/suphancasting-assets/shopee-video/mold-box-production.mp4", "FC15-30 / Sc46"],
 ] as const;
 
 const copy = {
@@ -132,20 +135,20 @@ const copy = {
     switchLabel: "EN",
     nav: ["หน้าแรก", "สินค้า", "แกลเลอรี", "วิดีโอ", "วัสดุ", "ติดต่อ"],
     heroTitle: "ผลงานสินค้าและชิ้นงานหล่อจริง",
-    heroLead: "รวมสินค้างานหล่อ พูลเล่ย์ เฟือง และชิ้นส่วนเครื่องจักรตามวัสดุหลักที่ Success Casting รับผลิต",
+    heroLead: "รวมสินค้างานหล่อ พูลเล่ย์ เฟือง และชิ้นส่วนเครื่องจักรตามวัสดุหลักที่ Suphancasting รับผลิต",
     heroSupport: "เก็บข้อมูลสินค้าเดิมทั้งหมด แต่จัดใหม่ให้ดูง่ายบนมือถือและใช้ visual system เดียวกับหน้าแรก",
     productTitle: "สินค้าหลักที่รับผลิต",
     productLead: "รายการสินค้าถูกจัดตามกลุ่มวัสดุ เพื่อให้ลูกค้าส่งรูป แบบ หรือชิ้นงานตัวอย่างแล้วคุยต่อได้เร็ว",
     searchTitle: "คำค้นที่ลูกค้าใช้หาเรา",
     searchLead: "หน้านี้ออกแบบให้ตอบคำถามที่คนซื้อใช้ค้นหาจริง ทั้งงานหล่อโลหะตามแบบ งานหล่อเหล็กจำนวนน้อย และอะไหล่เครื่องจักรอุตสาหกรรม",
     galleryTitle: "รูปภาพผลงานสินค้า",
-    galleryLead: "รูปผลงานจริงจากคลัง Success Casting และภาพใหม่ที่เกี่ยวข้องกับงานหล่อ/ชิ้นส่วนเครื่องจักร",
+    galleryLead: "รูปผลงานจริงจากคลัง Suphancasting และภาพใหม่ที่เกี่ยวข้องกับงานหล่อ/ชิ้นส่วนเครื่องจักร",
     videoTitle: "วิดีโอกระบวนการผลิต",
     videoLead: "ตัวอย่าง pattern, mold และชิ้นงานทรงกระบอกสำหรับช่วยอธิบายกระบวนการก่อนเสนอราคา",
     quote: "ขอใบเสนอราคา",
     line: "ส่งรายละเอียดทาง LINE",
     contact: "ติดต่อ",
-    scan: "สแกน LINE @SCNW",
+    scan: "สแกน LINE @213bzijc",
     backTop: "กลับไปด้านบน",
     footer: "งานหล่ออุตสาหกรรมและชิ้นส่วนเครื่องจักรตามแบบ",
   },
@@ -153,20 +156,20 @@ const copy = {
     switchLabel: "ไทย",
     nav: ["Home", "Products", "Gallery", "Videos", "Materials", "Contact"],
     heroTitle: "Real Product Portfolio",
-    heroLead: "Industrial castings, pulleys, gears and custom machine components grouped by Success Casting material families.",
+    heroLead: "Industrial castings, pulleys, gears and custom machine components grouped by Suphancasting material families.",
     heroSupport: "All existing product data is preserved and redesigned with the latest homepage visual system.",
     productTitle: "Core Product Groups",
     productLead: "Products are organized by material so customers can send photos, drawings or sample parts and continue the RFQ quickly.",
     searchTitle: "Buyer-intent Search Coverage",
     searchLead: "This page answers high-intent searches for custom metal casting, low-volume iron casting, and industrial replacement parts.",
     galleryTitle: "Product Gallery",
-    galleryLead: "Real Success Casting product assets plus selected foundry and machine-component imagery.",
+    galleryLead: "Real Suphancasting product assets plus selected foundry and machine-component imagery.",
     videoTitle: "Production Videos",
     videoLead: "Pattern, mold and cylindrical casting references for explaining production before quotation.",
     quote: "Request a Quote",
     line: "Send via LINE",
     contact: "Contact",
-    scan: "Scan LINE @SCNW",
+    scan: "Scan LINE @213bzijc",
     backTop: "Back to top",
     footer: "Industrial castings and custom machine components",
   }, 
@@ -176,9 +179,8 @@ const buyerIntentKeywords = [
   "รับหล่อโลหะ",
   "รับหล่อเหล็กตามแบบ",
   "รับหล่อเหล็ก 1 ชิ้น",
-  "โรงหล่อเหล็ก บางนา",
-  "โรงหล่อเหล็ก บางบ่อ",
-  "รับหล่อเหล็ก สมุทรปราการ",
+  "โรงหล่อเหล็ก สุพรรณบุรี",
+  "รับหล่อเหล็ก สุพรรณบุรี",
   "รับหล่อ pulley",
   "หล่อเหล็ก FC FCD",
   "หล่อเหล็กเหนียว FCD",
@@ -189,21 +191,15 @@ const buyerIntentKeywords = [
   "custom cast iron parts",
 ] as const;
 
+// The previous brand's TikTok account was removed here and is intentionally
+// absent — add a Suphancasting handle when one exists.
 const socialLinks = [
-  { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61589947250816", icon: "facebook", className: "border-[#1877f2] bg-[#1877f2] text-white hover:bg-[#0f5fc7]" },
-  { name: "TikTok", href: "https://www.tiktok.com/@success_casting", icon: "tiktok", className: "border-zinc-700 bg-black text-white hover:bg-zinc-900" },
   { name: "LINE", href: lineUrl, icon: "line", className: "border-[#06c755] bg-[#06c755] text-white hover:bg-[#05a948]" },
   { name: "Message", href: "mailto:scnwmax@gmail.com", icon: "mail", className: "border-[#00b900] bg-[#00b900] text-white hover:bg-[#009f00]" },
   { name: "Call", href: phoneHref, icon: "phone", className: "border-[#c72127] bg-[#c72127] text-white hover:bg-[#a91920]" },
 ] as const;
 
 function SocialIcon({ icon }: { icon: (typeof socialLinks)[number]["icon"] }) {
-  if (icon === "facebook") {
-    return <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z" /></svg>;
-  }
-  if (icon === "tiktok") {
-    return <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 1 0 6.33 6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" /></svg>;
-  }
   if (icon === "line") {
     return <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true"><path fill="currentColor" d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" /></svg>;
   }
@@ -283,10 +279,10 @@ function ProductHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) =>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
         <Link href="/" className="pointer-events-auto flex items-center gap-3 rounded-2xl border border-white/10 bg-black/35 px-3 py-2 shadow-2xl backdrop-blur-md transition hover:bg-black/55">
           <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-transparent p-0 shadow-[0_0_0_1px_rgba(255,255,255,0.72),0_0_10px_rgba(255,255,255,0.28),0_0_18px_rgba(249,115,22,0.22)] sm:h-14 sm:w-14">
-            <Image src={pulleyLogo} alt="Success Casting logo" width={56} height={56} priority sizes="(max-width: 640px) 48px, 56px" className="h-full w-full scale-[1.22] object-cover [filter:drop-shadow(0_0_1px_rgba(255,255,255,0.92))_drop-shadow(0_0_4px_rgba(249,115,22,0.42))]" />
+            <Image src={pulleyLogo} alt="Suphancasting logo" width={56} height={56} priority sizes="(max-width: 640px) 48px, 56px" className="h-full w-full scale-[1.22] object-cover [filter:drop-shadow(0_0_1px_rgba(255,255,255,0.92))_drop-shadow(0_0_4px_rgba(249,115,22,0.42))]" />
           </span>
           <span className="leading-tight">
-            <span className="block text-lg font-semibold tracking-tight sm:text-2xl">Success Casting</span>
+            <span className="block text-lg font-semibold tracking-tight sm:text-2xl">Suphancasting</span>
           </span>
         </Link>
 
@@ -327,7 +323,7 @@ function ProductHeader({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) =>
                   <div className="grid gap-2 text-sm text-zinc-300">
                     <a href={phoneHref} onClick={() => setOpen(false)} className="rounded-2xl bg-white/5 px-4 py-3 transition hover:bg-[#c72127] hover:text-white">☎ {phoneDisplay}</a>
                     <a href="mailto:scnwmax@gmail.com" onClick={() => setOpen(false)} className="rounded-2xl bg-white/5 px-4 py-3 transition hover:bg-[#c72127] hover:text-white">✉ scnwmax@gmail.com</a>
-                    <a href={lineUrl} onClick={() => setOpen(false)} className="rounded-2xl bg-white/5 px-4 py-3 transition hover:bg-[#00853e] hover:text-white">LINE @SCNW</a>
+                    <a href={lineUrl} onClick={() => setOpen(false)} className="rounded-2xl bg-white/5 px-4 py-3 transition hover:bg-[#00853e] hover:text-white">LINE @213bzijc</a>
                   </div>
                 </div>
               </nav>
@@ -355,7 +351,7 @@ function ProductHero({ lang }: { lang: Lang }) {
   const t = copy[lang];
   return (
     <section className="relative min-h-[650px] overflow-hidden bg-[#111] px-4 pb-20 pt-32 text-center text-white sm:px-6 lg:px-8">
-      <Image src="/successcasting-assets/gpt-hero/success-fcd-wide.webp" alt="Success Casting portfolio hero" fill priority sizes="100vw" className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
+      <Image src="/suphancasting-assets/gpt-hero/suphan-fcd-wide.webp" alt="Suphancasting portfolio hero" fill priority sizes="100vw" className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,.28),rgba(0,0,0,.86)_72%),linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.72))]" />
       <div className="relative z-10 mx-auto flex min-h-[500px] max-w-6xl flex-col items-center justify-center">
         <h1 className="mx-auto max-w-5xl text-4xl font-light leading-tight tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">{t.heroTitle}</h1>
@@ -761,7 +757,7 @@ function BuyerIntentSearch({ lang }: { lang: Lang }) {
           <h2 className="text-3xl font-semibold text-[#ffb34a] sm:text-4xl">{t.searchTitle}</h2>
           <p className="mt-5 text-base leading-8 text-zinc-300 sm:text-lg">{t.searchLead}</p>
           <p className="mt-4 text-sm leading-7 text-zinc-400">
-            Success Casting รับงานจากรูปชิ้นงานจริง drawing หรืออะไหล่เดิม พร้อมช่วยพิจารณาวัสดุ กระบวนการหล่อ และงานกลึงก่อนเสนอราคา
+            Suphancasting รับงานจากรูปชิ้นงานจริง drawing หรืออะไหล่เดิม พร้อมช่วยพิจารณาวัสดุ กระบวนการหล่อ และงานกลึงก่อนเสนอราคา
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -788,16 +784,16 @@ function Gallery({ lang }: { lang: Lang }) {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {galleryImages.map((img, index) => (
             <figure key={img} className="group overflow-hidden bg-white shadow-sm ring-1 ring-zinc-200">
-              <img src={img} alt={`Success Casting product photo ${index + 1}`} className="h-72 w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+              <img src={img} alt={`Suphancasting product photo ${index + 1}`} className="h-72 w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
               <figcaption className="flex items-center justify-between px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-zinc-600">
                 <span>Product #{index + 1}</span>
-                <span className="text-[#a66f12]">Success Casting</span>
+                <span className="text-[#a66f12]">Suphancasting</span>
               </figcaption>
             </figure>
           ))}
           {newGalleryImages.map(([label, img]) => (
             <figure key={img} className="group overflow-hidden bg-white shadow-sm ring-1 ring-zinc-200">
-              <img src={img} alt={`Success Casting ${label}`} className="h-72 w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+              <img src={img} alt={`Suphancasting ${label}`} className="h-72 w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
               <figcaption className="flex items-center justify-between gap-3 px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-zinc-600">
                 <span className="truncate">{label}</span>
                 <span className="shrink-0 text-[#a66f12]">new casting</span>
@@ -843,8 +839,8 @@ function ContactBand({ lang }: { lang: Lang }) {
         <div>
           <h2 className="border-b border-zinc-600 pb-3 text-2xl font-semibold text-[#e23a40]">{t.contact}</h2>
           <div className="mt-5 space-y-2 leading-7">
-            <p>บริษัท ซัคเซสเน็ทเวิร์ค จำกัด</p>
-            <p>250/8 ซอยกำนันวิฑูรย์ 1 ม.4 ต.บางบ่อ อ.บางบ่อ จ.สมุทรปราการ 10560</p>
+            <p>บริษัท สุพรรณ แคสติ้ง จำกัด</p>
+            <p>จังหวัดสุพรรณบุรี ประเทศไทย</p>
             <p>
               {lang === "th" ? "โทร" : "Phone"}:{" "}
               <a href={phoneHref} className="text-white hover:text-[#e23a40]">{phoneDisplay}</a>
@@ -852,7 +848,7 @@ function ContactBand({ lang }: { lang: Lang }) {
               <a href={phoneHrefAlt} className="text-white hover:text-[#e23a40]">{phoneDisplayAlt}</a>
             </p>
             <p>Email: <a href="mailto:scnwmax@gmail.com" className="text-white hover:text-[#e23a40]">scnwmax@gmail.com</a></p>
-            <p>LINE: <a href={lineUrl} className="text-white hover:text-[#e23a40]">@SCNW</a></p>
+            <p>LINE: <a href={lineUrl} className="text-white hover:text-[#e23a40]">@213bzijc</a></p>
           </div>
           <div className="mt-7">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">{lang === "th" ? "Social / ติดต่อ" : "Social / Contact"}</p>
@@ -873,11 +869,11 @@ function ContactBand({ lang }: { lang: Lang }) {
           </div>
         </div>
         <div className="min-h-[280px] overflow-hidden bg-zinc-800 ring-1 ring-white/10">
-          <iframe src={mapEmbedSrc} width="600" height="320" style={{ border: 0, width: "100%", height: "100%", minHeight: 280 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Success Network Co., LTD. Google Map" />
+          <iframe src={mapEmbedSrc} width="600" height="320" style={{ border: 0, width: "100%", height: "100%", minHeight: 280 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Suphan Casting Co., Ltd. Google Map" />
         </div>
       </div>
       <div className="mx-auto mt-10 max-w-6xl border-t border-zinc-700 pt-5 text-sm text-zinc-400">
-        © Success Casting / Success Network Co., Ltd. {t.footer}
+        © Suphancasting / Suphan Casting Co., Ltd. {t.footer}
       </div>
     </footer>
   );

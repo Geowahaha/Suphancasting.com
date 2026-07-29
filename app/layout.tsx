@@ -37,7 +37,7 @@ const notoSansThai = Noto_Sans_Thai({
 export const metadata: Metadata = {
   title: siteConfig.defaultTitle,
   description: siteConfig.defaultDescription,
-  metadataBase: new URL(process.env.NEXT_PUBLIC_CANONICAL_SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.successcasting.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_CANONICAL_SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "https://suphancasting.com"),
   alternates: { canonical: "/" },
   icons: {
     icon: "/favicon.ico",
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
     title: siteConfig.defaultTitle,
     description: siteConfig.defaultDescription,
     type: "website",
-    url: process.env.NEXT_PUBLIC_CANONICAL_SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.successcasting.com",
-    images: [{ url: siteConfig.defaultOgImage, width: 1200, height: 630, alt: "Success Casting industrial foundry" }],
+    url: process.env.NEXT_PUBLIC_CANONICAL_SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "https://suphancasting.com",
+    images: [{ url: siteConfig.defaultOgImage, width: 1200, height: 630, alt: "Suphancasting industrial foundry" }],
   },
   twitter: {
     card: "summary_large_image",

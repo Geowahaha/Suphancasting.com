@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
-const successCastingBackendOrigin =
-  process.env.SUCCESSCASTING_BACKEND_ORIGIN ?? "http://43.128.75.149";
+// Reads the new name first, then the legacy one, so this keeps working whether or
+// not the hosting env var has been renamed yet. Drop the legacy fallback once
+// SUPHANCASTING_BACKEND_ORIGIN is set in Vercel.
+const suphancastingBackendOrigin =
+  process.env.SUPHANCASTING_BACKEND_ORIGIN ??
+  process.env.SUCCESSCASTING_BACKEND_ORIGIN ??
+  "http://43.128.75.149";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -24,8 +29,8 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/:path*",
-        has: [{ type: "host", value: "successcasting.com" }],
-        destination: "https://www.successcasting.com/:path*",
+        has: [{ type: "host", value: "www.suphancasting.com" }],
+        destination: "https://suphancasting.com/:path*",
         permanent: true,
       },
       // Retired routes → real pages / homepage contact section
@@ -78,29 +83,29 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
-        { source: "/api/ai-sales/:path*", destination: `${successCastingBackendOrigin}/api/ai-sales/:path*` },
-        { source: "/api/admin/:path*", destination: `${successCastingBackendOrigin}/api/admin/:path*` },
-        { source: "/admin/:path*", destination: `${successCastingBackendOrigin}/admin/:path*` },
-        { source: "/webhooks/:path*", destination: `${successCastingBackendOrigin}/webhooks/:path*` },
-        { source: "/api/customers/:path*", destination: `${successCastingBackendOrigin}/api/customers/:path*` },
-        { source: "/customers/:path*", destination: `${successCastingBackendOrigin}/customers/:path*` },
-        { source: "/connect/:path*", destination: `${successCastingBackendOrigin}/connect/:path*` },
-        { source: "/api/channels/:path*", destination: `${successCastingBackendOrigin}/api/channels/:path*` },
-        { source: "/api/intent/:path*", destination: `${successCastingBackendOrigin}/api/intent/:path*` },
-        { source: "/api/trust-match/:path*", destination: `${successCastingBackendOrigin}/api/trust-match/:path*` },
-        { source: "/api/notifications/:path*", destination: `${successCastingBackendOrigin}/api/notifications/:path*` },
-        { source: "/api/orders/:path*", destination: `${successCastingBackendOrigin}/api/orders/:path*` },
-        { source: "/api/platforms/:path*", destination: `${successCastingBackendOrigin}/api/platforms/:path*` },
-        { source: "/api/tokens/:path*", destination: `${successCastingBackendOrigin}/api/tokens/:path*` },
-        { source: "/api/errors/:path*", destination: `${successCastingBackendOrigin}/api/errors/:path*` },
-        { source: "/api/reports/:path*", destination: `${successCastingBackendOrigin}/api/reports/:path*` },
-        { source: "/api/verified/:path*", destination: `${successCastingBackendOrigin}/api/verified/:path*` },
-        { source: "/verified/:path*", destination: `${successCastingBackendOrigin}/verified/:path*` },
-        { source: "/ai-search/:path*", destination: `${successCastingBackendOrigin}/ai-search/:path*` },
-        { source: "/healthz", destination: `${successCastingBackendOrigin}/healthz` },
-        { source: "/api/ops/health", destination: `${successCastingBackendOrigin}/api/ops/health` },
-        { source: "/services/pulley-casting", destination: `${successCastingBackendOrigin}/services/pulley-casting` },
-        { source: "/services/iron-metal-foundry", destination: `${successCastingBackendOrigin}/services/iron-metal-foundry` },
+        { source: "/api/ai-sales/:path*", destination: `${suphancastingBackendOrigin}/api/ai-sales/:path*` },
+        { source: "/api/admin/:path*", destination: `${suphancastingBackendOrigin}/api/admin/:path*` },
+        { source: "/admin/:path*", destination: `${suphancastingBackendOrigin}/admin/:path*` },
+        { source: "/webhooks/:path*", destination: `${suphancastingBackendOrigin}/webhooks/:path*` },
+        { source: "/api/customers/:path*", destination: `${suphancastingBackendOrigin}/api/customers/:path*` },
+        { source: "/customers/:path*", destination: `${suphancastingBackendOrigin}/customers/:path*` },
+        { source: "/connect/:path*", destination: `${suphancastingBackendOrigin}/connect/:path*` },
+        { source: "/api/channels/:path*", destination: `${suphancastingBackendOrigin}/api/channels/:path*` },
+        { source: "/api/intent/:path*", destination: `${suphancastingBackendOrigin}/api/intent/:path*` },
+        { source: "/api/trust-match/:path*", destination: `${suphancastingBackendOrigin}/api/trust-match/:path*` },
+        { source: "/api/notifications/:path*", destination: `${suphancastingBackendOrigin}/api/notifications/:path*` },
+        { source: "/api/orders/:path*", destination: `${suphancastingBackendOrigin}/api/orders/:path*` },
+        { source: "/api/platforms/:path*", destination: `${suphancastingBackendOrigin}/api/platforms/:path*` },
+        { source: "/api/tokens/:path*", destination: `${suphancastingBackendOrigin}/api/tokens/:path*` },
+        { source: "/api/errors/:path*", destination: `${suphancastingBackendOrigin}/api/errors/:path*` },
+        { source: "/api/reports/:path*", destination: `${suphancastingBackendOrigin}/api/reports/:path*` },
+        { source: "/api/verified/:path*", destination: `${suphancastingBackendOrigin}/api/verified/:path*` },
+        { source: "/verified/:path*", destination: `${suphancastingBackendOrigin}/verified/:path*` },
+        { source: "/ai-search/:path*", destination: `${suphancastingBackendOrigin}/ai-search/:path*` },
+        { source: "/healthz", destination: `${suphancastingBackendOrigin}/healthz` },
+        { source: "/api/ops/health", destination: `${suphancastingBackendOrigin}/api/ops/health` },
+        { source: "/services/pulley-casting", destination: `${suphancastingBackendOrigin}/services/pulley-casting` },
+        { source: "/services/iron-metal-foundry", destination: `${suphancastingBackendOrigin}/services/iron-metal-foundry` },
       ],
     };
   },

@@ -28,7 +28,7 @@ export async function SiteFooter() {
                 SC
               </div>
               <span className="font-forge-headline text-xl font-bold uppercase text-[#ff5625]">
-                Success Casting
+                Suphancasting
               </span>
             </div>
             <p className="max-w-xs font-forge-headline text-xs leading-relaxed tracking-wider text-[#2e4e4e]">
@@ -149,7 +149,7 @@ export async function SiteFooter() {
 
         <div className="mx-auto mt-16 max-w-7xl border-t border-[#5d4038]/15 pt-8 text-center">
           <p className="font-forge-headline text-xs tracking-wider text-[#2e4e4e]">
-            © {year} Success Casting Industrial. {tr.footer.rights}
+            © {year} Suphancasting Industrial. {tr.footer.rights}
           </p>
         </div>
       </footer>
