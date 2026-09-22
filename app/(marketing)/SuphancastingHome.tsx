@@ -1155,7 +1155,7 @@ function ContactFooter({ lang }: { lang: Lang }) {
           <h3 className="border-b border-zinc-600 pb-3 text-[clamp(1.5rem,3vw,2rem)] font-semibold text-[#e23a40]">{t.contactTitle}</h3>
           <div className="mt-6 space-y-4 text-[clamp(0.98rem,1.5vw,1.125rem)] leading-7 sm:leading-8">
             <div className="space-y-1">
-              <p className="font-semibold">{lang === "th" ? "บริษัท Suphan Casting" : "Suphan Casting factory"}</p>
+              <p className="font-semibold">{lang === "th" ? "บริษัท สุพรรณ แคสติ้ง จำกัด" : "Suphan Casting Co., Ltd."}</p>
               <p className="break-words">
                 {lang === "th"
                   ? "229 หมู่ 3 ต.ตะค่า อ.บางปลาม้า จ.สุพรรณบุรี 72150"
