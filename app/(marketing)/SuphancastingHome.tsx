@@ -52,10 +52,7 @@ const copy = {
     portfolioBtn: "ดูผลงาน",
     welcomeTitle: "ยินดีต้อนรับ",
     welcome: [
-      // Success Network is the affiliated parent company (owner-confirmed), so its
-      // 2544 founding is legitimately part of this group's history — not stale
-      // Success Casting text. Do not "correct" this to Suphan Casting / 2565.
-      "บริษัท ซัคเซสเน็ทเวิร์ค จำกัด ก่อตั้งขึ้นในปี พ.ศ. 2544 ดำเนินธุรกิจด้านโรงงานหลอมเหล็ก ด้วยประสบการณ์และความเชี่ยวชาญ",
+      "บริษัทสุพรรณ แคสติ้ง ก่อตั้ง 2565",
       "เรามุ่งมั่นในการผลิตสินค้าที่มีคุณภาพ ได้มาตรฐาน และตอบสนองความต้องการของลูกค้าอย่างดีที่สุด เรารับผลิตชิ้นงาน เหล็กหล่อ เหล็กหล่อเหนียว เหล็กทนสึก ไปจนถึงเหล็กทนความร้อน",
       "เราให้ความสำคัญกับความสัมพันธ์ที่ดีกับลูกค้า เพื่อให้ผลิตภัณฑ์เป็นไปตามกำหนดเวลา และนำส่งตรงตามข้อตกลง",
     ],
@@ -94,7 +91,7 @@ const copy = {
     portfolioBtn: "View Portfolio",
     welcomeTitle: "Welcome!",
     welcome: [
-      "Success Network Co., Ltd. was founded in 2001 and operates in iron melting and foundry production with long-standing experience and technical expertise.",
+      "Suphan Casting was founded in 2022.",
       "We focus on producing quality parts to required standards and customer needs, including gray cast iron, ductile iron, wear-resistant steel and heat-resistant steel.",
       "We value strong customer relationships so products are completed on schedule and delivered according to agreed requirements.",
     ],
@@ -1152,19 +1149,18 @@ function AiRfqAssist({ lang }: { lang: Lang }) {
 function ContactFooter({ lang }: { lang: Lang }) {
   const t = copy[lang];
   return (
-    <footer id="contact" className="bg-[#2d2d2d] px-4 py-14 text-zinc-200 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1fr_1.1fr] md:items-stretch">
+    <footer id="contact" className="bg-[#2d2d2d] px-4 py-12 text-zinc-200 sm:px-6 sm:py-14 lg:px-8">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-stretch lg:gap-12">
         <div>
-          <h3 className="border-b border-zinc-600 pb-3 text-2xl font-semibold text-[#e23a40]">{t.contactTitle}</h3>
-          <div className="mt-5 space-y-2 leading-7">
-            {/* Head office is the affiliated parent, Success Network; the foundry
-                itself is Suphan Casting in Suphan Buri. Both are correct and
-                owner-confirmed — keep the two blocks. */}
-            <p className="font-semibold">บริษัท ซัคเซสเน็ทเวิร์ค จำกัด</p>
-            <p>307/288 หมู่ที่ 11 ต.บางพลีใหญ่ อ.บางพลี จ.สมุทรปราการ 10540</p>
-            <div className="pt-1">
+          <h3 className="border-b border-zinc-600 pb-3 text-[clamp(1.5rem,3vw,2rem)] font-semibold text-[#e23a40]">{t.contactTitle}</h3>
+          <div className="mt-6 space-y-4 text-[clamp(0.98rem,1.5vw,1.125rem)] leading-7 sm:leading-8">
+            <div className="space-y-1">
+              <p className="font-semibold">บริษัท ซัคเซสเน็ทเวิร์ค จำกัด</p>
+              <p className="break-words">307/288 หมู่ที่ 11 ต.บางพลีใหญ่ อ.บางพลี จ.สมุทรปราการ 10540</p>
+            </div>
+            <div className="space-y-1 border-t border-white/10 pt-4">
               <p className="font-semibold">{lang === "th" ? "โรงงาน Suphan Casting" : "Suphan Casting factory"}</p>
-              <p>
+              <p className="break-words">
                 {lang === "th"
                   ? "229 หมู่ 3 ต.ตะค่า อ.บางปลาม้า จ.สุพรรณบุรี 72150"
                   : "229 Moo 3, Takha, Bang Pla Ma, Suphan Buri 72150, Thailand"}
@@ -1176,7 +1172,7 @@ function ContactFooter({ lang }: { lang: Lang }) {
           </div>
           <div className="mt-7">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">{lang === "th" ? "Social / ติดต่อ" : "Social / Contact"}</p>
-            <div className="mt-3 flex flex-wrap gap-3">
+            <div className="mt-3 flex max-w-xl flex-wrap gap-3 sm:gap-3.5">
               {socialLinks.map((item) => (
                 <a
                   key={item.name}
@@ -1200,7 +1196,7 @@ function ContactFooter({ lang }: { lang: Lang }) {
             </div>
           </div>
         </div>
-        <div className="min-h-[280px] overflow-hidden bg-zinc-800 ring-1 ring-white/10">
+        <div className="aspect-[4/3] min-h-[280px] overflow-hidden bg-zinc-800 ring-1 ring-white/10 sm:aspect-[16/9] lg:aspect-auto lg:min-h-[320px]">
           <iframe src={mapEmbedSrc} width="600" height="320" style={{ border: 0, width: "100%", height: "100%", minHeight: 280 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Suphan Casting Co., Ltd. Google Map" />
         </div>
       </div>
