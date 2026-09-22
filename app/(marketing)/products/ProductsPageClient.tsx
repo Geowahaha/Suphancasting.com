@@ -824,7 +824,7 @@ function ContactBand({ lang }: { lang: Lang }) {
           <h2 className="border-b border-zinc-600 pb-3 text-2xl font-semibold text-[#e23a40]">{t.contact}</h2>
           <div className="mt-5 space-y-2 leading-7">
             <div>
-              <p className="font-semibold">{lang === "th" ? "โรงงาน Suphan Casting" : "Suphan Casting factory"}</p>
+              <p className="font-semibold">{lang === "th" ? "บริษัท Suphan Casting" : "Suphan Casting factory"}</p>
               <p>
                 {lang === "th"
                   ? "229 หมู่ 3 ต.ตะค่า อ.บางปลาม้า จ.สุพรรณบุรี 72150"
