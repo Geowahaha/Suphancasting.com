@@ -823,11 +823,7 @@ function ContactBand({ lang }: { lang: Lang }) {
         <div>
           <h2 className="border-b border-zinc-600 pb-3 text-2xl font-semibold text-[#e23a40]">{t.contact}</h2>
           <div className="mt-5 space-y-2 leading-7">
-            {/* Head office is the affiliated parent, Success Network; the foundry
-                itself is Suphan Casting in Suphan Buri. Both owner-confirmed. */}
-            <p className="font-semibold">บริษัท ซัคเซสเน็ทเวิร์ค จำกัด</p>
-            <p>307/288 หมู่ที่ 11 ต.บางพลีใหญ่ อ.บางพลี จ.สมุทรปราการ 10540</p>
-            <div className="pt-1">
+            <div>
               <p className="font-semibold">{lang === "th" ? "โรงงาน Suphan Casting" : "Suphan Casting factory"}</p>
               <p>
                 {lang === "th"
